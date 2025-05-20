@@ -5,8 +5,9 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "deploy": "npm run generate && gh-pages -d .output/public",
     "generate": "nuxt generate",
+    "prepare-deploy": "touch .output/public/.nojekyll",
+    "deploy": "npm run generate && npm run prepare-deploy && gh-pages -d .output/public",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
