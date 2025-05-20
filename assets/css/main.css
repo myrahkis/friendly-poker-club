@@ -2,9 +2,10 @@
 
 :root {
   --dark-blue-color: #022563;
+  --dark-bg-color: #252525;
   --blue-color: #063293;
-  --light-gradient-color: #40caf4;
-  --dark-gradient-color: #423af5;
+  --light-gradient-color: #4ec2ec;
+  --dark-gradient-color: #3f4e9d;
 }
 
 * {
@@ -29,4 +30,19 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+a {
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: white;
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }

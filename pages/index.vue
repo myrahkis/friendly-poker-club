@@ -1,8 +1,7 @@
 <script setup></script>
 
 <template>
-  <h1>Workingg</h1>
-  <p>AAAAAA</p>
+  <HeroSection />
 </template>
 
 <style scoped></style>
