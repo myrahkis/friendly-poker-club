@@ -8,12 +8,10 @@ export default defineNuxtConfig({
     baseURL: "/friendly-poker-club/",
   },
   nitro: {
-    // статический пресет для экспорта
     preset: "static",
-    // опционально: автоматически обойти и собрать все маршруты по ссылкам внутри сайта
     prerender: {
       crawlLinks: true,
-      routes: ["/"], // можно добавить дополнительные, если нужно
+      routes: ["/"],
     },
   },
 });

@@ -2,6 +2,7 @@
 
 <template>
   <section class="hero-section">
+    <div class="gradient"></div>
     <img class="bg-chip" src="/assets/images/chip1.png" alt="bg-img" />
     <img class="bg-cards" src="/assets/images/cards.png" alt="cards-img" />
     <div class="hero-wrapper">
@@ -23,13 +24,20 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 3rem;
-  min-height: 125vh;
+  padding: 0 5rem 10rem;
+}
+.gradient {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
   background: linear-gradient(
     to top,
     rgba(2, 37, 99, 0.9) 5%,
-    rgba(2, 37, 99, 0.7) 50%,
-    rgba(2, 37, 99, 0.3) 60%,
+    rgba(2, 37, 99, 0.7) 35%,
+    rgba(2, 37, 99, 0.5) 60%,
     rgba(2, 37, 99, 0) 100%
   );
 }
@@ -39,15 +47,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-  width: 20rem;
-}
-
-.bg-cards {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 45rem;
-  z-index: -1;
+  width: 25rem;
 }
 
 .hero-wrapper {
@@ -58,28 +58,40 @@
 .hero-text {
   width: 30%;
   padding-top: 15rem;
-  margin-bottom: 10%;
+  padding-bottom: 20%;
   line-height: 2.3rem;
   font-size: 2.5rem;
   font-weight: 500;
 }
 
+.bg-cards {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60rem;
+  transform: translateY(10rem);
+  z-index: -1;
+}
+
 .hero-bg-img {
   position: absolute;
-  padding-top: 20%;
-  bottom: 0;
   right: 0;
-  width: 55rem;
+  bottom: 0;
+  width: 50%;
+  transform: translateY(15rem);
+  z-index: 0;
 }
 
 .hero-btn {
+  position: absolute;
+  bottom: 7rem;
   z-index: 2;
   align-self: center;
-  width: 40%;
-  padding: 1rem 1.5rem;
-  font-size: 2.8rem;
+  width: 55%;
+  padding: 1.5rem 2.5rem;
+  font-size: 3.5rem;
   border: 2px solid var(--light-gradient-color);
-  border-radius: 2.8rem;
+  border-radius: 4rem;
   background-color: rgba(37, 37, 37, 0.5);
 }
 </style>

@@ -114,7 +114,7 @@
   /* position: absolute;
   top: 25%;
   left: 3rem; */
-  padding-top: 12%;
-  width: 55rem;
+  padding-top: 16%;
+  width: 70rem;
 }
 </style>

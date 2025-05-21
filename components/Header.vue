@@ -42,11 +42,11 @@ const links = [
 }
 .header__list__link {
   cursor: pointer;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 2.5rem;
   border: 2px solid var(--light-gradient-color);
-  border-radius: 2rem;
+  border-radius: 3rem;
   background-color: rgba(37, 37, 37, 0.5);
-  font-size: 1.5rem;
+  font-size: 2rem;
 
   /* &::before {
     content: "";
