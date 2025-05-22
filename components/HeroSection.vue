@@ -15,7 +15,9 @@
       </div>
       <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" />
     </div>
-    <button class="hero-btn">Lorem ipsum dolor sit amet</button>
+    <button class="hero-btn u-shimmering-gradient-hover">
+      Lorem ipsum dolor sit amet
+    </button>
   </section>
 </template>
 

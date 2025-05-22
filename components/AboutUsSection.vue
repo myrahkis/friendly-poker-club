@@ -61,6 +61,8 @@
   background-color: var(--dark-bg-color);
   border: 2px solid var(--light-gradient-color);
   border-radius: 3rem;
+  position: relative;
+  overflow: visible;
 }
 .about-us-into {
   display: flex;
@@ -77,11 +79,15 @@
 
 .about-us-carousel {
   position: relative;
-  width: 60%;
+  margin: -4px;
+  z-index: 1;
+  width: calc(60% + 6px);
+  height: calc(100% + 4px);
 }
 .carousel-img {
   max-width: 100%;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   border-radius: 3rem;
 }
 

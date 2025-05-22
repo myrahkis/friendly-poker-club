@@ -53,3 +53,27 @@ h2 {
   line-height: 12.8rem;
   font-weight: 800;
 }
+h4 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.u-shimmering-gradient-hover {
+  transition: background 0.2s;
+}
+.u-shimmering-gradient-hover:hover {
+  background: linear-gradient(270deg, #4ec2ec, #7873f5, #3f4e9d);
+  background-size: 600% 600%;
+  animation: shimmer 3s ease infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
