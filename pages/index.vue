@@ -5,6 +5,8 @@
   <AboutUsSection />
   <TournamentsSection />
   <FAQSection />
+  <VideoSection />
+  <FeedbackSection />
 </template>
 
 <style scoped></style>

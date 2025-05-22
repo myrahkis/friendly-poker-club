@@ -34,6 +34,7 @@
   height: 50%;
   left: 0;
   bottom: 0;
+  transform: translateY(17rem);
   z-index: 1;
   background: linear-gradient(
     to top,
