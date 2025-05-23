@@ -8,6 +8,7 @@
   <VideoSection />
   <RentSection />
   <FeedbackSection />
+  <ContactsSection />
 </template>
 
 <style scoped></style>
