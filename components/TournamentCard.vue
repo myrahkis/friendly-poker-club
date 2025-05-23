@@ -67,17 +67,6 @@ const { date, dayOfWeek, heading, schedule } = tournament;
       border-box;
 }
 
-.separator {
-  border: 0;
-  height: 1.5px;
-  background-image: linear-gradient(
-    to right,
-    var(--dark-gradient-color),
-    var(--light-gradient-color)
-  );
-  margin: 0.8rem 0;
-}
-
 .schedules {
   display: flex;
   flex-direction: column;

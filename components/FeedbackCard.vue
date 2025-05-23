@@ -1,0 +1,89 @@
+<script setup>
+const { feedback } = defineProps({ feedback: Object });
+
+const { date, avatar, name, userText, feedbackText } = feedback;
+</script>
+
+<template>
+  <div class="feedback-card">
+    <div class="header">
+      <p class="date">{{ date }}</p>
+      <div class="header-row">
+        <div class="ava-placeholder"></div>
+        <!-- <img :src="avatar" alt="" /> -->
+        <div class="user-info">
+          <p class="user-name">{{ name }}</p>
+          <p>{{ userText }}</p>
+        </div>
+      </div>
+    </div>
+    <hr class="separator" />
+    <p class="description">{{ feedbackText }}</p>
+    <div class="footer">
+      <div class="ava-placeholder-2"></div>
+      <!-- <img :src="avatar" alt="" /> -->
+      <p>{{ userText }}</p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.feedback-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px solid var(--light-gradient-color);
+  border-radius: 2rem;
+  background-color: rgba(37, 37, 37, 0.2);
+  padding: 2rem;
+  backdrop-filter: blur(3px);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.header-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.user-name {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.ava-placeholder {
+  background-color: white;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+}
+
+.description {
+  font-size: 2.3rem;
+  font-weight: 400;
+  margin-bottom: 35%;
+}
+
+.footer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+
+  p {
+    font-weight: 700;
+  }
+}
+.ava-placeholder-2 {
+  background-color: white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+}
+</style>

@@ -59,12 +59,12 @@ const { suit, heading, text } = defineProps({
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(37, 37, 37, 0.5);
-  backdrop-filter: blur(3px);
   border: 1px solid var(--light-gradient-color);
   border-radius: 1.5rem;
   padding: 2rem;
   font-size: 1.5rem;
   backface-visibility: hidden;
+  backdrop-filter: blur(3px);
 }
 
 .card-front {

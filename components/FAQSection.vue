@@ -52,18 +52,17 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
 .bg-chip-full-2 {
   position: absolute;
   width: 25rem;
+  z-index: -1;
 }
 
 .bg-chip-full-1 {
   top: 1rem;
   right: 28rem;
   transform: rotate(-68deg);
-  z-index: -1;
 }
 .bg-chip-full-2 {
   left: 38rem;
   bottom: 0;
   transform: translateY(5rem);
-  z-index: -1;
 }
 </style>
