@@ -7,7 +7,7 @@
     <img class="bg-cards" src="/assets/images/cards.png" alt="cards-img" />
     <div class="hero-wrapper">
       <div>
-        <Logo />
+        <Logo width="70rem" paddingTop="16%" />
         <p class="hero-text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius
           tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum.

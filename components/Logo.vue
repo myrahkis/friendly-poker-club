@@ -1,10 +1,14 @@
-<script setup></script>
+<script setup>
+const { width, paddingTop } = defineProps({ width: String, paddingTop: String });
+</script>
+
 <template>
   <svg
     class="logo"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 378 131"
+    :style="{ width, paddingTop }"
   >
     <path
       fill="url(#paint0_linear_1027_2)"
@@ -114,7 +118,7 @@
   /* position: absolute;
   top: 25%;
   left: 3rem; */
-  padding-top: 16%;
-  width: 70rem;
+  /* padding-top: 16%; */
+  /* width: 70rem; */
 }
 </style>
