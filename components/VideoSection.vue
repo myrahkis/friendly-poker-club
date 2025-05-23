@@ -52,6 +52,7 @@
 <style scoped>
 .video-section {
   padding: 0 5rem;
+  margin-bottom: 5rem;
 }
 
 .video-grid {

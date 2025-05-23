@@ -6,6 +6,7 @@
   <TournamentsSection />
   <FAQSection />
   <VideoSection />
+  <RentSection />
   <FeedbackSection />
 </template>
 
