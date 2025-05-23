@@ -1,22 +1,29 @@
 <script setup>
+import rentBg1 from "@/assets/images/rent-bg-1.png";
+import rentBg2 from "@/assets/images/rent-bg-2.png";
+import rentBg3 from "@/assets/images/rent-bg-3.png";
+
 const rentCards = [
   {
     heading: "Название карточки в две строки",
     price: "65 000 ₽",
     subHeading: "Название карточки:",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    bg: rentBg2,
   },
   {
     heading: "Название карточки в две строки",
     price: "65 000 ₽",
     subHeading: "Название карточки:",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    bg: rentBg1,
   },
   {
     heading: "Название карточки в две строки",
     price: "65 000 ₽",
     subHeading: "Название карточки:",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+    bg: rentBg3,
   },
 ];
 </script>
