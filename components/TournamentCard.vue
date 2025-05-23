@@ -1,15 +1,24 @@
 <script setup>
-const { tournament } = defineProps({
+import specialTournamentBg from "@/assets/images/special-tournament.png";
+
+const { tournament, index, lastIndex } = defineProps({
   tournament: Object,
-  required: true,
-  default: () => {},
+  index: Number,
+  lastIndex: Number,
 });
 
 const { date, dayOfWeek, heading, schedule } = tournament;
 </script>
 
 <template>
-  <div class="tournament-card">
+  <div
+    class="tournament-card"
+    :style="
+      index === lastIndex
+        ? { backgroundImage: `url(${specialTournamentBg})` }
+        : {}
+    "
+  >
     <div class="header">
       <p>{{ date }}</p>
       <div class="day-of-week">{{ dayOfWeek }}</div>
@@ -45,7 +54,10 @@ const { date, dayOfWeek, heading, schedule } = tournament;
   font-size: 1.5rem;
 }
 .tournament-card:last-of-type {
-  background-color: #063293;
+  /* background-color: #063293; */
+  background-size: 105%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .header {

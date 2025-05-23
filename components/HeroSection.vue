@@ -4,7 +4,7 @@
   <section class="hero-section">
     <div class="gradient"></div>
     <img class="bg-chip" src="/assets/images/chip1.png" alt="bg-img" />
-    <img class="bg-cards" src="/assets/images/cards.png" alt="cards-img" />
+    <img class="bg-cards" src="/assets/images/bg-cards.png" alt="cards-img" />
     <div class="hero-wrapper">
       <div>
         <Logo width="70rem" paddingTop="16%" />
@@ -59,11 +59,13 @@
 }
 
 .hero-text {
-  width: 30%;
+  position: relative;
+  z-index: 1;
+  width: 46%;
   padding-top: 15rem;
-  padding-bottom: 20%;
-  line-height: 2.3rem;
-  font-size: 2.5rem;
+  padding-bottom: 10%;
+  /* line-height: 2.3rem; */
+  font-size: 4rem;
   font-weight: 500;
 }
 

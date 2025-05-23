@@ -163,6 +163,8 @@ const tournaments = [
         v-for="(tournament, index) in tournaments"
         :tournament="tournament"
         :key="index"
+        :index="index"
+        :lastIndex="tournaments.length - 1"
       />
     </div>
     <img class="bg-spades-img" src="/assets/images/bg-spades.png" alt="" />
