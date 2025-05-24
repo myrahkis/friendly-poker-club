@@ -138,11 +138,11 @@ onMounted(() => {
 }
 .header__list__link {
   cursor: pointer;
-  padding: 1.5rem 2.5rem;
+  padding: 1.3rem 2.3rem;
   border: 2px solid var(--light-gradient-color);
   border-radius: 3rem;
   background-color: rgba(37, 37, 37, 0.5);
-  font-size: 2rem;
+  font-size: 1.8rem;
 
   /* &::before {
     content: "";

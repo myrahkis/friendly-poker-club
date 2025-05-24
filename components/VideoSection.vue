@@ -59,7 +59,6 @@
   display: grid;
   grid-template-columns: repeat(3, 0.5fr);
   grid-template-rows: auto;
-  /* grid-template-rows: 0.8fr 0.8fr; */
   row-gap: 1.5rem;
 }
 .video-text {
@@ -76,6 +75,7 @@
 .video-top {
   grid-column: 1 / 3;
   grid-row: 1;
+  margin-right: -25px;
 }
 .desc-top {
   grid-column: 3 / -1;
@@ -85,6 +85,7 @@
 .video-bottom {
   grid-column: 2 / -1;
   grid-row: 2;
+  margin-left: -25px;
 }
 .desc-bottom {
   grid-column: 1 / 2;

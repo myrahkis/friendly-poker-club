@@ -44,7 +44,7 @@ import Socials from "./Socials.vue";
     <div class="gradient"></div>
     <img class="bg-chip-1" src="/assets/images/chip-bg-full.png" alt="" />
     <img class="bg-chip-2" src="/assets/images/chip-bg-full.png" alt="" />
-    <img class="bg-card-turned" src="/assets/images/bg-cards.png" alt="" />
+    <img class="bg-card" src="/assets/images/bg-cards-footer.png" alt="" />
   </footer>
 </template>
 
@@ -122,21 +122,20 @@ import Socials from "./Socials.vue";
   background: linear-gradient(
     to bottom,
     rgba(2, 37, 99, 1) 0%,
-    rgba(2, 37, 99, 1) 10%,
-    rgba(2, 37, 99, 0.9) 50%,
+    rgba(2, 37, 99, 0.9) 40%,
     rgba(2, 37, 99, 0.7) 60%,
     rgba(2, 37, 99, 0.4) 75%,
     rgba(2, 37, 99, 0.15) 90%,
     rgba(2, 37, 99, 0) 100%
   );
 }
-.bg-card-turned {
+.bg-card {
   position: absolute;
   top: 0;
   right: 0;
   z-index: -2;
-  transform: translateY(-25rem) translateX(5rem) rotate(180deg);
-  width: 70rem;
+  transform: translateY(-25rem);
+  width: 60rem;
 }
 .bg-chip-1,
 .bg-chip-2 {
@@ -150,8 +149,8 @@ import Socials from "./Socials.vue";
   transform: translateY(-10rem) translateX(-3rem);
 }
 .bg-chip-2 {
-  bottom: 0;
-  right: 43rem;
+  bottom: 5rem;
+  right: 40rem;
   /* transform: translateY(-10rem) translateX(-3rem); */
 }
 </style>

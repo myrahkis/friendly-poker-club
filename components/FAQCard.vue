@@ -13,7 +13,7 @@ const { suit, heading, text } = defineProps({
         <img class="header-suit" :src="suit" alt="card-suit" />
         <h4>{{ heading }}</h4>
       </div>
-      <p>{{ text }}</p>
+      <p class="text">{{ text }}</p>
       <div class="footer">
         <img class="footer-suit" :src="suit" alt="card-suit" />
       </div>
@@ -42,6 +42,7 @@ const { suit, heading, text } = defineProps({
   grid-template-areas: "card";
   width: 100%;
   height: auto;
+  min-height: 45rem;
 
   perspective: 150rem;
   transform-style: preserve-3d;
@@ -57,7 +58,7 @@ const { suit, heading, text } = defineProps({
   grid-area: card;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   background-color: rgba(37, 37, 37, 0.5);
   border: 1px solid var(--light-gradient-color);
   border-radius: 1.5rem;
@@ -80,10 +81,12 @@ const { suit, heading, text } = defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1.5rem;
 }
 .footer {
   display: flex;
   justify-content: flex-end;
+  margin-top: auto;
   width: 100%;
 }
 .header-suit,
