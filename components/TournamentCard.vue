@@ -58,6 +58,7 @@ const { date, dayOfWeek, heading, schedule } = tournament;
   background-size: 105%;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
 }
 
 .header {

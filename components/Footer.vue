@@ -90,6 +90,7 @@ import Socials from "./Socials.vue";
   flex-direction: column;
   justify-content: end;
   gap: 1.5rem;
+  line-height: 1.3;
   list-style: none;
   font-size: 2rem;
   font-weight: 400;

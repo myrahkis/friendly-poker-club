@@ -51,7 +51,8 @@ button {
 
 h2 {
   font-size: 6rem;
-  line-height: 12.8rem;
+  /* line-height: 12.8rem; */
+  margin-bottom: 2rem;
   font-weight: 800;
 }
 h3 {
@@ -66,7 +67,9 @@ h4 {
 p {
   font-size: 1.5rem;
   font-weight: 400;
+  line-height: 1.3;
 }
+
 
 .u-shimmering-gradient-hover {
   transition: background 0.2s;

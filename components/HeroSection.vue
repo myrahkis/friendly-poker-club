@@ -26,7 +26,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 0 5rem 10rem;
+  padding: 0 5rem 20rem;
 }
 .gradient {
   position: absolute;
