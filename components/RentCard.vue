@@ -24,7 +24,7 @@ const { heading, price, subHeading, desc, bg } = card;
   /* background-color: #063293; */
   border-radius: 2rem;
   height: 60rem;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }

@@ -25,7 +25,7 @@
           Сб: 10:00 – 18:00, <br />
           Вс — выходной
         </p>
-        <div>SOCIALS</div>
+        <Socials width="6rem" />
       </div>
       <div class="map">MAP</div>
     </div>
@@ -38,7 +38,9 @@
 
 <style scoped>
 .contacts-section {
-  height: 100vh;
+  position: relative;
+  z-index: 1;
+  /* height: 100vh; */
   padding: 0 5rem;
   padding-bottom: 5rem;
 }
