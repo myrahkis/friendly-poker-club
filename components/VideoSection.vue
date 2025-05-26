@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <section class="video-section">
+  <section class="video-section" id="videos">
     <h2>Видео</h2>
     <p class="video-text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius

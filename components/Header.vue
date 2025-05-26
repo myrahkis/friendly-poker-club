@@ -5,11 +5,11 @@ const city = ref("загрузка...");
 let lastScrollY = 0;
 
 const links = [
-  { text: "О нас", href: "#about-us-section" },
-  { text: "Вопрос-ответ", href: "#faq-section" },
-  { text: "Видео", href: "#video-section" },
-  { text: "Отзывы", href: "#feedback-section" },
-  { text: "Контакты", href: "#contacts-section" },
+  { text: "О нас", href: "#about-us" },
+  { text: "Вопрос-ответ", href: "#faq" },
+  { text: "Видео", href: "#videos" },
+  { text: "Отзывы", href: "#feedback" },
+  { text: "Контакты", href: "#contacts" },
 ];
 
 function getCoords() {

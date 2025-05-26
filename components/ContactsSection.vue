@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <section class="contacts-section">
+  <section class="contacts-section" id="contacts">
     <h2>Контакты</h2>
     <p class="text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius

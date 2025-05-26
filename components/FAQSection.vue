@@ -6,7 +6,7 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
 </script>
 
 <template>
-  <section class="faq-section">
+  <section class="faq-section" id="faq">
     <h2>Вопросы-ответы</h2>
     <div class="faq-cards">
       <FAQCard
