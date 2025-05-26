@@ -3,7 +3,7 @@ const feedbacks = [
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     avatar: "",
-    name: "Имя Фамилия",
+    name: "Петя Петряков",
     userText: "Lorem ipsum dolor sit amet.",
     feedbackText:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
@@ -11,7 +11,7 @@ const feedbacks = [
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     avatar: "",
-    name: "Имя Фамилия",
+    name: "Иван Иванов",
     userText: "Lorem ipsum dolor sit amet.",
     feedbackText:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
@@ -19,25 +19,87 @@ const feedbacks = [
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     avatar: "",
-    name: "Имя Фамилия",
+    name: "Коля Колянов",
+    userText: "Lorem ipsum dolor sit amet.",
+    feedbackText:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+  },
+  {
+    date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    avatar: "",
+    name: "Егор Егоров",
+    userText: "Lorem ipsum dolor sit amet.",
+    feedbackText:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+  },
+  {
+    date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    avatar: "",
+    name: "Маша Машева",
+    userText: "Lorem ipsum dolor sit amet.",
+    feedbackText:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+  },
+  {
+    date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    avatar: "",
+    name: "Катя Катева",
     userText: "Lorem ipsum dolor sit amet.",
     feedbackText:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
   },
 ];
+
+const visibleCount = 3;
+const currentIndex = ref(0);
+
+const maxIndex = feedbacks.length;
+const direction = ref("slide-left");
+
+const currentFeedbacks = computed(() => {
+  if (currentIndex.value + visibleCount <= maxIndex) {
+    return feedbacks.slice(
+      currentIndex.value,
+      currentIndex.value + visibleCount
+    );
+  }
+  return [
+    ...feedbacks.slice(currentIndex.value),
+    ...feedbacks.slice(0, (currentIndex.value + visibleCount) % maxIndex),
+  ];
+});
+
+function next() {
+  direction.value = "slide-left";
+  currentIndex.value = (currentIndex.value + visibleCount) % maxIndex;
+}
+
+function prev() {
+  direction.value = "slide-right";
+  currentIndex.value =
+    (currentIndex.value - visibleCount + maxIndex) % maxIndex;
+}
 </script>
 
 <template>
   <section class="feedback-section" id="feedback">
     <h2>Отзывы о клубе</h2>
-    <div class="feedbacks">
-      <img class="back-btn" src="/assets/icons/btn-back.svg" alt="" />
-      <FeedbackCard
-        v-for="(feedback, index) in feedbacks"
-        :key="index"
-        :feedback="feedback"
-      />
-      <img class="next-btn" src="/assets/icons/btn-next.svg" alt="" />
+    <div class="feedbacks-wrapper">
+      <button @click="prev">
+        <img class="back-btn" src="/assets/icons/btn-back.svg" alt="Назад" />
+      </button>
+      <transition :name="direction">
+        <div class="feedbacks" :key="currentIndex">
+          <FeedbackCard
+            v-for="(fb, idx) in currentFeedbacks"
+            :key="idx + fb.name"
+            :feedback="fb"
+          />
+        </div>
+      </transition>
+      <button @click="next">
+        <img class="next-btn" src="/assets/icons/btn-next.svg" alt="Вперёд" />
+      </button>
     </div>
     <img class="bg-hearts" src="/assets/images/bg-hearts.png" alt="" />
     <img class="bg-clubs" src="/assets/images/bg-clubs.png" alt="" />
@@ -47,33 +109,69 @@ const feedbacks = [
 <style scoped>
 .feedback-section {
   position: relative;
-  /* height: 100vh; */
   padding: 0 var(--horiz-main-padding);
   padding-bottom: 5rem;
 }
 
-.feedbacks {
+.feedbacks-wrapper {
   position: relative;
+  overflow: hidden;
+  padding-top: 40%;
+  width: 100%;
+}
+
+.feedbacks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+/* движение влево */
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+.slide-left-enter-from {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-left-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+/* движение вправо */
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+.slide-right-enter-from {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.slide-right-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
 }
 
 .back-btn,
 .next-btn {
-  cursor: pointer;
   position: absolute;
-  width: 7rem;
-  z-index: 3;
-}
-.back-btn {
-  left: 2rem;
   top: 50%;
-  transform: translate(0, -50%);
+  width: 8rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.back-btn {
+  left: 1.5rem;
 }
 .next-btn {
-  right: 2rem;
-  top: 50%;
-  transform: translate(0, -50%);
+  right: 1.5rem;
 }
 
 .bg-hearts {
