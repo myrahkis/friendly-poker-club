@@ -53,7 +53,7 @@
   position: relative;
   z-index: 3;
   /* height: 100vh; */
-  padding: 0 5rem;
+  padding: 0 var(--horiz-main-padding);
   padding-bottom: 5rem;
   /* background-color: red; */
 }

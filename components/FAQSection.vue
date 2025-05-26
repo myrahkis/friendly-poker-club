@@ -38,7 +38,7 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
 <style scoped>
 .faq-section {
   position: relative;
-  padding: 0 5rem;
+  padding: 0 var(--horiz-main-padding);
   padding-bottom: 5rem;
   margin-top: 5rem;
 }

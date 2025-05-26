@@ -51,7 +51,7 @@ import Socials from "./Socials.vue";
 <style scoped>
 .footer {
   position: relative;
-  padding: 0 5rem;
+  padding: 0 var(--horiz-main-padding);
   padding-top: 6rem;
   padding-bottom: 5rem;
 }

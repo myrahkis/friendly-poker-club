@@ -40,7 +40,7 @@ const rentCards = [
 <style scoped>
 .rent-section {
   /* height: 100vh; */
-  padding: 0 5rem;
+  padding: 0 var(--horiz-main-padding);
   margin-bottom: 5rem;
 }
 .rent-cards {

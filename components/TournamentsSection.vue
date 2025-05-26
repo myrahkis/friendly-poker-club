@@ -176,7 +176,7 @@ const tournaments = [
 <style scoped>
 .tournaments-section {
   position: relative;
-  padding: 0 5rem;
+  padding: 0 var(--horiz-main-padding);
 }
 
 .tournaments-grid {

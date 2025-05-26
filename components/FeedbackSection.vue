@@ -48,7 +48,7 @@ const feedbacks = [
 .feedback-section {
   position: relative;
   /* height: 100vh; */
-  padding: 0 5rem;
+  padding: 0 var(--horiz-main-padding);
   padding-bottom: 5rem;
 }
 

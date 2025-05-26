@@ -6,6 +6,8 @@
   --blue-color: #063293;
   --light-gradient-color: #4ec2ec;
   --dark-gradient-color: #3f4e9d;
+
+  --horiz-main-padding: 5rem;
 }
 
 * {
