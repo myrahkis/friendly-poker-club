@@ -53,7 +53,6 @@ button {
 
 h2 {
   font-size: 6rem;
-  /* line-height: 12.8rem; */
   margin-bottom: 2rem;
   font-weight: 800;
 }
@@ -131,5 +130,21 @@ p {
 @media (min-width: 3000px) {
   :root {
     --horiz-main-padding: 75rem;
+  }
+}
+
+/* (1024px–1279px) */
+@media (max-width: 1279px) {
+  h2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+  }
+  h3 {
+    font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  }
+  h4 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+  }
+  p {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   }
 }

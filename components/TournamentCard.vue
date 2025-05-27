@@ -55,6 +55,7 @@ const { date, dayOfWeek, heading, schedule } = tournament;
 }
 .tournament-card:last-of-type {
   /* background-color: #063293; */
+  border: none;
   background-size: 105%;
   background-repeat: no-repeat;
   background-position: center;
@@ -89,5 +90,12 @@ const { date, dayOfWeek, heading, schedule } = tournament;
   display: flex;
   justify-content: space-between;
   gap: 5rem;
+}
+
+/* (480px–767px) */
+@media (max-width: 1279px) {
+  .tournament-card {
+    padding: 3rem;
+  }
 }
 </style>

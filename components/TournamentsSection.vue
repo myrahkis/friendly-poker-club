@@ -208,4 +208,28 @@ const tournaments = [
   transform: translateY(8rem);
   width: 20rem;
 }
+
+/* (1024px–1279px) */
+@media (max-width: 1279px) {
+  .tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+  }
+}
+
+/* (768px–1023px) */
+/* @media (max-width: 1023px) {
+  .tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+  }
+} */
+
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .tournaments-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>

@@ -1,5 +1,8 @@
 <script setup>
-const { width, paddingTop } = defineProps({ width: String, paddingTop: String });
+const { width, paddingTop } = defineProps({
+  width: String,
+  paddingTop: String,
+});
 </script>
 
 <template>
@@ -115,10 +118,26 @@ const { width, paddingTop } = defineProps({ width: String, paddingTop: String })
 
 <style scoped>
 .logo {
+  position: relative;
+  z-index: 1;
   /* position: absolute;
   top: 25%;
   left: 3rem; */
   /* padding-top: 16%; */
   /* width: 70rem; */
+}
+
+/* (1024px–1279px) */
+@media (max-width: 1279px) {
+  .logo {
+    width: clamp(40rem, 6vw, 70rem) !important;
+  }
+}
+
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .logo {
+    width: clamp(40rem, 5vw, 70rem);
+  }
 }
 </style>

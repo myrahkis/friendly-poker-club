@@ -188,4 +188,16 @@ function prevSlide() {
   transform: translateX(100%);
   /* opacity: 0; */
 }
+
+/* (768px–1023px) */
+@media (max-width: 1024px) {
+  .about-us-wrapper {
+    display: grid;
+    grid-template-rows: 1fr 1.5fr;
+  }
+
+  .about-us-info {
+    width: 100%;
+  }
+}
 </style>

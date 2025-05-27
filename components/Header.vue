@@ -161,19 +161,12 @@ onMounted(() => {
   border-radius: 3rem;
   background-color: rgba(37, 37, 37, 0.5);
   font-size: 1.8rem;
+}
 
-  /* &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 3rem;
-    padding: 0.2rem;
-    background: linear-gradient(to right, var(--dark-gradient-color), var(--light-gradient-color));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  } */
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .header {
+    display: none;
+  }
 }
 </style>
