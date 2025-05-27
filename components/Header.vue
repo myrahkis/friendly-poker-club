@@ -105,7 +105,7 @@ onMounted(() => {
     </div>
     <ul class="header__list">
       <li
-        class="header__list__link"
+        class="header__list__link u-shimmering-gradient-hover"
         v-for="{ text, href } in links"
         :key="text"
       >

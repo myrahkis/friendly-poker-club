@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   padding: 0 var(--horiz-main-padding) 20rem;
+  width: 100%;
 }
 .gradient {
   position: absolute;

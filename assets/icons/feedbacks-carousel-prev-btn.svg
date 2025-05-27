@@ -1,0 +1,15 @@
+<svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="7.91056" cy="7.91056" r="7.71517" transform="matrix(-1 0 0 1 18.7617 3.69531)" fill="#022563"/>
+<circle cx="7.91056" cy="7.91056" r="7.71517" transform="matrix(-1 0 0 1 18.7617 3.69531)" stroke="white" stroke-width="0.390796"/>
+<circle cx="7.91056" cy="7.91056" r="7.71517" transform="matrix(-1 0 0 1 18.7617 3.69531)" stroke="#022563" stroke-width="0.390796"/>
+<circle cx="7.91056" cy="7.91056" r="7.71517" transform="matrix(-1 0 0 1 18.7617 3.69531)" stroke="url(#paint0_linear_1187_2264)" stroke-width="0.390796"/>
+<circle cx="10.5515" cy="10.5515" r="10.3561" transform="matrix(-1 0 0 1 21.3047 0.960938)" stroke="#063293" stroke-width="0.390796"/>
+<path d="M12.1211 8.19531L8.88495 11.4315L12.1211 14.6676" stroke="white" stroke-width="0.390796"/>
+<path d="M12.1211 8.19531L8.88495 11.4315L12.1211 14.6676" stroke="black" stroke-opacity="0.2" stroke-width="0.390796"/>
+<defs>
+<linearGradient id="paint0_linear_1187_2264" x1="0" y1="7.91056" x2="15.8211" y2="7.91056" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4EC2EC"/>
+<stop offset="1" stop-color="#3F4E9D"/>
+</linearGradient>
+</defs>
+</svg>

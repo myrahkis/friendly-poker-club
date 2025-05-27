@@ -30,8 +30,12 @@
       <div class="map">MAP</div>
     </div>
     <div class="btns">
-      <button class="contacts-btn">Lorem ipsum dolor sit amet</button>
-      <button class="contacts-btn">Lorem ipsum dolor sit amet</button>
+      <button class="contacts-btn u-shimmering-gradient-hover">
+        Lorem ipsum dolor sit amet
+      </button>
+      <button class="contacts-btn u-shimmering-gradient-hover">
+        Lorem ipsum dolor sit amet
+      </button>
     </div>
   </section>
 </template>

@@ -65,7 +65,7 @@ function prevSlide() {
         <button class="carousel-prev" @click="prevSlide">
           <img class="carousel-btn" src="/assets/icons/btn-back.svg" alt="" />
         </button>
-        <button class="carousel-next" @click="nextSlide">
+        <button class="carousel-next u-pushing-btn" @click="nextSlide">
           <img class="carousel-btn" src="/assets/icons/btn-next.svg" alt="" />
         </button>
       </div>
@@ -145,6 +145,14 @@ function prevSlide() {
   top: 50%;
   transform: translate(0, -50%);
   z-index: 2;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px) translate(0, -50%);
+  }
+  &:active {
+    transform: translateY(0) translate(0, -50%);
+  }
 }
 .carousel-prev {
   left: 2rem;

@@ -33,7 +33,6 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-
 }
 
 a {
@@ -73,14 +72,28 @@ p {
   line-height: 1.3;
 }
 
-
 .u-shimmering-gradient-hover {
-  transition: background 0.2s;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
 }
-.u-shimmering-gradient-hover:hover {
+.u-shimmering-gradient-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
   background: linear-gradient(270deg, #423af5, #4ec2ec);
   background-size: 600% 600%;
-  animation: shimmer 3s ease infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: shimmer 3s ease infinite paused;
+}
+.u-shimmering-gradient-hover:hover::before {
+  opacity: 1;
+  animation-play-state: running;
 }
 @keyframes shimmer {
   0% {
@@ -103,4 +116,20 @@ p {
     var(--light-gradient-color)
   );
   margin: 0.8rem 0;
+}
+
+@media (min-width: 1800px) {
+  :root {
+    --horiz-main-padding: 15rem;
+  }
+}
+@media (min-width: 2200px) {
+  :root {
+    --horiz-main-padding: 35rem;
+  }
+}
+@media (min-width: 3000px) {
+  :root {
+    --horiz-main-padding: 75rem;
+  }
 }

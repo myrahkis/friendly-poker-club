@@ -11,7 +11,7 @@ const { heading, price, subHeading, desc, bg } = card;
       <p class="sub-heading">{{ subHeading }}</p>
       <p class="card-desc">{{ desc }}</p>
     </div>
-    <button class="order-btn">Заказать</button>
+    <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
   </div>
 </template>
 

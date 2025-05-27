@@ -1,4 +1,6 @@
 <script setup>
+import { ref, computed } from "vue";
+
 const feedbacks = [
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
@@ -51,58 +53,116 @@ const feedbacks = [
 ];
 
 const visibleCount = 3;
+const count = feedbacks.length;
+
 const currentIndex = ref(0);
+const isTransition = ref(true);
 
-const maxIndex = feedbacks.length;
-const direction = ref("slide-left");
+const wrapperRef = ref(null);
+let dragStartX = null;
+let dragDeltaX = 0;
+const threshold = 50;
 
-const currentFeedbacks = computed(() => {
-  if (currentIndex.value + visibleCount <= maxIndex) {
-    return feedbacks.slice(
-      currentIndex.value,
-      currentIndex.value + visibleCount
-    );
+const baseTranslate = computed(
+  () => -(currentIndex.value * 100) / visibleCount + "%"
+);
+const translateStyle = computed(() => {
+  if (dragStartX !== null) {
+    return `translateX(calc(${baseTranslate.value} + ${dragDeltaX}px))`;
   }
-  return [
-    ...feedbacks.slice(currentIndex.value),
-    ...feedbacks.slice(0, (currentIndex.value + visibleCount) % maxIndex),
-  ];
+  return `translateX(${baseTranslate.value})`;
 });
 
 function next() {
-  direction.value = "slide-left";
-  currentIndex.value = (currentIndex.value + visibleCount) % maxIndex;
+  isTransition.value = true;
+  currentIndex.value++;
+}
+function prev() {
+  isTransition.value = true;
+  currentIndex.value--;
 }
 
-function prev() {
-  direction.value = "slide-right";
-  currentIndex.value =
-    (currentIndex.value - visibleCount + maxIndex) % maxIndex;
+function onTransitionEnd() {
+  if (currentIndex.value > count - visibleCount) {
+    isTransition.value = false;
+    currentIndex.value = 0;
+  }
+
+  if (currentIndex.value < 0) {
+    isTransition.value = false;
+    currentIndex.value = count - visibleCount;
+  }
+}
+
+watch(isTransition, (v) => {
+  if (!v) {
+    nextTick(() => {
+      isTransition.value = true;
+    });
+  }
+});
+
+function startDrag(e) {
+  dragStartX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+  dragDeltaX = 0;
+  isTransition.value = false;
+  wrapperRef.value.classList.add("grabbing");
+}
+
+function onDrag(e) {
+  if (dragStartX === null) return;
+  const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+  dragDeltaX = clientX - dragStartX;
+}
+
+function endDrag() {
+  wrapperRef.value.classList.remove("grabbing");
+
+  if (dragDeltaX > threshold) prev();
+  else if (dragDeltaX < -threshold) next();
+  else {
+    isTransition.value = true;
+  }
+  dragStartX = null;
+  dragDeltaX = 0;
 }
 </script>
-
 <template>
-  <section class="feedback-section" id="feedback">
+  <section class="feedback-section">
     <h2>Отзывы о клубе</h2>
-    <div class="feedbacks-wrapper">
-      <button @click="prev">
-        <img class="back-btn" src="/assets/icons/btn-back.svg" alt="Назад" />
+    <div
+      class="feedbacks-wrapper"
+      @mousedown.prevent="startDrag"
+      @touchstart.prevent="startDrag"
+      @mousemove.prevent="onDrag"
+      @touchmove.prevent="onDrag"
+      @mouseup.prevent="endDrag"
+      @mouseleave.prevent="endDrag"
+      @touchend.prevent="endDrag"
+    >
+      <div
+        class="feedbacks"
+        ref="wrapperRef"
+        :style="{
+          transform: translateStyle,
+          transition: isTransition ? 'transform .5s ease' : 'none',
+          cursor: dragStartX !== null ? 'grabbing' : 'grab',
+        }"
+        @transitionend="onTransitionEnd"
+      >
+        <FeedbackCard
+          v-for="(fb, idx) in feedbacks"
+          :key="idx"
+          :feedback="fb"
+        />
+      </div>
+      <button class="back-btn" @click="prev">
+        <img src="/assets/icons/feedbacks-carousel-prev-btn.svg" alt="" />
       </button>
-      <transition :name="direction">
-        <div class="feedbacks" :key="currentIndex">
-          <FeedbackCard
-            v-for="(fb, idx) in currentFeedbacks"
-            :key="idx + fb.name"
-            :feedback="fb"
-          />
-        </div>
-      </transition>
-      <button @click="next">
-        <img class="next-btn" src="/assets/icons/btn-next.svg" alt="Вперёд" />
+      <button class="next-btn" @click="next">
+        <img src="/assets/icons/feedbacks-carousel-next-btn.svg" alt="" />
       </button>
     </div>
-    <img class="bg-hearts" src="/assets/images/bg-hearts.png" alt="" />
-    <img class="bg-clubs" src="/assets/images/bg-clubs.png" alt="" />
   </section>
 </template>
 
@@ -116,55 +176,40 @@ function prev() {
 .feedbacks-wrapper {
   position: relative;
   overflow: hidden;
-  padding-top: 40%;
-  width: 100%;
 }
-
 .feedbacks {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: relative;
+  cursor: grab;
   display: flex;
   gap: 1.5rem;
 }
-
-/* движение влево */
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-}
-.slide-left-enter-from {
-  transform: translateX(100%);
-  opacity: 0;
-}
-.slide-left-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
+.feedbacks.grabbing {
+  cursor: grabbing;
 }
 
-/* движение вправо */
-.slide-right-enter-active,
-.slide-right-leave-active {
-  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-}
-.slide-right-enter-from {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-.slide-right-leave-to {
-  transform: translateX(100%);
-  opacity: 0;
+.feedbacks > * {
+  flex: 0 0 calc((100% - 2 * 1.7rem) / 3);
 }
 
 .back-btn,
 .next-btn {
   position: absolute;
   top: 50%;
-  width: 8rem;
   cursor: pointer;
   transform: translateY(-50%);
   z-index: 10;
+  transition: transform 0.2s;
+
+  img {
+    width: 8rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px) translate(0, -50%);
+  }
+  &:active {
+    transform: translateY(0) translate(0, -50%);
+  }
 }
 
 .back-btn {
