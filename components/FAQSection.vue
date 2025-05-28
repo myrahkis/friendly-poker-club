@@ -3,6 +3,47 @@ import spade from "@/assets/icons/spades-suit.png";
 import heart from "@/assets/icons/hearts-suit.png";
 import club from "@/assets/icons/clubs-suit.png";
 import diamonds from "@/assets/icons/diamonds-suit.png";
+
+const questions = [
+  {
+    suit: spade,
+    heading: "Заголовок",
+    question:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    answer:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+  },
+  {
+    suit: heart,
+    heading: "Заголовок",
+    question:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    answer:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+  },
+  {
+    suit: club,
+    heading: "Заголовок",
+    question:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    answer:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+  },
+  {
+    suit: diamonds,
+    heading: "Заголовок",
+    question:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    answer:
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+  },
+];
+
+const openedCardIdx = ref(null);
+
+function toggleCard(idx) {
+  openedCardIdx.value = openedCardIdx.value === idx ? null : idx;
+}
 </script>
 
 <template>
@@ -10,68 +51,11 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
     <h2>Вопросы-ответы</h2>
     <div class="faq-cards">
       <FAQCard
-        :suit="spade"
-        heading="Заголовок"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
-        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
-          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
-          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Perspiciatis asperiores reprehenderit illo voluptates
-          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
-          iusto possimus animi perspiciatis qui dignissimos deleniti.
-          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
-          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
-          consequuntur debitis illo assumenda magnam quo."
-      />
-      <FAQCard
-        :suit="heart"
-        heading="Заголовок"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
-        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
-          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
-          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Perspiciatis asperiores reprehenderit illo voluptates
-          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
-          iusto possimus animi perspiciatis qui dignissimos deleniti.
-          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
-          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
-          consequuntur debitis illo assumenda magnam quo."
-      />
-      <FAQCard
-        :suit="club"
-        heading="Заголовок"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
-        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
-          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
-          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Perspiciatis asperiores reprehenderit illo voluptates
-          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
-          iusto possimus animi perspiciatis qui dignissimos deleniti.
-          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
-          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
-          consequuntur debitis illo assumenda magnam quo."
-      />
-      <FAQCard
-        :suit="diamonds"
-        heading="Заголовок"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
-        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
-          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
-          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Perspiciatis asperiores reprehenderit illo voluptates
-          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
-          iusto possimus animi perspiciatis qui dignissimos deleniti.
-          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
-          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
-          consequuntur debitis illo assumenda magnam quo."
+        v-for="(q, index) in questions"
+        :card="q"
+        :key="index"
+        :isOpen="openedCardIdx === index"
+        @toggle="() => toggleCard(index)"
       />
     </div>
     <img class="bg-chip-full-1" src="/assets/images/chip-bg-full.png" alt="" />
@@ -114,7 +98,7 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
 @media (max-width: 1279px) {
   .faq-cards {
     display: grid;
-    grid-template-columns: minmax(35rem, 0.3fr) minmax(35rem, 0.3fr);
+    grid-template-columns: 35rem 35rem;
     justify-items: center;
   }
   .faq-cards > *:nth-child(2n + 1) {
@@ -122,6 +106,12 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
   }
   .faq-cards > *:nth-child(2n) {
     justify-self: start;
+  }
+}
+@media (max-width: 850px) {
+  .faq-cards {
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

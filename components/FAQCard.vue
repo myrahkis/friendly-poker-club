@@ -1,10 +1,9 @@
 <script setup>
-const { suit, heading, text, answer } = defineProps({
-  suit: String,
-  heading: String,
-  text: String,
-  answer: String,
-});
+const { card, isOpen } = defineProps({ card: Object, isOpen: Boolean });
+
+const { suit, heading, question, answer } = card;
+
+const emit = defineEmits(["toggle"]);
 </script>
 
 <template>
@@ -15,7 +14,7 @@ const { suit, heading, text, answer } = defineProps({
           <img class="header-suit" :src="suit" alt="card-suit" />
           <h4>{{ heading }}</h4>
         </div>
-        <p class="text">{{ text }}</p>
+        <p class="question">{{ question }}</p>
         <div class="footer">
           <img class="footer-suit" :src="suit" alt="card-suit" />
         </div>
@@ -27,17 +26,42 @@ const { suit, heading, text, answer } = defineProps({
       </div>
     </div>
   </div>
-  <div class="faq-card-mobile"></div>
+  <div class="faq-card-mobile">
+    <!-- <div :class="['faq-card-mobile', { 'is-open': isOpen }]"> -->
+    <div class="top-mobile-card">
+      <div>
+        <div class="header">
+          <img class="header-suit" :src="suit" alt="card-suit" />
+          <h4>{{ heading }}</h4>
+        </div>
+        <p class="text">{{ question }}</p>
+      </div>
+      <button @click="emit('toggle')" class="card-open-btn">
+        <img src="/assets/icons/faq-open-btn.svg" alt="" />
+      </button>
+    </div>
+    <div v-if="isOpen" class="closed-mobile-card">
+      <p>
+        {{ answer }}
+      </p>
+      <div class="footer">
+        <img class="footer-suit" :src="suit" alt="card-suit" />
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
 </template>
 
 <style scoped>
 .faq-card {
-  /* display: none; */
   width: 100%;
   height: auto;
   min-height: 45rem;
 
   perspective: 150rem;
+}
+.faq-card-mobile {
+  display: none;
 }
 
 .card-inner {
@@ -78,14 +102,18 @@ const { suit, heading, text, answer } = defineProps({
 
 .header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 1.5rem;
   align-items: center;
   margin-bottom: 1.5rem;
+}
+.question {
+  margin: auto;
 }
 .footer {
   display: flex;
   justify-content: flex-end;
-  margin-top: auto;
+  /* margin-top: auto; */
   width: 100%;
 }
 .header-suit,
@@ -93,15 +121,39 @@ const { suit, heading, text, answer } = defineProps({
   width: 5rem;
 }
 
-@media (min-width: 851px) {
-  .faq-card {
-    display: grid;
-  }
-}
-
 @media (max-width: 850px) {
-  .card-mobile {
+  .faq-card {
+    display: none;
+  }
+  .faq-card-mobile {
+    /* position: relative; */
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: rgba(37, 37, 37, 0.5);
+    border: 1px solid var(--light-gradient-color);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    backdrop-filter: blur(3px);
+  }
+  .top-mobile-card {
+    position: relative;
+    z-index: -1;
+    display: flex;
+    gap: 0.5rem;
+    transition: z-index 0s;
+  }
+  .faq-card-mobile.is-open {
+    z-index: 10; /* > всех соседних карточек */
+  }
+
+  .card-open-btn {
+    align-self: flex-end;
+
+    img {
+      width: 4.5rem;
+    }
   }
 }
 </style>
