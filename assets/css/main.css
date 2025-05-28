@@ -117,6 +117,11 @@ p {
   margin: 0.8rem 0;
 }
 
+@media (min-width: 1600px) {
+  :root {
+    --horiz-main-padding: 15rem;
+  }
+}
 @media (min-width: 1800px) {
   :root {
     --horiz-main-padding: 25rem;
@@ -124,7 +129,7 @@ p {
 }
 @media (min-width: 2200px) {
   :root {
-    --horiz-main-padding: 35rem;
+    --horiz-main-padding: 45rem;
   }
 }
 @media (min-width: 3000px) {
