@@ -13,21 +13,65 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
         :suit="spade"
         heading="Заголовок"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
+        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
+          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
+          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
+          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Perspiciatis asperiores reprehenderit illo voluptates
+          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
+          iusto possimus animi perspiciatis qui dignissimos deleniti.
+          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
+          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
+          consequuntur debitis illo assumenda magnam quo."
       />
       <FAQCard
         :suit="heart"
         heading="Заголовок"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
+        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
+          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
+          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
+          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Perspiciatis asperiores reprehenderit illo voluptates
+          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
+          iusto possimus animi perspiciatis qui dignissimos deleniti.
+          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
+          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
+          consequuntur debitis illo assumenda magnam quo."
       />
       <FAQCard
         :suit="club"
         heading="Заголовок"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
+        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
+          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
+          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
+          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Perspiciatis asperiores reprehenderit illo voluptates
+          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
+          iusto possimus animi perspiciatis qui dignissimos deleniti.
+          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
+          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
+          consequuntur debitis illo assumenda magnam quo."
       />
       <FAQCard
         :suit="diamonds"
         heading="Заголовок"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget, gravida porttitor urna. Mauris a interdum diam. Donec nec faucibus neque. Aenean ac felis vitae tellus viverra blandit sed et nisi. Ut quis tincidunt eros. Nunc sed quam eros. "
+        answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
+          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
+          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
+          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
+          elit. Perspiciatis asperiores reprehenderit illo voluptates
+          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
+          iusto possimus animi perspiciatis qui dignissimos deleniti.
+          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
+          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
+          consequuntur debitis illo assumenda magnam quo."
       />
     </div>
     <img class="bg-chip-full-1" src="/assets/images/chip-bg-full.png" alt="" />
@@ -64,5 +108,20 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
   left: 38rem;
   bottom: 0;
   transform: translateY(5rem);
+}
+
+/* (1024px–1279px) */
+@media (max-width: 1279px) {
+  .faq-cards {
+    display: grid;
+    grid-template-columns: minmax(35rem, 0.3fr) minmax(35rem, 0.3fr);
+    justify-items: center;
+  }
+  .faq-cards > *:nth-child(2n + 1) {
+    justify-self: end;
+  }
+  .faq-cards > *:nth-child(2n) {
+    justify-self: start;
+  }
 }
 </style>

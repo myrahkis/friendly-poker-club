@@ -1,8 +1,9 @@
 <script setup>
-const { suit, heading, text } = defineProps({
+const { suit, heading, text, answer } = defineProps({
   suit: String,
   heading: String,
   text: String,
+  answer: String,
 });
 </script>
 
@@ -21,20 +22,12 @@ const { suit, heading, text } = defineProps({
       </div>
       <div class="card-back">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          iste consequatur nemo fugit. Perspiciatis nulla magni quae eos,
-          tempora iusto earum eius delectus quidem quis nemo, asperiores, a
-          vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing
-          elit. Perspiciatis asperiores reprehenderit illo voluptates
-          praesentium possimus sed repellat, dolorum dolor. Commodi placeat
-          iusto possimus animi perspiciatis qui dignissimos deleniti.
-          Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur
-          excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio
-          consequuntur debitis illo assumenda magnam quo.
+          {{ answer }}
         </p>
       </div>
     </div>
+
+    <div class="card-mobile"></div>
   </div>
 </template>
 
@@ -98,5 +91,13 @@ const { suit, heading, text } = defineProps({
 .header-suit,
 .footer-suit {
   width: 5rem;
+}
+
+@media (max-width: 850px) {
+  .faq-cards {
+    display: grid;
+    grid-template-columns: minmax(35rem, 0.3fr) minmax(35rem, 0.3fr);
+    justify-items: center;
+  }
 }
 </style>
