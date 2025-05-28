@@ -141,6 +141,18 @@ function endDrag() {
   dragStartX = null;
   dragDeltaX = 0;
 }
+
+function onResize() {
+  visibleCount.value = getVisibleCount();
+}
+
+onMounted(() => {
+  window.addEventListener("resize", onResize);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", onResize);
+});
 </script>
 <template>
   <section class="feedback-section">
