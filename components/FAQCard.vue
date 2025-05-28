@@ -26,13 +26,13 @@ const { suit, heading, text, answer } = defineProps({
         </p>
       </div>
     </div>
-
-    <div class="card-mobile"></div>
   </div>
+  <div class="faq-card-mobile"></div>
 </template>
 
 <style scoped>
 .faq-card {
+  /* display: none; */
   width: 100%;
   height: auto;
   min-height: 45rem;
@@ -93,11 +93,15 @@ const { suit, heading, text, answer } = defineProps({
   width: 5rem;
 }
 
-@media (max-width: 850px) {
-  .faq-cards {
+@media (min-width: 851px) {
+  .faq-card {
     display: grid;
-    grid-template-columns: minmax(35rem, 0.3fr) minmax(35rem, 0.3fr);
-    justify-items: center;
+  }
+}
+
+@media (max-width: 850px) {
+  .card-mobile {
+    display: flex;
   }
 }
 </style>

@@ -163,6 +163,8 @@ function endDrag() {
         <img src="/assets/icons/feedbacks-carousel-next-btn.svg" alt="" />
       </button>
     </div>
+    <img class="bg-hearts" src="/assets/images/bg-hearts.png" alt="" />
+    <img class="bg-clubs" src="/assets/images/bg-clubs.png" alt="" />
   </section>
 </template>
 
@@ -217,6 +219,22 @@ function endDrag() {
 }
 .next-btn {
   right: 1.5rem;
+}
+
+.bg-hearts {
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+  z-index: -1;
+  width: 25rem;
+}
+.bg-clubs {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(1rem);
+  left: 23rem;
+  z-index: -1;
+  width: 25rem;
 }
 
 .bg-hearts {
