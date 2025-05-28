@@ -52,7 +52,16 @@ const feedbacks = [
   },
 ];
 
-const visibleCount = 3;
+function getVisibleCount() {
+  const w = window.innerWidth;
+  if (w < 720) return 1;
+  if (w < 840) return 2;
+  return 3;
+}
+
+const visibleCount = ref(getVisibleCount());
+console.log(window.innerWidth);
+console.log(visibleCount);
 const count = feedbacks.length;
 
 const currentIndex = ref(0);
@@ -63,8 +72,14 @@ let dragStartX = null;
 let dragDeltaX = 0;
 const threshold = 50;
 
+const cardWidth = computed(
+  () =>
+    `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${
+      visibleCount.value
+    })`
+);
 const baseTranslate = computed(
-  () => -(currentIndex.value * 100) / visibleCount + "%"
+  () => -(currentIndex.value * 100) / visibleCount.value + "%"
 );
 const translateStyle = computed(() => {
   if (dragStartX !== null) {
@@ -83,14 +98,14 @@ function prev() {
 }
 
 function onTransitionEnd() {
-  if (currentIndex.value > count - visibleCount) {
+  if (currentIndex.value > count - visibleCount.value) {
     isTransition.value = false;
     currentIndex.value = 0;
   }
 
   if (currentIndex.value < 0) {
     isTransition.value = false;
-    currentIndex.value = count - visibleCount;
+    currentIndex.value = count - visibleCount.value;
   }
 }
 
@@ -147,6 +162,7 @@ function endDrag() {
           transform: translateStyle,
           transition: isTransition ? 'transform .5s ease' : 'none',
           cursor: dragStartX !== null ? 'grabbing' : 'grab',
+          '--card-width': cardWidth,
         }"
         @transitionend="onTransitionEnd"
       >
@@ -177,7 +193,7 @@ function endDrag() {
 
 .feedbacks-wrapper {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 .feedbacks {
   position: relative;
@@ -190,7 +206,7 @@ function endDrag() {
 }
 
 .feedbacks > * {
-  flex: 0 0 calc((100% - 2 * 1.7rem) / 3);
+  flex: 0 0 var(--card-width);
 }
 
 .back-btn,
@@ -251,5 +267,11 @@ function endDrag() {
   left: 23rem;
   z-index: -1;
   width: 25rem;
+}
+
+@media (max-width: 720px) {
+  .feedbacks > * {
+    flex: 0 0 calc(100% - 1.3rem);
+  }
 }
 </style>

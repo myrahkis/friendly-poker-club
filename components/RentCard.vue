@@ -23,7 +23,7 @@ const { heading, price, subHeading, desc, bg } = card;
   padding: 3rem 4rem;
   /* background-color: #063293; */
   border-radius: 2rem;
-  height: 60rem;
+  /* height: auto; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -54,5 +54,6 @@ const { heading, price, subHeading, desc, bg } = card;
   font-weight: 400;
   border-radius: 4rem;
   padding: 1rem;
+  margin-top: 40%;
 }
 </style>

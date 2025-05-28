@@ -39,13 +39,11 @@ const rentCards = [
 
 <style scoped>
 .rent-section {
-  /* height: 100vh; */
   padding: 0 var(--horiz-main-padding);
   margin-bottom: 5rem;
 }
 .rent-cards {
   display: flex;
   gap: 2rem;
-  /* justify-content: center; */
 }
 </style>
