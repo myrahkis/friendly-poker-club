@@ -87,15 +87,15 @@ function prevSlide() {
   align-items: stretch;
   background-color: var(--dark-bg-color);
   border: 2px solid var(--light-gradient-color);
-  border-radius: 3rem;
+  border-radius: 2rem;
   position: relative;
   overflow: visible;
 }
 
 .about-us-info {
   width: 40%;
-  padding: 3.5rem;
-  gap: 2rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(1rem, 2vw, 2rem);
   display: flex;
   flex-direction: column;
 
@@ -111,7 +111,7 @@ function prevSlide() {
   flex: 1;
   margin: -4px;
   z-index: 1;
-  border-radius: 3rem;
+  border-radius: 2rem;
 }
 
 .carousel-container,

@@ -154,6 +154,7 @@ onUnmounted(() => {
   window.removeEventListener("resize", onResize);
 });
 </script>
+
 <template>
   <section class="feedback-section">
     <h2>Отзывы о клубе</h2>
@@ -225,6 +226,7 @@ onUnmounted(() => {
 .next-btn {
   position: absolute;
   top: 50%;
+  z-index: 5;
   cursor: pointer;
   transform: translateY(-50%);
   z-index: 10;

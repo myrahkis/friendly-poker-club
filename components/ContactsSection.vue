@@ -108,15 +108,13 @@
 
 /* (1024px–1279px) */
 @media (max-width: 1279px) {
-  .contacts {
-    .socials-container {
-      .whatsup-btn,
-      .yt-btn,
-      .tg-btn,
-      .vk-btn {
-        svg {
-          width: clamp(2.5rem, 4.3vw, 5rem) !important;
-        }
+  :deep(.socials-container) {
+    .whatsup-btn,
+    .yt-btn,
+    .tg-btn,
+    .vk-btn {
+      svg {
+        width: clamp(2.5rem, 4.3vw, 5rem) !important;
       }
     }
   }
@@ -131,15 +129,15 @@
   }
   .contacts {
     width: 100%;
-
-    .socials-container {
-      .whatsup-btn,
-      .yt-btn,
-      .tg-btn,
-      .vk-btn {
-        svg {
-          width: clamp(5.5rem, 4.5vw, 6rem) !important;
-        }
+  }
+  
+  :deep(.socials-container) {
+    .whatsup-btn,
+    .yt-btn,
+    .tg-btn,
+    .vk-btn {
+      svg {
+        width: clamp(4.5rem, 4vw, 6rem) !important;
       }
     }
   }
@@ -148,13 +146,13 @@
   }
 
   .phone {
-    font-size: clamp(2.2rem, 3.5vw, 4rem);
+    font-size: clamp(2.2rem, 3.2vw, 4rem);
   }
   .email {
-    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.6rem, 2.2vw, 2.5rem);
   }
   .text-info {
-    font-size: clamp(2rem, 2.5vw, 2.8rem);
+    font-size: clamp(1.5rem, 2vw, 2.8rem);
   }
   .hide-br {
     display: none;
