@@ -207,21 +207,6 @@ function prevSlide() {
   }
 }
 
-/* (768px–1023px) */
-/* @media (max-width: 1024px) {
-  .about-us-wrapper {
-    display: grid;
-    grid-template-rows: 1fr minmax(55rem, 0.8rem);
-  }
-  .carousel-img {
-    height: 100%;
-    object-fit: cover;
-  }
-  .about-us-info {
-    width: 100%;
-  }
-} */
-
 /* (–767px) */
 @media (max-width: 767px) {
   .about-us-info {

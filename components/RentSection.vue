@@ -46,4 +46,21 @@ const rentCards = [
   display: flex;
   gap: 2rem;
 }
+
+/* (–767px) */
+@media (max-width: 767px) {
+  .rent-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* (-590px) */
+@media (max-width: 590px) {
+  .rent-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 </style>

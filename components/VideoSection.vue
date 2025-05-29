@@ -173,9 +173,7 @@
     border-bottom-right-radius: 2rem;
     border-top-width: 0;
     border-right-width: 2px;
-
   }
-
 
   .video-top {
     order: 1;
@@ -189,6 +187,39 @@
     margin-left: 0;
     margin-bottom: -25px;
     width: 100%;
+  }
+}
+/* (–767px) */
+@media (max-width: 767px) {
+  .play-btn {
+    width: 7rem;
+  }
+  .video-top {
+    margin-bottom: -35px;
+  }
+  .video-bottom {
+    margin-bottom: -35px;
+  }
+  .desc-top,
+  .desc-bottom {
+    padding: 0 3rem 3rem 3rem;
+    padding-top: calc(3rem + 15px);
+  }
+}
+/* (-590px) */
+@media (max-width: 590px) {
+  .play-btn {
+    width: 6rem;
+  }
+  .desc-top,
+  .desc-bottom {
+    padding: 0 2rem 2rem 2rem;
+    padding-top: calc(2rem + 15px);
+  }
+}
+@media (max-width: 426px) {
+  .play-btn {
+    width: 5rem;
   }
 }
 </style>
