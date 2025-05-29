@@ -54,8 +54,8 @@ const feedbacks = [
 
 function getVisibleCount() {
   const w = window.innerWidth;
-  if (w < 720) return 1;
-  if (w < 840) return 2;
+  if (w < 690) return 1;
+  if (w < 1100) return 2;
   return 3;
 }
 
@@ -231,7 +231,7 @@ onUnmounted(() => {
   transition: transform 0.2s;
 
   img {
-    width: 8rem;
+    width: clamp(5rem, 8vw, 8rem);
   }
 
   &:hover {
@@ -243,10 +243,10 @@ onUnmounted(() => {
 }
 
 .back-btn {
-  left: 1.5rem;
+  left: clamp(0rem, 2vw, 1.5rem);
 }
 .next-btn {
-  right: 1.5rem;
+  right: clamp(0rem, 2vw, 1.5rem);
 }
 
 .bg-hearts {
@@ -281,9 +281,16 @@ onUnmounted(() => {
   width: 25rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 690px) {
   .feedbacks > * {
-    flex: 0 0 calc(100% - 1.3rem);
+    flex: 0 0 calc(100% - 1.2rem);
+  }
+
+  .back-btn,
+  .next-btn {
+    img {
+      width: clamp(4.5rem, 8vw, 8rem);
+    }
   }
 }
 </style>

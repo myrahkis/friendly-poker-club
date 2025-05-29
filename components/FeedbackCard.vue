@@ -66,7 +66,7 @@ const { date, avatar, name, userText, feedbackText } = feedback;
 }
 
 .description {
-  font-size: 2.3rem;
+  font-size: clamp(1.4rem, 2.2vw, 2.3rem);
   font-weight: 400;
   margin-bottom: 35%;
 }
