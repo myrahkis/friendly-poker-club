@@ -37,8 +37,10 @@ import Socials from "./Socials.vue";
       </div>
       <div class="lower-footer">
         <Socials width="5rem" />
-        <p>Политика обработки персональных данных</p>
-        <p>Пользовательское соглашение</p>
+        <div class="policy">
+          <p>Политика обработки персональных данных</p>
+          <p>Пользовательское соглашение</p>
+        </div>
       </div>
     </div>
     <div class="gradient"></div>
@@ -67,7 +69,6 @@ import Socials from "./Socials.vue";
   grid-template-columns: 0.5fr 0.25fr 0.25fr 0.25fr;
   grid-template-rows: minmax(25rem, 0.6fr);
   padding-bottom: 5rem;
-  /* height: 50vh; */
 }
 
 .logo-cell {
@@ -76,12 +77,12 @@ import Socials from "./Socials.vue";
   justify-content: space-between;
 }
 .phone {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 .email {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
   font-weight: 400;
 }
 
@@ -92,7 +93,7 @@ import Socials from "./Socials.vue";
   gap: 1.5rem;
   line-height: 1.3;
   list-style: none;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
   font-weight: 400;
 
   li {
@@ -151,6 +152,82 @@ import Socials from "./Socials.vue";
 .bg-chip-2 {
   bottom: 5rem;
   right: 40rem;
-  /* transform: translateY(-10rem) translateX(-3rem); */
+}
+
+@media (max-width: 1024px) {
+  div {
+    .logo {
+      width: 80% !important;
+    }
+  }
+
+  :deep(.socials-container) {
+    .whatsup-btn,
+    .yt-btn,
+    .tg-btn,
+    .vk-btn {
+      svg {
+        width: clamp(3rem, 4.5vw, 5rem) !important;
+      }
+    }
+  }
+
+  .lower-footer {
+    p {
+      font-size: clamp(1.2rem, 1.3vw, 2rem);
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .footer-grid {
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    grid-template-rows: auto 0.5fr;
+    row-gap: 5rem;
+  }
+  .logo-cell {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    justify-content: start;
+  }
+
+  div {
+    .logo {
+      width: 45% !important;
+      padding-bottom: 3rem !important;
+    }
+  }
+
+  .socials-container {
+    margin-bottom: 2rem;
+  }
+
+  .lower-footer {
+    display: flex;
+    flex-direction: column;
+  }
+  .policy {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .gradient {
+    height: 70%;
+    transform: translateY(-25rem);
+  }
+  .bg-card {
+    transform: translateY(-25rem) translateX(5rem);
+    width: 40rem;
+  }
+  .bg-chip-1 {
+    width: 25rem;
+    top: 25rem;
+    left: 15rem;
+    transform: translateY(0) translateX(0);
+  }
+  .bg-chip-2 {
+    display: none;
+  }
 }
 </style>

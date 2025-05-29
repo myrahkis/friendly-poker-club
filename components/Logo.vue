@@ -121,25 +121,4 @@ const { width, paddingTop } = defineProps({
   position: relative;
   z-index: 1;
 }
-
-/* (1024px–1279px) */
-@media (max-width: 1279px) {
-  .logo {
-    width: clamp(40rem, 6vw, 70rem) !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .logo {
-    width: 60% !important;
-    padding-top: 25% !important;
-  }
-}
-
-/* (480px–767px) */
-@media (max-width: 767px) {
-  .logo {
-    padding-top: 15% !important;
-  }
-}
 </style>

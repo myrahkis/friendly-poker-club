@@ -99,10 +99,6 @@
   background-color: rgba(37, 37, 37, 0.5);
 }
 
-/* (1024px–1279px) */
-@media (max-width: 1279px) {
-}
-
 @media (max-width: 1024px) {
   .hero-text {
     width: 65%;
@@ -124,6 +120,13 @@
     width: 70%;
     font-size: clamp(1.8rem, 3vw, 3.5rem);
   }
+
+  div {
+    .logo {
+      width: 60% !important;
+      padding-top: 25% !important;
+    }
+  }
 }
 
 /* (–767px) */
@@ -142,6 +145,12 @@
     width: 79%;
     transform: translateY(0);
   }
+
+  div {
+    .logo {
+      padding-top: 15% !important;
+    }
+  }
 }
 
 /* (-590px) */
@@ -149,6 +158,13 @@
   .bg-cards {
     left: -9rem;
     width: 84%;
+  }
+
+  div {
+    .logo {
+      width: 70% !important;
+      padding-top: 25% !important;
+    }
   }
 }
 

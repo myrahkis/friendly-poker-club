@@ -203,27 +203,4 @@ const { width } = defineProps({ width: String });
   display: flex;
   gap: 2rem;
 }
-
-/* (1024px–1279px) */
-@media (max-width: 1279px) {
-  .whatsup-btn,
-  .yt-btn,
-  .tg-btn,
-  .vk-btn {
-    svg {
-      width: clamp(2.5rem, 4.3vw, 5rem) !important;
-    }
-  }
-}
-
-@media (max-width: 690px) {
-  .whatsup-btn,
-  .yt-btn,
-  .tg-btn,
-  .vk-btn {
-    svg {
-      width: clamp(5.5rem, 4.5vw, 6rem) !important;
-    }
-  }
-}
 </style>
