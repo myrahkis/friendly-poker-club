@@ -126,11 +126,9 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2.5rem;
+  padding: 2.5rem var(--horiz-main-padding);
   z-index: 100;
-  /* transition: all 0.3s; */
   transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.3s ease;
-  /* background-color: red; */
 }
 .scrolled {
   background-color: rgba(3, 3, 3, 0.3);

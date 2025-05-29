@@ -281,6 +281,12 @@ onUnmounted(() => {
   width: 25rem;
 }
 
+@media (min-width: 2200px) {
+  .feedbacks-wrapper {
+    overflow: hidden;
+  }
+}
+
 @media (max-width: 690px) {
   .feedbacks > * {
     flex: 0 0 calc(100% - 1.2rem);
