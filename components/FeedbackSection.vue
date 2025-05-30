@@ -154,7 +154,7 @@ function onResize() {
 </script>
 
 <template>
-  <section class="feedback-section">
+  <section class="feedback-section" id="feedbacks">
     <h2>Отзывы о клубе</h2>
     <div
       class="feedbacks-wrapper"

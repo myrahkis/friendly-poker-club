@@ -184,4 +184,16 @@
     font-size: clamp(1.4rem, 2.5vw, 4rem);
   }
 }
+
+/* (320px–400px) */
+@media (max-width: 400px) {
+  .hero-text {
+    width: 75%;
+    padding-top: 110%;
+    padding-bottom: 0;
+  }
+  .hero-btn {
+    width: 85%;
+  }
+}
 </style>

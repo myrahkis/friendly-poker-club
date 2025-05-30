@@ -11,22 +11,7 @@
       gravida porttitor urna. Mauris a interdum diam.
     </p>
     <div class="contacts-map">
-      <div class="contacts">
-        <div>
-          <p class="phone">+7 800 000-00-00</p>
-          <p class="email">addax18490@mixzu.net</p>
-        </div>
-        <p class="text-info">
-          Москва, ул. Покровка, <br />
-          дом 1, подъезд 10
-        </p>
-        <p class="text-info">
-          Пн-Пт: 09:00 – 19:00, <br class="hide-br" />
-          Сб: 10:00 – 18:00, <br />
-          Вс — выходной
-        </p>
-        <Socials width="6rem" />
-      </div>
+      <ContactsInfoBlock bgColor="#021b46" />
       <div class="map">MAP</div>
     </div>
     <div class="btns">
@@ -57,30 +42,6 @@
   width: 80%;
 }
 
-.contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  width: 40%;
-  border: 1px solid var(--light-gradient-color);
-  border-radius: 2rem;
-  padding: 3rem;
-  background-color: #021b46;
-}
-
-.phone {
-  font-size: clamp(1.8rem, 2.5vw, 3rem);
-  font-weight: 700;
-}
-.email {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  font-weight: 400;
-}
-.text-info {
-  font-size: clamp(1.4rem, 1.8vw, 2.3rem);
-  font-weight: 400;
-}
-
 .map {
   display: flex;
   justify-content: center;
@@ -106,20 +67,6 @@
   width: 40%;
 }
 
-/* (1024px–1279px) */
-@media (max-width: 1279px) {
-  :deep(.socials-container) {
-    .whatsup-btn,
-    .yt-btn,
-    .tg-btn,
-    .vk-btn {
-      svg {
-        width: clamp(2.5rem, 4.3vw, 5rem) !important;
-      }
-    }
-  }
-}
-
 @media (max-width: 690px) {
   .contacts-map {
     flex-direction: column;
@@ -127,61 +74,8 @@
   .text {
     width: 100%;
   }
-  .contacts {
-    width: 100%;
-  }
-  
-  :deep(.socials-container) {
-    .whatsup-btn,
-    .yt-btn,
-    .tg-btn,
-    .vk-btn {
-      svg {
-        width: clamp(4.5rem, 4vw, 6rem) !important;
-      }
-    }
-  }
   .map {
     width: 100%;
-  }
-
-  .phone {
-    font-size: clamp(2.2rem, 3.2vw, 4rem);
-  }
-  .email {
-    font-size: clamp(1.6rem, 2.2vw, 2.5rem);
-  }
-  .text-info {
-    font-size: clamp(1.5rem, 2vw, 2.8rem);
-  }
-  .hide-br {
-    display: none;
   }
 }
-
-/* (–767px) */
-/* @media (max-width: 767px) {
-  .contacts-map {
-    flex-direction: column;
-  }
-  .text {
-    width: 100%;
-  }
-  .contacts {
-    width: 100%;
-  }
-  .map {
-    width: 100%;
-  }
-
-  .phone {
-    font-size: clamp(2rem, 3vw, 3.5rem);
-  }
-  .email {
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-  }
-  .text-info {
-    font-size: clamp(1.6rem, 2.5vw, 2.5rem);
-  }
-} */
 </style>
