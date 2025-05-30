@@ -108,8 +108,17 @@ import Socials from "./Socials.vue";
 
 .lower-footer {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
+}
+.policy {
+  display: flex;
+  width: 100%;
+}
+.policy p:first-child {
+  margin: 0 auto;
+}
+.policy p:last-child {
+  margin-left: auto;
 }
 
 .gradient {

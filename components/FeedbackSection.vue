@@ -52,26 +52,26 @@ const feedbacks = [
   },
 ];
 
+// кол-во отображаемых карточек в завсиисмости от ширины экрана
 function getVisibleCount() {
   const w = window.innerWidth;
   if (w < 690) return 1;
   if (w < 1100) return 2;
   return 3;
 }
-
 const visibleCount = ref(getVisibleCount());
-console.log(window.innerWidth);
-console.log(visibleCount);
-const count = feedbacks.length;
+onMounted(() => {
+  window.addEventListener("resize", onResize);
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", onResize);
+});
 
+const count = feedbacks.length;
 const currentIndex = ref(0);
 const isTransition = ref(true);
 
-const wrapperRef = ref(null);
-let dragStartX = null;
-let dragDeltaX = 0;
-const threshold = 50;
-
+// сдвиг
 const cardWidth = computed(
   () =>
     `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${
@@ -97,6 +97,7 @@ function prev() {
   currentIndex.value--;
 }
 
+// подход к краю
 function onTransitionEnd() {
   if (currentIndex.value > count - visibleCount.value) {
     isTransition.value = false;
@@ -109,13 +110,19 @@ function onTransitionEnd() {
   }
 }
 
-watch(isTransition, (v) => {
-  if (!v) {
+watch(isTransition, (val) => {
+  if (!val) {
     nextTick(() => {
       isTransition.value = true;
     });
   }
 });
+
+// перетаскивание
+const wrapperRef = ref(null);
+let dragStartX = null;
+let dragDeltaX = 0;
+const threshold = 50;
 
 function startDrag(e) {
   dragStartX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
@@ -123,7 +130,6 @@ function startDrag(e) {
   isTransition.value = false;
   wrapperRef.value.classList.add("grabbing");
 }
-
 function onDrag(e) {
   if (dragStartX === null) return;
   const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
@@ -145,14 +151,6 @@ function endDrag() {
 function onResize() {
   visibleCount.value = getVisibleCount();
 }
-
-onMounted(() => {
-  window.addEventListener("resize", onResize);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", onResize);
-});
 </script>
 
 <template>
@@ -185,13 +183,13 @@ onUnmounted(() => {
           :feedback="fb"
         />
       </div>
-      <button class="back-btn" @click="prev">
-        <img src="/assets/icons/feedbacks-carousel-prev-btn.svg" alt="" />
-      </button>
-      <button class="next-btn" @click="next">
-        <img src="/assets/icons/feedbacks-carousel-next-btn.svg" alt="" />
-      </button>
     </div>
+    <button class="back-btn" @click="prev">
+      <img src="/assets/icons/feedbacks-carousel-prev-btn.svg" alt="" />
+    </button>
+    <button class="next-btn" @click="next">
+      <img src="/assets/icons/feedbacks-carousel-next-btn.svg" alt="" />
+    </button>
     <img class="bg-hearts" src="/assets/images/bg-hearts.png" alt="" />
     <img class="bg-clubs" src="/assets/images/bg-clubs.png" alt="" />
   </section>
@@ -245,10 +243,12 @@ onUnmounted(() => {
 }
 
 .back-btn {
-  left: clamp(0rem, 2vw, 1.5rem);
+  left: var(--horiz-main-padding);
+  /* left:0; */
 }
 .next-btn {
-  right: clamp(0rem, 2vw, 1.5rem);
+  right: var(--horiz-main-padding);
+  /* right: 1.5rem; */
 }
 
 .bg-hearts {
