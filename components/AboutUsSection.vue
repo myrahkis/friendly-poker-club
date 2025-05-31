@@ -23,30 +23,54 @@ function prevSlide() {
     <div class="about-us-wrapper">
       <div class="about-us-info">
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          Приветствуем всех любителей восхитительной игры – покер! Только в
+          нашем клубе вы можете совершенно легально и абсолютно законно поиграть
+          в живой покер с такими же любителями покера, как и вы сами. В России
+          играть в офлайн-покер на деньги можно только в легальных игорных
+          зонах, где разрешена азартная деятельность. На 2025 год таких зон
+          четыре:
         </p>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          1. Крым (Зона «Золотое кольцо») — Казино «Олимп» (Ялта), Казино
+          «Шамбала» (Симферополь) <br />
+          2. Красная Поляна (Сочи, «Сити-Казино») — Казино «Сочи», Казино
+          «Бархатные сезоны» <br />
+          3. Азов-Сити (Ростовская область) — Казино «Оракул», Казино «Nirvana»
+          <br />
+          4. Алтай («Сибирская монета») — Казино «Altai Palace»
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius
-          tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum.
+          В других регионах России офлайн-покер на деньги запрещен, подпольные
+          клубы вне игорных зон нелегальны! Мы не рекомендуем вам посещать такие
+          клубы. В них всегда высок риск облав и проблем с законом.
         </p>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          В нашем клубе офлайн игра в покер абсолютно легальна, потому что все
+          мероприятия нашего клуба носят исключительно развлекательный характер.
+          Игра в покер проводится не на деньги(!), т.е. без использования
+          денежных ставок и (или) других материальных активов и (или) возможных
+          возникающих материальных прав, и не предполагает никакого
+          материального выигрыша! Таким образом, игра не является азартной и
+          абсолютно легальна, как и любая другая настольная игра (мафия, нарды,
+          шахматы и т.п.).
         </p>
+        <p>
+          В нашем клубе вас ждут профессиональные покерные столы,
+          профессиональные дилеры, профессиональное оборудование, комфортная и
+          дружеская обстановка — всё для получения удовольствия от любимой игры!
+        </p>
+        <p>
+          Наш клуб подходит для всех! Если вы совсем новичок и ничего не
+          понимаете в покере – наши дилеры и администраторы обучат вас азам этой
+          замечательной игры.
+        </p>
+        <p>
+          Любителям и профессионалам в нашем клубе так же не будет скучно. В
+          клубе ежедневно проводятся различные форматы турниров, на которых как
+          любитель так и профессионал сможет тренироваться, оттачивая своё
+          мастерство и повышая свой уровень игры.
+        </p>
+        <p>Ждём Вас на наших мероприятиях!</p>
       </div>
       <div class="about-us-carousel">
         <div class="carousel-container">
@@ -93,14 +117,14 @@ function prevSlide() {
 }
 
 .about-us-info {
-  width: 40%;
+  width: 50%;
   padding: clamp(2rem, 4vw, 3.5rem);
-  gap: clamp(1rem, 2vw, 2rem);
+  gap: clamp(0.5rem, 2vw, 1rem);
   display: flex;
   flex-direction: column;
 
   p {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 400;
   }
 }

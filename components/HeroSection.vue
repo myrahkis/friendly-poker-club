@@ -9,14 +9,16 @@
       <div>
         <Logo width="70rem" paddingTop="16%" />
         <p class="hero-text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius
-          tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum.
+          Легальная офлайн игра в покер! Для новичков, любителей и
+          профессионалов. Профессиональные покерные столы, дилеры и
+          оборудование, комфортная обстановка — всё для получения удовольствия
+          от любимой игры!
         </p>
       </div>
       <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" />
     </div>
     <button class="hero-btn u-shimmering-gradient-hover">
-      Lorem ipsum dolor sit amet
+      Внимание! В нашем клубе категорически запрещена игра на деньги!
     </button>
   </section>
 </template>
@@ -61,10 +63,10 @@
 .hero-text {
   position: relative;
   z-index: 1;
-  width: 46%;
+  width: 45%;
   padding-top: 15rem;
-  padding-bottom: 10%;
-  font-size: clamp(1.8rem, 2.5vw, 4rem);
+  padding-bottom: 7%;
+  font-size: clamp(1.8rem, 2vw, 2.5rem);
   font-weight: 500;
 }
 
@@ -93,10 +95,58 @@
   align-self: center;
   width: 55%;
   padding: 1.5rem 2.5rem;
-  font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
   border: 2px solid var(--light-gradient-color);
   border-radius: 4rem;
   background-color: rgba(37, 37, 37, 0.5);
+}
+
+@media (min-width: 1600px) {
+  div {
+    .logo {
+      padding-top: 20% !important;
+    }
+  }
+}
+@media (min-width: 1800px) {
+  .hero-bg-img {
+    width: 47%;
+  }
+  div {
+    .logo {
+      padding-top: 25% !important;
+    }
+  }
+}
+@media (min-width: 2200px) {
+  .hero-bg-img {
+    width: 45%;
+    transform: translateY(25rem);
+  }
+  .gradient {
+    transform: translateY(25rem);
+  }
+  .hero-btn {
+    width: 45%;
+  }
+  .hero-text {
+    width: 50%;
+  }
+}
+@media (min-width: 3000px) {
+  .hero-bg-img {
+    width: 40%;
+    transform: translateY(35rem);
+  }
+  .gradient {
+    transform: translateY(35rem);
+  }
+  .hero-btn {
+    width: 35%;
+  }
+  .hero-text {
+    width: 55%;
+  }
 }
 
 @media (max-width: 1024px) {

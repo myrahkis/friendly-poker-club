@@ -17,19 +17,21 @@ const props = defineProps({
 
 <template>
   <div class="mobile-header-container">
-    <Logo width="40%" paddingTop="0" />
-    <ul class="mobile-header__list">
-      <li
-        @click.prevent="props.goToAnchor(href)"
-        class="mobile-header__list__link u-shimmering-gradient-hover"
-        v-for="{ text, href } in links"
-        :key="text"
-      >
-        <a :href="href">
-          {{ text }}
-        </a>
-      </li>
-    </ul>
+    <div class="mobile-header__top-container">
+      <Logo width="40%" paddingTop="0" />
+      <ul class="mobile-header__list">
+        <li
+          @click.prevent="props.goToAnchor(href)"
+          class="mobile-header__list__link u-shimmering-gradient-hover"
+          v-for="{ text, href } in links"
+          :key="text"
+        >
+          <a :href="href">
+            {{ text }}
+          </a>
+        </li>
+      </ul>
+    </div>
     <ContactsInfoBlock bgColor="transparent" />
   </div>
 </template>
@@ -61,18 +63,25 @@ const props = defineProps({
 
 @media (max-width: 1200px) {
   .mobile-header-container {
-    justify-content: start;
+    justify-content: space-between;
     gap: 2rem;
+  }
+  .mobile-header__top-container {
+    display: flex;
+
+    .logo {
+      width: 30% !important;
+    }
   }
   .mobile-header__list {
     font-size: 2rem;
+    margin: auto;
   }
   .mobile-header-container {
     .contacts {
-      /* width: 100%;
-      gap: 1rem;
-      padding: 2rem; */
-      display: none;
+      width: 100%;
+      gap: 2rem;
+      padding: 2rem;
     }
   }
 }
@@ -81,7 +90,13 @@ const props = defineProps({
     justify-content: space-between;
     gap: 0.5rem;
   }
+  .mobile-header__top-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
   .mobile-header__list {
+    margin: auto 0;
     font-size: 1.7rem;
   }
   .mobile-header-container {
@@ -103,6 +118,11 @@ const props = defineProps({
   .mobile-header-container {
     padding: 25% var(--horiz-main-padding) var(--horiz-main-padding)
       var(--horiz-main-padding);
+  }
+  .mobile-header__top-container {
+    .logo {
+      width: 50% !important;
+    }
   }
 }
 </style>
