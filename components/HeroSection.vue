@@ -229,21 +229,20 @@
     left: -7rem;
   }
   .hero-text {
-    width: 70%;
+    width: 85%;
     padding-top: 120%;
+    padding-bottom: 15%;
     font-size: clamp(1.4rem, 2.5vw, 4rem);
+  }
+  .hero-btn {
+    width: 90%;
   }
 }
 
 /* (320px–400px) */
 @media (max-width: 400px) {
   .hero-text {
-    width: 75%;
     padding-top: 110%;
-    padding-bottom: 0;
-  }
-  .hero-btn {
-    width: 85%;
   }
 }
 </style>
