@@ -9,10 +9,10 @@
       <div>
         <Logo width="70rem" paddingTop="16%" />
         <p class="hero-text">
-          Легальная офлайн игра в покер! Для новичков, любителей и
-          профессионалов. Профессиональные покерные столы, дилеры и
-          оборудование, комфортная обстановка — всё для получения удовольствия
-          от любимой игры!
+          Легальная офлайн игра в покер! <br />
+          Для новичков, любителей и профессионалов. Профессиональные покерные
+          столы, дилеры и оборудование, комфортная обстановка — всё для
+          получения удовольствия от любимой игры!
         </p>
       </div>
       <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" />
@@ -72,7 +72,7 @@
 
 .bg-cards {
   position: absolute;
-  left: 0;
+  left: -5rem;
   bottom: 0;
   width: 60rem;
   transform: translateY(10rem);
@@ -149,100 +149,112 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1124px) {
   .hero-text {
     width: 65%;
-    padding-top: 70%;
-    padding-bottom: 0;
+    padding-top: 75%;
+    padding-bottom: 2%;
   }
-
   .hero-bg-img {
-    bottom: 15rem;
+    bottom: 35rem;
     z-index: -2;
-    width: 65%;
+    width: 60%;
   }
   .bg-cards {
-    left: -10rem;
-    width: 72%;
-    transform: translateY(20rem);
+    left: -25%;
+    width: 77%;
+    transform: translateY(10rem);
+  }
+  .gradient {
+    transform: translateY(10rem);
   }
   .hero-btn {
-    width: 70%;
-    font-size: clamp(1.8rem, 3vw, 3.5rem);
+    width: 75%;
+    font-size: clamp(1.8rem, 3vw, 3rem);
   }
 
   div {
     .logo {
-      width: 60% !important;
-      padding-top: 25% !important;
-    }
-  }
-}
-
-/* (–767px) */
-@media (max-width: 767px) {
-  .hero-text {
-    width: 70%;
-    padding-top: 100%;
-  }
-  .hero-bg-img {
-    top: 50%;
-    transform: translateY(-50%);
-    width: 70%;
-  }
-  .bg-cards {
-    left: -13rem;
-    width: 79%;
-    transform: translateY(0);
-  }
-
-  div {
-    .logo {
+      width: 55% !important;
       padding-top: 15% !important;
     }
   }
 }
 
-/* (-590px) */
-@media (max-width: 590px) {
-  .bg-cards {
-    left: -9rem;
-    width: 84%;
+@media (max-width: 805px) {
+  .hero-text {
+    width: 65%;
+    padding-top: 85%;
+    padding-bottom: 2%;
   }
-
-  div {
-    .logo {
-      width: 70% !important;
-      padding-top: 25% !important;
-    }
+  .hero-bg-img {
+    bottom: 43rem;
+    z-index: -2;
+    width: 60%;
+  }
+  .bg-cards {
+    left: -25%;
+    width: 80%;
+    transform: translateY(0);
+  }
+  .gradient {
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 426px) {
-  .hero-section {
-    padding: 0 var(--horiz-main-padding) 15rem;
-  }
-  .hero-bg-img {
-    width: 80%;
+@media (max-width: 670px) {
+  .hero-text {
+    font-size: 1.5rem;
   }
   .bg-cards {
-    left: -7rem;
-  }
-  .hero-text {
-    width: 85%;
-    padding-top: 120%;
-    padding-bottom: 15%;
-    font-size: clamp(1.4rem, 2.5vw, 4rem);
+    left: -30%;
+    bottom: 10%;
+    width: 80%;
+    transform: translateY(0);
   }
   .hero-btn {
     width: 90%;
   }
 }
 
+@media (max-width: 540px) {
+  .bg-cards {
+    left: -25%;
+    bottom: 10%;
+    width: 82%;
+    transform: translateY(0);
+  }
+  .hero-btn {
+    width: 90%;
+  }
+}
+
+@media (max-width: 470px) {
+  .hero-text {
+    width: 80%;
+    padding-bottom: 0;
+  }
+}
+
 /* (320px–400px) */
 @media (max-width: 400px) {
   .hero-text {
-    padding-top: 110%;
+    padding-top: 105%;
+  }
+  .bg-chip {
+    display: none;
+  }
+  div {
+    .logo {
+      padding-top: 30% !important;
+    }
+  }
+  .hero-bg-img {
+    bottom: 47rem;
+    width: 70%;
+  }
+  .bg-cards {
+    bottom: 20%;
   }
 }
 </style>
