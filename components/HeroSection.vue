@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 var(--horiz-main-padding) 20rem;
+  padding: 0 var(--horiz-main-padding) 25rem;
 }
 .gradient {
   position: absolute;

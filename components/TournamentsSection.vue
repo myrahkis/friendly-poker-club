@@ -1,163 +1,145 @@
 <script setup>
-const tournaments = [
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "ПН",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "ВТ",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "СР",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "ЧТ",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "ПТ",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "СБ",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "ВС",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
-  {
-    date: `${new Date().getDate()} Мая`,
-    dayOfWeek: "ПН",
-    heading: "Заголовок карточки в две строки",
-    schedule: [
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-      {
-        time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-        text: "At vero eos et accusamus et iusto odio dignissimos",
-      },
-    ],
-  },
+const route = useRoute();
+
+const selectedCity = computed(() => {
+  return route.query.city;
+});
+
+const loading = ref(false);
+const error = ref(null);
+const rawData = ref({});
+const tournaments = ref([]);
+
+const WEEKDAY_FULL = [
+  "Воскресенье",
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
 ];
+const WEEKDAY_SHORT = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+const MONTH_NAMES = [
+  "Января",
+  "Февраля",
+  "Марта",
+  "Апреля",
+  "Мая",
+  "Июня",
+  "Июля",
+  "Августа",
+  "Сентября",
+  "Октября",
+  "Ноября",
+  "Декабря",
+];
+
+let midnightTimeout = null;
+
+/**
+ * данные из json в массив из 7 ближайших дней:
+ * [{ date, dayOfWeek, schedule: {time, name} }, ...]
+ */
+function buildNext7DaysFromWeekdayJson(raw) {
+  const result = [];
+  const today = new Date();
+
+  for (let offset = 0; offset < 7; offset++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + offset);
+
+    const dayNumber = d.getDate();
+    const monthName = MONTH_NAMES[d.getMonth()];
+    const fullName = WEEKDAY_FULL[d.getDay()];
+    const shortName = WEEKDAY_SHORT[d.getDay()];
+
+    const dayObj = raw[fullName]
+    const scheduleArr = [];
+
+    if (dayObj && typeof dayObj === "object") {
+      for (const key in dayObj) {
+        if (Object.prototype.hasOwnProperty.call(dayObj, key)) {
+          const entry = dayObj[key];
+
+          scheduleArr.push({
+            time: entry.time,
+            name: entry.name,
+          });
+        }
+      }
+    }
+
+    result.push({
+      date: `${dayNumber} ${monthName}`,
+      dayOfWeek: shortName,
+      heading: scheduleArr.length ? "" : "— Нет турнира —",
+      schedule: scheduleArr,
+    });
+  }
+
+  return result;
+}
+
+/**
+ * в полночь сдвигает список на одну дату
+ */
+function scheduleMidnightRefresh() {
+  if (midnightTimeout) {
+    clearTimeout(midnightTimeout);
+    midnightTimeout = null;
+  }
+
+  const now = new Date();
+  const nextMidnight = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1
+  );
+  const msUntilMidnight = nextMidnight.getTime() - now.getTime();
+
+  midnightTimeout = setTimeout(() => {
+    tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
+    scheduleMidnightRefresh();
+  }, msUntilMidnight + 20);
+}
+
+/**
+ * Загружает файл setver/data/{city}.json, парсинг
+ */
+async function loadCityData(cityName) {
+  loading.value = true;
+  error.value = null;
+  rawData.value = {};
+  tournaments.value = [];
+
+  try {
+    const module = await import(`@/server/data/${cityName}.json`);
+    rawData.value = module.default || {};
+
+    tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
+    scheduleMidnightRefresh();
+  } catch (err) {
+    console.error(err);
+    error.value = "Не удалось загрузить данные для города: " + cityName;
+  } finally {
+    loading.value = false;
+  }
+}
+
+onMounted(() => {
+  loadCityData(selectedCity.value);
+});
+
+watch(selectedCity, (newCity) => {
+  loadCityData(newCity);
+});
 </script>
 
 <template>
   <section class="tournaments-section">
-    <h2>Турниры</h2>
+    <h2>Расписание турниров</h2>
+    <!-- <p>({{ selectedCity }})</p> -->
     <div class="tournaments-grid">
       <TournamentCard
         v-for="(tournament, index) in tournaments"

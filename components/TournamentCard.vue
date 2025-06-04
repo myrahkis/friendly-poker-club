@@ -7,7 +7,8 @@ const { tournament, index, lastIndex } = defineProps({
   lastIndex: Number,
 });
 
-const { date, dayOfWeek, heading, schedule } = tournament;
+// console.log(tournament);
+const { date, dayOfWeek, schedule } = tournament;
 </script>
 
 <template>
@@ -20,21 +21,21 @@ const { date, dayOfWeek, heading, schedule } = tournament;
     "
   >
     <div class="header">
-      <p>{{ date }}</p>
+      <p>{{ date }} - {{ dayOfWeek }}</p>
       <a class="register-btn u-shimmering-gradient-hover">Зарегистрироваться</a>
     </div>
-    <h4>
+    <!-- <h4>
       {{ heading }}
-    </h4>
+    </h4> -->
     <hr class="separator" />
     <div class="schedules">
       <div
         class="schedules-row"
-        v-for="({ time, text }, index) in schedule"
+        v-for="({ time, name }, index) in schedule"
         :key="index"
       >
         <p>{{ time }}</p>
-        <p>{{ text }}</p>
+        <p>{{ name }}</p>
       </div>
     </div>
   </div>

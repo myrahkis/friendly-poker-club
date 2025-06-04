@@ -7,6 +7,9 @@ const selectedLabel = ref("");
 
 const emit = defineEmits(["input"]);
 
+const router = useRouter();
+const route = useRoute();
+
 const options = Object.entries(cityOptions).map(([value, label]) => ({
   value,
   label,
@@ -21,6 +24,11 @@ function onOptionClick(opt) {
   selectedLabel.value = opt.label;
   open.value = false;
   emit("input", opt.value);
+
+  router.push({
+    path: route.path,
+    query: { ...route.query, city: opt.value },
+  });
 }
 
 onMounted(() => {
@@ -28,6 +36,10 @@ onMounted(() => {
     selectedKey.value = options[0].value;
     selectedLabel.value = options[0].label;
     emit("input", options[0].value);
+    router.replace({
+      path: route.path,
+      query: { ...route.query, city: options[0].value },
+    });
   } else {
     selectedLabel.value = "Нет городов";
   }
