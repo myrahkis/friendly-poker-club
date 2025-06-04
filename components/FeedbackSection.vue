@@ -55,9 +55,9 @@ const feedbacks = [
 // кол-во отображаемых карточек в завсиисмости от ширины экрана
 function getVisibleCount() {
   const w = window.innerWidth;
-  if (w < 690) return 1;
-  if (w < 1100) return 2;
-  return 3;
+  if (w < 690) return 2;
+  if (w < 1100) return 3;
+  return 4;
 }
 const visibleCount = ref(getVisibleCount());
 onMounted(() => {
@@ -74,9 +74,7 @@ const isTransition = ref(true);
 // сдвиг
 const cardWidth = computed(
   () =>
-    `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${
-      visibleCount.value
-    })`
+    `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${visibleCount.value})`
 );
 const baseTranslate = computed(
   () => -(currentIndex.value * 100) / visibleCount.value + "%"
@@ -231,7 +229,7 @@ function onResize() {
   transition: transform 0.2s;
 
   img {
-    width: clamp(5rem, 8vw, 8rem);
+    width: clamp(3rem, 8vw, 5.5rem);
   }
 
   &:hover {
