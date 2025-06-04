@@ -21,7 +21,7 @@ const { date, dayOfWeek, heading, schedule } = tournament;
   >
     <div class="header">
       <p>{{ date }}</p>
-      <div class="day-of-week">{{ dayOfWeek }}</div>
+      <a class="register-btn u-shimmering-gradient-hover">Зарегистрироваться</a>
     </div>
     <h4>
       {{ heading }}
@@ -61,6 +61,10 @@ const { date, dayOfWeek, heading, schedule } = tournament;
   background-position: center;
   background-size: cover;
 }
+.tournament-card:last-of-type .register-btn {
+  background: linear-gradient(#063293, #063293) padding-box,
+    linear-gradient(to right, white, white) border-box;
+}
 
 .header {
   display: flex;
@@ -68,10 +72,11 @@ const { date, dayOfWeek, heading, schedule } = tournament;
   align-items: center;
   font-size: 1.5rem;
 }
-.day-of-week {
-  padding: 0.8rem;
+.register-btn {
+  cursor: pointer;
+  padding: 1rem 1.5rem;
   border: 2px solid transparent;
-  border-radius: 50%;
+  border-radius: 2rem;
   background: linear-gradient(#011331, #011331) padding-box,
     linear-gradient(
         to right,
@@ -79,6 +84,7 @@ const { date, dayOfWeek, heading, schedule } = tournament;
         var(--light-gradient-color)
       )
       border-box;
+  font-size: 1.2rem;
 }
 
 .schedules {

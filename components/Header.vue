@@ -12,46 +12,46 @@ const links = [
   { text: "Контакты", href: "#contacts" },
 ];
 
-function getCoords() {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      reject(new Error("Geolocation не поддерживается"));
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => resolve(pos.coords),
-      (err) => reject(err),
-      { enableHighAccuracy: true }
-    );
-  });
-}
+// function getCoords() {
+//   return new Promise((resolve, reject) => {
+//     if (!navigator.geolocation) {
+//       reject(new Error("Geolocation не поддерживается"));
+//     }
+//     navigator.geolocation.getCurrentPosition(
+//       (pos) => resolve(pos.coords),
+//       (err) => reject(err),
+//       { enableHighAccuracy: true }
+//     );
+//   });
+// }
 
-async function reverseGeocode(lat, lon) {
-  const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error("Ошибка геокодирования");
-  const data = await res.json();
-  return (
-    data.address.city ||
-    data.address.town ||
-    data.address.village ||
-    data.address.county ||
-    "не определён"
-  );
-}
+// async function reverseGeocode(lat, lon) {
+//   const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+//   const res = await fetch(url);
+//   if (!res.ok) throw new Error("Ошибка геокодирования");
+//   const data = await res.json();
+//   return (
+//     data.address.city ||
+//     data.address.town ||
+//     data.address.village ||
+//     data.address.county ||
+//     "не определён"
+//   );
+// }
 
-async function detectCity() {
-  try {
-    const { latitude, longitude } = await getCoords();
-    city.value = await reverseGeocode(latitude, longitude);
-  } catch (e) {
-    console.error(e);
-    city.value = "Не удалось определить";
-  }
-}
+// async function detectCity() {
+//   try {
+//     const { latitude, longitude } = await getCoords();
+//     city.value = await reverseGeocode(latitude, longitude);
+//   } catch (e) {
+//     console.error(e);
+//     city.value = "Не удалось определить";
+//   }
+// }
 
-onMounted(() => {
-  detectCity();
-});
+// onMounted(() => {
+//   detectCity();
+// });
 
 function toggleMenu() {
   const menu = document.querySelector(".header-menu-btn");
@@ -65,14 +65,14 @@ defineExpose({ header });
 <template>
   <header class="header" ref="header">
     <div class="header-mobile">
-      <p style="font-weight: 700">{{ city }}</p>
+      <!-- <p style="font-weight: 700">{{ city }}</p> -->
       <button class="header-menu-btn" @click="toggleMenu">
         <img src="/assets/icons/menu-btn.svg" alt="" />
       </button>
     </div>
     <div class="header-desktop">
       <div class="header-info">
-        <div style="display: flex; align-items: center; width: fit-content">
+        <div style="display: flex; align-items: center; width: fit-content; gap: 0.5rem">
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,8 @@ defineExpose({ header });
               />
             </svg>
           </span>
-          <p style="font-weight: 700">{{ city }}</p>
+          <!-- <p style="font-weight: 700">{{ city }}</p> -->
+           <CitySelector />
         </div>
         <p>+7 (969) 120-00-00</p>
         <p>addax18490@mixzu.net</p>
