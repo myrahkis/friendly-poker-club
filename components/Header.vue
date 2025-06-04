@@ -65,6 +65,7 @@ defineExpose({ header });
 <template>
   <header class="header" ref="header">
     <div class="header-mobile">
+      <CitySelector />
       <!-- <p style="font-weight: 700">{{ city }}</p> -->
       <button class="header-menu-btn" @click="toggleMenu">
         <img src="/assets/icons/menu-btn.svg" alt="" />
@@ -72,7 +73,14 @@ defineExpose({ header });
     </div>
     <div class="header-desktop">
       <div class="header-info">
-        <div style="display: flex; align-items: center; width: fit-content; gap: 0.5rem">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            gap: 0.5rem;
+          "
+        >
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +102,7 @@ defineExpose({ header });
             </svg>
           </span>
           <!-- <p style="font-weight: 700">{{ city }}</p> -->
-           <CitySelector />
+          <CitySelector />
         </div>
         <p>+7 (969) 120-00-00</p>
         <p>addax18490@mixzu.net</p>

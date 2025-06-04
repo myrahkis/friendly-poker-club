@@ -5,7 +5,8 @@
   <AboutUsSection />
   <TournamentsSection />
   <FAQSection />
-  <VideoSection />
+  <GallerySection />
+  <!-- <VideoSection /> -->
   <RentSection />
   <FeedbackSection />
   <ContactsSection />

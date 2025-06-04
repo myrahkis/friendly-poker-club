@@ -86,7 +86,7 @@ onMounted(() => {
 } */
 .city-selector {
   position: relative;
-  width: 100%;
+  width: fit-content;
   /* text-align: left; */
   outline: none;
 }
