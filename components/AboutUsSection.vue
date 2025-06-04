@@ -110,7 +110,7 @@ function prevSlide() {
   display: flex;
   align-items: stretch;
   background-color: var(--dark-bg-color);
-  border: 2px solid var(--light-gradient-color);
+  border: 1px solid var(--light-gradient-color);
   border-radius: 2rem;
   position: relative;
   overflow: visible;
@@ -133,8 +133,6 @@ function prevSlide() {
   position: relative;
   overflow: hidden;
   flex: 1;
-  margin: -4px;
-  z-index: 1;
   border-radius: 2rem;
 }
 

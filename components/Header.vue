@@ -73,6 +73,7 @@ defineExpose({ header });
     </div>
     <div class="header-desktop">
       <div class="header-info">
+        <Logo width="15rem" paddingTop="0" />
         <div
           style="
             display: flex;
@@ -140,7 +141,7 @@ defineExpose({ header });
   flex-direction: column;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .header-info {
   display: flex;

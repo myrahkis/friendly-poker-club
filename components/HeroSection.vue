@@ -6,20 +6,29 @@
     <img class="bg-chip" src="/assets/images/chip1.png" alt="bg-img" />
     <img class="bg-cards" src="/assets/images/bg-cards.png" alt="cards-img" />
     <div class="hero-wrapper">
-      <div>
-        <Logo width="70rem" paddingTop="16%" />
-        <p class="hero-text">
-          Легальная офлайн игра в покер! <br />
-          Для новичков, любителей и профессионалов. Профессиональные покерные
-          столы, дилеры и оборудование, комфортная обстановка — всё для
+      <div class="hero-text">
+        <!-- <Logo width="70rem" paddingTop="16%" /> -->
+        <h1>Легальная офлайн игра в покер!</h1>
+        <h3 style="font-weight: 400">
+          Для новичков, любителей <br />
+          и профессионалов
+        </h3>
+        <!-- <p class="hero-text"> -->
+        <p style="font-size: 2.2rem; width: 85%">
+          Профессиональные покерные столы, профессиональные дилеры,
+          профессиональное оборудование, комфортная обстановка — всё для
           получения удовольствия от любимой игры!
         </p>
       </div>
-      <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" />
+      <img
+        class="hero-bg-img"
+        src="/assets/images/hero-bg-img.png"
+        alt="hero-bg"
+      />
     </div>
-    <button class="hero-btn u-shimmering-gradient-hover">
+    <span class="hero-empasis">
       Внимание! В нашем клубе категорически запрещена игра на деньги!
-    </button>
+    </span>
   </section>
 </template>
 
@@ -29,7 +38,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 var(--horiz-main-padding) 25rem;
+  padding: 0 var(--horiz-main-padding) 13%;
 }
 .gradient {
   position: absolute;
@@ -62,12 +71,15 @@
 
 .hero-text {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
   z-index: 1;
   width: 45%;
-  padding-top: 15rem;
+  padding-top: 20%;
   padding-bottom: 7%;
-  font-size: clamp(1.8rem, 2vw, 2.5rem);
-  font-weight: 500;
+  /* font-size: clamp(1.8rem, 2vw, 2.5rem);
+  font-weight: 500; */
 }
 
 .bg-cards {
@@ -88,49 +100,72 @@
   z-index: 0;
 }
 
-.hero-btn {
+.hero-empasis {
   position: absolute;
   bottom: 7rem;
   z-index: 2;
+  text-align: center;
   align-self: center;
   width: 55%;
   padding: 1.5rem 2.5rem;
   font-size: clamp(1.8rem, 3vw, 2.3rem);
-  border: 2px solid var(--light-gradient-color);
+  /* border: 2px solid var(--light-gradient-color); */
   border-radius: 4rem;
-  background-color: rgba(37, 37, 37, 0.5);
+  background: linear-gradient(
+    to right,
+    var(--light-gradient-color),
+    var(--dark-gradient-color)
+  );
 }
 
 @media (min-width: 1600px) {
-  div {
+  .hero-text {
+    width: 47%;
+  }
+  .hero-section {
+    padding: 0 var(--horiz-main-padding) 18%;
+  }
+  /* div {
     .logo {
       padding-top: 20% !important;
     }
-  }
+  } */
 }
 @media (min-width: 1800px) {
-  .hero-bg-img {
+  .hero-text {
+    padding-top: 25%;
+    padding-bottom: 0;
     width: 47%;
   }
-  div {
+  .hero-section {
+    padding: 0 var(--horiz-main-padding) 25%;
+  }
+  .hero-empasis {
+    bottom: 15rem;
+    width: 50%;
+  }
+  /* .hero-bg-img {
+    width: 47%;
+  } */
+  /* div {
     .logo {
       padding-top: 25% !important;
     }
-  }
+  } */
 }
 @media (min-width: 2200px) {
+  .hero-section {
+    padding: 0 var(--horiz-main-padding) 20%;
+  }
+  .hero-empasis {
+    width: 45%;
+  }
   .hero-bg-img {
     width: 45%;
     transform: translateY(25rem);
   }
   .gradient {
     transform: translateY(25rem);
-  }
-  .hero-btn {
-    width: 45%;
-  }
-  .hero-text {
-    width: 50%;
   }
 }
 @media (min-width: 3000px) {
@@ -152,7 +187,7 @@
 @media (max-width: 1124px) {
   .hero-text {
     width: 65%;
-    padding-top: 75%;
+    padding-top: 30%;
     padding-bottom: 2%;
   }
   .hero-bg-img {
