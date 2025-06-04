@@ -54,7 +54,7 @@ function buildNext7DaysFromWeekdayJson(raw) {
     const fullName = WEEKDAY_FULL[d.getDay()];
     const shortName = WEEKDAY_SHORT[d.getDay()];
 
-    const dayObj = raw[fullName]
+    const dayObj = raw[fullName];
     const scheduleArr = [];
 
     if (dayObj && typeof dayObj === "object") {
@@ -140,7 +140,7 @@ watch(selectedCity, (newCity) => {
   <section class="tournaments-section">
     <h2>Расписание турниров</h2>
     <!-- <p>({{ selectedCity }})</p> -->
-    <div class="tournaments-grid">
+    <div class="tournaments-grid" v-if="tournaments.length !== 0">
       <TournamentCard
         v-for="(tournament, index) in tournaments"
         :tournament="tournament"
@@ -149,6 +149,7 @@ watch(selectedCity, (newCity) => {
         :lastIndex="tournaments.length - 1"
       />
     </div>
+    <h4 v-else>Турниров в ближайшее время нет!</h4>
     <img class="bg-spades-img" src="/assets/images/bg-spades.png" alt="" />
     <img class="bg-diamonds-img" src="/assets/images/bg-diamonds.png" alt="" />
     <img class="bg-clubs-img" src="/assets/images/bg-clubs.png" alt="" />
