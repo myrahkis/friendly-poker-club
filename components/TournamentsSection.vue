@@ -75,8 +75,32 @@ function buildNext7DaysFromWeekdayJson(raw) {
     });
   }
 
+  const now = new Date();
+
+  //переделаь
+  const currentMonthFull = MONTH_NAMES[now.getMonth()].replace(/я$/, "ь");
+
+  const monthlyObj = raw[currentMonthFull];
+  if (monthlyObj && typeof monthlyObj === "object") {
+    const scheduleArr = [];
+    for (const key in monthlyObj) {
+      if (!Object.prototype.hasOwnProperty.call(monthlyObj, key)) continue;
+      const entry = monthlyObj[key];
+      scheduleArr.push(entry.name);
+    }
+
+    result.push({
+      date: currentMonthFull,
+      dayOfWeek: "",
+      // heading: "Турнир месяца",
+      schedule: scheduleArr,
+    });
+  }
+
   return result;
 }
+
+console.log(tournaments);
 
 /**
  * в полночь сдвигает список на одну дату
