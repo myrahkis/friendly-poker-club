@@ -86,8 +86,8 @@
   position: absolute;
   left: -5rem;
   bottom: 0;
-  width: 60rem;
-  transform: translateY(10rem);
+  width: 55rem;
+  transform: translateY(15rem);
   z-index: -1;
 }
 

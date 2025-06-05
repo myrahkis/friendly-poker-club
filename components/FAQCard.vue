@@ -12,9 +12,11 @@ const emit = defineEmits(["toggle"]);
       <div class="card-front">
         <div class="header">
           <img class="header-suit" :src="suit" alt="card-suit" />
-          <h4>{{ heading }}</h4>
         </div>
-        <p class="question">{{ question }}</p>
+        <div class="question">
+          <h4>{{ heading }}</h4>
+          <p>{{ question }}</p>
+        </div>
         <div class="footer">
           <img class="footer-suit" :src="suit" alt="card-suit" />
         </div>
@@ -57,6 +59,7 @@ const emit = defineEmits(["toggle"]);
   width: 100%;
   height: auto;
   min-height: 45rem;
+  backdrop-filter: blur(3px);
 
   perspective: 150rem;
 }
@@ -108,7 +111,17 @@ const emit = defineEmits(["toggle"]);
   margin-bottom: 1.5rem;
 }
 .question {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   margin: auto;
+
+  p {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 3rem;
+  }
 }
 .footer {
   display: flex;
@@ -119,6 +132,10 @@ const emit = defineEmits(["toggle"]);
 .header-suit,
 .footer-suit {
   width: 5rem;
+}
+
+.footer-suit {
+  transform: rotateX(180deg);
 }
 
 @media (max-width: 850px) {
@@ -145,7 +162,7 @@ const emit = defineEmits(["toggle"]);
     transition: z-index 0s;
   }
   .faq-card-mobile.is-open {
-    z-index: 10; /* > всех соседних карточек */
+    z-index: 10;
   }
 
   .card-open-btn {

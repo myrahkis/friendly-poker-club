@@ -7,33 +7,29 @@ import diamonds from "@/assets/icons/diamonds-suit.png";
 const questions = [
   {
     suit: spade,
-    heading: "Заголовок",
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    heading: "А это законно?",
+    question: "Я слышал покер запрещён вне специализированных игорных зон!",
     answer:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
   },
   {
     suit: heart,
-    heading: "Заголовок",
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    heading: "Где поиграть?",
+    question: "Где я могу поиграть в офлайн покер не на деньги?",
     answer:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
   },
   {
     suit: club,
-    heading: "Заголовок",
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    heading: "Своя компания!",
+    question: "Я могу прийти со своей компанией друзей или коллег?",
     answer:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
   },
   {
     suit: diamonds,
-    heading: "Заголовок",
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+    heading: "Не умею играть!",
+    question: "Если я или кто-то из моих друзей не умеет играть в покер?",
     answer:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
   },
@@ -60,6 +56,7 @@ function toggleCard(idx) {
     </div>
     <img class="bg-chip-full-1" src="/assets/images/chip-bg-full.png" alt="" />
     <img class="bg-chip-full-2" src="/assets/images/chip-bg-full.png" alt="" />
+    <img class="bg-dots" src="/assets/images/faq-bg-dots.png" alt="" />
   </section>
 </template>
 
@@ -74,6 +71,7 @@ function toggleCard(idx) {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
+  padding: 10rem 0;
 }
 
 .bg-chip-full-1,
@@ -85,13 +83,21 @@ function toggleCard(idx) {
 
 .bg-chip-full-1 {
   top: 1rem;
-  right: 28rem;
+  right: 18rem;
   transform: rotate(-68deg);
 }
 .bg-chip-full-2 {
-  left: 38rem;
-  bottom: 0;
+  left: 15rem;
+  bottom: 5rem;
   transform: translateY(5rem);
+}
+.bg-dots {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  width: 50%;
 }
 
 /* (1024px–1279px) */
