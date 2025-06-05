@@ -62,10 +62,7 @@ function buildNext7DaysFromWeekdayJson(raw) {
         if (Object.prototype.hasOwnProperty.call(dayObj, key)) {
           const entry = dayObj[key];
 
-          scheduleArr.push({
-            time: entry.time,
-            name: entry.name,
-          });
+          scheduleArr.push(entry.name);
         }
       }
     }
