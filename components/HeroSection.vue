@@ -142,7 +142,7 @@
 }
 @media (min-width: 1800px) {
   .hero-text {
-    padding-top: 25%;
+    padding-top: 20%;
     padding-bottom: 0;
     width: 47%;
   }

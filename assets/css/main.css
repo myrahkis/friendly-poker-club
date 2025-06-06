@@ -92,7 +92,7 @@ p {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: linear-gradient(270deg, #423af5, #4ec2ec);
+  background: linear-gradient(270deg, #3f4e9d, #4ec2ec);
   background-size: 600% 600%;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -137,22 +137,22 @@ p {
 
 @media (min-width: 1600px) {
   :root {
-    --horiz-main-padding: 15rem;
+    --horiz-main-padding: 10rem;
   }
 }
 @media (min-width: 1800px) {
   :root {
-    --horiz-main-padding: 25rem;
+    --horiz-main-padding: 20rem;
   }
 }
 @media (min-width: 2200px) {
   :root {
-    --horiz-main-padding: 45rem;
+    --horiz-main-padding: 35rem;
   }
 }
 @media (min-width: 3000px) {
   :root {
-    --horiz-main-padding: 75rem;
+    --horiz-main-padding: 70rem;
   }
 }
 
