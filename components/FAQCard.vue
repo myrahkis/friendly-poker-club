@@ -134,10 +134,6 @@ const emit = defineEmits(["toggle"]);
   width: 5rem;
 }
 
-.footer-suit {
-  transform: rotateX(180deg);
-}
-
 @media (max-width: 850px) {
   .faq-card {
     display: none;

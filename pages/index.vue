@@ -7,7 +7,7 @@
   <FAQSection />
   <GallerySection />
   <!-- <VideoSection /> -->
-  <RentSection />
+  <!-- <RentSection /> -->
   <FeedbackSection />
   <ContactsSection />
 </template>

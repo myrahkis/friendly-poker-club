@@ -7,14 +7,14 @@
     <img class="bg-cards" src="/assets/images/bg-cards.png" alt="cards-img" />
     <div class="hero-wrapper">
       <div class="hero-text">
-        <!-- <Logo width="70rem" paddingTop="16%" /> -->
-        <h1>Легальная офлайн игра в покер!</h1>
-        <h3 style="font-weight: 400">
+        <Logo width="45rem" paddingTop="0" />
+        <h1 class="hero-heading">Легальная офлайн игра в покер!</h1>
+        <h3 class="hero-sub-heading">
           Для новичков, любителей <br />
-          и профессионалов
+          и профессионалов.
         </h3>
         <!-- <p class="hero-text"> -->
-        <p style="font-size: 2.2rem; width: 85%">
+        <p style="font-size: 2rem; width: 85%">
           Профессиональные покерные столы, профессиональные дилеры,
           профессиональное оборудование, комфортная обстановка — всё для
           получения удовольствия от любимой игры!
@@ -38,7 +38,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 var(--horiz-main-padding) 13%;
+  padding: 0 var(--horiz-main-padding) 12%;
 }
 .gradient {
   position: absolute;
@@ -73,13 +73,22 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
   z-index: 1;
   width: 45%;
-  padding-top: 20%;
+  padding-top: 13%;
   padding-bottom: 7%;
   /* font-size: clamp(1.8rem, 2vw, 2.5rem);
   font-weight: 500; */
+}
+.hero-heading {
+  font-size: 6rem;
+  font-weight: 700;
+  /* line-height: 1.1; */
+}
+.hero-sub-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
 }
 
 .bg-cards {
