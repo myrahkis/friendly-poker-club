@@ -10,28 +10,28 @@ const questions = [
     heading: "А это законно?",
     question: "Я слышал покер запрещён вне специализированных игорных зон!",
     answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+      "Сама игра в покер не запрещена, так же, как и не запрещена игра в мафию, нарды или шахматы! Законом РФ (ст.171.2. УК РФ и ст.14.1.1. КоАП РФ) запрещена организация и проведение азартных игр. Согласно данным статьям, азартная игра — это основанное на риске соглашение о выигрыше денежных средств. Т.е. простыми словами – если игра ведётся на деньги или любые другие материальные ценности или права, то такая игра является азартной. В нашем клубе игра проводится без использования каких-либо денежных средств и не предусматривает никакого денежного или любого другого материального выигрыша. Таким образом игра в нашем клубе, будь то покер или любая другая игра, не является азартной, а значит абсолютно легальна!",
   },
   {
     suit: heart,
     heading: "Где поиграть?",
     question: "Где я могу поиграть в офлайн покер не на деньги?",
     answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+      "В настоящий момент наш клуб открыт в Москве и в Рязани. В ближайшее время наши филиалы будут открываться и в других регионах России. Следите за новостями в наших соц.сетях.",
   },
   {
     suit: club,
     heading: "Своя компания!",
     question: "Я могу прийти со своей компанией друзей или коллег?",
     answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+      "Да, мы можем организовать для вас различный формат корпоративной игры, в зависимости от количества участников вашей компании. Мы можем предложить вам либо сесть рандомно в общий турнир или выделить для вас персональный стол (столы) и устроить для вас корпоративный турнир (корпоративный чемпионат, корпоративную лигу и т.п.). Обратитесь к нашим администраторам, и мы подберём для вас наиболее комфортные условия проведения мероприятия.",
   },
   {
     suit: diamonds,
     heading: "Не умею играть!",
     question: "Если я или кто-то из моих друзей не умеет играть в покер?",
     answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae iste consequatur nemo fugit. Perspiciatis nulla magni quae eos, tempora iusto earum eius delectus quidem quis nemo, asperiores, a vitae praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis asperiores reprehenderit illo voluptates praesentium possimus sed repellat, dolorum dolor. Commodi placeat iusto possimus animi perspiciatis qui dignissimos deleniti. Laboriosam, molestias? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquam aspernatur quasi fugit consectetur excepturi nostrum, sed, incidunt eos alias esse corrupti nemo odio consequuntur debitis illo assumenda magnam quo.",
+      "Ничего страшного! Главное – это, иметь желание научится играть в эту прекрасную игру. Свяжитесь с нашими администраторами или предупредите их при посещении клуба, и мы обязательно научим вас азам покера и подскажем, где и как получить максимальные знания об игре!",
   },
 ];
 

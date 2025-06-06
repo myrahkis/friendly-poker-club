@@ -66,7 +66,9 @@ const rentCards = [
           <p class="heading-text">за каждый последующий час</p>
           <p class="colored-price">+5 000 руб</p>
         </div>
-        <p>В стоимость входит всё необходимое для игры оборудование и дилер.</p>
+        <p class="sub-text">
+          В стоимость входит всё необходимое для игры оборудование и дилер.
+        </p>
         <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
       </div>
       <div class="pricing-card">
@@ -75,7 +77,7 @@ const rentCards = [
           корпоративных лиг. (от 9 игроков)
         </p>
         <p class="colored-price">Стоимость расчитывается индивидуально</p>
-        <p>
+        <p class="sub-text">
           В стоимость входит всё необходимое для игры оборудование, дилеры,
           турнирный директор, ведение статистики игроков и проведённых турниров,
           нагрождение победителей корпоративными кубками.
@@ -138,11 +140,14 @@ const rentCards = [
   gap: 0.5rem;
 }
 .heading-text {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 700;
 }
+.sub-text {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
 .colored-price {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 700;
 
   background-image: linear-gradient(
@@ -185,9 +190,26 @@ const rentCards = [
 
 /* (–767px) */
 @media (max-width: 767px) {
-  .rent-cards {
+  /* .rent-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  } */
+
+  .pricing-card {
+    justify-content: start;
+    gap: 1rem;
+  }
+  .order-btn {
+    background: linear-gradient(
+      to right,
+      var(--dark-gradient-color),
+      var(--light-gradient-color)
+    );
+    font-size: clamp(1.5rem, 2vw, 1.8rem);
+    font-weight: 400;
+    border-radius: 4rem;
+    padding: 1rem;
+    margin-top: auto;
   }
 }
 

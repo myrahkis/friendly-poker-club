@@ -56,7 +56,7 @@ const feedbacks = [
 function getVisibleCount() {
   const w = window.innerWidth;
   if (w < 690) return 2;
-  if (w < 1100) return 3;
+  if (w < 1100) return 2;
   return 4;
 }
 const visibleCount = ref(getVisibleCount());

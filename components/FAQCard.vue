@@ -22,7 +22,7 @@ const emit = defineEmits(["toggle"]);
         </div>
       </div>
       <div class="card-back">
-        <p>
+        <p class="answer">
           {{ answer }}
         </p>
       </div>
@@ -122,6 +122,14 @@ const emit = defineEmits(["toggle"]);
   h4 {
     font-size: 3rem;
   }
+}
+.answer {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  width: fit-content;
+  font-size: 1.6rem;
 }
 .footer {
   display: flex;
