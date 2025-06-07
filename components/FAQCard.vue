@@ -22,9 +22,7 @@ const emit = defineEmits(["toggle"]);
         </div>
       </div>
       <div class="card-back">
-        <p class="answer">
-          {{ answer }}
-        </p>
+        <p class="answer" v-html="answer"></p>
       </div>
     </div>
   </div>
@@ -131,6 +129,14 @@ const emit = defineEmits(["toggle"]);
   width: fit-content;
   font-size: 1.6rem;
 }
+::v-deep a:link,
+::v-deep a:visited {
+  color: var(--light-gradient-color);
+}
+::v-deep a:hover {
+  text-decoration: underline;
+}
+
 .footer {
   display: flex;
   justify-content: flex-end;

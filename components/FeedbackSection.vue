@@ -55,8 +55,8 @@ const feedbacks = [
 // кол-во отображаемых карточек в завсиисмости от ширины экрана
 function getVisibleCount() {
   const w = window.innerWidth;
-  if (w < 690) return 2;
-  if (w < 1100) return 2;
+  if (w < 970) return 2;
+  if (w < 1275) return 3;
   return 4;
 }
 const visibleCount = ref(getVisibleCount());

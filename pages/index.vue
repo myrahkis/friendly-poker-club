@@ -9,6 +9,7 @@
   <!-- <VideoSection /> -->
   <PricingSection />
   <FeedbackSection />
+  <LegalnformationSection />
   <ContactsSection />
 </template>
 

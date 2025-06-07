@@ -10,6 +10,7 @@ const links = [
   { text: "Тарифы", href: "#pricing" },
   { text: "Отзывы", href: "#feedbacks" },
   { text: "Контакты", href: "#contacts" },
+  { text: "Правовая инфомация", href: "#documents"}
 ];
 
 // function getCoords() {

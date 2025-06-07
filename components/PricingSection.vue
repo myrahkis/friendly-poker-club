@@ -33,55 +33,61 @@ const rentCards = [
     <h2>Тарифы</h2>
     <div class="pricing-cards">
       <div class="pricing-card">
-        <div class="pricing-row">
-          <p class="heading-text">
-            Посещение любого <br />
-            ежедневного турнира*
-          </p>
-          <p class="colored-price">1 000 руб</p>
-        </div>
-        <div class="pricing-row">
-          <p class="heading-text">Повторный вход (Re-Entry)</p>
-          <p class="colored-price">1 000 руб</p>
-        </div>
-        <div class="pricing-row">
-          <p class="heading-text">Аддон</p>
-          <p class="colored-price">1 000 руб</p>
+        <div class="pracing-card-info">
+          <div class="pricing-row">
+            <p class="heading-text">
+              Посещение любого <br />
+              ежедневного турнира*
+            </p>
+            <p class="colored-price">1 000 руб</p>
+          </div>
+          <div class="pricing-row">
+            <p class="heading-text">Повторный вход (Re-Entry)</p>
+            <p class="colored-price">1 000 руб</p>
+          </div>
+          <div class="pricing-row">
+            <p class="heading-text">Аддон</p>
+            <p class="colored-price">1 000 руб</p>
+          </div>
         </div>
         <button class="order-btn u-shimmering-gradient-hover">
           Зарегистрироваться
         </button>
       </div>
       <div class="pricing-card">
-        <div class="pricing-row">
-          <p class="heading-text">
-            Аренда одного игрового стола <br />
-            (от 2 до 9 игроков)**
-          </p>
-          <p class="heading-text">
-            <span class="colored-price">1 000 руб</span> за первые 2 часа
+        <div class="pracing-card-info">
+          <div class="pricing-row">
+            <p class="heading-text">
+              Аренда одного игрового стола <br />
+              (от 2 до 9 игроков)**
+            </p>
+            <p class="heading-text">
+              <span class="colored-price">1 000 руб</span> за первые 2 часа
+            </p>
+          </div>
+          <div class="pricing-row">
+            <p class="heading-text">за каждый последующий час</p>
+            <p class="colored-price">+5 000 руб</p>
+          </div>
+          <p class="sub-text">
+            В стоимость входит всё необходимое для игры оборудование и дилер.
           </p>
         </div>
-        <div class="pricing-row">
-          <p class="heading-text">за каждый последующий час</p>
-          <p class="colored-price">+5 000 руб</p>
-        </div>
-        <p class="sub-text">
-          В стоимость входит всё необходимое для игры оборудование и дилер.
-        </p>
         <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
       </div>
       <div class="pricing-card">
-        <p class="heading-text">
-          Проведение корпоративных турниров, корпоративных чемпионатов,
-          корпоративных лиг. (от 9 игроков)
-        </p>
-        <p class="colored-price">Стоимость расчитывается индивидуально</p>
-        <p class="sub-text">
-          В стоимость входит всё необходимое для игры оборудование, дилеры,
-          турнирный директор, ведение статистики игроков и проведённых турниров,
-          нагрождение победителей корпоративными кубками.
-        </p>
+        <div class="pracing-card-info">
+          <p class="heading-text">
+            Проведение корпоративных турниров, корпоративных чемпионатов,
+            корпоративных лиг. (от 9 игроков)
+          </p>
+          <p class="colored-price">Стоимость расчитывается индивидуально</p>
+          <p class="sub-text">
+            В стоимость входит всё необходимое для игры оборудование, дилеры,
+            турнирный директор, ведение статистики игроков и проведённых
+            турниров, нагрождение победителей корпоративными кубками.
+          </p>
+        </div>
         <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
       </div>
     </div>
@@ -123,8 +129,8 @@ const rentCards = [
 .pricing-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
+  /* justify-content: cet; */
+  /* gap: 1.5rem; */
   padding: clamp(2.4rem, 3vw, 3rem);
   border: 1px solid var(--light-gradient-color);
   border-radius: 2rem;
@@ -133,6 +139,12 @@ const rentCards = [
   background-position: center;
   background-color: var(--dark-bg-color);
   backdrop-filter: blur(3px);
+}
+.pracing-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
+  margin-bottom: 10%;
 }
 .pricing-row {
   display: flex;
@@ -168,7 +180,7 @@ const rentCards = [
   font-weight: 400;
   border-radius: 4rem;
   padding: 1rem;
-  margin-top: 10%;
+  margin-top: auto;
 }
 
 .pricing-nuances {
