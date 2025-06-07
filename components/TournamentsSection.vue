@@ -100,30 +100,30 @@ function buildNext7DaysFromWeekdayJson(raw) {
   return result;
 }
 
-console.log(tournaments);
+// console.log(tournaments);
 
 /**
  * в полночь сдвигает список на одну дату
  */
-function scheduleMidnightRefresh() {
-  if (midnightTimeout) {
-    clearTimeout(midnightTimeout);
-    midnightTimeout = null;
-  }
+// function scheduleMidnightRefresh() {
+//   if (midnightTimeout) {
+//     clearTimeout(midnightTimeout);
+//     midnightTimeout = null;
+//   }
 
-  const now = new Date();
-  const nextMidnight = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 1
-  );
-  const msUntilMidnight = nextMidnight.getTime() - now.getTime();
+//   const now = new Date();
+//   const nextMidnight = new Date(
+//     now.getFullYear(),
+//     now.getMonth(),
+//     now.getDate() + 1
+//   );
+//   const msUntilMidnight = nextMidnight.getTime() - now.getTime();
 
-  midnightTimeout = setTimeout(() => {
-    tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
-    scheduleMidnightRefresh();
-  }, msUntilMidnight + 20);
-}
+//   midnightTimeout = setTimeout(() => {
+//     tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
+//     scheduleMidnightRefresh();
+//   }, msUntilMidnight + 20);
+// }
 
 /**
  * Загружает файл setver/data/{city}.json, парсинг

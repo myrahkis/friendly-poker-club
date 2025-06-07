@@ -41,9 +41,7 @@ const emit = defineEmits(["toggle"]);
       </button>
     </div>
     <div v-if="isOpen" class="closed-mobile-card">
-      <p>
-        {{ answer }}
-      </p>
+      <p class="answer" v-html="answer"></p>
       <div class="footer">
         <img class="footer-suit" :src="suit" alt="card-suit" />
       </div>
@@ -127,7 +125,7 @@ const emit = defineEmits(["toggle"]);
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   width: fit-content;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
 }
 ::v-deep a:link,
 ::v-deep a:visited {
@@ -176,11 +174,19 @@ const emit = defineEmits(["toggle"]);
   }
 
   .card-open-btn {
-    align-self: flex-end;
+    margin-left: auto;
 
     img {
       width: 4.5rem;
     }
+  }
+
+  .header-suit,
+  .footer-suit {
+    width: 3rem;
+  }
+  .answer {
+    margin-bottom: 2rem;
   }
 }
 </style>

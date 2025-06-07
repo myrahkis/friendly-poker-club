@@ -143,7 +143,7 @@ const rentCards = [
 .pracing-card-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; 
+  gap: 1.5rem;
   margin-bottom: 10%;
 }
 .pricing-row {
@@ -176,7 +176,7 @@ const rentCards = [
     var(--dark-gradient-color),
     var(--light-gradient-color)
   );
-  font-size: clamp(1.5rem, 2vw, 1.8rem);
+  font-size: clamp(1.5rem, 1.8vw, 1.8rem);
   font-weight: 400;
   border-radius: 4rem;
   padding: 1rem;
@@ -200,14 +200,40 @@ const rentCards = [
   width: 55%;
 }
 
+@media (max-width: 1192px) {
+  .heading-text {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    hyphens: auto;
+  }
+  .sub-text {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    text-align: justify;
+    hyphens: auto;
+  }
+  .colored-price {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+  }
+  .order-btn {
+    font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 960px) {
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    gap: 2rem;
+  }
+}
+
 /* (–767px) */
-@media (max-width: 767px) {
-  /* .rent-cards {
+/* @media (max-width: 767px) { */
+/* .rent-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
   } */
 
-  .pricing-card {
+/* .pricing-card {
     justify-content: start;
     gap: 1rem;
   }
@@ -223,14 +249,13 @@ const rentCards = [
     padding: 1rem;
     margin-top: auto;
   }
-}
+} */
 
 /* (-590px) */
 @media (max-width: 590px) {
-  .rent-cards {
+  .pricing-cards {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 }
 </style>

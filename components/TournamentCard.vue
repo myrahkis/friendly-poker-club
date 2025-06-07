@@ -148,7 +148,6 @@ const { date, dayOfWeek, schedule } = tournament;
 }
 .schedules-time {
   display: flex;
-  /* если нужно, чтобы линии переносились, добавьте flex-wrap */
   flex-direction: column;
   width: 29%;
   font-size: 1.2rem;
@@ -182,6 +181,16 @@ const { date, dayOfWeek, schedule } = tournament;
 @media (max-width: 1279px) {
   .tournament-card {
     padding: 3rem;
+  }
+}
+
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .time-styled {
+    font-size: clamp(2rem, 2vw, 2.3rem);
+  }
+  .name-heading {
+    font-size: clamp(1.8rem, 2vw, 2rem);
   }
 }
 </style>

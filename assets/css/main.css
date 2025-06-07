@@ -166,7 +166,7 @@ p {
 /* (1024px–1279px) */
 @media (max-width: 1279px) {
   h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
+    font-size: clamp(3rem, 6vw, 5rem);
   }
   h3 {
     font-size: clamp(2.4rem, 4.5vw, 4.2rem);
@@ -183,5 +183,8 @@ p {
 @media (max-width: 767px) {
   :root {
     --horiz-main-padding: 2.5rem;
+  }
+  h2 {
+    font-size: clamp(2.4rem, 4vw, 4rem);
   }
 }

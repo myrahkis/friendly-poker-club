@@ -119,5 +119,8 @@ function toggleCard(idx) {
     display: flex;
     flex-direction: column;
   }
+  .faq-cards {
+    padding: 0;
+  }
 }
 </style>

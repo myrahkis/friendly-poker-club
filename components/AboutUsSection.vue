@@ -145,7 +145,7 @@ function prevSlide() {
   flex-direction: column;
   width: 75%;
   gap: 0.8rem;
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 400;
   padding-left: 1.1em;
 }
