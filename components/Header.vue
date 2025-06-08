@@ -10,7 +10,7 @@ const links = [
   { text: "Тарифы", href: "#pricing" },
   { text: "Отзывы", href: "#feedbacks" },
   { text: "Контакты", href: "#contacts" },
-  { text: "Правовая инфомация", href: "#documents"}
+  { text: "Правовая инфомация", href: "#documents" },
 ];
 
 // function getCoords() {
@@ -73,13 +73,7 @@ defineExpose({ header });
       </button>
     </div>
     <div class="header-desktop">
-      <div
-        style="
-          display: flex;
-          width: fit-content;
-          gap: 0.5rem;
-        "
-      >
+      <div style="display: flex; width: fit-content; gap: 0.5rem">
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +100,7 @@ defineExpose({ header });
       <div class="header-info-wrapper">
         <!-- <Logo width="15rem" paddingTop="0" /> -->
         <div class="header-info">
-          <p style="font-weight: 700; font-size: 1.6rem;">+7 (969) 120-00-00</p>
+          <p style="font-weight: 700; font-size: 1.6rem">+7 (969) 120-00-00</p>
           <p>addax18490@mixzu.net</p>
           <p>Ежедневно с 14:00 до 02:00</p>
           <Socials width="3.2rem" />
@@ -175,7 +169,7 @@ defineExpose({ header });
 }
 .header-menu-btn {
   img {
-    width: 5rem;
+    width: clamp(2rem, calc(1rem + 7vw), 5rem);
   }
 }
 .header-menu-btn.open {

@@ -139,7 +139,7 @@ async function loadCityData(cityName) {
     rawData.value = module.default || {};
 
     tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
-    scheduleMidnightRefresh();
+    // scheduleMidnightRefresh();
   } catch (err) {
     console.error(err);
     error.value = "Не удалось загрузить данные для города: " + cityName;
@@ -230,7 +230,7 @@ watch(selectedCity, (newCity) => {
 } */
 
 /* (480px–767px) */
-@media (max-width: 767px) {
+@media (max-width: 540px) {
   .tournaments-grid {
     display: flex;
     flex-direction: column;

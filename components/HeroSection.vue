@@ -8,13 +8,16 @@
     <div class="hero-wrapper">
       <div class="hero-text">
         <Logo width="45rem" paddingTop="0" />
-        <h1 class="hero-heading">Легальная офлайн игра в покер!</h1>
+        <h1 class="hero-heading">
+          Легальная офлайн <br class="mobile-br" />
+          игра в покер!
+        </h1>
         <h3 class="hero-sub-heading">
           Для новичков, любителей <br />
           и профессионалов.
         </h3>
         <!-- <p class="hero-text"> -->
-        <p style="font-size: 2rem; width: 85%">
+        <p class="hero-sub-text">
           Профессиональные покерные столы, профессиональные дилеры,
           профессиональное оборудование, комфортная обстановка — всё для
           получения удовольствия от любимой игры!
@@ -78,17 +81,18 @@
   width: 45%;
   padding-top: 13%;
   padding-bottom: 7%;
-  /* font-size: clamp(1.8rem, 2vw, 2.5rem);
-  font-weight: 500; */
 }
 .hero-heading {
-  font-size: 6rem;
+  font-size: clamp(3rem, 4vw, 6rem);
   font-weight: 700;
-  /* line-height: 1.1; */
 }
 .hero-sub-heading {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 2.5vw, 3.5rem);
   font-weight: 700;
+}
+.hero-sub-text {
+  font-size: 2rem;
+  width: 85%;
 }
 
 .bg-cards {
@@ -118,13 +122,16 @@
   width: 55%;
   padding: 1.5rem 2.5rem;
   font-size: clamp(1.8rem, 3vw, 2.3rem);
-  /* border: 2px solid var(--light-gradient-color); */
   border-radius: 4rem;
   background: linear-gradient(
     to right,
     var(--light-gradient-color),
     var(--dark-gradient-color)
   );
+}
+
+.mobile-br {
+  display: none;
 }
 
 @media (min-width: 1600px) {
@@ -134,11 +141,6 @@
   .hero-section {
     padding: 0 var(--horiz-main-padding) 18%;
   }
-  /* div {
-    .logo {
-      padding-top: 20% !important;
-    }
-  } */
 }
 @media (min-width: 1800px) {
   .hero-text {
@@ -153,14 +155,6 @@
     bottom: 15rem;
     width: 50%;
   }
-  /* .hero-bg-img {
-    width: 47%;
-  } */
-  /* div {
-    .logo {
-      padding-top: 25% !important;
-    }
-  } */
 }
 @media (min-width: 2200px) {
   .hero-section {
@@ -193,127 +187,157 @@
   }
 }
 
-@media (max-width: 1124px) {
+@media (max-width: 1444px) {
+  .hero-bg-img {
+    transform: translateY(10rem);
+  }
+}
+
+@media (max-width: 1200px) {
   .hero-text {
     width: 65%;
+    padding-top: 15%;
+    padding-bottom: 10%;
+    gap: 2rem;
+  }
+  .hero-heading {
+    font-size: clamp(4rem, 5vw, 6rem);
+    padding-top: 85%;
+  }
+  .hero-bg-img {
+    top: 0;
+    width: 55%;
+  }
+  .bg-cards {
+    top: 25rem;
+    left: -6%;
+    width: 55%;
+  }
+  .gradient {
+    bottom: 30rem;
+  }
+  .hero-empasis {
+    width: 65%;
+    padding: 2rem 2.5rem;
+    border-radius: 7rem;
+    font-weight: 700;
+    font-size: clamp(2rem, 2.5vw, 3rem);
+  }
+  .hero-sub-heading {
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
+  }
+}
+
+@media (max-width: 925px) {
+  .hero-text {
+    width: 70%;
+    padding-bottom: 15%;
+  }
+  .hero-sub-text {
+    font-size: 2rem;
+    width: 95%;
+  }
+  .hero-bg-img {
+    top: 3%;
+  }
+  div {
+    .logo {
+      width: 75% !important;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .bg-chip {
+    display: none;
+  }
+  .hero-text {
+    width: 85%;
+    padding-bottom: 20%;
+  }
+  .hero-heading {
+    font-size: clamp(5rem, 5vw, 6rem);
+    padding-top: 90%;
+  }
+  .hero-sub-heading {
+    font-size: clamp(3rem, 3vw, 4.5rem);
+  }
+  .bg-cards {
+    top: 20rem;
+    left: -6%;
+  }
+  .hero-empasis {
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    padding: 2rem 8rem;
+    width: 85%;
+  }
+  div {
+    .logo {
+      width: 60% !important;
+    }
+  }
+}
+
+@media (max-width: 656px) {
+  .mobile-br {
+    display: block;
+  }
+  .hero-bg-img {
+    top: 4%;
+    width: 60%;
+  }
+  .hero-text {
+    width: 85%;
+    padding-top: 20%;
+    padding-bottom: clamp(2rem, calc(5rem + 15vw), 20vh);
+  }
+  .hero-heading {
+    font-size: clamp(2rem, calc(1rem + 5vw), 4rem);
+    padding-top: 95%;
+  }
+  .hero-sub-heading {
+    font-size: clamp(1rem, calc(1rem + 2.5vw), 2.5rem);
+  }
+  .hero-sub-text {
+    font-size: clamp(0.8rem, calc(0.7rem + 1.5vw), 1.6rem);
+  }
+
+  .hero-empasis {
+    font-size: clamp(0.9rem, calc(0.5rem + 2vw), 1.7rem);
+    padding: 1.5rem clamp(1rem, calc(1rem + 2vw), 5rem);
+    width: 85%;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-text {
+    width: 85%;
     padding-top: 30%;
-    padding-bottom: 2%;
   }
-  .hero-bg-img {
-    bottom: 35rem;
-    z-index: -2;
-    width: 60%;
-  }
-  .bg-cards {
-    left: -25%;
-    width: 77%;
-    transform: translateY(10rem);
-  }
-  .gradient {
-    transform: translateY(10rem);
-  }
-  .hero-btn {
-    width: 75%;
-    font-size: clamp(1.8rem, 3vw, 3rem);
-  }
-
-  div {
-    .logo {
-      width: 55% !important;
-      padding-top: 15% !important;
-    }
-  }
-}
-
-@media (max-width: 805px) {
-  .hero-text {
-    width: 65%;
-    padding-top: 85%;
-    padding-bottom: 2%;
-  }
-  .hero-bg-img {
-    bottom: 43rem;
-    z-index: -2;
-    width: 60%;
-  }
-  .bg-cards {
-    left: -25%;
-    width: 80%;
-    transform: translateY(0);
-  }
-  .gradient {
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 670px) {
-  .hero-text {
-    font-size: 1.5rem;
-  }
-  .bg-cards {
-    left: -30%;
-    bottom: 10%;
-    width: 80%;
-    transform: translateY(0);
-  }
-  .hero-bg-img {
-    bottom: 50rem;
-  }
-  .hero-btn {
-    width: 90%;
-  }
-}
-
-@media (max-width: 540px) {
-  .bg-cards {
-    left: -25%;
-    bottom: 10%;
-    width: 82%;
-    transform: translateY(0);
-  }
-  .hero-btn {
-    width: 90%;
-  }
-}
-
-@media (max-width: 470px) {
-  .hero-text {
-    padding-top: 85%;
-  }
-  .hero-bg-img {
-    bottom: 45rem;
-  }
-  .bg-cards {
-    left: -30%;
-    bottom: 10%;
-    width: 90%;
-  }
-  .hero-text {
-    width: 80%;
-    padding-bottom: 0;
-  }
-  div {
-    .logo {
-      padding-top: 30% !important;
-    }
+  .hero-heading {
+    padding-top: 105%;
   }
 }
 
 /* (320px–395px) */
-@media (max-width: 395px) {
-  .hero-text {
-    padding-top: 100%;
-  }
+@media (max-width: 441px) {
   .hero-bg-img {
-    bottom: 45rem;
-  }
-  .bg-cards {
-    bottom: 15%;
+    top: 5%;
+    width: 68%;
   }
   .hero-text {
-    width: 85%;
-    font-size: 1.3rem;
-    padding-bottom: 0;
+    gap: 1rem;
+    width: 100%;
+  }
+  .hero-heading {
+    font-size: clamp(2rem, calc(1rem + 4vw), 4rem);
+    padding-top: 115%;
+  }
+  .hero-sub-heading {
+    font-size: clamp(1rem, calc(1rem + 2vw), 2.5rem);
+  }
+  .hero-sub-text {
+    font-size: clamp(0.8rem, calc(0.7rem + 1.4vw), 1.6rem);
   }
 }
 </style>

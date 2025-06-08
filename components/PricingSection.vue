@@ -1,38 +1,38 @@
 <script setup>
-import rentBg1 from "@/assets/images/rent-bg-1.png";
-import rentBg2 from "@/assets/images/rent-bg-2.png";
-import rentBg3 from "@/assets/images/rent-bg-3.png";
+import priceBg1 from "@/assets/images/price-bg-1.png";
+import priceBg2 from "@/assets/images/price-bg-2.png";
+import priceBg3 from "@/assets/images/price-bg-3.png";
 
-const rentCards = [
-  {
-    heading: "Название карточки в две строки",
-    price: "10 000 ₽",
-    subHeading: "Название карточки:",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
-    bg: rentBg2,
-  },
-  {
-    heading: "Название карточки в две строки",
-    price: "10 000 ₽",
-    subHeading: "Название карточки:",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
-    bg: rentBg1,
-  },
-  {
-    heading: "Название карточки в две строки",
-    price: "10 000 ₽",
-    subHeading: "Название карточки:",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
-    bg: rentBg3,
-  },
-];
+// const rentCards = [
+//   {
+//     heading: "Название карточки в две строки",
+//     price: "10 000 ₽",
+//     subHeading: "Название карточки:",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+//     bg: rentBg2,
+//   },
+//   {
+//     heading: "Название карточки в две строки",
+//     price: "10 000 ₽",
+//     subHeading: "Название карточки:",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+//     bg: rentBg1,
+//   },
+//   {
+//     heading: "Название карточки в две строки",
+//     price: "10 000 ₽",
+//     subHeading: "Название карточки:",
+//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
+//     bg: rentBg3,
+//   },
+// ];
 </script>
 
 <template>
   <section class="rent-section" id="pricing">
     <h2>Тарифы</h2>
     <div class="pricing-cards">
-      <div class="pricing-card">
+      <div class="pricing-card" :style="{ backgroundImage: `url(${priceBg1})` }">
         <div class="pracing-card-info">
           <div class="pricing-row">
             <p class="heading-text">
@@ -54,7 +54,7 @@ const rentCards = [
           Зарегистрироваться
         </button>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card" :style="{ backgroundImage: `url(${priceBg2})` }">
         <div class="pracing-card-info">
           <div class="pricing-row">
             <p class="heading-text">
@@ -75,7 +75,7 @@ const rentCards = [
         </div>
         <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card" :style="{ backgroundImage: `url(${priceBg3})` }">
         <div class="pracing-card-info">
           <p class="heading-text">
             Проведение корпоративных турниров, корпоративных чемпионатов,
@@ -106,7 +106,7 @@ const rentCards = [
     <!-- <div class="rent-cards">
       <RentCard v-for="(card, index) in rentCards" :key="index" :card="card" />
     </div> -->
-    <img class="bg-dots" src="/assets/images/faq-bg-dots.png" alt="" />
+    <img class="bg-dots" src="/assets/images/bg-dots-2.png" alt="" />
   </section>
 </template>
 
@@ -125,6 +125,7 @@ const rentCards = [
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  /* padding: 0 6rem; */
 }
 .pricing-card {
   display: flex;
@@ -137,7 +138,7 @@ const rentCards = [
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: var(--dark-bg-color);
+  /* background-color: var(--dark-bg-color); */
   backdrop-filter: blur(3px);
 }
 .pracing-card-info {
@@ -161,14 +162,8 @@ const rentCards = [
 .colored-price {
   font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 700;
-
-  background-image: linear-gradient(
-    to left,
-    var(--light-gradient-color) 90%,
-    var(--dark-gradient-color)
-  );
-  background-clip: text;
-  color: transparent;
+  width: fit-content;
+  color: var(--light-gradient-color);
 }
 .order-btn {
   background: linear-gradient(
@@ -214,7 +209,7 @@ const rentCards = [
     font-size: clamp(1.2rem, 2vw, 1.5rem);
   }
   .order-btn {
-    font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
   }
 }
 
@@ -252,7 +247,7 @@ const rentCards = [
 } */
 
 /* (-590px) */
-@media (max-width: 590px) {
+@media (max-width: 490px) {
   .pricing-cards {
     display: flex;
     flex-direction: column;

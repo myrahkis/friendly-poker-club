@@ -55,6 +55,7 @@ const feedbacks = [
 // кол-во отображаемых карточек в завсиисмости от ширины экрана
 function getVisibleCount() {
   const w = window.innerWidth;
+  if (w < 550) return 1;
   if (w < 970) return 2;
   if (w < 1275) return 3;
   return 4;
@@ -74,7 +75,9 @@ const isTransition = ref(true);
 // сдвиг
 const cardWidth = computed(
   () =>
-    `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${visibleCount.value})`
+    `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${
+      visibleCount.value
+    })`
 );
 const baseTranslate = computed(
   () => -(currentIndex.value * 100) / visibleCount.value + "%"

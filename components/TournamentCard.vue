@@ -33,10 +33,12 @@ const { date, dayOfWeek, schedule } = tournament;
       <div class="schedules-row">
         <div class="schedules-time">
           <div class="time-sub-row">
-            <span>c</span> <span class="time-styled">19:00</span>
+            <span class="reg-text">c</span>
+            <span class="time-styled">19:00</span>
           </div>
           <div class="time-sub-row">
-            <span>до</span> <span>победителя</span>
+            <span class="reg-text">до</span>
+            <span class="reg-text">победителя</span>
           </div>
         </div>
         <div class="schedules-name">
@@ -50,10 +52,12 @@ const { date, dayOfWeek, schedule } = tournament;
       <div class="schedules-row">
         <div class="schedules-time">
           <div class="time-sub-row">
-            <span>c</span> <span class="time-styled">19:30</span>
+            <span class="reg-text">c</span>
+            <span class="time-styled">19:30</span>
           </div>
           <div class="time-sub-row">
-            <span>до</span> <span>победителя</span>
+            <span class="reg-text">до</span>
+            <span class="reg-text">победителя</span>
           </div>
         </div>
         <div class="schedules-name">
@@ -69,10 +73,12 @@ const { date, dayOfWeek, schedule } = tournament;
       <div class="schedules-row">
         <div class="schedules-time">
           <div class="time-sub-row">
-            <span>c</span> <span class="time-styled">14:00</span>
+            <span class="reg-text">c</span>
+            <span class="time-styled">14:00</span>
           </div>
           <div class="time-sub-row">
-            <span>до</span> <span class="time-styled">02:00</span>
+            <span class="reg-text">до</span>
+            <span class="time-styled">02:00</span>
           </div>
         </div>
         <div class="schedules-name">
@@ -115,9 +121,9 @@ const { date, dayOfWeek, schedule } = tournament;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.5rem;
 
   p {
+    font-size: 1.5rem;
     font-weight: 700;
   }
 }
@@ -186,11 +192,88 @@ const { date, dayOfWeek, schedule } = tournament;
 
 /* (480px–767px) */
 @media (max-width: 767px) {
+  .tournament-card {
+    padding: 1.5rem;
+  }
+  .schedules-row {
+    gap: 1.5rem;
+  }
+  .schedules-name {
+    width: 65%;
+  }
+  .schedules-time {
+    width: 30%;
+  }
+  .header {
+    p {
+      font-size: clamp(1.3rem, 2vw, 1.5rem);
+    }
+  }
+  .reg-text {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
   .time-styled {
-    font-size: clamp(2rem, 2vw, 2.3rem);
+    font-size: clamp(1.6rem, 2vw, 1.9rem);
   }
   .name-heading {
-    font-size: clamp(1.8rem, 2vw, 2rem);
+    font-size: clamp(1.6rem, 2vw, 1.7rem);
+  }
+  .name-rules,
+  .name-desc {
+    font-size: 0.9rem;
+  }
+  .register-btn {
+    padding: 1rem 1.5rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+  }
+}
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .tournament-card {
+    padding: 1.5rem;
+  }
+  .schedules-row {
+    gap: 1.5rem;
+  }
+  .schedules-name {
+    width: 65%;
+  }
+  .schedules-time {
+    width: 30%;
+  }
+  .header {
+    p {
+      font-size: clamp(1.3rem, 2vw, 1.5rem);
+    }
+  }
+  .reg-text {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+  }
+  .time-styled {
+    font-size: clamp(1.6rem, 2vw, 1.9rem);
+  }
+  .name-heading {
+    font-size: clamp(1.6rem, 2vw, 1.7rem);
+  }
+  .name-rules,
+  .name-desc {
+    font-size: 0.9rem;
+  }
+  .register-btn {
+    padding: 1rem 1.5rem;
+    border: 1px solid transparent;
+    font-size: 1rem;
+  }
+}
+
+/* (480px–767px) */
+@media (max-width: 540px) {
+  .schedules-name {
+    width: 80%;
+  }
+  .schedules-time {
+    width: 20%;
   }
 }
 </style>

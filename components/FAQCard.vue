@@ -127,11 +127,11 @@ const emit = defineEmits(["toggle"]);
   width: fit-content;
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
 }
-::v-deep a:link,
-::v-deep a:visited {
+:deep(a:link),
+:deep(a:visited) {
   color: var(--light-gradient-color);
 }
-::v-deep a:hover {
+:deep(a:hover) {
   text-decoration: underline;
 }
 

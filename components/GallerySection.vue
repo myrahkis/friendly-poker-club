@@ -76,7 +76,7 @@
 
 .gallery-btn {
   width: 40%;
-  font-size: clamp(1.5rem, 1.5vw, 2rem);
+  font-size: clamp(1.3rem, 1.5vw, 2rem);
   font-weight: 400;
   margin-top: 2rem;
   align-self: center;
@@ -89,11 +89,10 @@
 /* (480px–767px) */
 @media (max-width: 767px) {
   .gallery-grid {
-    grid-template-columns: repeat(7, 0.25fr);
-    grid-template-rows: 0.4fr 0.5fr 0.66fr;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: 0.3fr 0.15fr 0.3fr minmax(30rem, 0.3fr);
     gap: 0.5rem;
   }
-
   .grid-cell-1,
   .grid-cell-2,
   .grid-cell-3,
@@ -102,6 +101,26 @@
     img {
       border-radius: 1.5rem;
     }
+  }
+  .grid-cell-1 {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+  .grid-cell-2 {
+    grid-column: 2 / -1;
+    grid-row: 1 / 3;
+  }
+  .grid-cell-3 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+  .grid-cell-4 {
+    grid-column: 2 / -1;
+    grid-row: 3 / 4;
+  }
+  .grid-cell-5 {
+    grid-column: 1 / -1;
+    grid-row: 4 / -1;
   }
 }
 </style>
