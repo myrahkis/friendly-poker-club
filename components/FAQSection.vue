@@ -101,7 +101,7 @@ function toggleCard(idx) {
 }
 
 /* (1024px–1279px) */
-@media (max-width: 1279px) {
+@media (max-width: 1430px) {
   .faq-cards {
     display: grid;
     grid-template-columns: 35rem 35rem;

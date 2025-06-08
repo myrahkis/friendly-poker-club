@@ -183,8 +183,40 @@ const { date, dayOfWeek, schedule } = tournament;
   color: var(--light-gradient-color);
 }
 
+@media (max-width: 1400px) {
+  .schedules-time {
+    width: 30%;
+    font-size: clamp(0.9rem, 1vw, 1.05rem);
+  }
+  .schedules-row {
+    gap: 2rem;
+  }
+  .time-styled {
+    font-size: clamp(1.5rem, 1.3vw, 2.3rem);
+  }
+  .schedules-name {
+    width: 70%;
+  }
+  .name-heading {
+    font-size: clamp(1.6rem, 2vw, 1.8rem);
+  }
+  .name-rules {
+    font-size: 1rem;
+  }
+  .name-desc {
+    font-size: 1rem;
+    color: var(--light-gradient-color);
+  }
+}
+
 /* (480px–767px) */
 @media (max-width: 1279px) {
+  /* .schedules-time {
+    width: 15%;
+  }
+  .schedules-name {
+    width: 80%;
+  } */
   .tournament-card {
     padding: 3rem;
   }
@@ -268,10 +300,16 @@ const { date, dayOfWeek, schedule } = tournament;
 }
 
 /* (480px–767px) */
-@media (max-width: 540px) {
+@media (max-width: 600px) {
   .schedules-name {
     width: 80%;
   }
+  .schedules-time {
+    width: 15%;
+  }
+}
+/* (480px–767px) */
+@media (max-width: 500px) {
   .schedules-time {
     width: 20%;
   }
