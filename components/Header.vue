@@ -145,6 +145,7 @@ defineExpose({ header });
 }
 .header-info {
   display: flex;
+  justify-content: end;
   align-items: center;
   gap: 1.5rem;
 }
