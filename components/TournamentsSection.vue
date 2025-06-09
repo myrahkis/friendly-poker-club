@@ -213,21 +213,25 @@ watch(selectedCity, (newCity) => {
   width: 20rem;
 }
 
+@media (max-width: 1400px) {
+  .tournaments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 0.5fr);
+  }
+}
+
 /* (1024px–1279px) */
 @media (max-width: 1279px) {
+
+}
+
+/* (768px–1023px) */
+@media (max-width: 1023px) {
   .tournaments-grid {
     display: grid;
     grid-template-columns: repeat(2, 0.5fr);
   }
 }
-
-/* (768px–1023px) */
-/* @media (max-width: 1023px) {
-  .tournaments-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 0.5fr);
-  }
-} */
 
 /* (480px–767px) */
 @media (max-width: 600px) {

@@ -322,8 +322,11 @@
 /* (320px–395px) */
 @media (max-width: 441px) {
   .hero-bg-img {
-    top: 5%;
+    top: 9%;
     width: 68%;
+  }
+  .bg-cards {
+    top: 28%;
   }
   .hero-text {
     gap: 1rem;

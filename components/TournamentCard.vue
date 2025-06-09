@@ -148,28 +148,34 @@ const { date, dayOfWeek, schedule } = tournament;
   gap: 1rem;
 }
 .schedules-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: 7rem auto;
+  gap: 2rem;
 }
 .schedules-time {
+  grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
-  width: 29%;
-  font-size: 1.2rem;
+  /* width: 29%; */
+  font-size: 1rem;
 }
 .time-sub-row {
   display: flex;
-  justify-content: space-between;
   align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
+/* .reg-text {
+  font-size: 1.5rem; */
+
 .time-styled {
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
 .schedules-name {
-  width: 60%;
+  grid-column: 2 / -1;
+  /* width: 60%; */
 }
 .name-heading {
   font-size: 2rem;
@@ -185,17 +191,17 @@ const { date, dayOfWeek, schedule } = tournament;
 
 @media (max-width: 1400px) {
   .schedules-time {
-    width: 30%;
+    /* width: 30%; */
     font-size: clamp(0.9rem, 1vw, 1.05rem);
   }
   .schedules-row {
-    gap: 2rem;
+    /* gap: 2rem; */
   }
   .time-styled {
     font-size: clamp(1.5rem, 1.3vw, 2.3rem);
   }
   .schedules-name {
-    width: 70%;
+    /* width: 70%; */
   }
   .name-heading {
     font-size: clamp(1.6rem, 2vw, 1.8rem);
@@ -231,10 +237,10 @@ const { date, dayOfWeek, schedule } = tournament;
     gap: 1.5rem;
   }
   .schedules-name {
-    width: 65%;
+    /* width: 65%; */
   }
   .schedules-time {
-    width: 30%;
+    /* width: 30%; */
   }
   .header {
     p {
@@ -269,10 +275,10 @@ const { date, dayOfWeek, schedule } = tournament;
     gap: 1.5rem;
   }
   .schedules-name {
-    width: 65%;
+    /* width: 65%; */
   }
   .schedules-time {
-    width: 30%;
+    /* width: 30%; */
   }
   .header {
     p {
@@ -302,16 +308,16 @@ const { date, dayOfWeek, schedule } = tournament;
 /* (480px–767px) */
 @media (max-width: 600px) {
   .schedules-name {
-    width: 80%;
+    /* width: 80%; */
   }
   .schedules-time {
-    width: 15%;
+    /* width: 15%; */
   }
 }
 /* (480px–767px) */
 @media (max-width: 500px) {
   .schedules-time {
-    width: 20%;
+    /* width: 20%; */
   }
 }
 </style>
