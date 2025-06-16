@@ -63,15 +63,43 @@ onMounted(() => {
     window.removeEventListener("resize", handleResize);
   });
 });
+
+function goUp() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function handleScroll() {
+  const button = document.getElementById("goUpBtn");
+  const footer = document.querySelector(".contacts-map");
+
+  const footerRect = footer.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  console.log(footerRect);
+
+  if (window.scrollY > 1500) {
+    button.classList.add("show");
+
+    if (footerRect.top < viewportHeight) {
+      const overlap = viewportHeight - footerRect.top;
+      button.style.transform = `translateY(-${overlap}px)`;
+    } else {
+      button.style.transform = "translateY(0)";
+    }
+  } else {
+    button.classList.remove("show");
+  }
+}
+
+window.addEventListener("scroll", handleScroll);
 </script>
 
 <template>
-  <div>
-    <Header ref="header" :useOpenMenu="useOpenMenu" />
-    <OpenedMobileHeader v-if="openMenu" :goToAnchor="goToAnchor" />
-    <NuxtPage v-if="!openMenu" />
-    <Footer v-if="!openMenu" />
-  </div>
+  <button class="up-btn" id="goUpBtn" @click="goUp">
+    <img src="/assets/icons/btn-next.svg" alt="" />
+  </button>
+  <Header ref="header" :useOpenMenu="useOpenMenu" />
+  <OpenedMobileHeader v-if="openMenu" :goToAnchor="goToAnchor" />
+  <NuxtPage v-if="!openMenu" />
+  <Footer v-if="!openMenu" />
 </template>
 
 <style scoped>
@@ -83,5 +111,22 @@ onMounted(() => {
 .hidden {
   box-shadow: none;
   transform: translateY(-100%);
+}
+
+.up-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+
+  img {
+    transform: rotate(-90deg);
+    width: 8rem;
+  }
+}
+.up-btn.show {
+  opacity: 1;
 }
 </style>

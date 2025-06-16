@@ -4,7 +4,7 @@ import Socials from "./Socials.vue";
 
 <template>
   <footer class="footer">
-    <div class="footer-container">
+    <div class="footer-container" id="footer-container">
       <div class="footer-grid">
         <div class="logo-cell">
           <Logo width="30rem" paddingTop="0" />
