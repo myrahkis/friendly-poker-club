@@ -23,7 +23,12 @@ const { date, dayOfWeek, schedule } = tournament;
   >
     <div class="header">
       <p>{{ date }} - {{ dayOfWeek }}</p>
-      <a class="register-btn u-shimmering-gradient-hover">Зарегистрироваться</a>
+      <a
+        v-if="index !== lastIndex"
+        class="register-btn u-shimmering-gradient-hover"
+        >Зарегистрироваться</a
+      >
+      <a v-else class="register-btn u-shimmering-gradient-hover">Лидерборд</a>
     </div>
     <!-- <h4>
       {{ heading }}

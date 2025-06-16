@@ -71,7 +71,6 @@ function toggleCard(idx) {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
-  padding: 10rem 0;
 }
 
 .bg-chip-full-1,

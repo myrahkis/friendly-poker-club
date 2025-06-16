@@ -1,4 +1,9 @@
 <script setup>
+import { TournamentsDescriptions } from "#components";
+
+const isDescriptionsOpen = ref(false);
+const descriptionsContainer = ref(null);
+
 const route = useRoute();
 
 const selectedCity = computed(() => {
@@ -103,29 +108,6 @@ function buildNext7DaysFromWeekdayJson(raw) {
 // console.log(tournaments);
 
 /**
- * в полночь сдвигает список на одну дату
- */
-// function scheduleMidnightRefresh() {
-//   if (midnightTimeout) {
-//     clearTimeout(midnightTimeout);
-//     midnightTimeout = null;
-//   }
-
-//   const now = new Date();
-//   const nextMidnight = new Date(
-//     now.getFullYear(),
-//     now.getMonth(),
-//     now.getDate() + 1
-//   );
-//   const msUntilMidnight = nextMidnight.getTime() - now.getTime();
-
-//   midnightTimeout = setTimeout(() => {
-//     tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
-//     scheduleMidnightRefresh();
-//   }, msUntilMidnight + 20);
-// }
-
-/**
  * Загружает файл setver/data/{city}.json, парсинг
  */
 async function loadCityData(cityName) {
@@ -148,6 +130,24 @@ async function loadCityData(cityName) {
   }
 }
 
+function toggleDescriptions() {
+  isDescriptionsOpen.value = !isDescriptionsOpen.value;
+
+  if (isDescriptionsOpen.value) {
+    nextTick(() => {
+      if (
+        descriptionsContainer.value &&
+        descriptionsContainer.value.scrollIntoView
+      ) {
+        descriptionsContainer.value.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  }
+}
+
 onMounted(() => {
   loadCityData(selectedCity.value);
 });
@@ -159,7 +159,12 @@ watch(selectedCity, (newCity) => {
 
 <template>
   <section class="tournaments-section">
-    <h2>Расписание турниров</h2>
+    <div class="tournaments-header">
+      <h2>Расписание турниров</h2>
+      <button class="tournaments-desc-btn" @click="toggleDescriptions">
+        Описание турниров
+      </button>
+    </div>
     <!-- <p>({{ selectedCity }})</p> -->
     <div class="tournaments-grid" v-if="tournaments.length !== 0">
       <TournamentCard
@@ -171,6 +176,11 @@ watch(selectedCity, (newCity) => {
       />
     </div>
     <h4 v-else>Турниров в ближайшее время нет!</h4>
+    <transition name="slide-down">
+      <div v-if="isDescriptionsOpen" ref="descriptionsContainer">
+        <TournamentsDescriptions />
+      </div>
+    </transition>
     <img class="bg-spades-img" src="/assets/images/bg-spades.png" alt="" />
     <img class="bg-diamonds-img" src="/assets/images/bg-diamonds.png" alt="" />
     <img class="bg-clubs-img" src="/assets/images/bg-clubs.png" alt="" />
@@ -182,10 +192,23 @@ watch(selectedCity, (newCity) => {
   position: relative;
   padding: 0 var(--horiz-main-padding);
 }
+.tournaments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tournaments-desc-btn {
+  background-color: rgba(37, 37, 37, 0.3);
+  border: 1px solid var(--light-gradient-color);
+  border-radius: 2rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  width: calc(25% - 1.5rem);
+}
 
 .tournaments-grid {
   display: grid;
-  grid-template-columns: repeat(4, 0.5fr);
+  grid-template-columns: repeat(4, 0.25fr);
   grid-template-rows: auto;
   gap: 1.5rem;
 }
@@ -213,6 +236,37 @@ watch(selectedCity, (newCity) => {
   width: 20rem;
 }
 
+/* анимаия для открытия descriptions */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.slide-down-enter-from {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.slide-down-enter-to {
+  max-height: 100vh;
+  opacity: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.slide-down-leave-from {
+  max-height: 100vh;
+  opacity: 1;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.slide-down-leave-to {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 @media (max-width: 1400px) {
   .tournaments-grid {
     display: grid;
@@ -222,7 +276,6 @@ watch(selectedCity, (newCity) => {
 
 /* (1024px–1279px) */
 @media (max-width: 1279px) {
-
 }
 
 /* (768px–1023px) */
