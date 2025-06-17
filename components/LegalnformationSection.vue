@@ -1,9 +1,15 @@
 <script setup>
+import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
+import pdfjsWorkerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+import public_offer from "@/assets/documents/public_offer.pdf";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorkerUrl;
+
 const documents = [
   {
     title:
-      "ПУБЛИЧНЫЙ ДОГОВОР (ДОГОВОР-ОФЕРТА) НА ОКАЗАНИЕ УСЛУГ ПО ПРОВЕДЕНИЮ РАЗВЛЕКАТЕЛЬНЫХ МЕРОПРИЯТИЙ",
-    doc: "DOC 1",
+      "Публичный договор (договор-оферта) на оказание услуг по проведению развлекательных мероприятий",
+    doc: public_offer,
   },
   {
     title:
@@ -19,6 +25,14 @@ const documents = [
     title: "Политика в отношении обработки персональных данных",
     doc: "DOC 4",
   },
+  {
+    title: "Согласие на обработку персональных данных",
+    doc: "DOC 5",
+  },
+  {
+    title: "Лист ознакомления",
+    doc: "DOC 6",
+  },
 ];
 
 const openedDocIdx = ref(null);
@@ -26,6 +40,25 @@ const openedDocIdx = ref(null);
 function toggleDoc(idx) {
   openedDocIdx.value = openedDocIdx.value === idx ? null : idx;
 }
+
+watch(openedDocIdx, async (newIdx) => {
+  if (newIdx === null) return;
+  const container = document.getElementById(`pdf-viewer-${newIdx}`);
+  container.innerHTML = "";
+  const canvas = document.createElement("canvas");
+  container.appendChild(canvas);
+  const ctx = canvas.getContext("2d");
+
+  const pdf = await pdfjsLib.getDocument(documents[newIdx].doc).promise;
+  const page = await pdf.getPage(1);
+  const viewport = page.getViewport({ scale: 1.2 });
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+  await page.render({ canvasContext: ctx, viewport }).promise;
+
+  container.style.userSelect = "none";
+  container.oncontextmenu = () => false;
+});
 </script>
 
 <template>
@@ -49,7 +82,8 @@ function toggleDoc(idx) {
         </div>
         <transition name="slide-fade">
           <div v-show="openedDocIdx === index" class="doc-content">
-            {{ doc }}
+            <div :id="`pdf-viewer-${index}`" class="pdf-viewer-container"></div>
+            <!-- {{ doc }} -->
           </div>
         </transition>
       </div>
@@ -117,6 +151,15 @@ function toggleDoc(idx) {
 }
 .open-doc-btn.open {
   transform: rotate(180deg);
+}
+
+.pdf-viewer-container {
+  position: relative;
+  overflow: hidden;
+  /* выставьте нужные ширину/высоту */
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .slide-fade-enter-active,

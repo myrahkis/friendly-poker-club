@@ -73,7 +73,6 @@ function handleScroll() {
 
   const footerRect = footer.getBoundingClientRect();
   const viewportHeight = window.innerHeight;
-  console.log(footerRect);
 
   if (window.scrollY > 1500) {
     button.classList.add("show");

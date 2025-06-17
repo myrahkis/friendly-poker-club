@@ -17,6 +17,22 @@ export default defineNuxtConfig({
   ssr: false,
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
+  build: {
+    transpile: ["pdfjs-dist"],
+  },
+  vite: {
+    ssr: {
+      noExternal: ["pdfjs-dist"],
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          assetFileNames: "assets/[name].[hash][extname]",
+        },
+      },
+    },
+    assetsInclude: ["**/*.worker.mjs", "**/*.worker.min.mjs", "**/*.mjs"],
+  },
   css: ["@/assets/css/main.css"],
   nitro: {
     preset: "static",
