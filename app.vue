@@ -115,7 +115,7 @@ window.addEventListener("scroll", handleScroll);
 .up-btn {
   position: fixed;
   bottom: 5%;
-  right: 5%;
+  right: var(--horiz-main-padding);
   z-index: 1000;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
