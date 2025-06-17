@@ -33,12 +33,11 @@
 }
 
 .gallery-grid {
-  overflow: hidden;
+  /* overflow: hidden; */
   display: grid;
   grid-template-columns: repeat(7, 0.25fr);
-  grid-template-rows: 0.2fr 0.3fr 0.46fr;
+  grid-template-rows: 0.7fr 0.25fr auto;
   gap: 1rem;
-  height: fit-content;
 }
 
 .grid-cell-1,
@@ -46,6 +45,8 @@
 .grid-cell-3,
 .grid-cell-4,
 .grid-cell-5 {
+  overflow: hidden;
+  
   img {
     border-radius: 2rem;
     width: 100%;

@@ -62,7 +62,7 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
               (от 2 до 9 игроков)**
             </p>
             <p class="heading-text">
-              <span class="colored-price">1 000 руб</span> за первые 2 часа
+              <span class="colored-price">15 000 руб</span> за первые 2 часа
             </p>
           </div>
           <div class="pricing-row">
@@ -160,7 +160,7 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
   font-size: clamp(1rem, 1.5vw, 1.5rem);
 }
 .colored-price {
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: clamp(1.5rem, 2vw, 2.6rem);
   font-weight: 700;
   width: fit-content;
   color: var(--light-gradient-color);
@@ -206,7 +206,7 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
     hyphens: auto;
   }
   .colored-price {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-size: clamp(1.45rem, 2vw, 2rem);
   }
   .order-btn {
     font-size: clamp(1.1rem, 1.5vw, 1.5rem);
