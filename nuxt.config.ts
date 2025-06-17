@@ -24,14 +24,6 @@ export default defineNuxtConfig({
     ssr: {
       noExternal: ["pdfjs-dist"],
     },
-    build: {
-      rollupOptions: {
-        output: {
-          assetFileNames: "assets/[name].[hash][extname]",
-        },
-      },
-    },
-    assetsInclude: ["**/*.worker.mjs", "**/*.worker.min.mjs", "**/*.mjs"],
   },
   css: ["@/assets/css/main.css"],
   nitro: {

@@ -1,9 +1,10 @@
 <script setup>
-import * as pdfjsLib from "pdfjs-dist/build/pdf.mjs";
-import pdfjsWorkerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 import public_offer from "@/assets/documents/public_offer.pdf";
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorkerUrl;
+import additional_agreement from "@/assets/documents/additional_agreement.pdf";
+import event_rules from "@/assets/documents/event_rules.pdf";
+import personal_data_processing_policy from "@/assets/documents/personal_data_processing_policy.pdf";
+import consent_to_processing_personal_data from "@/assets/documents/consent_to_processing_personal_data.pdf";
+import familiarization_sheet from "@/assets/documents/familiarization_sheet.pdf";
 
 const documents = [
   {
@@ -14,26 +15,38 @@ const documents = [
   {
     title:
       "Дополнительное соглашение к публичному договору на оказание услуг по проведению развлекательных мероприятий",
-    doc: "DOC 2",
+    doc: additional_agreement,
   },
   {
     title:
       "Приложение №1 к Публичному Договору На оказание услуг по проведению развлекательных мероприятий",
-    doc: "DOC 3",
+    doc: event_rules,
   },
   {
     title: "Политика в отношении обработки персональных данных",
-    doc: "DOC 4",
+    doc: personal_data_processing_policy,
   },
   {
     title: "Согласие на обработку персональных данных",
-    doc: "DOC 5",
+    doc: consent_to_processing_personal_data,
   },
   {
     title: "Лист ознакомления",
-    doc: "DOC 6",
+    doc: familiarization_sheet,
   },
 ];
+
+const pdfjsLib = ref(null);
+const isDocLoading = ref(false);
+
+onMounted(async () => {
+  const lib = await import("pdfjs-dist/build/pdf.mjs");
+  const workerUrl = (await import("pdfjs-dist/build/pdf.worker.min.mjs?url"))
+    .default;
+
+  pdfjsLib.value = lib;
+  lib.GlobalWorkerOptions.workerSrc = workerUrl;
+});
 
 const openedDocIdx = ref(null);
 
@@ -42,19 +55,38 @@ function toggleDoc(idx) {
 }
 
 watch(openedDocIdx, async (newIdx) => {
-  if (newIdx === null) return;
+  if (newIdx == null || !pdfjsLib.value) return;
+
+  const pdfjs = pdfjsLib.value;
   const container = document.getElementById(`pdf-viewer-${newIdx}`);
   container.innerHTML = "";
-  const canvas = document.createElement("canvas");
-  container.appendChild(canvas);
-  const ctx = canvas.getContext("2d");
 
-  const pdf = await pdfjsLib.getDocument(documents[newIdx].doc).promise;
-  const page = await pdf.getPage(1);
-  const viewport = page.getViewport({ scale: 1.2 });
-  canvas.width = viewport.width;
-  canvas.height = viewport.height;
-  await page.render({ canvasContext: ctx, viewport }).promise;
+  isDocLoading.value = true;
+
+  try {
+    const pdfjs = pdfjsLib.value;
+
+    const loadingTask = pdfjs.getDocument(documents[newIdx].doc);
+    const pdf = await loadingTask.promise;
+
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      const page = await pdf.getPage(pageNum);
+      const viewport = page.getViewport({ scale: 1.2 });
+      const canvas = document.createElement("canvas");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.style.display = "block";
+      canvas.style.margin = "1rem auto";
+
+      const ctx = canvas.getContext("2d");
+      await page.render({ canvasContext: ctx, viewport }).promise;
+      container.appendChild(canvas);
+    }
+  } catch (e) {
+    console.error("Ошибка при загрузке PDF:", e);
+  } finally {
+    isDocLoading.value = false;
+  }
 
   container.style.userSelect = "none";
   container.oncontextmenu = () => false;
@@ -155,10 +187,10 @@ watch(openedDocIdx, async (newIdx) => {
 
 .pdf-viewer-container {
   position: relative;
-  overflow: hidden;
-  /* выставьте нужные ширину/высоту */
+  overflow-y: auto;
+  height: 90vh;
   width: 100%;
-  max-width: 800px;
+  max-width: 80rem;
   margin: 0 auto;
 }
 
