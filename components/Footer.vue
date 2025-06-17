@@ -6,41 +6,31 @@ import Socials from "./Socials.vue";
   <footer class="footer">
     <div class="footer-container" id="footer-container">
       <div class="footer-grid">
-        <div class="logo-cell">
-          <Logo width="30rem" paddingTop="0" />
+        <Logo width="25rem" paddingTop="0" />
+        <div class="sole-proprietor-info">
+          <p>ИП Хорисова Вероника Алексеевна</p>
+          <p>ИНН: 771671533154</p>
+          <p>ОГРН: 322774600601658</p>
+          <p>Юр. адрес: г. Москва, ул. Енисейская, д. 17, к. 1</p>
+        </div>
+        <div class="contacts">
           <div>
             <p class="phone">+7 800 000-00-00</p>
             <p class="email">addax18490@mixzu.net</p>
           </div>
+          <Socials width="4rem" />
         </div>
-        <ul class="links-cell">
-          <li>Вопрос-ответ</li>
-          <li>О нас</li>
-          <li>Видео</li>
-          <li>Отзывы</li>
-          <li>Контакты</li>
-        </ul>
-        <ul class="links-cell">
-          <li>Вопрос-ответ</li>
-          <li>О нас</li>
-          <li>Видео</li>
-          <li>Отзывы</li>
-          <li>Контакты</li>
-        </ul>
-        <ul class="links-cell">
-          <li>Вопрос-ответ</li>
-          <li>О нас</li>
-          <li>Видео</li>
-          <li>Отзывы</li>
-          <li>Контакты</li>
-        </ul>
       </div>
-      <div class="lower-footer">
-        <Socials width="5rem" />
-        <div class="policy">
-          <p>Политика обработки персональных данных</p>
-          <p>Пользовательское соглашение</p>
-        </div>
+      <div class="policy">
+        <p>&copy; 2025 Friendly poker club</p>
+        <a href="" class="underline-hover"><p>Договор оферта</p></a>
+        <a href="" class="underline-hover"><p>Дополнительное соглашение</p></a>
+        <a href="" class="underline-hover"
+          ><p>Приложение №1 к договору (правила клуба)</p></a
+        >
+        <a href="" class="underline-hover"
+          ><p>Политика обработки персональных данных</p></a
+        >
       </div>
     </div>
     <div class="gradient"></div>
@@ -54,7 +44,7 @@ import Socials from "./Socials.vue";
 .footer {
   position: relative;
   padding: 0 var(--horiz-main-padding);
-  padding-top: 6rem;
+  padding-top: 5rem;
   padding-bottom: 5rem;
 }
 .footer-container {
@@ -66,59 +56,41 @@ import Socials from "./Socials.vue";
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 0.5fr 0.25fr 0.25fr 0.25fr;
-  grid-template-rows: minmax(25rem, 0.6fr);
+  grid-template-columns: minmax(20rem, 0.35fr) auto 0.4fr 0.4fr;
+  grid-template-rows: 1fr auto;
   padding-bottom: 5rem;
 }
+.sole-proprietor-info {
+  grid-column: 2 / 3;
 
-.logo-cell {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.phone {
-  font-size: clamp(1.8rem, 2.5vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.email {
-  font-size: clamp(1.2rem, 1.5vw, 2rem);
-  font-weight: 400;
-}
-
-.links-cell {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  gap: 1.5rem;
-  line-height: 1.3;
-  list-style: none;
-  font-size: clamp(1.2rem, 1.5vw, 2rem);
-  font-weight: 400;
-
-  li {
-    cursor: pointer;
-    transition: all 0.2s;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  p {
+    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+    font-weight: 400;
   }
 }
-
-.lower-footer {
+.contacts {
+  grid-column: 4 / -1;
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  justify-self: end;
+  gap: 0.5rem;
 }
+.phone {
+  font-size: clamp(1.8rem, 2.5vw, 2.3rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-align: end;
+}
+.email {
+  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+  font-weight: 400;
+  text-align: end;
+}
+
 .policy {
   display: flex;
+  justify-content: space-between;
   width: 100%;
-}
-.policy p:first-child {
-  margin: 0 auto;
-}
-.policy p:last-child {
-  margin-left: auto;
 }
 
 .gradient {
@@ -145,13 +117,13 @@ import Socials from "./Socials.vue";
   right: 0;
   z-index: -2;
   transform: translateY(-25rem);
-  width: 60rem;
+  width: 40rem;
 }
 .bg-chip-1,
 .bg-chip-2 {
   position: absolute;
   z-index: -2;
-  width: 35rem;
+  width: 30rem;
 }
 .bg-chip-1 {
   top: 0;
