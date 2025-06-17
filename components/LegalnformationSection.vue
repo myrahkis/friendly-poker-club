@@ -224,6 +224,16 @@ watch(openedDocIdx, async (newIdx) => {
   padding-bottom: 0;
 }
 
+/* .loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.297);
+  backdrop-filter: blur(2px);
+} */
 .loader {
   position: absolute;
   width: 4rem;
@@ -233,7 +243,7 @@ watch(openedDocIdx, async (newIdx) => {
   z-index: 1000;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 0.9rem solid var(--dark-gradient-color);
+  border: 1rem solid var(--dark-gradient-color);
   border-left-color: var(--light-gradient-color);
   animation: loader 3s infinite;
 }
