@@ -115,6 +115,9 @@ watch(openedDocIdx, async (newIdx) => {
         <transition name="slide-fade">
           <div v-show="openedDocIdx === index" class="doc-content">
             <div :id="`pdf-viewer-${index}`" class="pdf-viewer-container"></div>
+            <div v-if="isDocLoading" class="loader-wrapper">
+              <span class="loader"></span>
+            </div>
             <!-- {{ doc }} -->
           </div>
         </transition>
@@ -172,6 +175,7 @@ watch(openedDocIdx, async (newIdx) => {
 }
 
 .doc-content {
+  position: relative;
   padding: 2rem 1.5rem;
   font-size: 1.8rem;
 }
@@ -218,5 +222,27 @@ watch(openedDocIdx, async (newIdx) => {
   opacity: 0;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.loader {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 0.9rem solid var(--dark-gradient-color);
+  border-left-color: var(--light-gradient-color);
+  animation: loader 3s infinite;
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

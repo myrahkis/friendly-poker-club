@@ -80,27 +80,32 @@ function buildNext7DaysFromWeekdayJson(raw) {
     });
   }
 
-  const now = new Date();
-
-  //переделаь
-  const currentMonthFull = MONTH_NAMES[now.getMonth()].replace(/я$/, "ь");
-
-  const monthlyObj = raw[currentMonthFull];
-  if (monthlyObj && typeof monthlyObj === "object") {
-    const scheduleArr = [];
-    for (const key in monthlyObj) {
-      if (!Object.prototype.hasOwnProperty.call(monthlyObj, key)) continue;
-      const entry = monthlyObj[key];
-      scheduleArr.push(entry.name);
+  const WEEKDAY_FULL_SET = new Set(WEEKDAY_FULL);
+  Object.entries(raw).forEach(([key, obj]) => {
+    if (
+      !WEEKDAY_FULL_SET.has(key) && // не день недели
+      obj &&
+      typeof obj === "object" &&
+      typeof obj.date === "string" // есть поле date
+    ) {
+      const monthlySchedule = [];
+      for (const subKey in obj) {
+        if (
+          subKey !== "date" &&
+          Object.prototype.hasOwnProperty.call(obj, subKey)
+        ) {
+          const entry = obj[subKey];
+          monthlySchedule.push(entry.name);
+        }
+      }
+      result.push({
+        date: obj.date,
+        dayOfWeek: "",
+        heading: "Турнир месяца",
+        schedule: monthlySchedule,
+      });
     }
-
-    result.push({
-      date: currentMonthFull,
-      dayOfWeek: "",
-      // heading: "Турнир месяца",
-      schedule: scheduleArr,
-    });
-  }
+  });
 
   return result;
 }

@@ -93,7 +93,7 @@ window.addEventListener("scroll", handleScroll);
 
 <template>
   <button class="up-btn" id="goUpBtn" @click="goUp">
-    <img src="/assets/icons/btn-next.svg" alt="" />
+    <img src="/assets/icons/up-btn.png" alt="" />
   </button>
   <Header ref="header" :useOpenMenu="useOpenMenu" />
   <OpenedMobileHeader v-if="openMenu" :goToAnchor="goToAnchor" />
@@ -121,7 +121,7 @@ window.addEventListener("scroll", handleScroll);
   transition: opacity 0.4s ease-in-out;
 
   img {
-    transform: rotate(-90deg);
+    /* transform: rotate(-90deg); */
     width: 8rem;
   }
 }

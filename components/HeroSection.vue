@@ -25,7 +25,7 @@
       </div>
       <img
         class="hero-bg-img"
-        src="/assets/images/hero-bg-img.png"
+        src="/assets/images/hero-bg-img.svg"
         alt="hero-bg"
       />
     </div>
@@ -107,9 +107,9 @@
 .hero-bg-img {
   position: absolute;
   right: 0;
-  bottom: 0;
-  width: 50%;
-  transform: translateY(15rem);
+  bottom: 18rem;
+  width: 60%;
+  transform: translateX(20rem) translateY(15rem);
   z-index: 0;
 }
 
@@ -158,8 +158,8 @@
   }
   .hero-bg-img {
     right: var(--horiz-main-padding);
-    width: 33%;
-    transform: translateY(-5rem);
+    width: 40%;
+    transform: translateY(0);
   }
   .bg-cards {
     position: absolute;
@@ -184,13 +184,12 @@
   }
   .hero-bg-img {
     right: var(--horiz-main-padding);
-    width: 30%;
-    transform: translateY(-5rem);
+    width: 35%;
   }
 }
 @media (min-width: 3000px) {
   .hero-bg-img {
-    width: 25%;
+    width: 30%;
     /* transform: translateY(0); */
   }
   /* .gradient {
@@ -206,7 +205,7 @@
 
 @media (max-width: 1444px) {
   .hero-bg-img {
-    transform: translateY(10rem);
+    transform: translateX(20rem) translateY(10rem);
   }
 }
 
@@ -255,6 +254,7 @@
     width: 95%;
   }
   .hero-bg-img {
+    width: 80%;
     top: 3%;
   }
   div {
@@ -301,7 +301,8 @@
   }
   .hero-bg-img {
     top: 4%;
-    width: 60%;
+    width: 83%;
+    transform: translateX(15rem) translateY(10rem);
   }
   .hero-text {
     width: 85%;
@@ -334,13 +335,17 @@
   .hero-heading {
     padding-top: 105%;
   }
+  .hero-bg-img {
+    width: 85%;
+    transform: translateX(10rem) translateY(13rem);
+  }
 }
 
 /* (320px–395px) */
 @media (max-width: 441px) {
   .hero-bg-img {
-    top: 9%;
-    width: 68%;
+    width: 95%;
+    transform: translateX(10rem) translateY(15rem);
   }
   .bg-cards {
     top: 28%;
