@@ -286,7 +286,6 @@ watch(selectedCity, (newCity) => {
   }
 }
 
-/* (480px–767px) */
 @media (max-width: 600px) {
   .tournaments-grid {
     display: flex;

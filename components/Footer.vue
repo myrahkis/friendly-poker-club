@@ -22,13 +22,15 @@ import Socials from "./Socials.vue";
         </div>
       </div>
       <div class="policy">
-        <p>&copy; 2025 Friendly poker club</p>
-        <a href="" class="underline-hover"><p>Договор оферта</p></a>
-        <a href="" class="underline-hover"><p>Дополнительное соглашение</p></a>
-        <a href="" class="underline-hover"
+        <p class="credits">&copy; 2025 Friendly poker club</p>
+        <a href="" class="policy-1 underline-hover"><p>Договор оферта</p></a>
+        <a href="" class="policy-2 underline-hover"
+          ><p>Дополнительное соглашение</p></a
+        >
+        <a href="" class="policy-3 underline-hover"
           ><p>Приложение №1 к договору (правила клуба)</p></a
         >
-        <a href="" class="underline-hover"
+        <a href="" class="policy-4 underline-hover"
           ><p>Политика обработки персональных данных</p></a
         >
       </div>
@@ -56,7 +58,7 @@ import Socials from "./Socials.vue";
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(20rem, 0.35fr) auto 0.4fr 0.4fr;
+  grid-template-columns: 30rem auto 0.4fr 0.4fr;
   grid-template-rows: 1fr auto;
   padding-bottom: 5rem;
 }
@@ -88,9 +90,12 @@ import Socials from "./Socials.vue";
 }
 
 .policy {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, auto);
   justify-content: space-between;
-  width: 100%;
+  /* display: flex;
+  justify-content: space-between;
+  width: 100%; */
 }
 
 .gradient {
@@ -135,10 +140,64 @@ import Socials from "./Socials.vue";
   right: 40rem;
 }
 
+@media (max-width: 1359px) {
+  .policy {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: 0.5fr 0.5fr;
+    gap: 1rem;
+
+    a {
+      width: fit-content;
+    }
+  }
+  .credits {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 1236px) {
+  .footer-grid {
+    padding-bottom: 2rem;
+  }
+  .policy {
+    display: grid;
+    grid-template-columns: minmax(fit-content, 0.5fr) 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr;
+    gap: 1rem;
+
+    a {
+      width: fit-content;
+    }
+  }
+  .credits {
+    grid-row: 3;
+  }
+  .policy-1 {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+  .policy-2 {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+  .policy-3 {
+    grid-column: 2 / -1;
+    grid-row: 1;
+  }
+  .policy-4 {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+}
+
 @media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 16rem auto 0.4fr;
+  }
   div {
     .logo {
-      width: 80% !important;
+      width: 90% !important;
     }
   }
 
@@ -148,67 +207,70 @@ import Socials from "./Socials.vue";
     .tg-btn,
     .vk-btn {
       svg {
-        width: clamp(3rem, 4.5vw, 5rem) !important;
+        width: clamp(2.5rem, 3.5vw, 4rem) !important;
       }
     }
   }
 
-  .lower-footer {
+  .policy {
     p {
-      font-size: clamp(1.2rem, 1.3vw, 2rem);
+      font-size: clamp(1rem, 2vw, 1.2rem);
     }
   }
 }
 
 @media (max-width: 850px) {
-  .footer-grid {
-    grid-template-columns: 0.5fr 0.5fr 0.5fr;
-    grid-template-rows: auto 0.5fr;
-    row-gap: 5rem;
+  .bg-chip-2 {
+    display: none;
   }
-  .logo-cell {
-    grid-row: 1;
-    grid-column: 1 / -1;
-    justify-content: start;
-  }
+}
 
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .footer-grid {
+    grid-template-columns: minmax(20rem, 0.5fr) 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    gap: 1rem;
+  }
+  .contacts {
+    grid-column: 2 / -1;
+  }
   div {
     .logo {
-      width: 45% !important;
-      padding-bottom: 3rem !important;
+      width: 75% !important;
     }
   }
+}
 
-  .socials-container {
-    margin-bottom: 2rem;
-  }
-
-  .lower-footer {
+@media (max-width: 600px) {
+  .footer-grid {
     display: flex;
     flex-direction: column;
   }
-  .policy {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  div {
+    .logo {
+      width: 45% !important;
+    }
+  }
+  .sole-proprietor-info {
+    order: 3;
+  }
+  .contacts {
+    order: 2;
+    gap: 1rem;
+  }
+  .phone,
+  .email {
+    text-align: start;
+  }
+  .phone {
+    margin-bottom: 0;
   }
 
-  .gradient {
-    height: 70%;
-    transform: translateY(-25rem);
-  }
-  .bg-card {
-    transform: translateY(-25rem) translateX(5rem);
-    width: 40rem;
-  }
-  .bg-chip-1 {
-    width: 25rem;
-    top: 25rem;
-    left: 15rem;
-    transform: translateY(0) translateX(0);
-  }
-  .bg-chip-2 {
-    display: none;
+  .policy {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
   }
 }
 </style>
