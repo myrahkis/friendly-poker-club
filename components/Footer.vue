@@ -1,5 +1,11 @@
 <script setup>
 import Socials from "./Socials.vue";
+
+const openDocState = useState("openDocIndex", () => null);
+
+function openDoc(idx) {
+  openDocState.value = idx;
+}
 </script>
 
 <template>
@@ -23,14 +29,16 @@ import Socials from "./Socials.vue";
       </div>
       <div class="policy">
         <p class="credits">&copy; 2025 Friendly poker club</p>
-        <a href="" class="policy-1 underline-hover"><p>Договор оферта</p></a>
-        <a href="" class="policy-2 underline-hover"
+        <a href="#" @click.prevent="openDoc(0)" class="policy-1 underline-hover"
+          ><p>Договор оферта</p></a
+        >
+        <a href="#" @click.prevent="openDoc(1)" class="policy-2 underline-hover"
           ><p>Дополнительное соглашение</p></a
         >
-        <a href="" class="policy-3 underline-hover"
+        <a href="#" @click.prevent="openDoc(2)" class="policy-3 underline-hover"
           ><p>Приложение №1 к договору (правила клуба)</p></a
         >
-        <a href="" class="policy-4 underline-hover"
+        <a @click.prevent="openDoc(3)" href="#" class="policy-4 underline-hover"
           ><p>Политика обработки персональных данных</p></a
         >
       </div>

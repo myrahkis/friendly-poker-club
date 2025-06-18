@@ -122,10 +122,26 @@ window.addEventListener("scroll", handleScroll);
 
   img {
     /* transform: rotate(-90deg); */
-    width: 8rem;
+    width: clamp(5rem, 10vw, 8rem);
   }
 }
 .up-btn.show {
   opacity: 1;
+}
+
+@media (max-width: 1000px) {
+  .up-btn {
+    bottom: 2% !important;
+  }
+}
+@media (max-width: 690px) {
+  .up-btn {
+    bottom: 8.5% !important;
+  }
+}
+@media (max-width: 380px) {
+  .up-btn {
+    bottom: 10% !important;
+  }
 }
 </style>

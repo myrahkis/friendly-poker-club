@@ -49,10 +49,24 @@ onMounted(async () => {
 });
 
 const openedDocIdx = ref(null);
+const openDocState = useState("openDocIndex");
 
 function toggleDoc(idx) {
   openedDocIdx.value = openedDocIdx.value === idx ? null : idx;
 }
+
+// изменения состояния из footer
+watch(openDocState, async (newIdx) => {
+  if (newIdx === null) return;
+
+  openedDocIdx.value = newIdx;
+  await nextTick();
+  const el = document.getElementById(`pdf-doc-${newIdx}`);
+
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  openDocState.value = null;
+});
 
 watch(openedDocIdx, async (newIdx) => {
   if (newIdx == null || !pdfjsLib.value) return;
@@ -113,12 +127,15 @@ watch(openedDocIdx, async (newIdx) => {
           </button>
         </div>
         <transition name="slide-fade">
-          <div v-show="openedDocIdx === index" class="doc-content">
+          <div
+            v-show="openedDocIdx === index"
+            :id="`pdf-doc-${index}`"
+            class="doc-content"
+          >
             <div :id="`pdf-viewer-${index}`" class="pdf-viewer-container"></div>
             <div v-if="isDocLoading" class="loader-wrapper">
               <span class="loader"></span>
             </div>
-            <!-- {{ doc }} -->
           </div>
         </transition>
       </div>
