@@ -202,6 +202,10 @@ p {
     width: 100% !important;
     max-width: 100% !important;
   }
+
+  h2 {
+    font-size: clamp(3rem, 6vw, 4rem);
+  }
 }
 
 /* (480px–767px) */

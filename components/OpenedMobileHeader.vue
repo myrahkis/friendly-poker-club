@@ -2,9 +2,10 @@
 const links = [
   { text: "О нас", href: "#about-us" },
   { text: "Вопрос-ответ", href: "#faq" },
-  { text: "Видео", href: "#videos" },
+  { text: "Тарифы", href: "#pricing" },
   { text: "Отзывы", href: "#feedbacks" },
   { text: "Контакты", href: "#contacts" },
+  { text: "Правовая инфомация", href: "#documents" },
 ];
 
 const props = defineProps({

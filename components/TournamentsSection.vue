@@ -83,10 +83,10 @@ function buildNext7DaysFromWeekdayJson(raw) {
   const WEEKDAY_FULL_SET = new Set(WEEKDAY_FULL);
   Object.entries(raw).forEach(([key, obj]) => {
     if (
-      !WEEKDAY_FULL_SET.has(key) && // не день недели
+      !WEEKDAY_FULL_SET.has(key) &&
       obj &&
       typeof obj === "object" &&
-      typeof obj.date === "string" // есть поле date
+      typeof obj.date === "string"
     ) {
       const monthlySchedule = [];
       for (const subKey in obj) {
@@ -166,7 +166,10 @@ watch(selectedCity, (newCity) => {
   <section class="tournaments-section">
     <div class="tournaments-header">
       <h2>Расписание турниров</h2>
-      <button class="tournaments-desc-btn" @click="toggleDescriptions">
+      <button
+        class="tournaments-desc-btn u-shimmering-gradient-hover"
+        @click="toggleDescriptions"
+      >
         Описание турниров
       </button>
     </div>
@@ -289,12 +292,40 @@ watch(selectedCity, (newCity) => {
     display: grid;
     grid-template-columns: repeat(2, 0.5fr);
   }
+  .tournaments-desc-btn {
+    width: 25%;
+  }
+}
+
+@media (max-width: 737px) {
+  .tournaments-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+  .tournaments-desc-btn {
+    width: 40%;
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 600px) {
   .tournaments-grid {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 456px) {
+  .tournaments-desc-btn {
+    width: 50%;
+    font-size: 1.2rem;
   }
 }
 </style>
