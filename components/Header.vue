@@ -13,46 +13,6 @@ const links = [
   { text: "Правовая инфомация", href: "#documents" },
 ];
 
-// function getCoords() {
-//   return new Promise((resolve, reject) => {
-//     if (!navigator.geolocation) {
-//       reject(new Error("Geolocation не поддерживается"));
-//     }
-//     navigator.geolocation.getCurrentPosition(
-//       (pos) => resolve(pos.coords),
-//       (err) => reject(err),
-//       { enableHighAccuracy: true }
-//     );
-//   });
-// }
-
-// async function reverseGeocode(lat, lon) {
-//   const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
-//   const res = await fetch(url);
-//   if (!res.ok) throw new Error("Ошибка геокодирования");
-//   const data = await res.json();
-//   return (
-//     data.address.city ||
-//     data.address.town ||
-//     data.address.village ||
-//     data.address.county ||
-//     "не определён"
-//   );
-// }
-
-// async function detectCity() {
-//   try {
-//     const { latitude, longitude } = await getCoords();
-//     city.value = await reverseGeocode(latitude, longitude);
-//   } catch (e) {
-//     console.error(e);
-//     city.value = "Не удалось определить";
-//   }
-// }
-
-// onMounted(() => {
-//   detectCity();
-// });
 
 function toggleMenu() {
   const menu = document.querySelector(".header-menu-btn");

@@ -1,140 +1,21 @@
 <script setup>
-import { TournamentsDescriptions } from "#components";
+import { buildNext7DaysFromWeekdayJson } from "~/helpers/buildTournamentsArr";
 
 const isDescriptionsOpen = ref(false);
 const descriptionsContainer = ref(null);
 
-const route = useRoute();
+const { loading, error, rawData } = useCityData("tournaments");
 
-const selectedCity = computed(() => {
-  return route.query.city;
+const tournaments = computed(() => {
+  if (!rawData.value) return [];
+  return buildNext7DaysFromWeekdayJson(rawData.value);
 });
-
-const loading = ref(false);
-const error = ref(null);
-const rawData = ref({});
-const tournaments = ref([]);
-
-const WEEKDAY_FULL = [
-  "Воскресенье",
-  "Понедельник",
-  "Вторник",
-  "Среда",
-  "Четверг",
-  "Пятница",
-  "Суббота",
-];
-const WEEKDAY_SHORT = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
-const MONTH_NAMES = [
-  "Января",
-  "Февраля",
-  "Марта",
-  "Апреля",
-  "Мая",
-  "Июня",
-  "Июля",
-  "Августа",
-  "Сентября",
-  "Октября",
-  "Ноября",
-  "Декабря",
-];
-
-let midnightTimeout = null;
-
-/**
- * данные из json в массив из 7 ближайших дней:
- * [{ date, dayOfWeek, schedule: {time, name} }, ...]
- */
-function buildNext7DaysFromWeekdayJson(raw) {
-  const result = [];
-  const today = new Date();
-
-  for (let offset = 0; offset < 7; offset++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + offset);
-
-    const dayNumber = d.getDate();
-    const monthName = MONTH_NAMES[d.getMonth()];
-    const fullName = WEEKDAY_FULL[d.getDay()];
-    const shortName = WEEKDAY_SHORT[d.getDay()];
-
-    const dayObj = raw[fullName];
-    const scheduleArr = [];
-
-    if (dayObj && typeof dayObj === "object") {
-      for (const key in dayObj) {
-        if (Object.prototype.hasOwnProperty.call(dayObj, key)) {
-          const entry = dayObj[key];
-
-          scheduleArr.push(entry.name);
-        }
-      }
-    }
-
-    result.push({
-      date: `${dayNumber} ${monthName}`,
-      dayOfWeek: shortName,
-      heading: scheduleArr.length ? "" : "— Нет турнира —",
-      schedule: scheduleArr,
-    });
-  }
-
-  const WEEKDAY_FULL_SET = new Set(WEEKDAY_FULL);
-  Object.entries(raw).forEach(([key, obj]) => {
-    if (
-      !WEEKDAY_FULL_SET.has(key) &&
-      obj &&
-      typeof obj === "object" &&
-      typeof obj.date === "string"
-    ) {
-      const monthlySchedule = [];
-      for (const subKey in obj) {
-        if (
-          subKey !== "date" &&
-          Object.prototype.hasOwnProperty.call(obj, subKey)
-        ) {
-          const entry = obj[subKey];
-          monthlySchedule.push(entry.name);
-        }
-      }
-      result.push({
-        date: obj.date,
-        dayOfWeek: "",
-        heading: "Турнир месяца",
-        schedule: monthlySchedule,
-      });
-    }
-  });
-
-  return result;
-}
 
 // console.log(tournaments);
 
 /**
  * Загружает файл setver/data/{city}.json, парсинг
  */
-async function loadCityData(cityName) {
-  loading.value = true;
-  error.value = null;
-  rawData.value = {};
-  tournaments.value = [];
-
-  try {
-    const module = await import(`@/server/data/${cityName}.json`);
-    rawData.value = module.default || {};
-
-    tournaments.value = buildNext7DaysFromWeekdayJson(rawData.value);
-    // scheduleMidnightRefresh();
-  } catch (err) {
-    console.error(err);
-    error.value = "Не удалось загрузить данные для города: " + cityName;
-  } finally {
-    loading.value = false;
-  }
-}
-
 function toggleDescriptions() {
   isDescriptionsOpen.value = !isDescriptionsOpen.value;
 
@@ -152,14 +33,6 @@ function toggleDescriptions() {
     });
   }
 }
-
-onMounted(() => {
-  loadCityData(selectedCity.value);
-});
-
-watch(selectedCity, (newCity) => {
-  loadCityData(newCity);
-});
 </script>
 
 <template>
