@@ -12,7 +12,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
         <Logo width="45rem" paddingTop="0" />
         <h1 class="hero-heading">
           Легальная офлайн <br class="mobile-br" />
-          игра в покер в {{ cityName }}!
+          игра в покер
+          <span v-if="Object.keys(cityName).length !== 0">в {{ cityName }}</span
+          >!
         </h1>
         <h3 class="hero-sub-heading">
           Для новичков, любителей <br />

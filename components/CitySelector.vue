@@ -4,6 +4,7 @@ import cityOptions from "/server/data/cityOptions.json";
 const open = ref(false);
 const selectedKey = ref("");
 const selectedLabel = ref("");
+const isCityDetecting = ref(false);
 
 const emit = defineEmits(["input"]);
 
@@ -59,12 +60,15 @@ async function reverseGeocode(lat, lon) {
 }
 
 async function detectCityName() {
+  isCityDetecting.value = true;
   try {
     const { latitude, longitude } = await getCoords();
     return await reverseGeocode(latitude, longitude);
   } catch (e) {
     console.warn("detectCityName error:", e);
     return null;
+  } finally {
+    isCityDetecting.value = false;
   }
 }
 
@@ -78,7 +82,53 @@ onMounted(async () => {
   }
 
   // опредкление реального города
-  const cityName = await detectCityName();
+  // состояние permissions api
+  let permState = "prompt";
+  try {
+    const perm = await navigator.permissions.query({ name: "geolocation" });
+    permState = perm.state;
+  } catch (e) {
+    console.warn("Permissions API не поддерживается, будем запрашивать сразу");
+  }
+
+  if (permState === "denied") {
+    return;
+  }
+
+  // согласие
+  let coords = null;
+  if (permState === "granted") {
+    isCityDetecting.value = true;
+    try {
+      coords = await getCoords();
+    } catch (e) {
+      console.warn("Не удалось получить координаты:", e);
+    } finally {
+      isCityDetecting.value = false;
+    }
+  } else {
+    // prompt
+    try {
+      coords = await getCoords();
+    } catch (e) {
+      console.warn("Пользователь отказал или ошибка геолокации:", e);
+      return;
+    }
+  }
+
+  if (!coords) return;
+
+  isCityDetecting.value = true;
+  let cityName = null;
+
+  try {
+    cityName = await detectCityName();
+  } catch (e) {
+    console.error("Ошибка при определении города:", e);
+  } finally {
+    isCityDetecting.value = false;
+  }
+
   if (!cityName) return;
 
   // совпадение, если отличается от текущего, то меняется
@@ -96,7 +146,12 @@ onMounted(async () => {
 <template>
   <div class="city-selector" @blur="open = false">
     <div class="selected" :class="{ open: open }" @click="toggleOpen">
-      {{ selectedLabel }}
+      <div v-if="isCityDetecting">
+        <span class="loader"></span>
+      </div>
+      <span v-else>
+        {{ selectedLabel }}
+      </span>
     </div>
     <div class="items" :class="{ selectHide: !open }">
       <div
@@ -112,33 +167,14 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-/* .city-selector {
-  cursor: pointer;
-  background-color: transparent;
-  color: white;
-  font-weight: 700;
-  border: 0;
-  padding: 0.8rem 1.5rem;
-  padding-right: 3rem;
-
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  background-repeat: no-repeat;
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
-    linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: right 15px top 1em, right 10px top 1em;
-  background-size: 5px 5px, 5px 5px;
-} */
 .city-selector {
   position: relative;
   width: fit-content;
-  /* text-align: left; */
   outline: none;
 }
 
 .city-selector .selected {
+  position: relative;
   cursor: pointer;
   user-select: none;
   background-color: transparent;
@@ -149,10 +185,6 @@ onMounted(async () => {
   font-size: 1.5rem;
   padding: 0.8rem 1.5rem;
   padding-right: 3.5rem;
-
-  /* &:hover {
-    background-color: var(--dark-bg-color);
-  } */
 }
 
 .city-selector .selected.open {
@@ -190,7 +222,6 @@ onMounted(async () => {
 .city-selector .items div {
   cursor: pointer;
   color: #fff;
-  /* padding-left: 1em; */
   padding: 1rem 1.5rem;
   user-select: none;
   transition: all 0.2s;
@@ -202,5 +233,27 @@ onMounted(async () => {
 }
 .selectHide {
   display: none;
+}
+
+.loader {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 50%;
+  left: 0;
+  z-index: 1000;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  border: 0.5rem solid var(--dark-gradient-color);
+  border-left-color: var(--light-gradient-color);
+  animation: loader 3s infinite;
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

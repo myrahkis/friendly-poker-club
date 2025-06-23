@@ -133,7 +133,7 @@ watch(openedDocIdx, async (newIdx) => {
             class="doc-content"
           >
             <div :id="`pdf-viewer-${index}`" class="pdf-viewer-container"></div>
-            <div v-if="isDocLoading" class="loader-wrapper">
+            <div v-if="isDocLoading">
               <span class="loader"></span>
             </div>
           </div>
@@ -215,6 +215,28 @@ watch(openedDocIdx, async (newIdx) => {
   margin: 0 auto;
 }
 
+.loader {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1rem solid var(--dark-gradient-color);
+  border-left-color: var(--light-gradient-color);
+  animation: loader 3s infinite;
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: all 0.3s ease;
@@ -239,37 +261,5 @@ watch(openedDocIdx, async (newIdx) => {
   opacity: 0;
   padding-top: 0;
   padding-bottom: 0;
-}
-
-/* .loader-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10000;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.297);
-  backdrop-filter: blur(2px);
-} */
-.loader {
-  position: absolute;
-  width: 4rem;
-  height: 4rem;
-  top: 50%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1rem solid var(--dark-gradient-color);
-  border-left-color: var(--light-gradient-color);
-  animation: loader 3s infinite;
-}
-@keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 </style>

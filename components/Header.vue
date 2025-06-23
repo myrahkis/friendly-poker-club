@@ -35,7 +35,15 @@ defineExpose({ header });
       </button>
     </div>
     <div class="header-desktop">
-      <div style="display: flex; width: fit-content; gap: 0.5rem">
+      <div
+        style="
+        position: relative;
+          display: flex;
+          width: fit-content;
+          height: fit-content;
+          gap: 0.5rem;
+        "
+      >
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
