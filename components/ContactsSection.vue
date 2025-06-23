@@ -3,25 +3,18 @@
 <template>
   <section class="contacts-section" id="contacts">
     <h2>Контакты</h2>
-    <p class="text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius
-      tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed
-      ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et
-      tincidunt odio leo in leo. Praesent enim orci, iaculis at sem eget,
-      gravida porttitor urna. Mauris a interdum diam.
-    </p>
     <div class="contacts-map">
       <ContactsInfoBlock bgColor="#021b46" />
       <div class="map">MAP</div>
     </div>
-    <div class="btns">
+    <!-- <div class="btns">
       <button class="contacts-btn u-shimmering-gradient-hover">
         Lorem ipsum dolor sit amet
       </button>
       <button class="contacts-btn u-shimmering-gradient-hover">
         Lorem ipsum dolor sit amet
       </button>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -30,7 +23,7 @@
   position: relative;
   z-index: 1;
   padding: 0 var(--horiz-main-padding);
-  padding-bottom: 5rem;
+  /* padding-bottom: 5rem; */
 }
 .contacts-map {
   display: flex;

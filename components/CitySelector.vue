@@ -31,17 +31,64 @@ function onOptionClick(opt) {
   });
 }
 
-onMounted(() => {
+async function getCoords() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(new Error("Geolocation не поддерживается"));
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve(pos.coords),
+      (err) => reject(err),
+      { enableHighAccuracy: true }
+    );
+  });
+}
+
+async function reverseGeocode(lat, lon) {
+  const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Ошибка геокодирования");
+  const data = await res.json();
+  return (
+    data.address.city ||
+    data.address.town ||
+    data.address.village ||
+    data.address.county ||
+    null
+  );
+}
+
+async function detectCityName() {
+  try {
+    const { latitude, longitude } = await getCoords();
+    return await reverseGeocode(latitude, longitude);
+  } catch (e) {
+    console.warn("detectCityName error:", e);
+    return null;
+  }
+}
+
+onMounted(async () => {
+  // дефолтный город (перывй из json)
   if (options.length > 0) {
-    selectedKey.value = options[0].value;
-    selectedLabel.value = options[0].label;
-    emit("input", options[0].value);
-    router.replace({
-      path: route.path,
-      query: { ...route.query, city: options[0].value },
-    });
+    onOptionClick(options[0]);
   } else {
     selectedLabel.value = "Нет городов";
+    return;
+  }
+
+  // опредкление реального города
+  const cityName = await detectCityName();
+  if (!cityName) return;
+
+  // совпадение, если отличается от текущего, то меняется
+  const found = options.find(
+    (opt) =>
+      opt.value.toLowerCase() === cityName.toLowerCase() ||
+      opt.label.toLowerCase() === cityName.toLowerCase()
+  );
+  if (found && found.value !== selectedKey.value) {
+    onOptionClick(found);
   }
 });
 </script>

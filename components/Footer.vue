@@ -14,7 +14,7 @@ function openDoc(idx) {
       <div class="footer-grid">
         <Logo width="25rem" paddingTop="0" />
         <div class="sole-proprietor-info">
-          <p>ИП Хорисова Вероника Алексеевна</p>
+          <p>ИП Харисова Вероника Алексеевна</p>
           <p>ИНН: 771671533154</p>
           <p>ОГРН: 322774600601658</p>
           <p>Юр. адрес: г. Москва, ул. Енисейская, д. 17, к. 1</p>

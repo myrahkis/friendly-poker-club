@@ -1,6 +1,5 @@
 <script setup>
 const header = ref(null);
-const city = ref("загрузка...");
 
 const { useOpenMenu } = defineProps({ useOpenMenu: { type: Function } });
 
@@ -13,6 +12,9 @@ const links = [
   { text: "Правовая инфомация", href: "#documents" },
 ];
 
+const { loading, error, rawData: contacts } = useCityData("contacts");
+
+// console.log(contacts);
 
 function toggleMenu() {
   const menu = document.querySelector(".header-menu-btn");
@@ -60,9 +62,11 @@ defineExpose({ header });
       <div class="header-info-wrapper">
         <!-- <Logo width="15rem" paddingTop="0" /> -->
         <div class="header-info">
-          <p style="font-weight: 700; font-size: 1.6rem">+7 (969) 120-00-00</p>
+          <p style="font-weight: 700; font-size: 1.6rem">
+            {{ contacts.phone }}
+          </p>
           <p>addax18490@mixzu.net</p>
-          <p>Ежедневно с 14:00 до 02:00</p>
+          <p>{{ contacts.workongHours }}</p>
           <Socials width="3.2rem" />
         </div>
         <ul class="header__list">

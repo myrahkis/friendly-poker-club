@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+const { loading, error, rawData: cityName } = useCityData("mainHeading");
+</script>
 
 <template>
   <section class="hero-section">
@@ -10,7 +12,7 @@
         <Logo width="45rem" paddingTop="0" />
         <h1 class="hero-heading">
           Легальная офлайн <br class="mobile-br" />
-          игра в покер!
+          игра в покер в {{ cityName }}!
         </h1>
         <h3 class="hero-sub-heading">
           Для новичков, любителей <br />
@@ -83,11 +85,11 @@
   padding-bottom: 7%;
 }
 .hero-heading {
-  font-size: clamp(3rem, 4vw, 6rem);
+  font-size: clamp(3rem, 4vw, 5rem);
   font-weight: 700;
 }
 .hero-sub-heading {
-  font-size: clamp(2rem, 2.5vw, 3.5rem);
+  font-size: clamp(2rem, 2.5vw, 3.3rem);
   font-weight: 700;
 }
 .hero-sub-text {
