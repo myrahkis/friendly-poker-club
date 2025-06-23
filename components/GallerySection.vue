@@ -91,7 +91,7 @@
 @media (max-width: 767px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 0.5fr);
-    grid-template-rows: 0.3fr 0.15fr 0.3fr minmax(30rem, 0.3fr);
+    grid-template-rows: 0.4fr 0.15fr 0.8fr 0.4fr;
     gap: 0.5rem;
   }
   .grid-cell-1,
