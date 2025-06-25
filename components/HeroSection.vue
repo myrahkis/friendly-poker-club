@@ -27,11 +27,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
           получения удовольствия от любимой игры!
         </p>
       </div>
-      <img
-        class="hero-bg-img"
-        src="/assets/images/bg-test-long.png"
-        alt="hero-bg"
-      />
+      <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" />
     </div>
     <span class="hero-empasis">
       Внимание! В нашем клубе категорически запрещена игра на деньги!
@@ -110,10 +106,10 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
 
 .hero-bg-img {
   position: absolute;
+  top: 15%;
   right: 0;
-  bottom: 18rem;
-  width: 60%;
-  transform: translateX(20rem) translateY(15rem);
+  width: 75%;
+  transform: translateX(35rem);
   z-index: 0;
 }
 
@@ -187,9 +183,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     }
   }
   .hero-bg-img {
-    top: 18rem;
-    right: -30rem;
-    width: 65%;
+    top: 13rem;
+    right: -25rem;
+    width: 60%;
   }
 }
 @media (min-width: 3000px) {
@@ -215,7 +211,55 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
 }
 
 @media (max-width: 1200px) {
+  .hero-section {
+    padding: 0 var(--horiz-main-padding) 5rem;
+    gap: 4rem;
+  }
+  .gradient {
+    top: 0;
+    transform: translateY(0);
+    background: linear-gradient(
+      to bottom,
+      rgba(2, 37, 99, 0.9) 3%,
+      rgba(2, 37, 99, 0.7) 15%,
+      rgba(2, 37, 99, 0.5) 60%,
+      rgba(2, 37, 99, 0) 100%
+    );
+  }
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+  }
   .hero-text {
+    position: static;
+    gap: 2.5rem;
+    width: 75%;
+    padding-bottom: 0;
+
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+  .hero-bg-img {
+    position: static;
+    width: 100%;
+    transform: translateX(0);
+  }
+  .bg-cards {
+    left: 60%;
+    top: 0;
+    width: 45rem;
+    transform: translateY(-17rem) rotate(180deg);
+  }
+  .hero-empasis {
+    position: static;
+    width: 85%;
+    padding: 2rem 2.5rem;
+  }
+
+  /* .hero-text {
     width: 65%;
     padding-top: 15%;
     padding-bottom: 10%;
@@ -246,7 +290,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   }
   .hero-sub-heading {
     font-size: clamp(2.5rem, 3vw, 3.5rem);
-  }
+  } */
 }
 
 @media (max-width: 925px) {
