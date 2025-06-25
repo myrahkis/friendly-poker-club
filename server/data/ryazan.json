@@ -1,8 +1,9 @@
 {
   "mainHeading": "Рязани",
   "contacts": {
-    "phone": "+7 (969) 999-99-99",
-    "workongHours": "Ежедневно с 13:00 до 01:00",
+    "phone": "+7 (920) 979-70-47",
+    "workingHours": "Ежедневно с 17:00 до 02.00",
+    "email": "info62@friendly-poker.ru",
     "address": "",
     "socials": {
       "vk": "",
@@ -11,8 +12,20 @@
       "youtube": ""
     }
   },
-  "pricing": {},
-  "recruits": "",
+  "pricing": {
+    "daylyTournament": "1 000",
+    "reEntry": "1 000",
+    "addon": "1 000",
+    "tableRent": "15 000",
+    "tableRentHour": "+5 000",
+    "corporateTournaments": "Стоимость расчитывается индивидуально"
+  },
+  "recruits": [
+    "ИП Абрамов Дмитрий Олегович",
+    "ИНН: 623303139101",
+    "ОГРН: 323623400052531",
+    "Юр. адрес: Рязанская обл., г. Скопин, ул. Полетаева, д. 10"
+  ],
   "tournaments": {
     "Понедельник": {
       "holdem": { "time": "c 19:00 до победителя", "name": "9MAX" },

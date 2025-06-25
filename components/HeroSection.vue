@@ -29,7 +29,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
       </div>
       <img
         class="hero-bg-img"
-        src="/assets/images/hero-bg-img.svg"
+        src="/assets/images/bg-test-long.png"
         alt="hero-bg"
       />
     </div>
@@ -187,8 +187,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     }
   }
   .hero-bg-img {
-    right: var(--horiz-main-padding);
-    width: 35%;
+    top: 18rem;
+    right: -30rem;
+    width: 65%;
   }
 }
 @media (min-width: 3000px) {

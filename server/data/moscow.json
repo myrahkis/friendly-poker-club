@@ -2,7 +2,8 @@
   "mainHeading": "Москве",
   "contacts": {
     "phone": "+7 (969) 120-00-00",
-    "workongHours": "Ежедневно с 14:00 до 02:00",
+    "workingHours": "Ежедневно с 14:00 до 02:00",
+    "email": "info@friendly-poker.ru",
     "address": "",
     "socials": {
       "vk": "",
@@ -11,8 +12,20 @@
       "youtube": ""
     }
   },
-  "pricing": {},
-  "recruits": "",
+  "pricing": {
+    "daylyTournament": "1 000",
+    "reEntry": "1 000",
+    "addon": "1 000",
+    "tableRent": "15 000",
+    "tableRentHour": "+5 000",
+    "corporateTournaments": "Стоимость расчитывается индивидуально"
+  },
+  "recruits": [
+    "ИП Харисова Вероника Алексеевна",
+    "ИНН: 771671533154",
+    "ОГРН: 322774600601658",
+    "Юр. адрес: г. Москва, ул. Енисейская, д. 17, к. 1"
+  ],
   "tournaments": {
     "Понедельник": {
       "holdem": { "time": "c 19:00 до победителя", "name": "9MAX" },

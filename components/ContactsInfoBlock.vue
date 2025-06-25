@@ -1,21 +1,20 @@
 <script setup>
 const { bgColor } = defineProps({ bgColor: String });
+const { loading, error, rawData: contacts } = useCityData("contacts");
 </script>
 
 <template>
   <div class="contacts" :style="{ backgroundColor: bgColor }">
     <div>
-      <p class="phone">+7 800 000-00-00</p>
-      <p class="email">addax18490@mixzu.net</p>
+      <p class="phone">{{ contacts.phone }}</p>
+      <p class="email">{{ contacts.email }}</p>
     </div>
     <p class="text-info">
       Москва, ул. Покровка, <br />
       дом 1, подъезд 10
     </p>
     <p class="text-info">
-      Пн-Пт: 09:00 – 19:00, <br class="hide-br" />
-      Сб: 10:00 – 18:00, <br />
-      Вс — выходной
+      {{ contacts.workingHours }}
     </p>
     <Socials width="6rem" />
   </div>

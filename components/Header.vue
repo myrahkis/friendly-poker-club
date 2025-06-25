@@ -37,7 +37,7 @@ defineExpose({ header });
     <div class="header-desktop">
       <div
         style="
-        position: relative;
+          position: relative;
           display: flex;
           width: fit-content;
           height: fit-content;
@@ -73,8 +73,8 @@ defineExpose({ header });
           <p style="font-weight: 700; font-size: 1.6rem">
             {{ contacts.phone }}
           </p>
-          <p>addax18490@mixzu.net</p>
-          <p>{{ contacts.workongHours }}</p>
+          <p>{{ contacts.email }}</p>
+          <p>{{ contacts.workingHours }}</p>
           <Socials width="3.2rem" />
         </div>
         <ul class="header__list">
