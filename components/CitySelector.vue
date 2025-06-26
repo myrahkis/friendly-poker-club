@@ -26,6 +26,10 @@ function onOptionClick(opt) {
   open.value = false;
   emit("input", opt.value);
 
+  if (route.query.city === opt.value) {
+    return;
+  }
+
   router.push({
     path: route.path,
     query: { ...route.query, city: opt.value },
