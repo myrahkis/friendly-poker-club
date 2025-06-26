@@ -256,4 +256,35 @@ onMounted(async () => {
     transform: rotate(360deg);
   }
 }
+
+@media (min-width: 1800px) {
+  .city-selector .selected {
+    padding: 1rem 2rem;
+    padding-right: 4rem;
+    font-size: clamp(1.8rem, 2vw + 0.3rem, 2rem);
+  }
+  .city-selector .items {
+    font-size: clamp(1.8rem, 2vw + 0.3rem, 2rem);
+  }
+  .city-selector .items div {
+    padding: 1rem 2rem;
+  }
+}
+@media (min-width: 3000px) {
+  .city-selector .selected {
+    padding: 1.5rem 2rem;
+    padding-right: 6rem;
+    font-size: clamp(1.8rem, 2vw + 0.3rem, 2.8rem);
+  }
+  .city-selector .selected:after {
+    border: 0.8rem solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  .city-selector .items {
+    font-size: clamp(1.8rem, 2vw + 0.3rem, 2.8rem);
+  }
+  .city-selector .items div {
+    padding: 1rem 2rem;
+  }
+}
 </style>

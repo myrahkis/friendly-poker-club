@@ -151,27 +151,31 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
 }
 
 @media (min-width: 1600px) {
+  .desktop-br {
+    display: block;
+  }
   .hero-section {
     padding: 0 var(--horiz-main-padding) 10%;
   }
   .hero-text {
-    width: 47%;
+    width: 50%;
   }
 }
 @media (min-width: 1800px) {
   .hero-section {
     padding: 0 var(--horiz-main-padding) 5%;
   }
-  .desktop-br {
-    display: block;
+  .hero-wrapper {
+    padding-top: 15%;
   }
+
   .hero-bg-img {
     display: none;
   }
   .hero-bg-img-big-screen {
     position: absolute;
     display: block;
-    top: 15%;
+    top: 17%;
     right: 0;
     width: 75%;
     transform: translateX(43rem);

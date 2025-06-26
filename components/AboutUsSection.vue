@@ -232,6 +232,21 @@ function prevSlide() {
   /* opacity: 0; */
 }
 
+@media (min-width: 1800px) {
+  .about-us-info {
+    p {
+      font-size: clamp(1.6rem, 2vw + 0.3rem, 2rem);
+    }
+  }
+  .about-us-list {
+    font-size: clamp(1.5rem, 2vw + 0.3rem, 1.8rem);
+  }
+}
+@media (min-width: 2200px) {
+}
+@media (min-width: 3000px) {
+}
+
 /* (1024px–1279px) */
 @media (max-width: 1279px) {
   .about-us-wrapper {

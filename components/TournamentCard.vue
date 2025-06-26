@@ -194,6 +194,37 @@ const { date, dayOfWeek } = tournament;
   color: var(--light-gradient-color);
 }
 
+@media (min-width: 1800px) {
+  .schedules-row {
+    grid-template-columns: 8rem auto;
+  }
+  .schedules-time {
+    font-size: clamp(1.1rem, 2vw + 0.3rem, 1.2rem);
+  }
+  .name-rules {
+    font-size: clamp(1.1rem, 2vw + 0.3rem, 1.2rem);
+  }
+  .name-desc {
+    font-size: clamp(1.1rem, 2vw + 0.3rem, 1.2rem);
+  }
+}
+@media (min-width: 2200px) {
+  /* .schedules-row {
+    grid-template-columns: 9rem auto;
+  }
+  .time-styled,
+  .name-heading {
+    font-size: clamp(1.2rem, 2vw + 0.3rem, 2.2rem);
+  }
+  .schedules-time,
+  .name-rules,
+  .name-desc {
+    font-size: clamp(1.2rem, 2vw + 0.3rem, 1.3rem);
+  } */
+}
+@media (min-width: 3000px) {
+}
+
 @media (max-width: 1400px) {
   .schedules-time {
     /* width: 30%; */

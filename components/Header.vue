@@ -44,13 +44,11 @@ defineExpose({ header });
           gap: 0.5rem;
         "
       >
-        <span>
+        <span class="city-svg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 50 51"
-            width="30"
-            height="31"
           >
             <path
               fill="white"
@@ -70,7 +68,7 @@ defineExpose({ header });
       <div class="header-info-wrapper">
         <!-- <Logo width="15rem" paddingTop="0" /> -->
         <div class="header-info">
-          <p style="font-weight: 700; font-size: 1.6rem">
+          <p class="phone">
             {{ contacts.phone }}
           </p>
           <p>{{ contacts.email }}</p>
@@ -102,6 +100,9 @@ defineExpose({ header });
   padding: 2.5rem var(--horiz-main-padding);
   z-index: 100;
   transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.city-svg {
+  width: 3rem;
 }
 
 .header-desktop {
@@ -136,7 +137,10 @@ defineExpose({ header });
   background-color: rgba(37, 37, 37, 0.5);
   font-size: 1.5rem;
 }
-
+.phone {
+  font-weight: 700;
+  font-size: 1.6rem;
+}
 .header-mobile {
   display: none;
 }
@@ -147,6 +151,64 @@ defineExpose({ header });
 }
 .header-menu-btn.open {
   transform: rotate(-90deg);
+}
+
+@media (min-width: 1800px) {
+  .header-info-wrapper {
+    p {
+      font-size: clamp(1.8rem, 2vw + 0.3rem, 2rem);
+    }
+  }
+  .header__list__link {
+    font-size: clamp(1.8rem, 2vw + 0.3rem, 2rem);
+  }
+  .phone {
+    font-size: clamp(1.9rem, 2vw + 0.3rem, 2.2rem);
+  }
+  .city-svg {
+    width: 4rem;
+  }
+  :deep(.socials-container) {
+    .whatsup-btn,
+    .yt-btn,
+    .tg-btn,
+    .vk-btn {
+      svg {
+        width: clamp(2.5rem, 3.5vw, 4rem) !important;
+      }
+    }
+  }
+  .header-info {
+    gap: 2rem;
+  }
+}
+@media (min-width: 3000px) {
+  .header-info-wrapper {
+    gap: 1.5rem;
+    p {
+      font-size: clamp(1.8rem, 2vw + 0.3rem, 2.8rem);
+    }
+  }
+  .header__list__link {
+    padding: 1.4rem 3rem;
+    font-size: clamp(1.8rem, 2vw + 0.3rem, 2.8rem);
+  }
+  .phone {
+    font-size: clamp(1.9rem, 2vw + 0.3rem, 3rem);
+  }
+  .city-svg {
+    width: 5rem;
+  }
+  :deep(.socials-container) {
+    .whatsup-btn,
+    .yt-btn,
+    .tg-btn,
+    .vk-btn {
+      svg {
+        width: clamp(3rem, 5vw, 5.5rem) !important;
+      }
+    }
+  }
 }
 
 /* (480px–767px) */
