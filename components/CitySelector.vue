@@ -20,17 +20,23 @@ function toggleOpen() {
   open.value = !open.value;
 }
 
-function onOptionClick(opt) {
+async function onOptionClick(opt) {
+  if (route.query.city === opt.value) {
+    selectedKey.value = opt.value;
+    selectedLabel.value = opt.label;
+    open.value = false;
+    emit("input", opt.value);
+    return;
+  }
+
   selectedKey.value = opt.value;
   selectedLabel.value = opt.label;
   open.value = false;
   emit("input", opt.value);
 
-  if (route.query.city === opt.value) {
-    return;
-  }
+  await nextTick();
 
-  router.push({
+  router.replace({
     path: route.path,
     query: { ...route.query, city: opt.value },
   });
@@ -79,7 +85,7 @@ async function detectCityName() {
 onMounted(async () => {
   // дефолтный город (перывй из json)
   if (options.length > 0) {
-    onOptionClick(options[0]);
+    await onOptionClick(options[0]);
   } else {
     selectedLabel.value = "Нет городов";
     return;
@@ -142,7 +148,7 @@ onMounted(async () => {
       opt.label.toLowerCase() === cityName.toLowerCase()
   );
   if (found && found.value !== selectedKey.value) {
-    onOptionClick(found);
+    await onOptionClick(found);
   }
 });
 </script>
