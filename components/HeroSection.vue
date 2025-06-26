@@ -6,13 +6,15 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   <section class="hero-section">
     <div class="gradient"></div>
     <img class="bg-chip" src="/assets/images/chip1.png" alt="bg-img" />
+    <img class="bg-chip-full" src="/assets/images/chip-bg-full.png" alt="" />
     <img class="bg-cards" src="/assets/images/bg-cards.png" alt="cards-img" />
     <div class="hero-wrapper">
+      <Logo width="45rem" paddingTop="0" />
       <div class="hero-text">
-        <Logo width="45rem" paddingTop="0" />
         <h1 class="hero-heading">
           Легальная офлайн <br class="mobile-br" />
-          игра в покер
+          игра <br class="desktop-br" />
+          в покер
           <span v-if="Object.keys(cityName).length !== 0">в {{ cityName }}</span
           >!
         </h1>
@@ -28,6 +30,11 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
         </p>
       </div>
       <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" />
+      <img
+        class="hero-bg-img-big-screen"
+        src="/assets/images/bg-big-sc.png"
+        alt="hero-bg"
+      />
     </div>
     <span class="hero-empasis">
       Внимание! В нашем клубе категорически запрещена игра на деньги!
@@ -41,7 +48,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 var(--horiz-main-padding) 12%;
+  padding: 0 var(--horiz-main-padding) 6%;
 }
 .gradient {
   position: absolute;
@@ -67,9 +74,15 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   z-index: -1;
   width: clamp(15rem, 5rem, 25rem);
 }
+.bg-chip-full {
+  display: none;
+}
 
 .hero-wrapper {
   display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-top: 13%;
 }
 
 .hero-text {
@@ -79,7 +92,6 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   gap: 3rem;
   z-index: 1;
   width: 45%;
-  padding-top: 13%;
   padding-bottom: 7%;
 }
 .hero-heading {
@@ -112,10 +124,13 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   transform: translateX(35rem);
   z-index: 0;
 }
+.hero-bg-img-big-screen {
+  display: none;
+}
 
 .hero-empasis {
   position: absolute;
-  bottom: 7rem;
+  bottom: 8rem;
   z-index: 2;
   text-align: center;
   align-self: center;
@@ -130,83 +145,93 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   );
 }
 
-.mobile-br {
+.mobile-br,
+.desktop-br {
   display: none;
 }
 
 @media (min-width: 1600px) {
+  .hero-section {
+    padding: 0 var(--horiz-main-padding) 10%;
+  }
   .hero-text {
     width: 47%;
   }
 }
 @media (min-width: 1800px) {
   .hero-section {
-    padding: 0 var(--horiz-main-padding) 13%;
+    padding: 0 var(--horiz-main-padding) 5%;
   }
-  div {
-    .logo {
-      width: 70% !important;
-    }
-  }
-  .hero-empasis {
-    bottom: 10rem;
-    width: 45%;
-  }
-  .hero-text {
-    padding-top: 13%;
-    padding-bottom: 0;
+  .desktop-br {
+    display: block;
   }
   .hero-bg-img {
-    right: var(--horiz-main-padding);
-    width: 40%;
-    transform: translateY(0);
+    display: none;
   }
-  .bg-cards {
+  .hero-bg-img-big-screen {
     position: absolute;
-    left: -5rem;
-    bottom: 0;
-    width: 55rem;
-    transform: translateY(-5rem);
-    z-index: -1;
+    display: block;
+    top: 15%;
+    right: 0;
+    width: 75%;
+    transform: translateX(43rem);
+    z-index: 0;
   }
-  .gradient {
-    position: absolute;
-    width: 100%;
-    height: 40%;
-    transform: translateY(-5rem);
+  .hero-sub-text {
+    font-size: 2rem;
+    width: 95%;
   }
 }
 @media (min-width: 2200px) {
   div {
     .logo {
-      width: 80% !important;
+      width: 30% !important;
     }
   }
-  .hero-bg-img {
-    top: 13rem;
-    right: -25rem;
-    width: 60%;
+  .hero-bg-img-big-screen {
+    width: 65%;
+    transform: translateX(30rem);
   }
 }
 @media (min-width: 3000px) {
-  .hero-bg-img {
-    width: 30%;
-    /* transform: translateY(0); */
+  div {
+    .logo {
+      width: 40% !important;
+    }
   }
-  /* .gradient {
-    transform: translateY(35rem);
+  .hero-bg-img-big-screen {
+    width: 63%;
+    transform: translateX(50rem);
   }
-  .hero-btn {
+  .hero-empasis {
     width: 35%;
   }
   .hero-text {
-    width: 55%;
-  } */
+    width: 60%;
+  }
+  .hero-heading {
+    font-size: clamp(3rem, 4vw, 6.5rem);
+    font-weight: 700;
+  }
+  .hero-sub-heading {
+    font-size: clamp(2rem, 2.5vw, 4.5rem);
+    font-weight: 700;
+  }
+  .hero-sub-text {
+    font-size: 3rem;
+    width: 95%;
+  }
 }
 
 @media (max-width: 1444px) {
   .hero-bg-img {
-    transform: translateX(20rem) translateY(10rem);
+    top: 18%;
+    width: 70%;
+    transform: translateX(30rem);
+  }
+  .hero-text {
+    width: 50%;
+    padding-bottom: 10%;
   }
 }
 
@@ -216,10 +241,10 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     gap: 4rem;
   }
   .gradient {
-    top: 0;
-    transform: translateY(0);
+    bottom: 0;
+    transform: translateY(20rem);
     background: linear-gradient(
-      to bottom,
+      to top,
       rgba(2, 37, 99, 0.9) 3%,
       rgba(2, 37, 99, 0.7) 15%,
       rgba(2, 37, 99, 0.5) 60%,
@@ -230,188 +255,179 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 2rem;
+    gap: 3rem;
+    /* padding-top: 13%; */
   }
   .hero-text {
     position: static;
     gap: 2.5rem;
-    width: 75%;
+    width: 60%;
     padding-bottom: 0;
+    order: 2;
 
     h3 {
       margin-bottom: 0;
     }
   }
+  .hero-sub-text {
+    font-size: 2rem;
+    width: 100%;
+  }
   .hero-bg-img {
     position: static;
     width: 100%;
     transform: translateX(0);
+    order: 1;
+    z-index: 1;
+  }
+  div {
+    .logo {
+      order: 0;
+    }
   }
   .bg-cards {
-    left: 60%;
-    top: 0;
-    width: 45rem;
-    transform: translateY(-17rem) rotate(180deg);
+    left: 0;
+    bottom: 0;
+    width: 50rem;
+    transform: translateY(20rem);
+  }
+  .bg-chip {
+    position: absolute;
+    top: -5rem;
+    left: auto;
+    right: 1rem;
+    width: clamp(18rem, 30vw, 30rem);
+    transform: rotate(90deg);
+  }
+  .bg-chip-full {
+    position: absolute;
+    display: block;
+    bottom: 23rem;
+    right: 15rem;
+    width: clamp(18rem, 30vw, 28rem);
+    transform: rotate(-200deg);
+    filter: opacity(45%);
   }
   .hero-empasis {
     position: static;
     width: 85%;
     padding: 2rem 2.5rem;
   }
-
-  /* .hero-text {
-    width: 65%;
-    padding-top: 15%;
-    padding-bottom: 10%;
-    gap: 2rem;
-  }
-  .hero-heading {
-    font-size: clamp(4rem, 5vw, 6rem);
-    padding-top: 85%;
-  }
-  .hero-bg-img {
-    top: 0;
-    width: 55%;
-  }
-  .bg-cards {
-    top: 25rem;
-    left: -6%;
-    width: 55%;
-  }
-  .gradient {
-    bottom: 30rem;
-  }
-  .hero-empasis {
-    width: 65%;
-    padding: 2rem 2.5rem;
-    border-radius: 7rem;
-    font-weight: 700;
-    font-size: clamp(2rem, 2.5vw, 3rem);
-  }
-  .hero-sub-heading {
-    font-size: clamp(2.5rem, 3vw, 3.5rem);
-  } */
 }
 
 @media (max-width: 925px) {
+  .bg-chip-full {
+    bottom: 23rem;
+    right: 5rem;
+    width: clamp(18rem, 30vw, 28rem);
+  }
+  .desktop-br {
+    display: block;
+  }
   .hero-text {
-    width: 70%;
-    padding-bottom: 15%;
+    width: 80%;
   }
   .hero-sub-text {
-    font-size: 2rem;
-    width: 95%;
+    width: 100%;
   }
-  .hero-bg-img {
-    width: 80%;
-    top: 3%;
-  }
-  div {
-    .logo {
-      width: 75% !important;
-    }
+  .hero-empasis {
+    width: 90%;
+    padding: 1.5rem 6rem;
   }
 }
 
 @media (max-width: 800px) {
-  .bg-chip {
-    display: none;
-  }
   .hero-text {
-    width: 85%;
-    padding-bottom: 20%;
+    width: 100%;
+  }
+  .hero-sub-text {
+    width: 100%;
   }
   .hero-heading {
-    font-size: clamp(5rem, 5vw, 6rem);
-    padding-top: 90%;
+    font-size: clamp(2rem, calc(1rem + 5vw), 4rem);
   }
   .hero-sub-heading {
-    font-size: clamp(3rem, 3vw, 4.5rem);
+    font-size: clamp(1.5rem, calc(1rem + 3.5vw), 2.8rem);
   }
-  .bg-cards {
-    top: 20rem;
-    left: -6%;
-  }
-  .hero-empasis {
-    font-size: clamp(2rem, 2.5vw, 3rem);
-    padding: 2rem 8rem;
-    width: 85%;
+  .hero-sub-text {
+    font-size: clamp(1.5rem, calc(1rem + 1.5vw), 2rem);
   }
   div {
     .logo {
       width: 60% !important;
     }
   }
+  .hero-empasis {
+    width: 90%;
+    padding: 1.5rem 3.5rem;
+  }
+  .bg-cards {
+    width: 45rem;
+    transform: translateY(20rem);
+  }
+  .bg-chip {
+    position: absolute;
+    top: -2.5rem;
+    left: auto;
+    right: 1rem;
+    width: 20rem;
+    transform: rotate(90deg);
+  }
 }
 
-@media (max-width: 656px) {
-  .mobile-br {
-    display: block;
-  }
-  .hero-bg-img {
-    top: 4%;
-    width: 83%;
-    transform: translateX(15rem) translateY(10rem);
-  }
-  .hero-text {
-    width: 85%;
-    padding-top: 20%;
-    padding-bottom: clamp(2rem, calc(5rem + 15vw), 20vh);
-  }
-  .hero-heading {
-    font-size: clamp(2rem, calc(1rem + 5vw), 4rem);
-    padding-top: 95%;
-  }
-  .hero-sub-heading {
-    font-size: clamp(1rem, calc(1rem + 2.5vw), 2.5rem);
-  }
-  .hero-sub-text {
-    font-size: clamp(0.8rem, calc(0.7rem + 1.5vw), 1.6rem);
-  }
-
+@media (max-width: 665px) {
   .hero-empasis {
     font-size: clamp(0.9rem, calc(0.5rem + 2vw), 1.7rem);
     padding: 1.5rem clamp(1rem, calc(1rem + 2vw), 5rem);
     width: 85%;
   }
+  .hero-heading {
+    font-size: clamp(1.8rem, calc(1rem + 4vw), 3.5rem);
+  }
+  .hero-sub-heading {
+    font-size: clamp(1.5rem, calc(1rem + 2.5vw), 2.5rem);
+  }
+  .hero-sub-text {
+    font-size: clamp(1.3rem, calc(1rem + 1vw), 1.5rem);
+  }
 }
 
 @media (max-width: 500px) {
+  .hero-wrapper {
+    padding-top: 25%;
+  }
   .hero-text {
-    width: 85%;
-    padding-top: 30%;
+    gap: 1.5rem;
   }
-  .hero-heading {
-    padding-top: 105%;
+  .bg-cards {
+    width: 30rem;
+    transform: translateY(10rem);
   }
-  .hero-bg-img {
-    width: 85%;
-    transform: translateX(10rem) translateY(13rem);
+  .bg-chip {
+    top: -1.6rem;
+    right: 1rem;
+    width: 13rem;
+  }
+  .bg-chip-full {
+    bottom: 25rem;
+    right: 0;
+    width: clamp(13rem, 30vw, 28rem);
   }
 }
 
 /* (320px–395px) */
 @media (max-width: 441px) {
-  .hero-bg-img {
-    width: 95%;
-    transform: translateX(10rem) translateY(15rem);
-  }
-  .bg-cards {
-    top: 28%;
-  }
-  .hero-text {
-    gap: 1rem;
+  .hero-empasis {
     width: 100%;
   }
   .hero-heading {
-    font-size: clamp(2rem, calc(1rem + 4vw), 4rem);
-    padding-top: 115%;
+    font-size: clamp(1.8rem, calc(1rem + 3vw), 3rem);
   }
   .hero-sub-heading {
-    font-size: clamp(1rem, calc(1rem + 2vw), 2.5rem);
+    font-size: clamp(1.5rem, calc(0.8rem + 2vw), 2.5rem);
   }
   .hero-sub-text {
-    font-size: clamp(0.8rem, calc(0.7rem + 1.4vw), 1.6rem);
+    font-size: clamp(1.3rem, calc(0.5rem + 1vw), 1.5rem);
   }
 }
 </style>
