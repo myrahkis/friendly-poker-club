@@ -4,6 +4,7 @@ import Socials from "./Socials.vue";
 const openDocState = useState("openDocIndex", () => null);
 
 const { rawData: recruits } = useCityData("recruits");
+const { rawData: contacts } = useCityData("contacts");
 console.log(recruits);
 
 function openDoc(idx) {
@@ -21,8 +22,8 @@ function openDoc(idx) {
         </div>
         <div class="contacts">
           <div>
-            <p class="phone">+7 800 000-00-00</p>
-            <p class="email">addax18490@mixzu.net</p>
+            <p class="phone">{{ contacts.phone }}</p>
+            <p class="email">{{ contacts.email }}</p>
           </div>
           <Socials width="4rem" />
         </div>
