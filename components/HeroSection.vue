@@ -192,6 +192,11 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     width: 65%;
     transform: translateX(30rem);
   }
+  .hero-empasis {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    padding: 2rem 3rem;
+    width: 50%;
+  }
 }
 @media (min-width: 3000px) {
   div {
@@ -204,7 +209,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     transform: translateX(50rem);
   }
   .hero-empasis {
-    width: 35%;
+    font-size: clamp(1.8rem, 3vw, 3.3rem);
+    padding: 2.5rem 3rem;
+    width: 45%;
   }
   .hero-text {
     width: 60%;
