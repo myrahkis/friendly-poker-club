@@ -259,6 +259,9 @@ function prevSlide() {
   .about-us-info {
     width: 100%;
   }
+  .about-us-list {
+    width: 100%;
+  }
   .carousel-img {
     height: auto;
     object-fit: contain;

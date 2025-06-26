@@ -37,7 +37,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
       />
     </div>
     <span class="hero-empasis">
-      Внимание! В нашем клубе категорически запрещена игра на деньги!
+      Внимание! В нашем клубе категорически
+      <br class="emphasis-br-mobile" />
+      запрещена игра на деньги!
     </span>
   </section>
 </template>
@@ -146,7 +148,8 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
 }
 
 .mobile-br,
-.desktop-br {
+.desktop-br,
+.emphasis-br-mobile {
   display: none;
 }
 
@@ -326,6 +329,12 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   }
 }
 
+@media (max-width: 1020px) {
+  .emphasis-br-mobile {
+    display: block;
+  }
+}
+
 @media (max-width: 925px) {
   .bg-chip-full {
     bottom: 23rem;
@@ -348,6 +357,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
 }
 
 @media (max-width: 800px) {
+  .emphasis-br-mobile {
+    display: block;
+  }
   .hero-text {
     width: 100%;
   }
