@@ -30,7 +30,6 @@ onMounted(() => {
 });
 
 async function goToAnchor(hash) {
-  // console.log("AAAAAAAAAAAAAAAAAAAAAAAAA");
   const menu = document.querySelector(".header-menu-btn");
   menu.classList.remove("open");
 
@@ -116,7 +115,7 @@ window.addEventListener("scroll", handleScroll);
   position: fixed;
   bottom: 5%;
   right: var(--horiz-main-padding);
-  z-index: 1000;
+  z-index: 100;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
 
@@ -135,13 +134,13 @@ window.addEventListener("scroll", handleScroll);
   }
 }
 @media (max-width: 690px) {
-  .up-btn {
-    bottom: 8.5% !important;
-  }
+  /* .up-btn { */
+    /* bottom: 0 !important; */
+  /* } */
 }
 @media (max-width: 380px) {
-  .up-btn {
-    bottom: 10% !important;
-  }
+  /* .up-btn { */
+    /* bottom: 10% !important; */
+  /* } */
 }
 </style>

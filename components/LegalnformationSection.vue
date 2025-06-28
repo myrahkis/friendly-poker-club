@@ -1,40 +1,22 @@
 <script setup>
-import public_offer from "@/assets/documents/public_offer.pdf";
-import additional_agreement from "@/assets/documents/additional_agreement.pdf";
-import event_rules from "@/assets/documents/event_rules.pdf";
-import personal_data_processing_policy from "@/assets/documents/personal_data_processing_policy.pdf";
-import consent_to_processing_personal_data from "@/assets/documents/consent_to_processing_personal_data.pdf";
-import familiarization_sheet from "@/assets/documents/familiarization_sheet.pdf";
+const { rawData: documentsRaw } = useCityData("docs");
 
-const documents = [
-  {
-    title:
-      "Публичный договор (договор-оферта) на оказание услуг по проведению развлекательных мероприятий",
-    doc: public_offer,
-  },
-  {
-    title:
-      "Дополнительное соглашение к публичному договору на оказание услуг по проведению развлекательных мероприятий",
-    doc: additional_agreement,
-  },
-  {
-    title:
-      "Приложение №1 к Публичному Договору На оказание услуг по проведению развлекательных мероприятий",
-    doc: event_rules,
-  },
-  {
-    title: "Политика в отношении обработки персональных данных",
-    doc: personal_data_processing_policy,
-  },
-  {
-    title: "Согласие на обработку персональных данных",
-    doc: consent_to_processing_personal_data,
-  },
-  {
-    title: "Лист ознакомления",
-    doc: familiarization_sheet,
-  },
-];
+const pdfModules = import.meta.glob("/assets/documents/**/*.pdf", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const documents = computed(() =>
+  documentsRaw.value.map((doc) => {
+    const key = `/assets/documents/${doc.path}`;
+    const url = pdfModules[key];
+    if (!url) {
+      console.warn(`Не найден PDF по ключу ${key}`);
+    }
+    return { title: doc.title, url };
+  })
+);
 
 const pdfjsLib = ref(null);
 const isDocLoading = ref(false);
@@ -80,7 +62,8 @@ watch(openedDocIdx, async (newIdx) => {
   try {
     const pdfjs = pdfjsLib.value;
 
-    const loadingTask = pdfjs.getDocument(documents[newIdx].doc);
+    const { url } = documents.value[newIdx];
+    const loadingTask = pdfjsLib.value.getDocument(url);
     const pdf = await loadingTask.promise;
 
     for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {

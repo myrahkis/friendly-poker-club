@@ -3,7 +3,7 @@ export function useCityData(propertyName) {
 
   const loading = ref(false);
   const error = ref(null);
-  const rawData = ref({});
+  const rawData = ref([]);
   const data = ref([]);
 
   const selectedCity = computed(() => route.query.city || "");
@@ -13,7 +13,7 @@ export function useCityData(propertyName) {
 
     loading.value = true;
     error.value = null;
-    rawData.value = {};
+    rawData.value = [];
     data.value = [];
 
     try {

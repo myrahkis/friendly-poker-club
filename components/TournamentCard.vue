@@ -352,8 +352,8 @@ const { date, dayOfWeek } = tournament;
 }
 /* (480px–767px) */
 @media (max-width: 500px) {
-  .schedules-time {
-    /* width: 20%; */
+  .schedules-row {
+    grid-template-columns: 6rem auto;
   }
 }
 </style>

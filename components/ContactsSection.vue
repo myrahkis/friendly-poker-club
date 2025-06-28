@@ -1,11 +1,16 @@
-<script setup></script>
+<script setup>
+const { rawData: contacts } = useCityData("contacts");
+</script>
 
 <template>
   <section class="contacts-section" id="contacts">
-    <h2>Контакты</h2>
+    <!-- <div class="contacts-heading"> -->
+      <h2>Контакты</h2>
+      <!-- <CitySelector /> -->
+    <!-- </div> -->
     <div class="contacts-map">
       <ContactsInfoBlock bgColor="#021b46" />
-      <div class="map">MAP</div>
+      <div class="map" v-html="contacts.map"></div>
     </div>
     <!-- <div class="btns">
       <button class="contacts-btn u-shimmering-gradient-hover">
@@ -30,16 +35,19 @@
   gap: 1rem;
   margin: 3rem 0;
 }
-
+.contacts-heading {
+  display: flex;
+}
 .text {
   width: 80%;
 }
 
 .map {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 8rem;
+  align-items: center; */
+  /* font-size: 8rem; */
+  overflow: hidden;
   width: 60%;
   border: 1px solid var(--light-gradient-color);
   border-radius: 2rem;
@@ -69,6 +77,18 @@
   }
   .map {
     width: 100%;
+  }
+}
+@media (max-width: 367px) {
+  :deep(.socials-container) {
+    .whatsup-btn,
+    .yt-btn,
+    .tg-btn,
+    .vk-btn {
+      svg {
+        width: clamp(3.5rem, 4vw, 5rem) !important;
+      }
+    }
   }
 }
 </style>

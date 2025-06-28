@@ -9,10 +9,7 @@ const { loading, error, rawData: contacts } = useCityData("contacts");
       <p class="phone">{{ contacts.phone }}</p>
       <p class="email">{{ contacts.email }}</p>
     </div>
-    <p class="text-info">
-      Москва, ул. Покровка, <br />
-      дом 1, подъезд 10
-    </p>
+    <p class="text-info" v-html="contacts.address"></p>
     <p class="text-info">
       {{ contacts.workingHours }}
     </p>

@@ -15,7 +15,7 @@ const emit = defineEmits(["toggle"]);
         </div>
         <div class="question">
           <h4>{{ heading }}</h4>
-          <p>{{ question }}</p>
+          <p v-html="question"></p>
         </div>
         <div class="footer">
           <img class="footer-suit" :src="suit" alt="card-suit" />
@@ -34,7 +34,7 @@ const emit = defineEmits(["toggle"]);
           <img class="header-suit" :src="suit" alt="card-suit" />
           <h4>{{ heading }}</h4>
         </div>
-        <p class="text">{{ question }}</p>
+        <p class="text" v-html="question"></p>
       </div>
       <button @click="emit('toggle')" class="card-open-btn">
         <img src="/assets/icons/faq-open-btn.svg" alt="" />
