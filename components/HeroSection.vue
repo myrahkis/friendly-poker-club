@@ -164,7 +164,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     width: 50%;
   }
 }
-@media (min-width: 1800px) {
+@media (min-width: 1920px) {
   .hero-section {
     padding: 0 var(--horiz-main-padding) 5%;
   }
@@ -189,7 +189,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     width: 95%;
   }
 }
-@media (min-width: 2200px) {
+@media (min-width: 2560px) {
   div {
     .logo {
       width: 30% !important;
@@ -205,7 +205,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
     width: 50%;
   }
 }
-@media (min-width: 3000px) {
+@media (min-width: 4000px) {
   div {
     .logo {
       width: 40% !important;

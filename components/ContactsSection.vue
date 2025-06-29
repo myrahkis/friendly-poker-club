@@ -1,5 +1,7 @@
 <script setup>
 const { rawData: contacts } = useCityData("contacts");
+
+const isInstructionOpen = ref(false);
 </script>
 
 <template>
@@ -10,8 +12,43 @@ const { rawData: contacts } = useCityData("contacts");
     </div>
     <div class="contacts-map">
       <ContactsInfoBlock bgColor="#021b46" />
-      <div class="map" v-html="contacts.map"></div>
+      <div class="map-wrapper">
+        <button
+          class="instructions-btn"
+          @click="isInstructionOpen = !isInstructionOpen"
+        >
+          Как нас найти?
+        </button>
+        <div class="map" v-html="contacts.map"></div>
+      </div>
     </div>
+    <transition name="slide-down">
+      <div class="instructions" v-if="isInstructionOpen">
+        <h3>Как нас найти?</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, itaque
+          modi cum optio unde quaerat vero eius impedit sed dolor aliquam ullam
+          non quisquam sunt praesentium dolorem consectetur eveniet quis!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, itaque
+          modi cum optio unde quaerat vero eius impedit sed dolor aliquam ullam
+          non quisquam sunt praesentium dolorem consectetur eveniet quis!
+        </p>
+        <div class="instructions-images">
+          <img
+            class="instructions-img"
+            src="/assets/images/carousel-placeholder.png"
+            alt=""
+          />
+          <img
+            class="instructions-img"
+            src="/assets/images/carousel-placeholder.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -40,15 +77,32 @@ const { rawData: contacts } = useCityData("contacts");
   width: 80%;
 }
 
-.map {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* font-size: 8rem; */
+.map-wrapper {
+  position: relative;
   overflow: hidden;
   width: 60%;
   border: 1px solid var(--light-gradient-color);
   border-radius: 2rem;
+}
+.map {
+  height: 100%;
+}
+.instructions-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 67, 0.7);
+  border-radius: 1.8rem;
+  box-shadow: 0 0.5rem 0.8rem rgba(3, 3, 3, 0.5);
+  backdrop-filter: blur(2px);
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 1.5rem;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background-color: var(--dark-blue-color);
+  }
 }
 
 .btns {
@@ -64,6 +118,54 @@ const { rawData: contacts } = useCityData("contacts");
   border-radius: 3rem;
   font-size: clamp(1.5rem, 2.2vw, 3rem);
   width: 40%;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.instructions-images {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  gap: 2rem;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+  }
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.slide-down-enter-from {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.slide-down-enter-to {
+  max-height: 100vh;
+  opacity: 1;
+  /* padding-top: 1rem;
+  padding-bottom: 1rem; */
+}
+.slide-down-leave-from {
+  max-height: 100vh;
+  opacity: 1;
+  /* padding-top: 1rem;
+  padding-bottom: 1rem; */
+}
+.slide-down-leave-to {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 @media (max-width: 690px) {

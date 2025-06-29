@@ -64,8 +64,7 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
         <div class="pracing-card-info">
           <p class="heading-text">
             Проведение корпоративных турниров, корпоративных чемпионатов,
-            корпоративных лиг. <br class="desktop-br" />
-            (от 9 игроков)
+            корпоративных лиг. (от 9 игроков)
           </p>
           <p class="colored-price">Стоимость расчитывается индивидуально</p>
           <p class="sub-text">
@@ -182,13 +181,6 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
   z-index: -1;
   transform: translate(-50%, -50%);
   width: 55%;
-}
-
-@media (min-width: 2200px) {
-  .desktop-br {
-    /* ??? */
-    display: block;
-  }
 }
 
 @media (max-width: 1192px) {
