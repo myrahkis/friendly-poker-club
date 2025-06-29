@@ -30,27 +30,27 @@
   "docs": [
     {
       "title": "Публичный договор (договор-оферта) на оказание услуг по проведению развлекательных мероприятий",
-      "path": "@/assets/documents/ryazan/public_offer.pdf"
+      "path": "ryazan/public_offer.pdf"
     },
     {
       "title": "Дополнительное соглашение к публичному договору на оказание услуг по проведению развлекательных мероприятий",
-      "path": "@/assets/documents/ryazan/additional_agreement.pdf"
+      "path": "ryazan/additional_agreement.pdf"
     },
     {
       "title": "Приложение №1 к Публичному Договору На оказание услуг по проведению развлекательных мероприятий",
-      "path": "@/assets/documents/ryazan/event_rules.pdf"
+      "path": "ryazan/event_rules.pdf"
     },
     {
       "title": "Политика в отношении обработки персональных данных",
-      "path": "@/assets/documents/ryazan/personal_data_processing_policy.pdf"
+      "path": "ryazan/personal_data_processing_policy.pdf"
     },
     {
       "title": "Согласие на обработку персональных данных",
-      "path": "@/assets/documents/ryazan/consent_to_processing_personal_data.pdf"
+      "path": "ryazan/consent_to_processing_personal_data.pdf"
     },
     {
       "title": "Лист ознакомления",
-      "path": "@/assets/documents/ryazan/familiarization_sheet.pdf"
+      "path": "ryazan/familiarization_sheet.pdf"
     }
   ],
   "tournaments": {
