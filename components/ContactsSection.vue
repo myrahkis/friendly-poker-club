@@ -4,22 +4,14 @@ const { rawData: contacts } = useCityData("contacts");
 
 <template>
   <section class="contacts-section" id="contacts">
-    <!-- <div class="contacts-heading"> -->
+    <div class="contacts-heading">
       <h2>Контакты</h2>
-      <!-- <CitySelector /> -->
-    <!-- </div> -->
+      <CitySelector fontSize="2rem" />
+    </div>
     <div class="contacts-map">
       <ContactsInfoBlock bgColor="#021b46" />
       <div class="map" v-html="contacts.map"></div>
     </div>
-    <!-- <div class="btns">
-      <button class="contacts-btn u-shimmering-gradient-hover">
-        Lorem ipsum dolor sit amet
-      </button>
-      <button class="contacts-btn u-shimmering-gradient-hover">
-        Lorem ipsum dolor sit amet
-      </button>
-    </div> -->
   </section>
 </template>
 
@@ -37,6 +29,12 @@ const { rawData: contacts } = useCityData("contacts");
 }
 .contacts-heading {
   display: flex;
+  align-items: baseline;
+  gap: 1rem;
+
+  h2 {
+    margin-bottom: 0;
+  }
 }
 .text {
   width: 80%;

@@ -1,169 +1,39 @@
 <script setup>
-import cityOptions from "/server/data/cityOptions.json";
-
-const open = ref(false);
-const selectedKey = ref("");
-const selectedLabel = ref("");
-const isCityDetecting = ref(false);
+const { fontSize } = defineProps({ fontSize: String });
 
 const emit = defineEmits(["input"]);
 
-const router = useRouter();
-const route = useRoute();
-
-const options = Object.entries(cityOptions).map(([value, label]) => ({
-  value,
-  label,
-}));
-
-function toggleOpen() {
-  open.value = !open.value;
-}
-
-async function onOptionClick(opt) {
-  if (route.query.city === opt.value) {
-    selectedKey.value = opt.value;
-    selectedLabel.value = opt.label;
-    open.value = false;
-    emit("input", opt.value);
-    return;
-  }
-
-  selectedKey.value = opt.value;
-  selectedLabel.value = opt.label;
-  open.value = false;
-  emit("input", opt.value);
-
-  await nextTick();
-
-  router.replace({
-    path: route.path,
-    query: { ...route.query, city: opt.value },
-  });
-}
-
-async function getCoords() {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      reject(new Error("Geolocation не поддерживается"));
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => resolve(pos.coords),
-      (err) => reject(err),
-      { enableHighAccuracy: true }
-    );
-  });
-}
-
-async function reverseGeocode(lat, lon) {
-  const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error("Ошибка геокодирования");
-  const data = await res.json();
-  return (
-    data.address.city ||
-    data.address.town ||
-    data.address.village ||
-    data.address.county ||
-    null
-  );
-}
-
-async function detectCityName() {
-  isCityDetecting.value = true;
-  try {
-    const { latitude, longitude } = await getCoords();
-    return await reverseGeocode(latitude, longitude);
-  } catch (e) {
-    console.warn("detectCityName error:", e);
-    return null;
-  } finally {
-    isCityDetecting.value = false;
-  }
-}
-
-onMounted(async () => {
-  // дефолтный город (перывй из json)
-  if (options.length > 0) {
-    await onOptionClick(options[0]);
-  } else {
-    selectedLabel.value = "Нет городов";
-    return;
-  }
-
-  // опредкление реального города
-  // состояние permissions api
-  let permState = "prompt";
-  try {
-    const perm = await navigator.permissions.query({ name: "geolocation" });
-    permState = perm.state;
-  } catch (e) {
-    console.warn("Permissions API не поддерживается, будем запрашивать сразу");
-  }
-
-  if (permState === "denied") {
-    return;
-  }
-
-  // согласие
-  let coords = null;
-  if (permState === "granted") {
-    isCityDetecting.value = true;
-    try {
-      coords = await getCoords();
-    } catch (e) {
-      console.warn("Не удалось получить координаты:", e);
-    } finally {
-      isCityDetecting.value = false;
-    }
-  } else {
-    // prompt
-    try {
-      coords = await getCoords();
-    } catch (e) {
-      console.warn("Пользователь отказал или ошибка геолокации:", e);
-      return;
-    }
-  }
-
-  if (!coords) return;
-
-  isCityDetecting.value = true;
-  let cityName = null;
-
-  try {
-    cityName = await detectCityName();
-  } catch (e) {
-    console.error("Ошибка при определении города:", e);
-  } finally {
-    isCityDetecting.value = false;
-  }
-
-  if (!cityName) return;
-
-  // совпадение, если отличается от текущего, то меняется
-  const found = options.find(
-    (opt) =>
-      opt.value.toLowerCase() === cityName.toLowerCase() ||
-      opt.label.toLowerCase() === cityName.toLowerCase()
-  );
-  if (found && found.value !== selectedKey.value) {
-    await onOptionClick(found);
-  }
-});
+const {
+  open,
+  selectedLabel,
+  isCityDetecting,
+  options,
+  onOptionClick,
+  toggleOpen,
+} = useCitySelector(emit);
 </script>
 
 <template>
   <div class="city-selector" @blur="open = false">
-    <div class="selected" :class="{ open: open }" @click="toggleOpen">
+    <div
+      class="selected"
+      :style="{ fontSize }"
+      :class="{ open: open }"
+      @click="toggleOpen"
+    >
       <div v-if="isCityDetecting">
-        <span class="loader"></span>
+        <!-- <span class="loader"></span> -->
+        <span class="dots">
+          <span class="dot">.</span>
+          <span class="dot">.</span>
+          <span class="dot">.</span>
+        </span>
       </div>
       <span v-else>
         {{ selectedLabel }}
       </span>
     </div>
-    <div class="items" :class="{ selectHide: !open }">
+    <div class="items" :class="{ selectHide: !open }" v-if="!isCityDetecting">
       <div
         v-for="(opt, idx) in options"
         :key="idx"
@@ -245,7 +115,7 @@ onMounted(async () => {
   display: none;
 }
 
-.loader {
+/* .loader {
   position: absolute;
   width: 2rem;
   height: 2rem;
@@ -264,6 +134,39 @@ onMounted(async () => {
   }
   to {
     transform: rotate(360deg);
+  }
+} */
+.dots {
+  display: inline-block;
+  width: 3ch;
+  font-family: monospace;
+}
+
+.dot {
+  opacity: 0;
+  animation: blink 1s infinite;
+}
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.33s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.66s;
+}
+@keyframes blink {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  20%,
+  60% {
+    opacity: 1;
+  }
+  60%,
+  100% {
+    opacity: 0;
   }
 }
 

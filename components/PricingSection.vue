@@ -2,37 +2,16 @@
 import priceBg1 from "@/assets/images/price-bg-1.png";
 import priceBg2 from "@/assets/images/price-bg-2.png";
 import priceBg3 from "@/assets/images/price-bg-3.png";
-
-// const rentCards = [
-//   {
-//     heading: "Название карточки в две строки",
-//     price: "10 000 ₽",
-//     subHeading: "Название карточки:",
-//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
-//     bg: rentBg2,
-//   },
-//   {
-//     heading: "Название карточки в две строки",
-//     price: "10 000 ₽",
-//     subHeading: "Название карточки:",
-//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
-//     bg: rentBg1,
-//   },
-//   {
-//     heading: "Название карточки в две строки",
-//     price: "10 000 ₽",
-//     subHeading: "Название карточки:",
-//     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis.",
-//     bg: rentBg3,
-//   },
-// ];
 </script>
 
 <template>
   <section class="rent-section" id="pricing">
     <h2>Тарифы</h2>
     <div class="pricing-cards">
-      <div class="pricing-card" :style="{ backgroundImage: `url(${priceBg1})` }">
+      <div
+        class="pricing-card"
+        :style="{ backgroundImage: `url(${priceBg1})` }"
+      >
         <div class="pracing-card-info">
           <div class="pricing-row">
             <p class="heading-text">
@@ -54,7 +33,10 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
           Зарегистрироваться
         </button>
       </div>
-      <div class="pricing-card" :style="{ backgroundImage: `url(${priceBg2})` }">
+      <div
+        class="pricing-card"
+        :style="{ backgroundImage: `url(${priceBg2})` }"
+      >
         <div class="pracing-card-info">
           <div class="pricing-row">
             <p class="heading-text">
@@ -75,17 +57,21 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
         </div>
         <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
       </div>
-      <div class="pricing-card" :style="{ backgroundImage: `url(${priceBg3})` }">
+      <div
+        class="pricing-card"
+        :style="{ backgroundImage: `url(${priceBg3})` }"
+      >
         <div class="pracing-card-info">
           <p class="heading-text">
             Проведение корпоративных турниров, корпоративных чемпионатов,
-            корпоративных лиг. (от 9 игроков)
+            корпоративных лиг. <br class="desktop-br" />
+            (от 9 игроков)
           </p>
           <p class="colored-price">Стоимость расчитывается индивидуально</p>
           <p class="sub-text">
             В стоимость входит всё необходимое для игры оборудование, дилеры,
             турнирный директор, ведение статистики игроков и проведённых
-            турниров, нагрождение победителей корпоративными кубками.
+            турниров, награждение победителей корпоративными кубками.
           </p>
         </div>
         <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
@@ -156,6 +142,9 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
   font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 700;
 }
+.desktop-br {
+  display: none;
+}
 .sub-text {
   font-size: clamp(1rem, 1.5vw, 1.5rem);
 }
@@ -193,6 +182,13 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
   z-index: -1;
   transform: translate(-50%, -50%);
   width: 55%;
+}
+
+@media (min-width: 2200px) {
+  .desktop-br {
+    /* ??? */
+    display: block;
+  }
 }
 
 @media (max-width: 1192px) {
