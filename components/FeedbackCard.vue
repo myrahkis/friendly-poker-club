@@ -1,13 +1,24 @@
 <script setup>
 const { feedback } = defineProps({ feedback: Object });
 
-const { date, avatar, name, userText, feedbackText } = feedback;
+const { date, stars, avatar, name, userText, feedbackText } = feedback;
 </script>
 
 <template>
   <div class="feedback-card">
     <div class="header">
-      <p class="date">{{ date }}</p>
+      <div class="feedback-date-rating-wrapper">
+        <p class="date">{{ date }}</p>
+        <div class="feedback-stars">
+          <img
+            v-for="star in stars"
+            :key="star"
+            class="feedback-star"
+            src="/assets/icons/feedback-star.svg"
+            alt=""
+          />
+        </div>
+      </div>
       <div class="header-row">
         <div class="ava-placeholder"></div>
         <!-- <img :src="avatar" alt="" /> -->
@@ -48,6 +59,17 @@ const { date, avatar, name, userText, feedbackText } = feedback;
   display: flex;
   gap: 1.5rem;
   align-items: center;
+}
+.feedback-date-rating-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.feedback-stars {
+  display: flex;
+  gap: 0.5rem;
+}
+.feedback-star {
+  width: 2rem;
 }
 .user-info {
   display: flex;

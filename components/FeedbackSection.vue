@@ -4,6 +4,7 @@ import { ref, computed } from "vue";
 const feedbacks = [
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 5,
     avatar: "",
     name: "Петя Петряков",
     userText: "Lorem ipsum dolor sit amet.",
@@ -12,6 +13,7 @@ const feedbacks = [
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 5,
     avatar: "",
     name: "Иван Иванов",
     userText: "Lorem ipsum dolor sit amet.",
@@ -20,6 +22,7 @@ const feedbacks = [
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 4,
     avatar: "",
     name: "Коля Колянов",
     userText: "Lorem ipsum dolor sit amet.",
@@ -28,6 +31,7 @@ const feedbacks = [
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 5,
     avatar: "",
     name: "Егор Егоров",
     userText: "Lorem ipsum dolor sit amet.",
@@ -36,6 +40,7 @@ const feedbacks = [
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 4,
     avatar: "",
     name: "Маша Машева",
     userText: "Lorem ipsum dolor sit amet.",
@@ -44,6 +49,7 @@ const feedbacks = [
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 5,
     avatar: "",
     name: "Катя Катева",
     userText: "Lorem ipsum dolor sit amet.",
