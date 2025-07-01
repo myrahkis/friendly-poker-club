@@ -99,10 +99,12 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
 .hero-heading {
   font-size: clamp(3rem, 4vw, 5rem);
   font-weight: 700;
+  line-height: 1.3;
 }
 .hero-sub-heading {
   font-size: clamp(2rem, 2.5vw, 3.3rem);
   font-weight: 700;
+  line-height: 1.3;
 }
 .hero-sub-text {
   font-size: 2rem;
