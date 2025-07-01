@@ -1,5 +1,8 @@
 <script setup>
-const { fontSize } = defineProps({ fontSize: String });
+const { fontSize, cityWritingForm } = defineProps({
+  fontSize: String,
+  cityWritingForm: Number,
+});
 
 const emit = defineEmits(["input"]);
 
@@ -30,7 +33,7 @@ const {
         </span>
       </div>
       <span v-else>
-        {{ selectedLabel }}
+        {{ selectedLabel[cityWritingForm] }}
       </span>
     </div>
     <div class="items" :class="{ selectHide: !open }" v-if="!isCityDetecting">
@@ -40,7 +43,7 @@ const {
         class="item"
         @click="onOptionClick(opt)"
       >
-        {{ opt.label }}
+        {{ opt.label[0] }}
       </div>
     </div>
   </div>
@@ -114,28 +117,6 @@ const {
 .selectHide {
   display: none;
 }
-
-/* .loader {
-  position: absolute;
-  width: 2rem;
-  height: 2rem;
-  top: 50%;
-  left: 0;
-  z-index: 1000;
-  transform: translate(-50%, 0);
-  border-radius: 50%;
-  border: 0.5rem solid var(--dark-gradient-color);
-  border-left-color: var(--light-gradient-color);
-  animation: loader 3s infinite;
-}
-@keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 .dots {
   display: inline-block;
   width: 3ch;

@@ -8,13 +8,13 @@ const isInstructionOpen = ref(false);
   <section class="contacts-section" id="contacts">
     <div class="contacts-heading">
       <h2>Контакты</h2>
-      <CitySelector fontSize="2rem" />
+      <CitySelector fontSize="2rem" cityWritingForm="1" />
     </div>
     <div class="contacts-map">
       <ContactsInfoBlock bgColor="#021b46" />
       <div class="map-wrapper">
         <button
-          class="instructions-btn"
+          class="instructions-btn u-shimmering-gradient-hover"
           @click="isInstructionOpen = !isInstructionOpen"
         >
           Как нас найти?
@@ -46,6 +46,11 @@ const isInstructionOpen = ref(false);
             src="/assets/images/carousel-placeholder.png"
             alt=""
           />
+          <img
+            class="instructions-img"
+            src="/assets/images/carousel-placeholder.png"
+            alt=""
+          />
         </div>
       </div>
     </transition>
@@ -67,7 +72,7 @@ const isInstructionOpen = ref(false);
 .contacts-heading {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
+  gap: 0.5rem;
 
   h2 {
     margin-bottom: 0;
@@ -91,13 +96,17 @@ const isInstructionOpen = ref(false);
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background-color: rgba(0, 0, 67, 0.7);
-  border-radius: 1.8rem;
-  box-shadow: 0 0.5rem 0.8rem rgba(3, 3, 3, 0.5);
+  background: linear-gradient(
+    to right,
+    var(--dark-gradient-color),
+    var(--light-gradient-color)
+  );
+  border-radius: 3rem;
+  box-shadow: 0 0.5rem 0.8rem rgba(3, 3, 3, 0.4);
   backdrop-filter: blur(2px);
   font-size: 1.5rem;
   font-weight: 700;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   transition: all 0.2s ease-in;
 
   &:hover {
@@ -127,7 +136,7 @@ const isInstructionOpen = ref(false);
 }
 .instructions-images {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
   gap: 2rem;
 
   img {
@@ -175,8 +184,14 @@ const isInstructionOpen = ref(false);
   .text {
     width: 100%;
   }
-  .map {
+  .map-wrapper {
     width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+@media (max-width: 510px) {
+  .map-wrapper {
+    aspect-ratio: 4 / 5;
   }
 }
 @media (max-width: 367px) {
