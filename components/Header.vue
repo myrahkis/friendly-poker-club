@@ -28,7 +28,7 @@ defineExpose({ header });
 <template>
   <header class="header" ref="header">
     <div class="header-mobile">
-      <CitySelector fontSize="1.5rem" cityWritingForm="0" />
+      <CitySelector fontSize="1.5rem" :cityWritingForm="0" />
       <!-- <p style="font-weight: 700">{{ city }}</p> -->
       <button class="header-menu-btn" @click="toggleMenu">
         <img src="/assets/icons/menu-btn.svg" alt="" />
@@ -63,7 +63,7 @@ defineExpose({ header });
           </svg>
         </span>
         <!-- <p style="font-weight: 700">{{ city }}</p> -->
-        <CitySelector fontSize="1.5rem" cityWritingForm="0" />
+        <CitySelector fontSize="1.5rem" :cityWritingForm="0" />
       </div>
       <div class="header-info-wrapper">
         <!-- <Logo width="15rem" paddingTop="0" /> -->

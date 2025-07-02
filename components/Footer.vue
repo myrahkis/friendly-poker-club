@@ -5,7 +5,7 @@ const openDocState = useState("openDocIndex", () => null);
 
 const { rawData: recruits } = useCityData("recruits");
 const { rawData: contacts } = useCityData("contacts");
-console.log(recruits);
+// console.log(recruits);
 
 function openDoc(idx) {
   openDocState.value = idx;

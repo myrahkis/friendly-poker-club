@@ -8,7 +8,7 @@ const isInstructionOpen = ref(false);
   <section class="contacts-section" id="contacts">
     <div class="contacts-heading">
       <h2>Контакты</h2>
-      <CitySelector fontSize="2rem" cityWritingForm="1" />
+      <CitySelector fontSize="2rem" :cityWritingForm="1" />
     </div>
     <div class="contacts-map">
       <ContactsInfoBlock bgColor="#021b46" />
@@ -177,6 +177,18 @@ const isInstructionOpen = ref(false);
   padding-bottom: 0;
 }
 
+/* (480px–767px) */
+@media (max-width: 767px) {
+  .instructions-images {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      aspect-ratio: 16 / 9;
+    }
+  }
+}
+
 @media (max-width: 690px) {
   .contacts-map {
     flex-direction: column;
@@ -192,6 +204,12 @@ const isInstructionOpen = ref(false);
 @media (max-width: 510px) {
   .map-wrapper {
     aspect-ratio: 4 / 5;
+  }
+
+  .instructions-images {
+    img {
+      aspect-ratio: 1;
+    }
   }
 }
 @media (max-width: 367px) {

@@ -20,7 +20,7 @@ export function useCitySelector(emit) {
   }
 
   async function onOptionClick(opt) {
-    console.log("click!!!");
+    // console.log("click!!!");
     if (route.query.city === opt.value) {
       selectedKey.value = opt.value;
       selectedLabel.value = opt.label;
@@ -50,7 +50,11 @@ export function useCitySelector(emit) {
       navigator.geolocation.getCurrentPosition(
         (pos) => resolve(pos.coords),
         (err) => reject(err),
-        { enableHighAccuracy: true }
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 5000,
+        }
       );
     });
   }
@@ -60,6 +64,7 @@ export function useCitySelector(emit) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Ошибка геокодирования");
     const data = await res.json();
+    // console.log(data.address.city);
     return (
       data.address.city ||
       data.address.town ||
@@ -82,7 +87,18 @@ export function useCitySelector(emit) {
     }
   }
 
+  let initialized = false;
+
   onMounted(async () => {
+    if (initialized) return;
+    initialized = true;
+
+    // if (route.query.city) {
+    //   const pre = options.find((opt) => opt.value === route.query.city);
+    //   if (pre) await onOptionClick(pre);
+    //   return;
+    // }
+
     // дефолтный город (перывй из json)
     if (options.length > 0) {
       await onOptionClick(options[0]);
@@ -147,7 +163,7 @@ export function useCitySelector(emit) {
     const found = options.find(
       (opt) =>
         opt.value.toLowerCase() === cityName.toLowerCase() ||
-        opt.label.toLowerCase() === cityName.toLowerCase()
+        opt.label[0].toLowerCase() === cityName.toLowerCase()
     );
     if (found && found.value !== selectedKey.value) {
       await onOptionClick(found);
