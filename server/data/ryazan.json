@@ -11,7 +11,34 @@
       "tg": "",
       "youtube": ""
     },
-    "map": "<iframe src='https://yandex.ru/map-widget/v1/?um=constructor%3Aade0df30b66cef8939f118b63dd4f4e8769ffd97b489d9362636bd25efb0d887&amp;source=constructor' width='100%' height='100%' frameborder='0'></iframe>"
+    "map": "https://yandex.ru/map-widget/v1/?um=constructor%3Aade0df30b66cef8939f118b63dd4f4e8769ffd97b489d9362636bd25efb0d887&amp;source=constructor"
+  },
+  "guide": {
+    "car": {
+      "varient": "Если вы добираетесь на автомобиле:",
+      "steps": [
+        "Вводите адрес «2-й Мервинский проезд, 3/1, строение 1»",
+        "Напротив входа бесплатная общественная парковка! Слева здания дверь.",
+        "Поднимайтесь на второй этаж — и вы на месте!"
+      ]
+    },
+    "publicTransport": {
+      "varient": "Если вы добираетесь на общественном транспорте:",
+      "steps": [
+        "Выйдите на остановке «Автовокзал». При необходимости перейдите на сторону автовокзала.",
+        "Идите по ул.Мервинская примерно 300 метров, вдоль дороги, справа от вас будут находиться «Мангальная», «Пятерочка», 17-ти этажный жилой дом",
+        "Поверните на перекрестке направо, пройдите 30 метров, пока не увидите слева здание с автомойкой на первом этаже",
+        "Вход в наш клуб находится слева от автомойки",
+        "Поднимайтесь на второй этаж — и вы на месте!"
+      ]
+    },
+    "pics": [
+      "ryazan/guideRyazan1.jpg",
+      "ryazan/guideRyazan2.jpg",
+      "ryazan/guideRyazan3.jpg",
+      "ryazan/guideRyazan4.jpg",
+      "ryazan/guideRyazan5.jpg"
+    ]
   },
   "pricing": {
     "daylyTournament": "1 000",

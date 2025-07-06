@@ -1,7 +1,30 @@
 <script setup>
 const { rawData: contacts } = useCityData("contacts");
+const { rawData: guide } = useCityData("guide");
 
 const isInstructionOpen = ref(false);
+
+const imageModules = import.meta.glob("/assets/images/locationGuide/**/*.jpg", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+console.log("glob keys:", Object.keys(imageModules));
+
+const imageUrls = computed(() => {
+  return guide.value.pics.map((fileName) => {
+    const key = `/assets/images/locationGuide/${fileName}`;
+    const url = imageModules[key];
+    // console.log(url);
+    if (!url) {
+      console.warn(`Не найдена картинка по ключу ${key}`);
+      return "";
+    }
+    return url;
+  });
+});
+
+// console.log(imageUrls);
 </script>
 
 <template>
@@ -19,36 +42,45 @@ const isInstructionOpen = ref(false);
         >
           Как нас найти?
         </button>
-        <div class="map" v-html="contacts.map"></div>
+        <div class="map">
+          <iframe
+            :src="contacts.map"
+            width="100%"
+            height="100%"
+            frameborder="0"
+          ></iframe>
+        </div>
       </div>
     </div>
     <transition name="slide-down">
       <div class="instructions" v-if="isInstructionOpen">
         <h3>Как нас найти?</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, itaque
-          modi cum optio unde quaerat vero eius impedit sed dolor aliquam ullam
-          non quisquam sunt praesentium dolorem consectetur eveniet quis!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, itaque
-          modi cum optio unde quaerat vero eius impedit sed dolor aliquam ullam
-          non quisquam sunt praesentium dolorem consectetur eveniet quis!
-        </p>
+        <div>
+          <p>{{ guide.car.varient }}</p>
+          <ul>
+            <li v-for="(step, index) in guide.car.steps" :key="index">
+              {{ step }}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p>{{ guide.publicTransport.varient }}</p>
+          <ul>
+            <li
+              v-for="(step, index) in guide.publicTransport.steps"
+              :key="index"
+            >
+              {{ step }}
+            </li>
+          </ul>
+        </div>
+        <p>Если возникнут сложности — звоните, мы подскажем.</p>
         <div class="instructions-images">
           <img
+            v-for="(imgPath, index) in imageUrls"
+            :key="index"
             class="instructions-img"
-            src="/assets/images/carousel-placeholder.png"
-            alt=""
-          />
-          <img
-            class="instructions-img"
-            src="/assets/images/carousel-placeholder.png"
-            alt=""
-          />
-          <img
-            class="instructions-img"
-            src="/assets/images/carousel-placeholder.png"
+            :src="imgPath"
             alt=""
           />
         </div>
@@ -136,7 +168,7 @@ const isInstructionOpen = ref(false);
 }
 .instructions-images {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 0.5fr;
   gap: 2rem;
 
   img {
