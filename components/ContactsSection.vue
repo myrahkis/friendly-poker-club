@@ -1,30 +1,7 @@
 <script setup>
 const { rawData: contacts } = useCityData("contacts");
-const { rawData: guide } = useCityData("guide");
 
 const isInstructionOpen = ref(false);
-
-const imageModules = import.meta.glob("/assets/images/locationGuide/**/*.jpg", {
-  eager: true,
-  query: "?url",
-  import: "default",
-});
-console.log("glob keys:", Object.keys(imageModules));
-
-const imageUrls = computed(() => {
-  return guide.value.pics.map((fileName) => {
-    const key = `/assets/images/locationGuide/${fileName}`;
-    const url = imageModules[key];
-    // console.log(url);
-    if (!url) {
-      console.warn(`Не найдена картинка по ключу ${key}`);
-      return "";
-    }
-    return url;
-  });
-});
-
-// console.log(imageUrls);
 </script>
 
 <template>
@@ -44,6 +21,7 @@ const imageUrls = computed(() => {
         </button>
         <div class="map">
           <iframe
+            v-if="contacts.map"
             :src="contacts.map"
             width="100%"
             height="100%"
@@ -52,40 +30,7 @@ const imageUrls = computed(() => {
         </div>
       </div>
     </div>
-    <transition name="slide-down">
-      <div class="instructions" v-if="isInstructionOpen">
-        <h3>Как нас найти?</h3>
-        <div>
-          <p>{{ guide.car.varient }}</p>
-          <ul>
-            <li v-for="(step, index) in guide.car.steps" :key="index">
-              {{ step }}
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p>{{ guide.publicTransport.varient }}</p>
-          <ul>
-            <li
-              v-for="(step, index) in guide.publicTransport.steps"
-              :key="index"
-            >
-              {{ step }}
-            </li>
-          </ul>
-        </div>
-        <p>Если возникнут сложности — звоните, мы подскажем.</p>
-        <div class="instructions-images">
-          <img
-            v-for="(imgPath, index) in imageUrls"
-            :key="index"
-            class="instructions-img"
-            :src="imgPath"
-            alt=""
-          />
-        </div>
-      </div>
-    </transition>
+    <ContactsInstructions :isInstructionOpen="isInstructionOpen" />
   </section>
 </template>
 
@@ -114,16 +59,6 @@ const imageUrls = computed(() => {
   width: 80%;
 }
 
-.map-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 60%;
-  border: 1px solid var(--light-gradient-color);
-  border-radius: 2rem;
-}
-.map {
-  height: 100%;
-}
 .instructions-btn {
   position: absolute;
   top: 1rem;
@@ -146,6 +81,17 @@ const imageUrls = computed(() => {
   }
 }
 
+.map-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 60%;
+  border: 1px solid var(--light-gradient-color);
+  border-radius: 2rem;
+}
+.map {
+  height: 100%;
+}
+
 .btns {
   display: flex;
   justify-content: center;
@@ -161,56 +107,8 @@ const imageUrls = computed(() => {
   width: 40%;
 }
 
-.instructions {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.instructions-images {
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
-  gap: 2rem;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    border-radius: 2rem;
-  }
-}
-
-.slide-down-enter-active,
-.slide-down-leave-active {
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-.slide-down-enter-from {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.slide-down-enter-to {
-  max-height: 100vh;
-  opacity: 1;
-  /* padding-top: 1rem;
-  padding-bottom: 1rem; */
-}
-.slide-down-leave-from {
-  max-height: 100vh;
-  opacity: 1;
-  /* padding-top: 1rem;
-  padding-bottom: 1rem; */
-}
-.slide-down-leave-to {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
 /* (480px–767px) */
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .instructions-images {
     display: flex;
     flex-direction: column;
@@ -219,7 +117,7 @@ const imageUrls = computed(() => {
       aspect-ratio: 16 / 9;
     }
   }
-}
+} */
 
 @media (max-width: 690px) {
   .contacts-map {
@@ -238,11 +136,11 @@ const imageUrls = computed(() => {
     aspect-ratio: 4 / 5;
   }
 
-  .instructions-images {
+  /* .instructions-images {
     img {
       aspect-ratio: 1;
     }
-  }
+  } */
 }
 @media (max-width: 367px) {
   :deep(.socials-container) {

@@ -56,13 +56,17 @@ const { loading, error, rawData: contacts } = useCityData("contacts");
 }
 
 @media (max-width: 762px) {
+  .contacts {
+    padding: 2rem;
+  }
+
   :deep(.socials-container) {
     .whatsup-btn,
     .yt-btn,
     .tg-btn,
     .vk-btn {
       svg {
-        width: clamp(4.5rem, 4vw, 6rem) !important;
+        width: clamp(4rem, 4vw, 5rem) !important;
       }
     }
   }
@@ -84,6 +88,7 @@ const { loading, error, rawData: contacts } = useCityData("contacts");
 @media (max-width: 690px) {
   .contacts {
     width: 100%;
+    padding: 3rem;
   }
 }
 @media (max-width: 510px) {
