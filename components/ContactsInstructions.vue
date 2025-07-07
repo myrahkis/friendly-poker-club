@@ -80,6 +80,7 @@ const imageUrls = computed(() => {
 .instructions-img-4 {
   grid-column: 1 / -1;
   aspect-ratio: 16 / 9;
+  width: 100rem;
   justify-self: center;
 }
 
