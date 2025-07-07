@@ -2,6 +2,24 @@
 const { rawData: contacts } = useCityData("contacts");
 
 const isInstructionOpen = ref(false);
+const instructionComp = ref(null);
+
+function toggleInstructions() {
+  isInstructionOpen.value = !isInstructionOpen.value;
+
+  if (isInstructionOpen.value) {
+    nextTick(() => {
+      const el = instructionComp.value.instructionContainer;
+      console.log(el);
+      if (el && el.scrollIntoView) {
+        el.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  }
+}
 </script>
 
 <template>
@@ -15,7 +33,7 @@ const isInstructionOpen = ref(false);
       <div class="map-wrapper">
         <button
           class="instructions-btn u-shimmering-gradient-hover"
-          @click="isInstructionOpen = !isInstructionOpen"
+          @click="toggleInstructions"
         >
           Как нас найти?
         </button>
@@ -30,7 +48,10 @@ const isInstructionOpen = ref(false);
         </div>
       </div>
     </div>
-    <ContactsInstructions :isInstructionOpen="isInstructionOpen" />
+    <ContactsInstructions
+      :isInstructionOpen="isInstructionOpen"
+      ref="instructionComp"
+    />
   </section>
 </template>
 
@@ -63,6 +84,7 @@ const isInstructionOpen = ref(false);
   position: absolute;
   top: 1rem;
   left: 1rem;
+  z-index: 999;
   background: linear-gradient(
     to right,
     var(--dark-gradient-color),

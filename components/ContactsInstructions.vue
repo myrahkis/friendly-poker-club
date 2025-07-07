@@ -2,6 +2,10 @@
 const { isInstructionOpen } = defineProps({ isInstructionOpen: Boolean });
 const { rawData: guide } = useCityData("guide");
 
+const instructionContainer = ref(null);
+
+// console.log(instructionContainer.value.instructionContainer);
+
 const imageModules = import.meta.glob("/assets/images/locationGuide/**/*.jpg", {
   eager: true,
   query: "?url",
@@ -22,37 +26,44 @@ const imageUrls = computed(() => {
     return url;
   });
 });
+
+defineExpose({ instructionContainer });
 </script>
 
 <template>
   <transition name="slide-down">
-    <div class="instructions" v-if="isInstructionOpen">
-      <h3>Как нас найти?</h3>
-      <div>
-        <h4>{{ guide.car.varient }}</h4>
-        <ul class="steps-list">
-          <li v-for="(step, index) in guide.car.steps" :key="index">
-            {{ step }}
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h4>{{ guide.publicTransport.varient }}</h4>
-        <ul class="steps-list">
-          <li v-for="(step, index) in guide.publicTransport.steps" :key="index">
-            {{ step }}
-          </li>
-        </ul>
-      </div>
-      <p>Если возникнут сложности — звоните, мы подскажем.</p>
-      <div class="instructions-images">
-        <img
-          v-for="(imgPath, index) in imageUrls"
-          :key="index"
-          :class="`instructions-img-${index}`"
-          :src="imgPath"
-          alt=""
-        />
+    <div ref="instructionContainer">
+      <div class="instructions" v-if="isInstructionOpen">
+        <h3>Как нас найти?</h3>
+        <div>
+          <h4>{{ guide.car.varient }}</h4>
+          <ul class="steps-list">
+            <li v-for="(step, index) in guide.car.steps" :key="index">
+              {{ step }}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4>{{ guide.publicTransport.varient }}</h4>
+          <ul class="steps-list">
+            <li
+              v-for="(step, index) in guide.publicTransport.steps"
+              :key="index"
+            >
+              {{ step }}
+            </li>
+          </ul>
+        </div>
+        <p>Если возникнут сложности — звоните, мы подскажем.</p>
+        <div class="instructions-images">
+          <img
+            v-for="(imgPath, index) in imageUrls"
+            :key="index"
+            :class="`instructions-img-${index}`"
+            :src="imgPath"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   </transition>
