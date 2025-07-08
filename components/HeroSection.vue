@@ -1,5 +1,13 @@
 <script setup>
 const { loading, error, rawData: cityName } = useCityData("mainHeading");
+const heroVid = ref(null);
+
+onMounted(() => {
+  heroVid.value.muted = true;
+  heroVid.value.play().catch((err) => {
+    console.warn("Autoplay заблокирован:", err);
+  });
+});
 </script>
 
 <template>
@@ -31,7 +39,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
       </div>
       <div class="hero-bg-vid">
         <div class="video-mask">
-          <video muted autoplay loop playsinline webkit-playsinline>
+          <video loop playsinline webkit-playsinline ref="heroVid">
             <source src="/assets/hero-vid-test.MP4" type="video/mp4" />
           </video>
         </div>
