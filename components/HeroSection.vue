@@ -31,7 +31,14 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
       </div>
       <div class="hero-bg-vid">
         <div class="video-mask">
-          <video src="/assets/hero-vid-test.MP4" autoplay muted loop></video>
+          <video
+            src="/assets/hero-vid-test.MP4"
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+          ></video>
         </div>
       </div>
 
@@ -274,7 +281,7 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   right: -2.1%;
   bottom: -2.1%;
   background: url("/assets/hero-video-border.svg") no-repeat center/contain;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .video-mask video {
   width: 100%;
