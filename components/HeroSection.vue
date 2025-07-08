@@ -30,88 +30,13 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
         </p>
       </div>
       <div class="hero-bg-vid">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1310 732"
-          width="1310"
-          height="729"
-          style="max-width: 100%; height: auto; display: block"
-        >
-          <defs>
-            <clipPath id="inner-clip">
-              <path
-                d="M 942.893 22.2109
-               C 1131.72 22.211 1284.8 175.286 1284.8 364.115
-               C 1284.8 552.944 1131.72 706.02 942.893 706.021
-               H 367.247
-               C 178.418 706.021 25.3418 552.944 25.3418 364.115
-               C 25.342 175.286 178.418 22.2109 367.247 22.2109
-               H 482.713
-               C 516.093 48.6644 580.923 66.6084 655.428 66.6084
-               C 729.933 66.6083 794.762 48.6646 828.143 22.2109
-               H 942.893
-               Z"
-              />
-            </clipPath>
-          </defs>
-
-          <foreignObject width="1310" height="729" clip-path="url(#inner-clip)">
-            <video
-              xmlns="http://www.w3.org/1999/xhtml"
-              src="/assets/hero-vid-test.MP4"
-              autoplay
-              muted
-              loop
-              style="width: 100%; height: 100%; object-fit: contain"
-            ></video>
-          </foreignObject>
-
-          <path
-            fill="none"
-            stroke="white"
-            stroke-width="2"
-            opacity="0.5"
-            d="M 944.592 0
-           C 1145.9 0 1309.09 163.193 1309.09 364.501
-           C 1309.09 565.809 1145.9 729.003 944.592 729.003
-           H 364.501
-           C 163.193 729.003 0 565.809 0 364.501
-           C 0.0001 163.193 163.193 0 364.501 0
-           H 476.69
-           C 511.125 27.4751 577.05 46.0556 652.72 46.0557
-           C 728.39 46.0557 794.316 27.4753 828.75 0
-           H 944.592 Z"
-          />
-          <path
-            fill="white"
-            fill-opacity="0.8"
-            stroke="none"
-            d="M 942.893 703.826 V 706.021 H 367.247 V 703.826 H 942.893 Z
-           M 1282.6 364.115
-           C 1282.6 177.231 1131.7 25.5942 945.09 24.4121
-           L 942.893 24.4053
-           H 828.9
-           C 794.795 51.0362 729.717 68.8027 655.428 68.8027
-           C 581.139 68.8027 516.06 51.0361 481.955 24.4053
-           H 367.247
-           C 179.63 24.4053 27.5363 176.498 27.5361 364.115
-           C 27.5361 551.732 179.63 703.826 367.247 703.826
-           V 706.021
-           C 178.418 706.021 25.3418 552.944 25.3418 364.115
-           C 25.342 175.286 178.418 22.2109 367.247 22.2109
-           H 482.713
-           C 516.093 48.6644 580.923 66.6084 655.428 66.6084
-           C 729.933 66.6083 794.762 48.6646 828.143 22.2109
-           H 942.893
-           C 1131.72 22.211 1284.8 175.286 1284.8 364.115
-           C 1284.8 552.944 1131.72 706.02 942.893 706.021
-           V 703.826
-           C 1130.51 703.826 1282.6 551.732 1282.6 364.115 Z"
-          />
-        </svg>
-
-        <!-- <video src="/assets/hero-vid-test.MP4" autoplay muted loop></video> -->
+        <div class="video-mask">
+          <video src="/assets/hero-vid-test.MP4" autoplay muted loop></video>
+        </div>
       </div>
+
+      <!-- большие экраны -->
+      <!-- <video src="/assets/hero-vid-test.MP4" autoplay muted loop></video> -->
       <!-- <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" /> -->
       <div class="hero-bg-vid-big-screen">
         <svg
@@ -326,23 +251,37 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
   width: 75%;
   transform: translateX(35rem);
   z-index: 0;
-  /* aspect-ratio: 1310 / 729; */
-  /* mask-image: url("/assets/test-test.svg");
+}
+.video-mask {
+  width: 100%;
+  mask-image: url("/assets/test.svg");
   mask-mode: alpha;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
-  -webkit-mask-image: url("/assets/test-test.svg");
+  -webkit-mask-image: url("/assets/test.svg");
   -webkit-mask-mode: alpha;
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  overflow: hidden; */
+  /* overflow: hidden; */
 }
-.hero-bg-vid video {
+.hero-bg-vid::after {
+  content: "";
+  position: absolute;
+  top: -2.1%;
+  left: -2.1%;
+  right: -2.1%;
+  bottom: -2.1%;
+  background: url("/assets/hero-video-border.svg") no-repeat center/contain;
+  pointer-events: none;
+}
+.video-mask video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center center;
 }
+
 .hero-bg-vid-big-screen {
   display: none;
 }
