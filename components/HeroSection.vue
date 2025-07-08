@@ -39,7 +39,14 @@ onMounted(() => {
       </div>
       <div class="hero-bg-vid">
         <div class="video-mask">
-          <video loop playsinline webkit-playsinline ref="heroVid">
+          <video
+            muted
+            autoplay
+            loop
+            playsinline
+            webkit-playsinline
+            ref="heroVid"
+          >
             <source src="/assets/hero-vid-test.MP4" type="video/mp4" />
           </video>
         </div>
