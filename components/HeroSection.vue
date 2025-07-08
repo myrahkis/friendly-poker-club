@@ -31,14 +31,9 @@ const { loading, error, rawData: cityName } = useCityData("mainHeading");
       </div>
       <div class="hero-bg-vid">
         <div class="video-mask">
-          <video
-            src="/assets/hero-vid-test.MP4"
-            autoplay
-            muted
-            loop
-            playsinline
-            webkit-playsinline
-          ></video>
+          <video muted autoplay loop playsinline webkit-playsinline>
+            <source src="/assets/hero-vid-test.MP4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
