@@ -9,7 +9,7 @@ const { tournament, index, lastIndex } = defineProps({
 
 // console.log(tournament);
 const { date, dayOfWeek } = tournament;
-// console.log(schedule);
+// console.log(tournament);
 </script>
 
 <template>
@@ -47,14 +47,14 @@ const { date, dayOfWeek } = tournament;
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule[0] }}</p>
+          <p class="name-heading">{{ tournament.schedule.holdem }}</p>
           <p class="name-rules">
             (турнир проводится по правилам UnlimitedTexas Hold'em)
           </p>
           <p class="name-desc">Основной турнир дня</p>
         </div>
       </div>
-      <div class="schedules-row">
+      <div class="schedules-row" v-if="tournament.schedule.experimental">
         <div class="schedules-time">
           <div class="time-sub-row">
             <span class="reg-text">c</span>
@@ -66,7 +66,7 @@ const { date, dayOfWeek } = tournament;
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule[1] }}</p>
+          <p class="name-heading">{{ tournament.schedule.experimental }}</p>
           <p class="name-rules">
             (турнир проводится по правилам Omaha hold 'em)
           </p>
@@ -87,7 +87,7 @@ const { date, dayOfWeek } = tournament;
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule[2] }}</p>
+          <p class="name-heading">{{ tournament.schedule.cache }}</p>
           <p class="name-rules">(турнир проводится по правилам кеш игры)</p>
           <p class="name-desc">Для тех, кому хочется скоротать время.</p>
         </div>
