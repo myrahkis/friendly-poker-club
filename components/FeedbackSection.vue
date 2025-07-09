@@ -6,55 +6,55 @@ const feedbacks = [
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     stars: 5,
     avatar: "",
-    name: "Петя Петряков",
-    userText: "Lorem ipsum dolor sit amet.",
+    name: "Артём Соловьёв",
+    userText: "Идеальное место для вечернего покера!",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+      "Наконец-то появилось место, где можно поиграть в офлайн покер не на деньги, а в своё удовольствие! Атмосфера действительно дружелюбная, как и обещают. Организация турниров на высшем уровне. Столы просто огнище! Даже Сочинские столы нервно курят в сторонке. Ребята очень заморочились с оборудованием – это очень приятно! Так держать! Рекомендую!",
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     stars: 5,
     avatar: "",
-    name: "Иван Иванов",
-    userText: "Lorem ipsum dolor sit amet.",
+    name: "Михаил Алексеев",
+    userText: "Уверенная пятёрка!",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+      "Формат клуба — супер! Хорошие турниры, адекватная стоимость входа, отличная организация — именно для тех, кто хочет приятно провести вечер.",
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     stars: 4,
     avatar: "",
-    name: "Коля Колянов",
-    userText: "Lorem ipsum dolor sit amet.",
+    name: "Игорь Данилин",
+    userText: "Мягкая атмосфера и сильные игроки",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+      "Приятно удивлён. Думал, будет больше «домашнего» уровня, а в итоге получил отличную игру и новых знакомых. Очень понравилось, что все участники уважают друг друга, а за игрой реально интересно наблюдать.",
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     stars: 5,
     avatar: "",
-    name: "Егор Егоров",
-    userText: "Lorem ipsum dolor sit amet.",
+    name: "Светлана Мещерякова",
+    userText: "Покер для души, не только для азарта",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
-  },
-  {
-    date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
-    stars: 4,
-    avatar: "",
-    name: "Маша Машева",
-    userText: "Lorem ipsum dolor sit amet.",
-    feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+      "Зашла посмотреть на клуб по совету коллег — и осталась! Тут не просто игра, а целое комьюнити. Уютный зал, приятный ведущий, никаких странных типажей. Всё в меру, спокойно, атмосферно. Девушке здесь точно комфортно.",
   },
   {
     date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
     stars: 5,
     avatar: "",
-    name: "Катя Катева",
-    userText: "Lorem ipsum dolor sit amet.",
+    name: "Алексей Прудников",
+    userText: "Friendly — крутой клуб",
     feedbackText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius tortor a tincidunt convallis. Fusce consectetur sed leo ut rutrum. Sed ornare, nisl vitae fringilla tristique, nisi ante iaculis nisl, et tincidunt odio leo in leo. ",
+      "Очень порадовал вайб клуба. Никто не давит, не кичится победами, все вежливо и по-деловому. Поддержка новичков — на высоте. Формат идеален, если хочется расслабиться за игрой без всяких понтов и токсичности.",
+  },
+  {
+    date: `${new Date().getDate()}.${new Date().getMonth()}.${new Date().getFullYear()}`,
+    stars: 5,
+    avatar: "",
+    name: "Дарья Власова",
+    userText: "Лампово, честно, азартно",
+    feedbackText:
+      "Я играю в покер нечасто, но тут — хочется возвращаться. Уютная локация, люди как будто отобраны специально: общительные, добрые, умеют проигрывать с улыбкой. Очень комфортная атмосфера. Большое спасибо организаторам — вы делаете классное дело!",
   },
 ];
 
@@ -81,7 +81,7 @@ const isTransition = ref(true);
 // сдвиг
 const cardWidth = computed(
   () =>
-    `calc((100% - ${(visibleCount.value - 1) * 1.7}rem) / ${
+    `calc((100% - ${(visibleCount.value - 1) * 1.3}rem) / ${
       visibleCount.value
     })`
 );

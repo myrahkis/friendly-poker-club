@@ -24,17 +24,16 @@ const { date, stars, avatar, name, userText, feedbackText } = feedback;
         <!-- <img :src="avatar" alt="" /> -->
         <div class="user-info">
           <p class="user-name">{{ name }}</p>
-          <p>{{ userText }}</p>
         </div>
       </div>
     </div>
     <hr class="separator" />
+    <p class="user-short-text">{{ userText }}</p>
     <p class="description">{{ feedbackText }}</p>
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="ava-placeholder-2"></div>
-      <!-- <img :src="avatar" alt="" /> -->
       <p>{{ userText }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -80,17 +79,23 @@ const { date, stars, avatar, name, userText, feedbackText } = feedback;
   font-size: 2rem;
   font-weight: 700;
 }
+.user-short-text {
+  font-size: clamp(1.4rem, 2.2vw, 1.6rem);
+  font-weight: 400;
+}
 .ava-placeholder {
   background-color: white;
   border-radius: 50%;
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .description {
   font-size: clamp(1.4rem, 2.2vw, 1.6rem);
   font-weight: 400;
   margin-bottom: 15%;
+  hyphens: auto;
+  text-align: justify;
 }
 
 .footer {
