@@ -35,11 +35,13 @@ const { date, dayOfWeek } = tournament;
     </h4> -->
     <hr class="separator" />
     <div class="schedules">
-      <div class="schedules-row">
+      <div class="schedules-row" v-if="tournament.schedule.holdem">
         <div class="schedules-time">
           <div class="time-sub-row">
             <span class="reg-text">c</span>
-            <span class="time-styled">19:00</span>
+            <span class="time-styled">{{
+              tournament.schedule.holdem.time
+            }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
@@ -47,7 +49,7 @@ const { date, dayOfWeek } = tournament;
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule.holdem }}</p>
+          <p class="name-heading">{{ tournament.schedule.holdem.name }}</p>
           <p class="name-rules">
             (турнир проводится по правилам UnlimitedTexas Hold'em)
           </p>
@@ -58,7 +60,9 @@ const { date, dayOfWeek } = tournament;
         <div class="schedules-time">
           <div class="time-sub-row">
             <span class="reg-text">c</span>
-            <span class="time-styled">19:30</span>
+            <span class="time-styled">{{
+              tournament.schedule.experimental.time
+            }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
@@ -66,7 +70,9 @@ const { date, dayOfWeek } = tournament;
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule.experimental }}</p>
+          <p class="name-heading">
+            {{ tournament.schedule.experimental.name }}
+          </p>
           <p class="name-rules">
             (турнир проводится по правилам Omaha hold 'em)
           </p>
@@ -75,11 +81,13 @@ const { date, dayOfWeek } = tournament;
           </p>
         </div>
       </div>
-      <div class="schedules-row">
+      <div class="schedules-row" v-if="tournament.schedule.cache">
         <div class="schedules-time">
           <div class="time-sub-row">
             <span class="reg-text">c</span>
-            <span class="time-styled">14:00</span>
+            <span class="time-styled">{{
+              tournament.schedule.cache.time
+            }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
@@ -87,7 +95,7 @@ const { date, dayOfWeek } = tournament;
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule.cache }}</p>
+          <p class="name-heading">{{ tournament.schedule.cache.name }}</p>
           <p class="name-rules">(турнир проводится по правилам кеш игры)</p>
           <p class="name-desc">Для тех, кому хочется скоротать время.</p>
         </div>

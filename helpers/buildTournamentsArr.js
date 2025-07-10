@@ -48,8 +48,8 @@ export function buildNext7DaysFromWeekdayJson(raw) {
         if (Object.prototype.hasOwnProperty.call(dayObj, key)) {
           const entry = dayObj[key];
 
-          scheduleArr[key] = entry.name;
-          console.log(scheduleArr);
+          scheduleArr[key] = entry;
+          // console.log(scheduleArr);
         }
       }
     }
@@ -77,7 +77,7 @@ export function buildNext7DaysFromWeekdayJson(raw) {
           Object.prototype.hasOwnProperty.call(obj, subKey)
         ) {
           const entry = obj[subKey];
-          monthlySchedule[subKey] = entry.name;
+          monthlySchedule[subKey] = entry;
         }
       }
       result.push({
