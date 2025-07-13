@@ -1,11 +1,11 @@
 <script setup>
 import placeholderImg from "@/assets/images/carousel-placeholder.png";
 
-// const photos = [placeholderImg, placeholderImg, placeholderImg, placeholderImg];
+const photos = [placeholderImg, placeholderImg, placeholderImg, placeholderImg];
 
-const { data: photos } = await useAsyncData("photos", () =>
-  $fetch("/api/photos")
-);
+// const { data: photos } = await useAsyncData("photos", () =>
+//   $fetch("/api/photos")
+// );
 
 // console.log(photos.value);
 
