@@ -39,8 +39,15 @@ onMounted(() => {
       </div>
       <div class="hero-bg-vid">
         <div class="video-mask">
-          <video muted="muted" autoplay loop playsinline webkit-playsinline ref="heroVid">
-            <source src="/assets/hero-vid-test.MP4" type="video/mp4" />
+          <video
+            muted="muted"
+            autoplay
+            loop
+            playsinline
+            webkit-playsinline
+            ref="heroVid"
+          >
+            <source src="/assets/hero-video.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -83,7 +90,7 @@ onMounted(() => {
           >
             <video
               xmlns="http://www.w3.org/1999/xhtml"
-              src="/assets/hero-vid-test.MP4"
+              src="/assets/hero-video.mp4"
               autoplay
               muted
               loop
@@ -325,6 +332,10 @@ onMounted(() => {
   }
   .hero-section {
     padding: 0 var(--horiz-main-padding) 10%;
+  }
+  .hero-bg-vid {
+    width: 70%;
+    transform: translateX(30rem);
   }
   .hero-text {
     width: 50%;
