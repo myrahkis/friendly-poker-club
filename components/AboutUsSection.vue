@@ -128,15 +128,17 @@ function prevSlide() {
 }
 
 .about-us-info {
-  width: 50%;
+  width: 45%;
   padding: clamp(2rem, 4vw, 3.5rem);
   gap: clamp(0.5rem, 2vw, 1rem);
   display: flex;
   flex-direction: column;
 
   p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
+    hyphens: auto;
+    text-align: justify;
   }
 }
 
@@ -176,7 +178,7 @@ function prevSlide() {
 .carousel-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .carousel-btn {

@@ -14,9 +14,14 @@ const {
   onOptionClick,
   toggleOpen,
 } = useCitySelector(emit);
+
+const showHint = ref(false);
 </script>
 
 <template>
+  <div v-if="showHint" class="city-hint" @click="onHintClick">
+    Выберите город
+  </div>
   <div class="city-selector" @blur="open = false">
     <div
       class="selected"
@@ -25,7 +30,6 @@ const {
       @click="toggleOpen"
     >
       <div v-if="isCityDetecting">
-        <!-- <span class="loader"></span> -->
         <span class="dots">
           <span class="dot">.</span>
           <span class="dot">.</span>
@@ -54,6 +58,27 @@ const {
   position: relative;
   width: fit-content;
   outline: none;
+}
+.city-hint {
+  position: fixed;
+  top: 6rem;
+  left: var(--horiz-main-padding);
+  background: var(--light-gradient-color);
+  color: black;
+  padding: 1rem 1.5rem;
+  /* border-radius: 0.5rem; */
+  /* box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); */
+  font-size: 1.5rem;
+  z-index: 1000;
+  clip-path: polygon(
+    0% 10%,
+    45% 10%,
+    50% 0%,
+    55% 10%,
+    100% 10%,
+    100% 100%,
+    0% 100%
+  );
 }
 
 .city-selector .selected {

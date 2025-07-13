@@ -14,12 +14,32 @@ const links = [
 
 const { loading, error, rawData: contacts } = useCityData("contacts");
 
+const showHint = ref(false);
+
 // console.log(contacts);
 
 function toggleMenu() {
   const menu = document.querySelector(".header-menu-btn");
   menu.classList.toggle("open");
   useOpenMenu();
+}
+
+onMounted(() => {
+  const wasHintShown = localStorage.getItem("cityHintShown");
+
+  if (!wasHintShown) {
+    showHint.value = true;
+
+    setTimeout(() => {
+      showHint.value = false;
+      localStorage.setItem("cityHintShown", "true");
+    }, 5000);
+  }
+});
+
+function onHintClick() {
+  showHint.value = false;
+  localStorage.setItem("cityHintShown", "true");
 }
 
 defineExpose({ header });
@@ -29,7 +49,6 @@ defineExpose({ header });
   <header class="header" ref="header">
     <div class="header-mobile">
       <CitySelector fontSize="1.5rem" :cityWritingForm="0" />
-      <!-- <p style="font-weight: 700">{{ city }}</p> -->
       <button class="header-menu-btn" @click="toggleMenu">
         <img src="/assets/icons/menu-btn.svg" alt="" />
       </button>
@@ -64,9 +83,11 @@ defineExpose({ header });
         </span>
         <!-- <p style="font-weight: 700">{{ city }}</p> -->
         <CitySelector fontSize="1.5rem" :cityWritingForm="0" />
+        <div v-if="showHint" class="city-hint" @click="onHintClick">
+          Выберите город
+        </div>
       </div>
       <div class="header-info-wrapper">
-        <!-- <Logo width="15rem" paddingTop="0" /> -->
         <div class="header-info">
           <p class="phone">
             {{ contacts.phone }}
@@ -103,6 +124,28 @@ defineExpose({ header });
 }
 .city-svg {
   width: 3rem;
+}
+
+.city-hint {
+  cursor: pointer;
+  position: fixed;
+  top: 6rem;
+  left: var(--horiz-main-padding);
+  background: var(--light-gradient-color);
+  color: black;
+  padding: 1rem 1.5rem;
+  /* border-radius: 0.5rem; */
+  font-size: 1.5rem;
+  z-index: 1000;
+  clip-path: polygon(
+    0% 10%,
+    45% 10%,
+    50% 0%,
+    55% 10%,
+    100% 10%,
+    100% 100%,
+    0% 100%
+  );
 }
 
 .header-desktop {
