@@ -5,22 +5,22 @@
     <h2>Галерея</h2>
     <div class="gallery-grid">
       <div class="grid-cell-1">
-        <img src="/assets/images/galleryImg1.png" alt="" />
+        <img src="/assets/images/galleryImg1.jpg" alt="" />
       </div>
       <div class="grid-cell-2">
-        <img src="/assets/images/galleryImg2.png" alt="" />
+        <img src="/assets/images/galleryImg2.jpg" alt="" />
       </div>
       <div class="grid-cell-3">
-        <img src="/assets/images/galleryImg3.png" alt="" />
+        <img src="/assets/images/galleryImg3.jpg" alt="" />
       </div>
       <div class="grid-cell-4">
-        <img src="/assets/images/galleryImg4.png" alt="" />
+        <img src="/assets/images/galleryImg4.jpg" alt="" />
       </div>
       <div class="grid-cell-5">
-        <img src="/assets/images/galleryImg5.png" alt="" />
+        <img src="/assets/images/galleryImg5.jpg" alt="" />
       </div>
+      <button class="gallery-btn">Подробнее</button>
     </div>
-    <button class="gallery-btn">Подробнее</button>
   </section>
 </template>
 
@@ -36,8 +36,9 @@
   /* overflow: hidden; */
   display: grid;
   grid-template-columns: repeat(7, 0.25fr);
-  grid-template-rows: 0.7fr 0.25fr auto;
+  grid-template-rows: 0.3fr 0.15fr 0.35fr auto;
   gap: 1rem;
+  height: fit-content;
 }
 
 .grid-cell-1,
@@ -46,7 +47,7 @@
 .grid-cell-4,
 .grid-cell-5 {
   overflow: hidden;
-  
+
   img {
     border-radius: 2rem;
     width: 100%;
@@ -76,22 +77,24 @@
 }
 
 .gallery-btn {
-  width: 40%;
+  width: 25%;
   font-size: clamp(1.3rem, 1.5vw, 2rem);
   font-weight: 400;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
+  justify-self: center;
   align-self: center;
   background-color: rgba(37, 37, 37, 0.3);
   border: 1px solid var(--light-gradient-color);
   border-radius: 3rem;
   padding: 1.5rem 2rem;
+  grid-column: 1 / -1;
 }
 
 /* (480px–767px) */
 @media (max-width: 767px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 0.5fr);
-    grid-template-rows: 0.4fr 0.15fr 0.8fr 0.4fr;
+    grid-template-rows: 0.3fr 0.15fr 0.5fr 0.35fr auto;
     gap: 0.5rem;
   }
   .grid-cell-1,
@@ -122,6 +125,10 @@
   .grid-cell-5 {
     grid-column: 1 / -1;
     grid-row: 4 / -1;
+  }
+  .gallery-btn {
+    width: 45%;
+    margin-top: 2rem;
   }
 }
 </style>

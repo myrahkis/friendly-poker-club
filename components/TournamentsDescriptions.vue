@@ -8,39 +8,48 @@
         <img src="/assets/images/bg-hearts.png" alt="" />
       </div>
       <div class="description-block-info">
-        <h4>Название турнира</h4>
+        <h4>Техасский Холдем (Big, 9Max, 27MAX и т.п.)</h4>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          Покерная игра, где каждый игрок получает две закрытые карты, а затем
+          использует их в сочетании с пятью общими картами на столе (флоп — 3
+          карты, терн — 1, ривер — 1), чтобы собрать лучшую комбинацию. Игра
+          начинается с обязательных ставок (блайндов), после чего следуют четыре
+          этапа торговли (префлоп, флоп, терн, ривер), где игроки могут ставить,
+          принимать ставки или сбрасывать карты. В конце, если осталось
+          несколько игроков, происходит вскрытие карт (шоудаун), и побеждает
+          тот, у кого сильнейшая комбинация из пяти карт (две своих + пять
+          общих). В случае, если все соперники сбросили карты, банк забирает
+          последний оставшийся игрок.
         </p>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          <strong>Big-турнир</strong> – турнир в котором участвуют все игроки
+          текущего игрового вечера. Победителем турнира становится один
+          последний игрок. Рейтинговые балы получают все игроки турнира, а
+          игроки финального стола получают наибольшее количество балов рейтинга
+          в зависимости от занятого места.
+        </p>
+        <p>
+          <strong>9MAX</strong> – турнир, в котором все игроки текущего вечера
+          распределяются по 9 человек на стол и играют турнир исключительно с 9ю
+          оппонентами своего стола. Победитель данного турнира один, но
+          рейтинговые балы получают все участники турнира, а наибольшее
+          количество балов получают три последних игрока в зависимости от
+          занятого места.
         </p>
       </div>
     </div>
     <div class="description-block">
       <div class="description-block-info">
-        <h4>Название турнира</h4>
+        <h4>Джокер (покер с джокером)</h4>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
-        </p>
-        <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          Вариация покера, где в колоду добавляется две карты джокеров, которые
+          могут заменять любую другую карту для составления комбинации. Игра
+          ведётся по стандартным правилам Техасского Холдема (каждому игроку
+          раздаётся по две карты, затем выкладываются пять общих), но джокер
+          может использоваться как любая недостающая карта для усиления руки
+          (например, превращая четвёрку и джокера в пару четвёрок). Победитель
+          определяется по стандартным покерным комбинациям, но с учётом
+          возможностей джокера.
         </p>
       </div>
       <div class="desc-pic">
@@ -52,39 +61,48 @@
         <img src="/assets/images/bg-hearts.png" alt="" />
       </div>
       <div class="description-block-info">
-        <h4>Название турнира</h4>
+        <h4>Кеш турнир</h4>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          Турнир, проводимый по правилам кеш-игры. Кэш-игра (Cash Game) в покере
+          — это формат, где игроки играют с фиксированными блаиндами, при этом
+          стартовый стек можно докупать в любое время, если игрок не в раздаче.
+          Ограничение по количеству докупки стартового стека: не более чем 50%
+          от стека чип-лидера стола на момент входа игрока в игру. Игра идет за
+          обычными столами 9-max без привычной турнирной структуры — блайнды не
+          растут, а игроки могут присоединяться или покидать игру в любой
+          момент. Банк формируется из ставок участников каждой раздачи, и
+          победитель забирает всю его сумму. Основная цель — обыгрывать
+          оппонентов в долгосрочной перспективе, используя стратегию, математику
+          и психологию.
         </p>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          Три призовых места в данном турнире распределяются следующим образом:
+          Каждые два часа игрового времени производится подсчёт фишек и
+          определяются три чип лидера стола, которые вносятся в таблицу текущего
+          турнира, после чего игра продолжается до конца игрового вечера. Если в
+          течении игрового вечера появляются новые чип-лидеры у которых стек
+          выше чем у ранее записанных в таблице текущего турнира игроков, они
+          смещают предыдущих игроков в таблице занимая их места. По окончанию
+          игрового вечера объявляются три победителя данного турнира, между
+          которыми распределяются три первых места в соответствии с количеством
+          заработанного за вечер стека. Три победителя данного турнира получают
+          определённые организатором баллы, которые заносятся в общую
+          рейтинговую таблицу.
         </p>
       </div>
     </div>
     <div class="description-block">
       <div class="description-block-info">
-        <h4>Название турнира</h4>
+        <h4>Техасский холдем с нокаутами (Knockout)</h4>
         <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
-        </p>
-        <p>
-          At vero eos et accusamus et iusto odio dignissimos ducimus qui
-          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-          et quas molestias excepturi sint occaecati cupiditate non provident,
-          similique sunt in culpa qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga.
+          Турнирный формат, где за каждого выбитого оппонента игрок получает
+          награду – его фишку <strong>Knockout</strong>. Игра ведётся по
+          стандартным правилам холдема (2 карты игрока + 5 общих). За каждую
+          заработанную фишку <strong>Knockout</strong> игрок получает
+          определённое количество рейтинговых балов. Таким образом в
+          нокаут-турнире важно не только занять призовое место для получения
+          высокого рейтинга, но и как можно больше фишек нокаута (т.е. выбитых
+          игроков), для получения дополнительных балов рейтинга.
         </p>
       </div>
       <div class="desc-pic">

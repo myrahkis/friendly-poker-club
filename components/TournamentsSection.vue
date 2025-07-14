@@ -11,11 +11,6 @@ const tournaments = computed(() => {
   return buildNext7DaysFromWeekdayJson(rawData.value);
 });
 
-// console.log(tournaments);
-
-/**
- * Загружает файл setver/data/{city}.json, парсинг
- */
 function toggleDescriptions() {
   isDescriptionsOpen.value = !isDescriptionsOpen.value;
 

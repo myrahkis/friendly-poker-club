@@ -1,7 +1,33 @@
 <script setup>
-import placeholderImg from "@/assets/images/carousel-placeholder.png";
+import placeholderImg1 from "@/assets/images/1.jpg";
+import placeholderImg2 from "@/assets/images/2.jpg";
+import placeholderImg3 from "@/assets/images/3.jpg";
+import placeholderImg4 from "@/assets/images/4.jpg";
+import placeholderImg5 from "@/assets/images/5.jpg";
+import placeholderImg6 from "@/assets/images/6.jpg";
+import placeholderImg7 from "@/assets/images/7.jpg";
+import placeholderImg8 from "@/assets/images/8.jpg";
+import placeholderImg9 from "@/assets/images/9.jpg";
+import placeholderImg10 from "@/assets/images/10.jpg";
+import placeholderImg11 from "@/assets/images/11.jpg";
+import placeholderImg12 from "@/assets/images/12.jpg";
+import placeholderImg13 from "@/assets/images/13.jpg";
 
-const photos = [placeholderImg, placeholderImg, placeholderImg, placeholderImg];
+const photos = [
+  placeholderImg1,
+  placeholderImg2,
+  placeholderImg3,
+  placeholderImg4,
+  placeholderImg5,
+  placeholderImg6,
+  placeholderImg7,
+  placeholderImg8,
+  placeholderImg9,
+  placeholderImg10,
+  placeholderImg11,
+  placeholderImg12,
+  placeholderImg13,
+];
 
 const curIndex = ref(0);
 const direction = ref("slide-right");
@@ -128,7 +154,7 @@ function prevSlide() {
 }
 
 .about-us-info {
-  width: 45%;
+  width: 50%;
   padding: clamp(2rem, 4vw, 3.5rem);
   gap: clamp(0.5rem, 2vw, 1rem);
   display: flex;
@@ -178,7 +204,7 @@ function prevSlide() {
 .carousel-img {
   width: 100%;
   height: 100%;
-  /* object-fit: cover; */
+  object-fit: cover;
 }
 
 .carousel-btn {
@@ -244,7 +270,15 @@ function prevSlide() {
     font-size: clamp(1.5rem, 2vw + 0.3rem, 1.8rem);
   }
 }
+@media (min-width: 1800px) {
+  .about-us-info {
+    width: 55%;
+  }
+}
 @media (min-width: 2200px) {
+  .about-us-info {
+    width: 60%;
+  }
 }
 @media (min-width: 3000px) {
 }

@@ -26,5 +26,6 @@ export default defineNuxtConfig({
   css: ["@/assets/css/main.css"],
   nitro: {
     preset: "node-server",
+    publicAssets: [{ dir: "server/data", baseURL: "/data" }],
   },
 });

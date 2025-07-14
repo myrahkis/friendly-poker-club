@@ -17,7 +17,7 @@ export function useCityData(propertyName) {
     data.value = [];
 
     try {
-      const module = await import(`@/assets/data/${cityName}.json`);
+      const module = await import(`@/server/data/${cityName}.json`);
       const jsonDefault = module.default[propertyName] || {};
       rawData.value = jsonDefault;
     } catch (err) {
