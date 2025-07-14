@@ -1,3 +1,5 @@
+import { resolve } from "path";
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -12,7 +14,7 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
-  ssr: true,
+  ssr: false,
   compatibilityDate: "2025-07-14",
   devtools: { enabled: true },
   build: {
@@ -26,6 +28,5 @@ export default defineNuxtConfig({
   css: ["@/assets/css/main.css"],
   nitro: {
     preset: "node-server",
-    publicAssets: [{ dir: "server/data", baseURL: "/data" }],
   },
 });

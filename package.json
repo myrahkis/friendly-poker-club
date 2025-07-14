@@ -4,9 +4,9 @@
   "type": "module",
   "scripts": {
     "build:ssr": "nuxt build",
+    "build:static": "nuxt generate",
     "start": "nuxt start",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
     "prepare-deploy": "touch .output/public/.nojekyll",
     "deploy:static": "npm run build:static && npm run prepare-deploy && gh-pages -d .output/public",
     "preview": "nuxt preview",

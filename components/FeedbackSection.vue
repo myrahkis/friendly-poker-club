@@ -1,11 +1,17 @@
 <script setup>
 import { ref, computed } from "vue";
+import ava1 from "@/assets/images/feedbackAva1.png";
+import ava2 from "@/assets/images/feedbackAva2.png";
+import ava3 from "@/assets/images/feedbackAva3.png";
+import ava4 from "@/assets/images/feedbackAva4.png";
+import ava5 from "@/assets/images/feedbackAva5.png";
+import ava6 from "@/assets/images/feedbackAva6.png";
 
 const feedbacks = [
   {
     date: "02.07.2025",
     stars: 5,
-    avatar: "",
+    avatar: ava1,
     name: "Артём Соловьёв",
     userText: "Идеальное место для вечернего покера!",
     feedbackText:
@@ -14,7 +20,7 @@ const feedbacks = [
   {
     date: "14.07.2025",
     stars: 5,
-    avatar: "",
+    avatar: ava2,
     name: "Михаил Алексеев",
     userText: "Уверенная пятёрка!",
     feedbackText:
@@ -23,7 +29,7 @@ const feedbacks = [
   {
     date: "04.07.2025",
     stars: 5,
-    avatar: "",
+    avatar: ava3,
     name: "Игорь Данилин",
     userText: "Мягкая атмосфера и сильные игроки",
     feedbackText:
@@ -32,7 +38,7 @@ const feedbacks = [
   {
     date: "23.07.2025",
     stars: 5,
-    avatar: "",
+    avatar: ava4,
     name: "Светлана Мещерякова",
     userText: "Покер для души, не только для азарта",
     feedbackText:
@@ -41,7 +47,7 @@ const feedbacks = [
   {
     date: "26.07.2025",
     stars: 5,
-    avatar: "",
+    avatar: ava5,
     name: "Алексей Прудников",
     userText: "Friendly — крутой клуб",
     feedbackText:
@@ -50,7 +56,7 @@ const feedbacks = [
   {
     date: "19.07.2025",
     stars: 5,
-    avatar: "",
+    avatar: ava6,
     name: "Дарья Власова",
     userText: "Лампово, честно, азартно",
     feedbackText:

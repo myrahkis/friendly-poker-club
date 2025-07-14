@@ -20,7 +20,7 @@ const { date, stars, avatar, name, userText, feedbackText } = feedback;
         </div>
       </div>
       <div class="header-row">
-        <div class="ava-placeholder"></div>
+        <div class="ava-placeholder"><img :src="avatar" alt="" /></div>
         <!-- <img :src="avatar" alt="" /> -->
         <div class="user-info">
           <p class="user-name">{{ name }}</p>
@@ -84,10 +84,10 @@ const { date, stars, avatar, name, userText, feedbackText } = feedback;
   font-weight: 400;
 }
 .ava-placeholder {
-  background-color: white;
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  img {
+    width: 6rem;
+    height: 6rem;
+  }
 }
 
 .description {
