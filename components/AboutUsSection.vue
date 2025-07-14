@@ -3,23 +3,17 @@ import placeholderImg from "@/assets/images/carousel-placeholder.png";
 
 const photos = [placeholderImg, placeholderImg, placeholderImg, placeholderImg];
 
-// const { data: photos } = await useAsyncData("photos", () =>
-//   $fetch("/api/photos")
-// );
-
-// console.log(photos.value);
-
 const curIndex = ref(0);
 const direction = ref("slide-right");
 
 function nextSlide() {
   direction.value = "slide-left";
-  curIndex.value = (curIndex.value + 1) % photos.value.length;
+  curIndex.value = (curIndex.value + 1) % photos.length;
 }
 
 function prevSlide() {
   direction.value = "slide-right";
-  curIndex.value = (curIndex.value - 1 + photos.value.length) % photos.value.length;
+  curIndex.value = (curIndex.value - 1 + photos.length) % photos.length;
 }
 </script>
 
@@ -125,8 +119,6 @@ function prevSlide() {
 
 .about-us-wrapper {
   display: flex;
-  /* display: grid;
-  grid-template-columns: 0.45fr 0.55fr; */
   align-items: stretch;
   background-color: var(--dark-bg-color);
   border: 1px solid var(--light-gradient-color);
@@ -186,7 +178,7 @@ function prevSlide() {
 .carousel-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .carousel-btn {
@@ -245,11 +237,11 @@ function prevSlide() {
 @media (min-width: 1800px) {
   .about-us-info {
     p {
-      /* font-size: clamp(1.6rem, 2vw + 0.3rem, 2rem); */
+      font-size: clamp(1.6rem, 2vw + 0.3rem, 2rem);
     }
   }
   .about-us-list {
-    font-size: clamp(1.5rem, 2vw + 0.3rem, 1.6rem);
+    font-size: clamp(1.5rem, 2vw + 0.3rem, 1.8rem);
   }
 }
 @media (min-width: 2200px) {

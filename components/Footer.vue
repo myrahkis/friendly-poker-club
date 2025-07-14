@@ -57,7 +57,6 @@ function openDoc(idx) {
   padding: 0 var(--horiz-main-padding);
   padding-top: 5rem;
   padding-bottom: 5rem;
-  margin-top: auto;
 }
 .footer-container {
   border: 1px solid var(--light-gradient-color);

@@ -49,9 +49,6 @@ defineExpose({ header });
   <header class="header" ref="header">
     <div class="header-mobile">
       <CitySelector fontSize="1.5rem" :cityWritingForm="0" />
-      <div v-if="showHint" class="city-hint" @click="onHintClick">
-        Выберите город
-      </div>
       <button class="header-menu-btn" @click="toggleMenu">
         <img src="/assets/icons/menu-btn.svg" alt="" />
       </button>

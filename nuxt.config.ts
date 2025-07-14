@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     },
     baseURL: "/friendly-poker-club/",
   },
-  ssr: false,
+  ssr: true,
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   build: {
