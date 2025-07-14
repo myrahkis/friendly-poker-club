@@ -1,19 +1,24 @@
 <script setup>
 import placeholderImg from "@/assets/images/carousel-placeholder.png";
 
-const photos = [placeholderImg, placeholderImg, placeholderImg, placeholderImg];
+// const photos = [placeholderImg, placeholderImg, placeholderImg, placeholderImg];
+
+const { data: photos } = await useAsyncData("photos", () =>
+  $fetch("/api/photos")
+);
 
 const curIndex = ref(0);
 const direction = ref("slide-right");
 
 function nextSlide() {
   direction.value = "slide-left";
-  curIndex.value = (curIndex.value + 1) % photos.length;
+  curIndex.value = (curIndex.value + 1) % photos.value.length;
 }
 
 function prevSlide() {
   direction.value = "slide-right";
-  curIndex.value = (curIndex.value - 1 + photos.length) % photos.length;
+  curIndex.value =
+    (curIndex.value - 1 + photos.value.length) % photos.value.length;
 }
 </script>
 
