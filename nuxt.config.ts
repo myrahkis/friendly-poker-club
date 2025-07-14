@@ -11,10 +11,9 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
-    baseURL: "/friendly-poker-club/",
   },
-  ssr: false,
-  compatibilityDate: "2025-05-15",
+  ssr: true,
+  compatibilityDate: "2025-07-14",
   devtools: { enabled: true },
   build: {
     transpile: ["pdfjs-dist"],
@@ -26,10 +25,6 @@ export default defineNuxtConfig({
   },
   css: ["@/assets/css/main.css"],
   nitro: {
-    preset: "static",
-    prerender: {
-      crawlLinks: true,
-      routes: ["/"],
-    },
+    preset: "node-server",
   },
 });

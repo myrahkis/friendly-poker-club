@@ -87,7 +87,9 @@ function handleScroll() {
   }
 }
 
-window.addEventListener("scroll", handleScroll);
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
@@ -135,12 +137,12 @@ window.addEventListener("scroll", handleScroll);
 }
 @media (max-width: 690px) {
   /* .up-btn { */
-    /* bottom: 0 !important; */
+  /* bottom: 0 !important; */
   /* } */
 }
 @media (max-width: 380px) {
   /* .up-btn { */
-    /* bottom: 10% !important; */
+  /* bottom: 10% !important; */
   /* } */
 }
 </style>

@@ -1,4 +1,4 @@
-import cityOptions from "/server/data/cityOptions.json";
+import cityOptions from "/assets/data/cityOptions.json";
 
 const selectedKey = ref("");
 const selectedLabel = ref("");

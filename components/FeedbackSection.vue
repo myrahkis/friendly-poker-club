@@ -66,13 +66,19 @@ function getVisibleCount() {
   if (w < 1275) return 3;
   return 4;
 }
-const visibleCount = ref(getVisibleCount());
+const visibleCount = ref(4);
+
 onMounted(() => {
+  visibleCount.value = getVisibleCount();
   window.addEventListener("resize", onResize);
 });
 onUnmounted(() => {
   window.removeEventListener("resize", onResize);
 });
+
+function onResize() {
+  visibleCount.value = getVisibleCount();
+}
 
 const count = feedbacks.length;
 const currentIndex = ref(0);
@@ -153,10 +159,6 @@ function endDrag() {
   }
   dragStartX = null;
   dragDeltaX = 0;
-}
-
-function onResize() {
-  visibleCount.value = getVisibleCount();
 }
 </script>
 

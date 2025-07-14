@@ -3,11 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build:ssr": "nuxt build",
+    "start": "nuxt start",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "prepare-deploy": "touch .output/public/.nojekyll",
-    "deploy": "npm run generate && npm run prepare-deploy && gh-pages -d .output/public",
+    "deploy:static": "npm run build:static && npm run prepare-deploy && gh-pages -d .output/public",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
