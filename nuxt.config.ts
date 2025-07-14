@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
     head: {
@@ -14,7 +13,7 @@ export default defineNuxtConfig({
     },
     baseURL: "/friendly-poker-club/",
   },
-  ssr: true,
+  ssr: false,
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   build: {
