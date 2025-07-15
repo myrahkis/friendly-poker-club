@@ -1,5 +1,6 @@
 <script setup>
 import specialTournamentBg from "@/assets/images/special-tournament.png";
+const { rawData: contacts } = useCityData("contacts");
 
 const { tournament, index, lastIndex } = defineProps({
   tournament: Object,
@@ -10,6 +11,10 @@ const { tournament, index, lastIndex } = defineProps({
 // console.log(tournament);
 const { date, dayOfWeek } = tournament;
 // console.log(tournament);
+
+function registerLink() {
+  return contacts.value.socials ? contacts.value.socials.tg : "";
+}
 </script>
 
 <template>
@@ -25,6 +30,8 @@ const { date, dayOfWeek } = tournament;
       <p>{{ date }} - {{ dayOfWeek }}</p>
       <a
         v-if="index !== lastIndex"
+        :href="registerLink()"
+        target="_blank"
         class="register-btn u-shimmering-gradient-hover"
         >Зарегистрироваться</a
       >

@@ -1,19 +1,31 @@
-import cityOptions from "/server/data/cityOptions.json";
-
 const selectedKey = ref("");
 const selectedLabel = ref("");
 const isCityDetecting = ref(false);
 
-const options = Object.entries(cityOptions).map(([value, label]) => ({
-  value,
-  label,
-}));
+const options = ref([]);
 
 export function useCitySelector(emit) {
   //   const emit = defineEmits(["input"]);
   const open = ref(false);
   const router = useRouter();
   const route = useRoute();
+
+  async function loadCities() {
+    try {
+      const res = await fetch("https://friendlypoker.ru/data/cityOptions.json");
+
+      if (!res.ok) throw new Error("Не удалось загрузить список городов");
+
+      const cityOptions = await res.json();
+      options.value = Object.entries(cityOptions).map(([value, label]) => ({
+        value,
+        label,
+      }));
+    } catch (e) {
+      console.error(e);
+      options.value = [];
+    }
+  }
 
   function toggleOpen() {
     open.value = !open.value;
@@ -93,6 +105,8 @@ export function useCitySelector(emit) {
     if (initialized) return;
     initialized = true;
 
+    await loadCities();
+
     // if (route.query.city) {
     //   const pre = options.find((opt) => opt.value === route.query.city);
     //   if (pre) await onOptionClick(pre);
@@ -100,8 +114,8 @@ export function useCitySelector(emit) {
     // }
 
     // дефолтный город (перывй из json)
-    if (options.length > 0) {
-      await onOptionClick(options[0]);
+    if (options.value.length > 0) {
+      await onOptionClick(options.value[0]);
     } else {
       selectedLabel.value = "Нет городов";
       return;
@@ -160,7 +174,7 @@ export function useCitySelector(emit) {
     if (!cityName) return;
 
     // совпадение, если отличается от текущего, то меняется
-    const found = options.find(
+    const found = options.value.find(
       (opt) =>
         opt.value.toLowerCase() === cityName.toLowerCase() ||
         opt.label[0].toLowerCase() === cityName.toLowerCase()

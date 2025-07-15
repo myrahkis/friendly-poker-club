@@ -299,8 +299,8 @@ function prevSlide() {
     width: 100%;
   }
   .carousel-img {
-    height: auto;
-    object-fit: contain;
+    /* height: auto; */
+    object-fit: cover;
   }
 }
 

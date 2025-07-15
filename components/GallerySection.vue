@@ -62,6 +62,10 @@
 .grid-cell-2 {
   grid-column: 4 / -1;
   grid-row: 1 / 2;
+
+  img {
+    object-position: 0 63%;
+  }
 }
 .grid-cell-3 {
   grid-column: 1 / 4;

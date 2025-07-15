@@ -17,9 +17,14 @@ export function useCityData(propertyName) {
     data.value = [];
 
     try {
-      const module = await import(`@/server/data/${cityName}.json`);
-      const jsonDefault = module.default[propertyName] || {};
-      rawData.value = jsonDefault;
+      const res = await fetch(`https://friendlypoker.ru/data/${cityName}.json`);
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+
+      const json = await res.json();
+      rawData.value = json[propertyName] ?? [];
     } catch (err) {
       console.error(err);
       error.value = `Не удалось загрузить данные для города: ${cityName}`;

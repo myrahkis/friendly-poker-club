@@ -2,6 +2,12 @@
 import priceBg1 from "@/assets/images/price-bg-1.png";
 import priceBg2 from "@/assets/images/price-bg-2.png";
 import priceBg3 from "@/assets/images/price-bg-3.png";
+
+const { rawData: contacts } = useCityData("contacts");
+
+function buyLink() {
+  return contacts.value.socials ? contacts.value.socials.tg : "";
+}
 </script>
 
 <template>
@@ -29,9 +35,13 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
             <p class="colored-price">1 000 руб</p>
           </div>
         </div>
-        <button class="order-btn u-shimmering-gradient-hover">
+        <a
+          :href="buyLink()"
+          target="_blank"
+          class="order-btn u-shimmering-gradient-hover"
+        >
           Зарегистрироваться
-        </button>
+        </a>
       </div>
       <div
         class="pricing-card"
@@ -55,7 +65,12 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
             В стоимость входит всё необходимое для игры оборудование и дилер.
           </p>
         </div>
-        <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
+        <a
+          :href="buyLink()"
+          target="_blank"
+          class="order-btn u-shimmering-gradient-hover"
+          >Заказать</a
+        >
       </div>
       <div
         class="pricing-card"
@@ -73,7 +88,12 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
             турниров, награждение победителей корпоративными кубками.
           </p>
         </div>
-        <button class="order-btn u-shimmering-gradient-hover">Заказать</button>
+        <a
+          :href="buyLink()"
+          target="_blank"
+          class="order-btn u-shimmering-gradient-hover"
+          >Заказать</a
+        >
       </div>
     </div>
     <div class="pricing-nuances">
@@ -164,6 +184,7 @@ import priceBg3 from "@/assets/images/price-bg-3.png";
   border-radius: 4rem;
   padding: 1rem;
   margin-top: auto;
+  text-align: center;
 }
 
 .pricing-nuances {
