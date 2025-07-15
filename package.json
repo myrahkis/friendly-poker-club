@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:ssr": "set NODE_ENV=production nuxt build",
+    "build:ssr": "set NODE_ENV=production&& nuxt build",
     "build:static": "nuxt generate",
     "start": "nuxt start",
     "dev": "set NODE_ENV=development&& nuxt dev",
