@@ -1,4 +1,5 @@
 export function useCityData(propertyName) {
+  const config = useRuntimeConfig();
   const route = useRoute();
 
   const loading = ref(false);
@@ -17,7 +18,7 @@ export function useCityData(propertyName) {
     data.value = [];
 
     try {
-      const res = await fetch(`https://friendlypoker.ru/data/${cityName}.json`);
+      const res = await fetch(`${config.public.apiBase}/data/${cityName}.json`);
 
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);

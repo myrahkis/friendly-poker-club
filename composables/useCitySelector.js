@@ -6,13 +6,14 @@ const options = ref([]);
 
 export function useCitySelector(emit) {
   //   const emit = defineEmits(["input"]);
+  const config = useRuntimeConfig();
   const open = ref(false);
   const router = useRouter();
   const route = useRoute();
 
   async function loadCities() {
     try {
-      const res = await fetch("https://friendlypoker.ru/data/cityOptions.json");
+      const res = await fetch(`${config.public.apiBase}/data/cityOptions.json`);
 
       if (!res.ok) throw new Error("Не удалось загрузить список городов");
 

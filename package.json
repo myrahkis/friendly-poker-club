@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:ssr": "nuxt build",
+    "build:ssr": "set NODE_ENV=production nuxt build",
     "build:static": "nuxt generate",
     "start": "nuxt start",
-    "dev": "nuxt dev",
+    "dev": "set NODE_ENV=development&& nuxt dev",
     "prepare-deploy": "touch .output/public/.nojekyll",
     "deploy:static": "npm run build:static && npm run prepare-deploy && gh-pages -d .output/public",
     "preview": "nuxt preview",

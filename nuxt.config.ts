@@ -36,4 +36,10 @@ export default defineNuxtConfig({
   nitro: {
     preset: "node-server",
   },
+  runtimeConfig: {
+    apiBase: process.env.API_BASE,
+    public: {
+      apiBase: process.env.API_BASE,
+    },
+  },
 });
