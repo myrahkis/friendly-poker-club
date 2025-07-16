@@ -20,8 +20,9 @@ export default defineNuxtConfig({
         { rel: "canonical", href: "https://friendlypoker.ru/" },
       ],
     },
+    baseURL: "/friendly-poker-club",
   },
-  ssr: true,
+  ssr: false,
   compatibilityDate: "2025-07-14",
   devtools: { enabled: true },
   build: {
@@ -33,8 +34,15 @@ export default defineNuxtConfig({
     },
   },
   css: ["@/assets/css/main.css"],
+  // nitro: {
+  //   preset: "node-server",
+  // },
   nitro: {
-    preset: "node-server",
+    preset: "static",
+    prerender: {
+      crawlLinks: true,
+      routes: ["/"],
+    },
   },
   runtimeConfig: {
     apiBase: process.env.API_BASE,
