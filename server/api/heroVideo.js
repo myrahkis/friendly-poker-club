@@ -3,12 +3,7 @@ import { defineEventHandler, getRequestHeader, setResponseHeaders } from "h3";
 import { join } from "path";
 
 export default defineEventHandler((event) => {
-  const filePath = join(
-    process.cwd(),
-    "public",
-    "videos",
-    "hero-video-big.mp4"
-  );
+  const filePath = join(process.cwd(), "public", "videos", "hero-video.mp4");
   const stat = statSync(filePath);
   const fileSize = stat.size;
   const range = getRequestHeader(event, "range");
