@@ -245,4 +245,11 @@ watch(openedDocIdx, async (newIdx) => {
   padding-top: 0;
   padding-bottom: 0;
 }
+
+@media (max-width: 762px) {
+  .pdf-viewer-container {
+    height: auto;
+    min-height: 30rem;
+  }
+}
 </style>

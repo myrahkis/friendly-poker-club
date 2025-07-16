@@ -141,30 +141,61 @@ watch(isTransition, (val) => {
 const wrapperRef = ref(null);
 let dragStartX = null;
 let dragDeltaX = 0;
+let dragStartY = null;
+let dragDeltaY = 0;
 const threshold = 50;
+let isDragging = false;
 
 function startDrag(e) {
-  dragStartX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
-  dragDeltaX = 0;
+  const touch = e.type.startsWith("touch") && e.touches.length === 1;
+  dragStartX = touch ? e.touches[0].clientX : e.clientX;
+  dragStartY = touch ? e.touches[0].clientY : e.clientY;
+  dragDeltaX = dragDeltaY = 0;
   isTransition.value = false;
+  isDragging = true;
   wrapperRef.value.classList.add("grabbing");
 }
 function onDrag(e) {
-  if (dragStartX === null) return;
+  if (!isDragging) return;
+
   const clientX = e.type.startsWith("touch") ? e.touches[0].clientX : e.clientX;
+  const clientY = e.type.startsWith("touch") ? e.touches[0].clientY : e.clientY;
+
   dragDeltaX = clientX - dragStartX;
+  dragDeltaY = clientY - dragStartY;
+
+  // скролл страницы, а не драг карточек
+  if (Math.abs(dragDeltaY) > Math.abs(dragDeltaX)) {
+    cancelDrag();
+    return;
+  }
 }
 
 function endDrag() {
+  if (!isDragging) return;
+
   wrapperRef.value.classList.remove("grabbing");
+
+  if (dragStartX === null) {
+    isDragging = false;
+    return;
+  }
 
   if (dragDeltaX > threshold) prev();
   else if (dragDeltaX < -threshold) next();
-  else {
-    isTransition.value = true;
-  }
-  dragStartX = null;
-  dragDeltaX = 0;
+  else isTransition.value = true;
+
+  dragStartX = dragStartY = null;
+  dragDeltaX = dragDeltaY = 0;
+  isDragging = false;
+}
+
+function cancelDrag() {
+  dragStartX = dragStartY = null;
+  dragDeltaX = dragDeltaY = 0;
+  isDragging = false;
+  isTransition.value = true;
+  wrapperRef.value.classList.remove("grabbing");
 }
 </script>
 
@@ -173,13 +204,13 @@ function endDrag() {
     <h2>Отзывы о клубе</h2>
     <div
       class="feedbacks-wrapper"
-      @mousedown.prevent="startDrag"
-      @touchstart.prevent="startDrag"
-      @mousemove.prevent="onDrag"
-      @touchmove.prevent="onDrag"
-      @mouseup.prevent="endDrag"
-      @mouseleave.prevent="endDrag"
-      @touchend.prevent="endDrag"
+      @mousedown="startDrag"
+      @touchstart="startDrag"
+      @mousemove="onDrag"
+      @touchmove="onDrag"
+      @mouseup="endDrag"
+      @mouseleave="endDrag"
+      @touchend="endDrag"
     >
       <div
         class="feedbacks"

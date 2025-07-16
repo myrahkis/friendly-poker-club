@@ -6,7 +6,6 @@ import placeholderImg4 from "@/assets/images/4.jpg";
 import placeholderImg5 from "@/assets/images/5.jpg";
 import placeholderImg6 from "@/assets/images/6.jpg";
 import placeholderImg7 from "@/assets/images/7.jpg";
-import placeholderImg8 from "@/assets/images/8.jpg";
 import placeholderImg9 from "@/assets/images/9.jpg";
 import placeholderImg10 from "@/assets/images/10.jpg";
 import placeholderImg11 from "@/assets/images/11.jpg";
@@ -21,7 +20,6 @@ const photos = [
   placeholderImg5,
   placeholderImg6,
   placeholderImg7,
-  placeholderImg8,
   placeholderImg9,
   placeholderImg10,
   placeholderImg11,

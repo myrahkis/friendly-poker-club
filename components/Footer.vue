@@ -275,11 +275,18 @@ function openDoc(idx) {
   .phone {
     margin-bottom: 0;
   }
-
   .policy {
     display: flex;
     flex-direction: column-reverse;
     gap: 1rem;
+  }
+  .bg-card {
+    transform: translateY(-45%);
+    width: 55%;
+  }
+  .bg-chip-1 {
+    width: 45%;
+    transform: translateY(-5rem) translateX(-3rem);
   }
 }
 </style>
