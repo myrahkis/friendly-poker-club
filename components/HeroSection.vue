@@ -46,9 +46,10 @@ onMounted(() => {
             loop
             playsinline
             webkit-playsinline
+            preload="auto"
             ref="heroVid"
           >
-            <source src="/assets/hero-video.mp4" type="video/mp4" />
+            <source :src="'/api/heroVideo'" type="video/mp4" />
           </video>
         </div>
       </div>
@@ -82,11 +83,12 @@ onMounted(() => {
           >
             <video
               xmlns="http://www.w3.org/1999/xhtml"
-              src="/assets/hero-video.mp4"
+              :src="'/api/heroVideo'"
               autoplay
               muted
               loop
               playsinline
+              preload="auto"
               style="
                 width: 100%;
                 height: 100%;
