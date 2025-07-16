@@ -38,6 +38,7 @@ onMounted(() => {
         </p>
       </div>
       <div class="hero-bg-vid">
+        <div class="color-filter"></div>
         <div class="video-mask">
           <video
             muted="muted"
@@ -56,6 +57,7 @@ onMounted(() => {
       <!-- <video src="/assets/hero-vid-test.MP4" autoplay muted loop></video> -->
       <!-- <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" /> -->
       <div class="hero-bg-vid-big-screen">
+        <div class="color-filter"></div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1705 729"
