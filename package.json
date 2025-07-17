@@ -3,8 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "set NODE_ENV=production&& nuxt build",
-    "build:static": "nuxt generate",
+    "build": "nuxt build",
     "start": "node .output/server/index.mjs",
     "dev": "set NODE_ENV=development&& nuxt dev",
     "prepare-deploy": "touch .output/public/.nojekyll",
