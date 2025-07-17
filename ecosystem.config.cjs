@@ -3,8 +3,8 @@ module.exports = {
     {
       name: "friendly-poker-club",
       env: {
-        NUXT_HOST: "127.0.0.1",
-        NUXT_PORT: "4000",
+        HOST: "127.0.0.1",
+        PORT: "4000",
       },
       exec_mode: "cluster",
       instances: "max",
