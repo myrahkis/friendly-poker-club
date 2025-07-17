@@ -10,7 +10,7 @@ import placeholderImg9 from "@/assets/images/9.jpg";
 import placeholderImg10 from "@/assets/images/10.jpg";
 import placeholderImg11 from "@/assets/images/11.jpg";
 import placeholderImg12 from "@/assets/images/12.jpg";
-import placeholderImg13 from "@/assets/images/13.jpg";
+// import placeholderImg13 from "@/assets/images/13.jpg";
 
 const photos = [
   placeholderImg1,
@@ -24,7 +24,7 @@ const photos = [
   placeholderImg10,
   placeholderImg11,
   placeholderImg12,
-  placeholderImg13,
+  // placeholderImg13,
 ];
 
 const curIndex = ref(0);
