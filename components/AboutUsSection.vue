@@ -24,9 +24,9 @@ const photos = [
   placeholderImg10,
   placeholderImg11,
   placeholderImg12,
-  // placeholderImg13,
+  // placeholderImg13, 
 ];
-
+ 
 const curIndex = ref(0);
 const direction = ref("slide-right");
 
