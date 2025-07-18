@@ -5,19 +5,19 @@
     <h2>Галерея</h2>
     <div class="gallery-grid">
       <div class="grid-cell-1">
-        <img src="/assets/images/galleryImg1.jpg" alt="" />
+        <img src="/assets/images/galleryImg1.webp" alt="" />
       </div>
       <div class="grid-cell-2">
-        <img src="/assets/images/galleryImg2.jpg" alt="" />
+        <img src="/assets/images/galleryImg2.webp" alt="" />
       </div>
       <div class="grid-cell-3">
-        <img src="/assets/images/galleryImg3.jpg" alt="" />
+        <img src="/assets/images/galleryImg3.webp" alt="" />
       </div>
       <div class="grid-cell-4">
-        <img src="/assets/images/galleryImg4.jpg" alt="" />
+        <img src="/assets/images/galleryImg4.webp" alt="" />
       </div>
       <div class="grid-cell-5">
-        <img src="/assets/images/galleryImg5.jpg" alt="" />
+        <img src="/assets/images/galleryImg5.webp" alt="" />
       </div>
       <button class="gallery-btn">Подробнее</button>
     </div>
@@ -29,11 +29,9 @@
   display: flex;
   flex-direction: column;
   padding: 0 var(--horiz-main-padding);
-  /* padding-bottom: 5rem; */
 }
 
 .gallery-grid {
-  /* overflow: hidden; */
   display: grid;
   grid-template-columns: repeat(7, 0.25fr);
   grid-template-rows: 0.3fr 0.15fr 0.35fr auto;
@@ -84,7 +82,6 @@
   width: 25%;
   font-size: clamp(1.3rem, 1.5vw, 2rem);
   font-weight: 400;
-  /* margin-top: 2rem; */
   justify-self: center;
   align-self: center;
   background-color: rgba(37, 37, 37, 0.3);

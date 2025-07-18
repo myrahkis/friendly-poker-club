@@ -5,7 +5,6 @@ const isCityDetecting = ref(false);
 const options = ref([]);
 
 export function useCitySelector(emit) {
-  //   const emit = defineEmits(["input"]);
   const config = useRuntimeConfig();
   const open = ref(false);
   const router = useRouter();
@@ -33,7 +32,6 @@ export function useCitySelector(emit) {
   }
 
   async function onOptionClick(opt) {
-    // console.log("click!!!");
     if (route.query.city === opt.value) {
       selectedKey.value = opt.value;
       selectedLabel.value = opt.label;
@@ -77,7 +75,7 @@ export function useCitySelector(emit) {
     const res = await fetch(url);
     if (!res.ok) throw new Error("Ошибка геокодирования");
     const data = await res.json();
-    // console.log(data.address.city);
+
     return (
       data.address.city ||
       data.address.town ||
@@ -107,12 +105,6 @@ export function useCitySelector(emit) {
     initialized = true;
 
     await loadCities();
-
-    // if (route.query.city) {
-    //   const pre = options.find((opt) => opt.value === route.query.city);
-    //   if (pre) await onOptionClick(pre);
-    //   return;
-    // }
 
     // дефолтный город (перывй из json)
     if (options.value.length > 0) {

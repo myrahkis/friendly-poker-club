@@ -154,6 +154,8 @@ function startDrag(e) {
   isTransition.value = false;
   isDragging = true;
   wrapperRef.value.classList.add("grabbing");
+
+  document.body.style.userSelect = "none";
 }
 function onDrag(e) {
   if (!isDragging) return;
@@ -188,6 +190,8 @@ function endDrag() {
   dragStartX = dragStartY = null;
   dragDeltaX = dragDeltaY = 0;
   isDragging = false;
+
+  document.body.style.userSelect = "";
 }
 
 function cancelDrag() {
@@ -196,6 +200,8 @@ function cancelDrag() {
   isDragging = false;
   isTransition.value = true;
   wrapperRef.value.classList.remove("grabbing");
+
+  document.body.style.userSelect = "";
 }
 </script>
 
@@ -290,11 +296,9 @@ function cancelDrag() {
 
 .back-btn {
   left: var(--horiz-main-padding);
-  /* left:0; */
 }
 .next-btn {
   right: var(--horiz-main-padding);
-  /* right: 1.5rem; */
 }
 
 .bg-hearts {

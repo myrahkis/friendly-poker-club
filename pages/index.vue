@@ -6,7 +6,6 @@
   <TournamentsSection />
   <FAQSection />
   <GallerySection />
-  <!-- <VideoSection /> -->
   <PricingSection />
   <FeedbackSection />
   <LegalnformationSection />

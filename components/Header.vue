@@ -16,8 +16,6 @@ const { loading, error, rawData: contacts } = useCityData("contacts");
 
 const showHint = ref(false);
 
-// console.log(contacts);
-
 function toggleMenu() {
   const menu = document.querySelector(".header-menu-btn");
   menu.classList.toggle("open");
@@ -84,7 +82,6 @@ defineExpose({ header });
             />
           </svg>
         </span>
-        <!-- <p style="font-weight: 700">{{ city }}</p> -->
         <CitySelector fontSize="1.5rem" :cityWritingForm="0" />
         <div v-if="showHint" class="city-hint" @click="onHintClick">
           Выберите город
@@ -137,7 +134,6 @@ defineExpose({ header });
   background: var(--light-gradient-color);
   color: black;
   padding: 1rem 1.5rem;
-  /* border-radius: 0.5rem; */
   font-size: 1.5rem;
   z-index: 1000;
   clip-path: polygon(

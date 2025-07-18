@@ -8,9 +8,7 @@ const { tournament, index, lastIndex } = defineProps({
   lastIndex: Number,
 });
 
-// console.log(tournament);
 const { date, dayOfWeek } = tournament;
-// console.log(tournament);
 
 function registerLink() {
   return contacts.value.socials ? contacts.value.socials.tg : "";
@@ -37,9 +35,6 @@ function registerLink() {
       >
       <a v-else class="register-btn u-shimmering-gradient-hover">Лидерборд</a>
     </div>
-    <!-- <h4>
-      {{ heading }}
-    </h4> -->
     <hr class="separator" />
     <div class="schedules">
       <div class="schedules-row" v-if="tournament.schedule.holdem">
@@ -125,7 +120,6 @@ function registerLink() {
   font-size: 1.5rem;
 }
 .tournament-card:last-of-type {
-  /* background-color: #063293; */
   border: none;
   background-size: 105%;
   background-repeat: no-repeat;
@@ -176,7 +170,6 @@ function registerLink() {
   grid-column: 1 / 2;
   display: flex;
   flex-direction: column;
-  /* width: 29%; */
   font-size: 1rem;
 }
 .time-sub-row {
@@ -185,8 +178,6 @@ function registerLink() {
   justify-content: space-between;
   gap: 0.5rem;
 }
-/* .reg-text {
-  font-size: 1.5rem; */
 
 .time-styled {
   font-size: 2rem;
@@ -195,7 +186,6 @@ function registerLink() {
 
 .schedules-name {
   grid-column: 2 / -1;
-  /* width: 60%; */
 }
 .name-heading {
   font-size: 2rem;
@@ -223,36 +213,13 @@ function registerLink() {
     font-size: clamp(1.1rem, 2vw + 0.3rem, 1.2rem);
   }
 }
-@media (min-width: 2200px) {
-  /* .schedules-row {
-    grid-template-columns: 9rem auto;
-  }
-  .time-styled,
-  .name-heading {
-    font-size: clamp(1.2rem, 2vw + 0.3rem, 2.2rem);
-  }
-  .schedules-time,
-  .name-rules,
-  .name-desc {
-    font-size: clamp(1.2rem, 2vw + 0.3rem, 1.3rem);
-  } */
-}
-@media (min-width: 3000px) {
-}
 
 @media (max-width: 1400px) {
   .schedules-time {
-    /* width: 30%; */
     font-size: clamp(0.9rem, 1vw, 1.05rem);
-  }
-  .schedules-row {
-    /* gap: 2rem; */
   }
   .time-styled {
     font-size: clamp(1.5rem, 1.3vw, 2.3rem);
-  }
-  .schedules-name {
-    /* width: 70%; */
   }
   .name-heading {
     font-size: clamp(1.6rem, 2vw, 1.8rem);
@@ -268,12 +235,6 @@ function registerLink() {
 
 /* (480px–767px) */
 @media (max-width: 1279px) {
-  /* .schedules-time {
-    width: 15%;
-  }
-  .schedules-name {
-    width: 80%;
-  } */
   .tournament-card {
     padding: 3rem;
   }
@@ -287,12 +248,6 @@ function registerLink() {
   .schedules-row {
     gap: 1.5rem;
   }
-  .schedules-name {
-    /* width: 65%; */
-  }
-  .schedules-time {
-    /* width: 30%; */
-  }
   .header {
     p {
       font-size: clamp(1.3rem, 2vw, 1.5rem);
@@ -325,12 +280,6 @@ function registerLink() {
   .schedules-row {
     gap: 1.5rem;
   }
-  .schedules-name {
-    /* width: 65%; */
-  }
-  .schedules-time {
-    /* width: 30%; */
-  }
   .header {
     p {
       font-size: clamp(1.3rem, 2vw, 1.5rem);
@@ -356,15 +305,6 @@ function registerLink() {
   }
 }
 
-/* (480px–767px) */
-@media (max-width: 600px) {
-  .schedules-name {
-    /* width: 80%; */
-  }
-  .schedules-time {
-    /* width: 15%; */
-  }
-}
 /* (480px–767px) */
 @media (max-width: 500px) {
   .schedules-row {

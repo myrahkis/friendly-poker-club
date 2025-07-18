@@ -4,14 +4,11 @@ const { rawData: guide } = useCityData("guide");
 
 const instructionContainer = ref(null);
 
-// console.log(instructionContainer.value.instructionContainer);
-
-const imageModules = import.meta.glob("/assets/images/locationGuide/**/*.jpg", {
+const imageModules = import.meta.glob("/assets/images/locationGuide/**/*.webp", {
   eager: true,
   query: "?url",
   import: "default",
 });
-// console.log("glob keys:", Object.keys(imageModules));
 
 const imageUrls = computed(() => {
   if (!guide.value?.pics) return [];

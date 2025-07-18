@@ -196,7 +196,6 @@ function getSocialsLink(name) {
   gap: 2rem;
 }
 
-/* Исходные цвета и ховер-эффекты для каждой кнопки */
 a.whatsup-btn,
 a.vk-btn,
 a.tg-btn,

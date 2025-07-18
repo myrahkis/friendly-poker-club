@@ -60,7 +60,6 @@ function toggleInstructions() {
   position: relative;
   z-index: 1;
   padding: 0 var(--horiz-main-padding);
-  /* padding-bottom: 5rem; */
 }
 .contacts-map {
   display: flex;
@@ -118,7 +117,6 @@ function toggleInstructions() {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  /* width: 100%; */
 }
 .contacts-btn {
   background-color: rgba(37, 37, 37, 0.3);
@@ -128,18 +126,6 @@ function toggleInstructions() {
   font-size: clamp(1.5rem, 2.2vw, 3rem);
   width: 40%;
 }
-
-/* (480px–767px) */
-/* @media (max-width: 767px) {
-  .instructions-images {
-    display: flex;
-    flex-direction: column;
-
-    img {
-      aspect-ratio: 16 / 9;
-    }
-  }
-} */
 
 @media (max-width: 690px) {
   .contacts-map {
@@ -157,12 +143,6 @@ function toggleInstructions() {
   .map-wrapper {
     aspect-ratio: 4 / 5;
   }
-
-  /* .instructions-images {
-    img {
-      aspect-ratio: 1;
-    }
-  } */
 }
 @media (max-width: 367px) {
   :deep(.socials-container) {

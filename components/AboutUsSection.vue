@@ -237,11 +237,9 @@ function prevSlide() {
 }
 .slide-left-enter-from {
   transform: translateX(100%);
-  /* opacity: 0; */
 }
 .slide-left-leave-to {
   transform: translateX(-100%);
-  /* opacity: 0; */
 }
 
 /* движение вправо */
@@ -251,11 +249,9 @@ function prevSlide() {
 }
 .slide-right-enter-from {
   transform: translateX(-100%);
-  /* opacity: 0; */
 }
 .slide-right-leave-to {
   transform: translateX(100%);
-  /* opacity: 0; */
 }
 
 @media (min-width: 1800px) {
@@ -297,7 +293,6 @@ function prevSlide() {
     width: 100%;
   }
   .carousel-img {
-    /* height: auto; */
     object-fit: cover;
   }
 }

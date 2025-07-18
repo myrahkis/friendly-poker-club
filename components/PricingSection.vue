@@ -108,9 +108,6 @@ function buyLink() {
         нестандартные виды покера обговариваются индивидуально.
       </p>
     </div>
-    <!-- <div class="rent-cards">
-      <RentCard v-for="(card, index) in rentCards" :key="index" :card="card" />
-    </div> -->
     <img class="bg-dots" src="/assets/images/bg-dots-2.png" alt="" />
   </section>
 </template>
@@ -121,29 +118,20 @@ function buyLink() {
   padding: 0 var(--horiz-main-padding);
   margin-bottom: 5rem;
 }
-/* .rent-cards {
-  display: flex;
-  gap: 2rem;
-} */
-
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  /* padding: 0 6rem; */
 }
 .pricing-card {
   display: flex;
   flex-direction: column;
-  /* justify-content: cet; */
-  /* gap: 1.5rem; */
   padding: clamp(2.4rem, 3vw, 3rem);
   border: 1px solid var(--light-gradient-color);
   border-radius: 2rem;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: var(--dark-bg-color); */
   backdrop-filter: blur(3px);
 }
 .pracing-card-info {
@@ -192,7 +180,6 @@ function buyLink() {
   flex-direction: column;
   gap: 1.5rem;
   margin-top: 3rem;
-  /* width: 80%; */
 }
 
 .bg-dots {
@@ -229,31 +216,6 @@ function buyLink() {
     gap: 2rem;
   }
 }
-
-/* (–767px) */
-/* @media (max-width: 767px) { */
-/* .rent-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  } */
-
-/* .pricing-card {
-    justify-content: start;
-    gap: 1rem;
-  }
-  .order-btn {
-    background: linear-gradient(
-      to right,
-      var(--dark-gradient-color),
-      var(--light-gradient-color)
-    );
-    font-size: clamp(1.5rem, 2vw, 1.8rem);
-    font-weight: 400;
-    border-radius: 4rem;
-    padding: 1rem;
-    margin-top: auto;
-  }
-} */
 
 /* (-590px) */
 @media (max-width: 490px) {

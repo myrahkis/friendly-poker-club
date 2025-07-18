@@ -9,7 +9,6 @@ export default defineEventHandler((event) => {
   const range = getRequestHeader(event, "range");
 
   if (!range) {
-    // console.log("no range!!!!!!!!!!");
     setResponseHeaders(event, {
       "Content-Type": "video/mp4",
       "Content-Length": fileSize.toString(),

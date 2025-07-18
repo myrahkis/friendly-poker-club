@@ -55,8 +55,6 @@ onMounted(() => {
       </div>
 
       <!-- большие экраны -->
-      <!-- <video src="/assets/hero-vid-test.MP4" autoplay muted loop></video> -->
-      <!-- <img class="hero-bg-img" src="/assets/images/hero-bg.svg" alt="hero-bg" /> -->
       <div class="hero-bg-vid-big-screen">
         <div class="color-filter"></div>
         <svg
@@ -112,11 +110,6 @@ onMounted(() => {
           />
         </svg>
       </div>
-      <!-- <img
-        class="hero-bg-img-big-screen"
-        src="/assets/images/bg-big-sc.png"
-        alt="hero-bg"
-      /> -->
     </div>
     <span class="hero-empasis">
       Внимание! В нашем клубе категорически
@@ -212,17 +205,16 @@ onMounted(() => {
 }
 .video-mask {
   width: 100%;
-  mask-image: url("/assets/test.svg");
+  mask-image: url("/assets/hero-vid-mask-base.svg");
   mask-mode: alpha;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
-  -webkit-mask-image: url("/assets/test.svg");
+  -webkit-mask-image: url("/assets/hero-vid-mask-base.svg");
   -webkit-mask-mode: alpha;
   -webkit-mask-size: contain;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
-  /* overflow: hidden; */
 }
 .hero-bg-vid::after {
   content: "";
@@ -232,7 +224,6 @@ onMounted(() => {
   right: -2.1%;
   bottom: -2.1%;
   background: url("/assets/hero-video-border.svg") no-repeat center/contain;
-  /* pointer-events: none; */
 }
 .video-mask video {
   width: 100%;
@@ -301,23 +292,7 @@ onMounted(() => {
     width: 75%;
     transform: translateX(43rem);
     z-index: 0;
-    /* mask-image: url("/assets/test-big.svg");
-    mask-mode: alpha;
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-image: url("/assets/test-big.svg");
-    -webkit-mask-mode: alpha;
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    overflow: hidden; */
   }
-  /* .hero-bg-vid-big-screen video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  } */
   .hero-sub-text {
     font-size: 2rem;
     width: 95%;
@@ -404,7 +379,6 @@ onMounted(() => {
     flex-direction: column;
     align-items: start;
     gap: 3rem;
-    /* padding-top: 13%; */
   }
   .hero-text {
     position: static;

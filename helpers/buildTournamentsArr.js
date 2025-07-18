@@ -49,7 +49,6 @@ export function buildNext7DaysFromWeekdayJson(raw) {
           const entry = dayObj[key];
 
           scheduleArr[key] = entry;
-          // console.log(scheduleArr);
         }
       }
     }
@@ -70,6 +69,18 @@ export function buildNext7DaysFromWeekdayJson(raw) {
       typeof obj === "object" &&
       typeof obj.date === "string"
     ) {
+      // день недели для турнира месяца
+      const [dayStr, monthStr, yearStr] = obj.date.split(".");
+      const day = parseInt(dayStr, 10);
+      const month = parseInt(monthStr, 10) - 1;
+      let year = parseInt(yearStr, 10);
+      if (yearStr.length === 2) {
+        year += year < 100 ? 2000 : 0;
+      }
+      const dtMonthly = new Date(year, month, day);
+      const weekdayIndex = dtMonthly.getDay();
+      const shortNameMonthly = WEEKDAY_SHORT[weekdayIndex];
+
       const monthlySchedule = {};
       for (const subKey in obj) {
         if (
@@ -82,7 +93,7 @@ export function buildNext7DaysFromWeekdayJson(raw) {
       }
       result.push({
         date: obj.date,
-        dayOfWeek: "",
+        dayOfWeek: shortNameMonthly,
         heading: "Турнир месяца",
         schedule: monthlySchedule,
       });

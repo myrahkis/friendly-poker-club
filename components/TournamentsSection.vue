@@ -41,7 +41,6 @@ function toggleDescriptions() {
         Описание турниров
       </button>
     </div>
-    <!-- <p>({{ selectedCity }})</p> -->
     <div class="tournaments-grid" v-if="tournaments.length !== 0">
       <TournamentCard
         v-for="(tournament, index) in tournaments"

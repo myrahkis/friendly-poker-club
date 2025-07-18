@@ -21,7 +21,6 @@ const { date, stars, avatar, name, userText, feedbackText } = feedback;
       </div>
       <div class="header-row">
         <div class="ava-placeholder"><img :src="avatar" alt="" /></div>
-        <!-- <img :src="avatar" alt="" /> -->
         <div class="user-info">
           <p class="user-name">{{ name }}</p>
         </div>
@@ -30,10 +29,6 @@ const { date, stars, avatar, name, userText, feedbackText } = feedback;
     <hr class="separator" />
     <p class="user-short-text">{{ userText }}</p>
     <p class="description">{{ feedbackText }}</p>
-    <!-- <div class="footer">
-      <div class="ava-placeholder-2"></div>
-      <p>{{ userText }}</p>
-    </div> -->
   </div>
 </template>
 

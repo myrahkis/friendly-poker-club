@@ -122,7 +122,6 @@ onMounted(() => {
   transition: opacity 0.4s ease-in-out;
 
   img {
-    /* transform: rotate(-90deg); */
     width: clamp(5rem, 10vw, 8rem);
   }
 }
@@ -134,15 +133,5 @@ onMounted(() => {
   .up-btn {
     bottom: 2% !important;
   }
-}
-@media (max-width: 690px) {
-  /* .up-btn { */
-  /* bottom: 0 !important; */
-  /* } */
-}
-@media (max-width: 380px) {
-  /* .up-btn { */
-  /* bottom: 10% !important; */
-  /* } */
 }
 </style>

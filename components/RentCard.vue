@@ -4,12 +4,10 @@ const { heading, price, subHeading, desc, bg } = card;
 </script>
 
 <template>
-  <!-- :style="{ backgroundImage: `url(${bg})` }" -->
   <div class="rent-card">
     <div class="card-info">
       <h4 class="rent-heading">{{ heading }}</h4>
       <p class="price">{{ price }}</p>
-      <!-- <p class="sub-heading">{{ subHeading }}</p> -->
       <p class="card-desc">{{ desc }}</p>
       <hr class="separator-reversed" />
       <p class="card-desc">{{ desc }}</p>

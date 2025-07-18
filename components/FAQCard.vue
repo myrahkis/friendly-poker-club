@@ -27,7 +27,6 @@ const emit = defineEmits(["toggle"]);
     </div>
   </div>
   <div class="faq-card-mobile">
-    <!-- <div :class="['faq-card-mobile', { 'is-open': isOpen }]"> -->
     <div class="top-mobile-card">
       <div>
         <div class="header">
@@ -46,7 +45,6 @@ const emit = defineEmits(["toggle"]);
         <img class="footer-suit" :src="suit" alt="card-suit" />
       </div>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -101,7 +99,6 @@ const emit = defineEmits(["toggle"]);
 
 .header {
   display: flex;
-  /* justify-content: space-between; */
   gap: 1.5rem;
   align-items: center;
   margin-bottom: 1.5rem;
@@ -138,7 +135,6 @@ const emit = defineEmits(["toggle"]);
 .footer {
   display: flex;
   justify-content: flex-end;
-  /* margin-top: auto; */
   width: 100%;
 }
 .header-suit,
@@ -151,7 +147,6 @@ const emit = defineEmits(["toggle"]);
     display: none;
   }
   .faq-card-mobile {
-    /* position: relative; */
     display: flex;
     flex-direction: column;
     gap: 2rem;
