@@ -1,4 +1,4 @@
-import { visualizer } from "rollup-plugin-visualizer";
+// import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineNuxtConfig({
   app: {
@@ -69,12 +69,12 @@ export default defineNuxtConfig({
       minify: "esbuild",
       rollupOptions: {
         plugins: [
-          visualizer({
-            filename: "./stats.html",
-            open: true,
-            gzipSize: true,
-            brotliSize: true,
-          }),
+          // visualizer({
+          //   filename: "./stats.html",
+          //   open: true,
+          //   gzipSize: true,
+          //   brotliSize: true,
+          // }),
         ],
       },
     },
