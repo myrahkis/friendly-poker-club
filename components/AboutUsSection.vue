@@ -1,16 +1,16 @@
 <script setup>
-import placeholderImg1 from "@/assets/images/1.jpg";
-import placeholderImg2 from "@/assets/images/2.jpg";
-import placeholderImg3 from "@/assets/images/3.jpg";
-import placeholderImg4 from "@/assets/images/4.jpg";
-import placeholderImg5 from "@/assets/images/5.jpg";
-import placeholderImg6 from "@/assets/images/6.jpg";
-import placeholderImg7 from "@/assets/images/7.jpg";
-import placeholderImg9 from "@/assets/images/9.jpg";
-import placeholderImg10 from "@/assets/images/10.jpg";
-import placeholderImg11 from "@/assets/images/11.jpg";
-import placeholderImg12 from "@/assets/images/12.jpg";
-import placeholderImg13 from "@/assets/images/13.jpg";
+import placeholderImg1 from "@/assets/images/1.webp";
+import placeholderImg2 from "@/assets/images/2.webp";
+import placeholderImg3 from "@/assets/images/3.webp";
+import placeholderImg4 from "@/assets/images/4.webp";
+import placeholderImg5 from "@/assets/images/5.webp";
+import placeholderImg6 from "@/assets/images/6.webp";
+import placeholderImg7 from "@/assets/images/7.webp";
+import placeholderImg9 from "@/assets/images/9.webp";
+import placeholderImg10 from "@/assets/images/10.webp";
+import placeholderImg11 from "@/assets/images/11.webp";
+import placeholderImg12 from "@/assets/images/12.webp";
+import placeholderImg13 from "@/assets/images/13.webp";
 
 const photos = [
   placeholderImg1,
@@ -24,9 +24,9 @@ const photos = [
   placeholderImg10,
   placeholderImg11,
   placeholderImg12,
-  placeholderImg13, 
+  placeholderImg13,
 ];
- 
+
 const curIndex = ref(0);
 const direction = ref("slide-right");
 

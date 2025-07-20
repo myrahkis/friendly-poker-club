@@ -1,3 +1,5 @@
+import { visualizer } from "rollup-plugin-visualizer";
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -44,6 +46,18 @@ export default defineNuxtConfig({
   vite: {
     ssr: {
       noExternal: ["pdfjs-dist"],
+    },
+    build: {
+      rollupOptions: {
+        // plugins: [
+        //   visualizer({
+        //     filename: "./stats.html",
+        //     open: true,
+        //     gzipSize: true,
+        //     brotliSize: true,
+        //   }),
+        // ],
+      },
     },
   },
   css: ["@/assets/css/main.css"],

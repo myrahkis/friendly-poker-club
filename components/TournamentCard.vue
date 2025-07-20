@@ -1,6 +1,6 @@
 <script setup>
 import specialTournamentBg from "@/assets/images/special-tournament.png";
-const { rawData: contacts } = useCityData("contacts");
+const { loading, rawData: contacts } = useCityData("contacts");
 
 const { tournament, index, lastIndex } = defineProps({
   tournament: Object,

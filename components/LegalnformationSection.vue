@@ -1,6 +1,12 @@
 <script setup>
 const { rawData: documentsRaw } = useCityData("docs");
 
+const openedDocIdx = ref(null);
+
+function toggleDoc(idx) {
+  openedDocIdx.value = openedDocIdx.value === idx ? null : idx;
+}
+
 const pdfModules = import.meta.glob("/assets/documents/**/*.pdf", {
   eager: true,
   query: "?url",
@@ -18,75 +24,9 @@ const documents = computed(() =>
   })
 );
 
-const pdfjsLib = ref(null);
-const isDocLoading = ref(false);
-
-onMounted(async () => {
-  const lib = await import("pdfjs-dist/build/pdf.mjs");
-  const workerUrl = (await import("pdfjs-dist/build/pdf.worker.min.mjs?url"))
-    .default;
-
-  pdfjsLib.value = lib;
-  lib.GlobalWorkerOptions.workerSrc = workerUrl;
-});
-
-const openedDocIdx = ref(null);
-const openDocState = useState("openDocIndex");
-
-function toggleDoc(idx) {
-  openedDocIdx.value = openedDocIdx.value === idx ? null : idx;
-}
-
-// изменения состояния из footer
-watch(openDocState, async (newIdx) => {
-  if (newIdx === null) return;
-
-  openedDocIdx.value = newIdx;
-  await nextTick();
-  const el = document.getElementById(`pdf-doc-${newIdx}`);
-
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-
-  openDocState.value = null;
-});
-
-watch(openedDocIdx, async (newIdx) => {
-  if (newIdx == null || !pdfjsLib.value) return;
-
-  const pdfjs = pdfjsLib.value;
-  const container = document.getElementById(`pdf-viewer-${newIdx}`);
-  container.innerHTML = "";
-
-  isDocLoading.value = true;
-
-  try {
-    const pdfjs = pdfjsLib.value;
-
-    const { url } = documents.value[newIdx];
-    const loadingTask = pdfjsLib.value.getDocument(url);
-    const pdf = await loadingTask.promise;
-
-    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-      const page = await pdf.getPage(pageNum);
-      const viewport = page.getViewport({ scale: 1.2 });
-      const canvas = document.createElement("canvas");
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-      canvas.style.display = "block";
-      canvas.style.margin = "1rem auto";
-
-      const ctx = canvas.getContext("2d");
-      await page.render({ canvasContext: ctx, viewport }).promise;
-      container.appendChild(canvas);
-    }
-  } catch (e) {
-    console.error("Ошибка при загрузке PDF:", e);
-  } finally {
-    isDocLoading.value = false;
-  }
-
-  container.style.userSelect = "none";
-  container.oncontextmenu = () => false;
+const PdfRenderer = defineAsyncComponent({
+  loader: () => import("@/components/PdfRenderer.vue"),
+  suspensible: true,
 });
 </script>
 
@@ -96,7 +36,7 @@ watch(openedDocIdx, async (newIdx) => {
     <div class="documents-wrapper">
       <div
         class="document"
-        v-for="({ title, doc }, index) in documents"
+        v-for="({ title, url }, index) in documents"
         :key="index"
         @click="toggleDoc(index)"
       >
@@ -109,18 +49,18 @@ watch(openedDocIdx, async (newIdx) => {
             <img src="/assets/icons/faq-open-btn.svg" alt="" />
           </button>
         </div>
-        <transition name="slide-fade">
-          <div
-            v-show="openedDocIdx === index"
-            :id="`pdf-doc-${index}`"
-            class="doc-content"
-          >
-            <div :id="`pdf-viewer-${index}`" class="pdf-viewer-container"></div>
-            <div v-if="isDocLoading">
-              <span class="loader"></span>
-            </div>
-          </div>
-        </transition>
+        <Suspense>
+          <template #default>
+            <PdfRenderer
+              :documents="documents"
+              :openedDocIdx="openedDocIdx"
+              :index="index"
+            />
+          </template>
+          <template #fallback>
+            <div class="loader">Загрузка PDF…</div>
+          </template>
+        </Suspense>
       </div>
     </div>
   </section>
@@ -174,12 +114,6 @@ watch(openedDocIdx, async (newIdx) => {
   }
 }
 
-.doc-content {
-  position: relative;
-  padding: 2rem 1.5rem;
-  font-size: 1.8rem;
-}
-
 .open-doc-btn {
   img {
     width: 4.5rem;
@@ -187,69 +121,5 @@ watch(openedDocIdx, async (newIdx) => {
 }
 .open-doc-btn.open {
   transform: rotate(180deg);
-}
-
-.pdf-viewer-container {
-  position: relative;
-  overflow-y: auto;
-  height: 90vh;
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-}
-
-.loader {
-  position: absolute;
-  width: 4rem;
-  height: 4rem;
-  top: 50%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1rem solid var(--dark-gradient-color);
-  border-left-color: var(--light-gradient-color);
-  animation: loader 3s infinite;
-}
-@keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-.slide-fade-enter-from {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-.slide-fade-enter-to {
-  opacity: 1;
-  padding: 2rem 1.5rem;
-}
-.slide-fade-leave-from {
-  opacity: 1;
-  padding: 2rem 1.5rem;
-}
-.slide-fade-leave-to {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-@media (max-width: 762px) {
-  .pdf-viewer-container {
-    height: auto;
-    min-height: 30rem;
-  }
 }
 </style>

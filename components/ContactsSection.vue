@@ -41,6 +41,7 @@ function toggleInstructions() {
           <iframe
             v-if="contacts.map"
             :src="contacts.map"
+            loading="lazy"
             width="100%"
             height="100%"
             frameborder="0"
