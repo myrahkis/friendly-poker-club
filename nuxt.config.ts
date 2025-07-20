@@ -18,6 +18,23 @@ export default defineNuxtConfig({
         { name: "robots", content: "index, follow" },
       ],
       link: [
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "anonymous",
+        },
+        {
+          rel: "preload",
+          as: "style",
+          href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+          media: "print",
+          onload: "this.media='all'",
+        },
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "canonical", href: "https://friendlypoker.ru/" },
         {
@@ -39,7 +56,7 @@ export default defineNuxtConfig({
   },
   ssr: true,
   compatibilityDate: "2025-07-14",
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV === "development" },
   build: {
     transpile: ["pdfjs-dist"],
   },
@@ -48,21 +65,24 @@ export default defineNuxtConfig({
       noExternal: ["pdfjs-dist"],
     },
     build: {
+      cssCodeSplit: true,
+      minify: "esbuild",
       rollupOptions: {
-        // plugins: [
-        //   visualizer({
-        //     filename: "./stats.html",
-        //     open: true,
-        //     gzipSize: true,
-        //     brotliSize: true,
-        //   }),
-        // ],
+        plugins: [
+          visualizer({
+            filename: "./stats.html",
+            open: true,
+            gzipSize: true,
+            brotliSize: true,
+          }),
+        ],
       },
     },
   },
   css: ["@/assets/css/main.css"],
   nitro: {
     preset: "node-server",
+    compressPublicAssets: true,
   },
   runtimeConfig: {
     apiBase: process.env.API_BASE,
