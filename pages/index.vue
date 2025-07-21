@@ -3,7 +3,7 @@
 <template>
   <HeroSection />
   <AboutUsSection />
-  <TournamentsSection />
+  <!-- <TournamentsSection /> -->
   <FAQSection />
   <GallerySection />
   <PricingSection />
