@@ -17,7 +17,7 @@
         <img src="/assets/images/galleryImg4.webp" alt="" />
       </div>
       <div class="grid-cell-5">
-        <img src="/assets/images/galleryImg5.webp" alt="" />
+        <img src="/assets/images/1.webp" alt="" />
       </div>
       <button class="gallery-btn">Подробнее</button>
     </div>
@@ -76,6 +76,10 @@
 .grid-cell-5 {
   grid-column: 6 / -1;
   grid-row: 2 / -1;
+
+  img {
+    object-position: 30% 0;
+  }
 }
 
 .gallery-btn {
