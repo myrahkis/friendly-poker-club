@@ -32,7 +32,7 @@ export function useCitySelector(emit) {
   }
 
   async function onOptionClick(opt) {
-    if (route.query.city === opt.value) {
+    if (route.params.city === opt.value) {
       selectedKey.value = opt.value;
       selectedLabel.value = opt.label;
       open.value = false;
@@ -47,10 +47,7 @@ export function useCitySelector(emit) {
 
     await nextTick();
 
-    router.replace({
-      path: route.path,
-      query: { ...route.query, city: opt.value },
-    });
+    await navigateTo(`/${opt.value}`, { replace: true });
   }
 
   async function getCoords() {
@@ -106,12 +103,18 @@ export function useCitySelector(emit) {
 
     await loadCities();
 
+    const slugFromUrl = route.params.city;
+    let initialOption = options.value.find((o) => o.value === slugFromUrl);
+
     // дефолтный город (перывй из json)
-    if (options.value.length > 0) {
-      await onOptionClick(options.value[0]);
+    if (!initialOption && options.value.length > 0) {
+      initialOption = options.value[0];
+    }
+
+    if (initialOption) {
+      await onOptionClick(initialOption);
     } else {
-      selectedLabel.value = "Нет городов";
-      return;
+      selectedLabel.value = "Город не найден";
     }
 
     // опредкление реального города

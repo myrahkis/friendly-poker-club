@@ -1,5 +1,3 @@
-// import { visualizer } from "rollup-plugin-visualizer";
-
 export default defineNuxtConfig({
   app: {
     head: {
@@ -12,7 +10,7 @@ export default defineNuxtConfig({
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
-          content: "Friendly Poker Club — легальная офлайн игра в покер. ",
+          content: "Friendly Poker Club — легальная офлайн игра в покер.",
         },
         { name: "author", content: "Friendly Poker Club" },
         { name: "robots", content: "index, follow" },
@@ -67,16 +65,6 @@ export default defineNuxtConfig({
     build: {
       cssCodeSplit: true,
       minify: "esbuild",
-      rollupOptions: {
-        plugins: [
-          // visualizer({
-          //   filename: "./stats.html",
-          //   open: true,
-          //   gzipSize: true,
-          //   brotliSize: true,
-          // }),
-        ],
-      },
     },
   },
   css: ["@/assets/css/main.css"],

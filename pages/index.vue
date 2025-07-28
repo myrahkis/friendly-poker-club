@@ -1,15 +1,13 @@
-<script setup></script>
+<script setup>
+import cityOptions from "@/server/data/cityOptions.json";
+
+const firstCity = Object.keys(cityOptions)[0];
+
+definePageMeta({
+  redirect: `/${firstCity}`,
+});
+</script>
 
 <template>
-  <HeroSection />
-  <AboutUsSection />
-  <!-- <TournamentsSection /> -->
-  <FAQSection />
-  <GallerySection />
-  <PricingSection />
-  <FeedbackSection />
-  <LegalnformationSection />
-  <ContactsSection />
+  <div></div>
 </template>
-
-<style scoped></style>

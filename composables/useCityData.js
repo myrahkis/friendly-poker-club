@@ -7,7 +7,7 @@ export function useCityData(propertyName) {
   const rawData = ref([]);
   const data = ref([]);
 
-  const selectedCity = computed(() => route.query.city || "");
+  const selectedCity = computed(() => route.params.city || "");
 
   async function loadCityData(cityName) {
     if (!cityName) return;
