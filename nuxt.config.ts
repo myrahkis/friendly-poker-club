@@ -4,14 +4,10 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ru",
       },
-      title: "Покерный клуб «Friendly poker»",
+      titleTemplate: "Покерный клуб «Friendly poker» %s",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        {
-          name: "description",
-          content: "Friendly Poker Club — легальная офлайн игра в покер.",
-        },
         { name: "author", content: "Friendly Poker Club" },
         { name: "robots", content: "index, follow" },
       ],
@@ -80,4 +76,5 @@ export default defineNuxtConfig({
       ymId: process.env.YM_COUNTER_ID,
     },
   },
+  pages: true,
 });

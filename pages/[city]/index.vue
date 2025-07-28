@@ -1,27 +1,29 @@
 <script setup>
+import cityOptions from "@/server/data/cityOptions.json";
+
 const route = useRoute();
-const citySlug = route.params.city;
+const citySlug = computed(() => route.params.city);
 
-const { data: cityOptions } = await useAsyncData("opts", () =>
-  fetch("/data/cityOptions.json").then((r) => r.json())
-);
-
-const cityInText = computed(() => {
-  const opts = cityOptions.value;
-  return opts && opts[citySlug] ? opts[citySlug][1] : "";
-});
+const cityLabel = computed(() => cityOptions[citySlug.value]?.[0] || "");
+const cityInText = computed(() => cityOptions[citySlug.value]?.[1] || "");
 
 useHead({
-  title: `Покерный клуб «Friendly poker» ${cityInText.value}`,
+  title: cityInText.value,
   meta: [
     {
       name: "description",
-      content: `Покерный клуб в городе ${cityInText.value}`,
+      content: computed(
+        () =>
+          `Friendly Poker Club — легальная офлайн игра в покер ${cityInText.value}. Для новичков, любителей и профессионалов.`
+      ),
     },
     {
       property: "og:url",
-      content: `https://friendlypoker.ru/${cityInText.value}`,
+      content: computed(() => `https://friendlypoker.ru/${cityLabel.value}`),
     },
+  ],
+  link: [
+    { rel: "canonical", href: `https://friendlypoker.ru/${citySlug.value}` },
   ],
 });
 </script>
