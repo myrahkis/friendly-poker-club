@@ -5,7 +5,7 @@ const route = useRoute();
 const citySlug = computed(() => route.params.city);
 
 useHead({
-  title: "Статистика покерного клуба Friendly Poker",
+  title: "cтатистика",
   meta: [
     {
       name: "description",

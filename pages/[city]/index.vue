@@ -8,7 +8,7 @@ const cityLabel = computed(() => cityOptions[citySlug.value]?.[0] || "");
 const cityInText = computed(() => cityOptions[citySlug.value]?.[1] || "");
 
 useHead({
-  title: `Покерный клуб «Friendly poker» ${cityInText.value}`,
+  title: cityInText.value,
   meta: [
     {
       name: "description",
