@@ -19,7 +19,7 @@ onMounted(() => {
       header.value.header.classList.remove("scrolled");
     }
 
-    if (currentScrollY > lastScrollY && currentScrollY > 300) {
+    if (currentScrollY > lastScrollY && currentScrollY > 200) {
       header.value.header.classList.add("hidden");
     } else {
       header.value.header.classList.remove("hidden");
@@ -72,6 +72,8 @@ function handleScroll() {
   const button = document.getElementById("goUpBtn");
   const footer = document.querySelector(".contacts-map");
 
+  if (!footer || !button) return;
+
   const footerRect = footer.getBoundingClientRect();
   const viewportHeight = window.innerHeight;
 
@@ -92,6 +94,9 @@ function handleScroll() {
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
 <template>
@@ -104,7 +109,7 @@ onMounted(() => {
   <Footer v-if="!openMenu" />
 </template>
 
-<style scoped>
+<style>
 .scrolled {
   background-color: rgba(3, 3, 3, 0.3);
   box-shadow: 0 0.3rem 1.5rem rgba(3, 3, 3, 0.6);

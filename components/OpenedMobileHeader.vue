@@ -1,4 +1,6 @@
 <script setup>
+const route = useRoute();
+
 const links = [
   { text: "О нас", href: "#about-us" },
   { text: "Вопрос-ответ", href: "#faq" },
@@ -6,6 +8,7 @@ const links = [
   { text: "Отзывы", href: "#feedbacks" },
   { text: "Контакты", href: "#contacts" },
   { text: "Правовая инфомация", href: "#documents" },
+  { text: "Лидерборд", href: `/${route.params.city}/leader-board` },
 ];
 
 const props = defineProps({
@@ -21,16 +24,15 @@ const props = defineProps({
     <div class="mobile-header__top-container">
       <Logo width="40%" paddingTop="0" />
       <ul class="mobile-header__list">
-        <li
+        <NuxtLink
           @click.prevent="props.goToAnchor(href)"
           class="mobile-header__list__link u-shimmering-gradient-hover"
           v-for="{ text, href } in links"
           :key="text"
+          :to="href"
         >
-          <a :href="href">
-            {{ text }}
-          </a>
-        </li>
+          {{ text }}
+        </NuxtLink>
       </ul>
     </div>
     <ContactsInfoBlock bgColor="transparent" />

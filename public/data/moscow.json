@@ -106,5 +106,9 @@
       },
       "cache": { "time": "14:00", "name": "Кеш - турнир" }
     }
+  },
+  "stats": {
+    "dashboardMain": "",
+    "dashboardRealTime": ""
   }
 }

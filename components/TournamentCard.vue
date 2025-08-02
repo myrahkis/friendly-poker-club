@@ -2,6 +2,9 @@
 import specialTournamentBg from "@/assets/images/special-tournament.png";
 const { loading, rawData: contacts } = useCityData("contacts");
 
+const route = useRoute();
+const router = useRouter();
+
 const { tournament, index, lastIndex } = defineProps({
   tournament: Object,
   index: Number,
@@ -33,7 +36,12 @@ function registerLink() {
         class="register-btn u-shimmering-gradient-hover"
         >Зарегистрироваться</a
       >
-      <a v-else class="register-btn u-shimmering-gradient-hover">Лидерборд</a>
+      <NuxtLink
+        v-else
+        class="register-btn u-shimmering-gradient-hover"
+        :to="`/${route.params.city}/leader-board`"
+        >Лидерборд</NuxtLink
+      >
     </div>
     <hr class="separator" />
     <div class="schedules">

@@ -4,7 +4,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ru",
       },
-      titleTemplate: "Покерный клуб «Friendly poker» %s",
+      titleTemplate: "Покерный клуб «Friendly poker»",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },

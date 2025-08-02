@@ -1,4 +1,5 @@
 <script setup>
+const route = useRoute();
 const header = ref(null);
 
 const { useOpenMenu } = defineProps({ useOpenMenu: { type: Function } });
@@ -10,6 +11,7 @@ const links = [
   { text: "Отзывы", href: "#feedbacks" },
   { text: "Контакты", href: "#contacts" },
   { text: "Правовая инфомация", href: "#documents" },
+  { text: "Лидерборд", href: `/${route.params.city}/leader-board` },
 ];
 
 const { loading, error, rawData: contacts } = useCityData("contacts");
@@ -97,15 +99,14 @@ defineExpose({ header });
           <Socials width="3.2rem" />
         </div>
         <ul class="header__list">
-          <li
+          <NuxtLink
             class="header__list__link u-shimmering-gradient-hover"
             v-for="{ text, href } in links"
             :key="text"
+            :to="href"
           >
-            <a :href="href">
-              {{ text }}
-            </a>
-          </li>
+            {{ text }}
+          </NuxtLink>
         </ul>
       </div>
     </div>

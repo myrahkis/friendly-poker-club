@@ -114,5 +114,9 @@
       "holdem": { "time": "19:00", "name": "Нокаут френдли" },
       "cache": { "time": "18:00", "name": "Кеш - турнир" }
     }
+  },
+  "stats": {
+    "dashboardMain": "https://datalens.yandex/mft888megl527?_no_controls=1&_lang=ru",
+    "dashboardRealTime": "https://datalens.yandex/qkbo7r9ckl3mb?_no_controls=1&_lang=ru"
   }
 }
