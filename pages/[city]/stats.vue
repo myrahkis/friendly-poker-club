@@ -15,12 +15,9 @@ useHead({
     {
       property: "og:url",
       content: computed(
-        () => `https://friendlypoker.ru/${citySlug.value}/leader-board`
+        () => `https://friendlypoker.ru/${citySlug.value}/stats`
       ),
     },
-  ],
-  link: [
-    { rel: "canonical", href: `https://friendlypoker.ru/${citySlug.value}` },
   ],
 });
 </script>

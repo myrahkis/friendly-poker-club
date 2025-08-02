@@ -22,9 +22,6 @@ useHead({
       content: computed(() => `https://friendlypoker.ru/${cityLabel.value}`),
     },
   ],
-  link: [
-    { rel: "canonical", href: `https://friendlypoker.ru/${citySlug.value}` },
-  ],
 });
 </script>
 
