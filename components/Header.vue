@@ -11,7 +11,7 @@ const links = [
   { text: "Отзывы", href: "#feedbacks" },
   { text: "Контакты", href: "#contacts" },
   { text: "Правовая инфомация", href: "#documents" },
-  { text: "Лидерборд", href: `/${route.params.city}/leader-board` },
+  { text: "Лидерборд", href: `/${route.params.city}/stats` },
 ];
 
 const { loading, error, rawData: contacts } = useCityData("contacts");
