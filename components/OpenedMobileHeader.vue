@@ -2,12 +2,12 @@
 const route = useRoute();
 
 const links = [
-  { text: "О нас", href: "#about-us" },
-  { text: "Вопрос-ответ", href: "#faq" },
-  { text: "Тарифы", href: "#pricing" },
-  { text: "Отзывы", href: "#feedbacks" },
-  { text: "Контакты", href: "#contacts" },
-  { text: "Правовая инфомация", href: "#documents" },
+  { text: "О нас", href: "/#about-us" },
+  { text: "Вопрос-ответ", href: "/#faq" },
+  { text: "Тарифы", href: "/#pricing" },
+  { text: "Отзывы", href: "/#feedbacks" },
+  { text: "Контакты", href: "/#contacts" },
+  { text: "Правовая инфомация", href: "/#documents" },
   { text: "Лидерборд", href: `/${route.params.city}/stats` },
 ];
 
