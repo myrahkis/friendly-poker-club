@@ -15,7 +15,7 @@ onMounted(() => {
     <div class="gradient"></div>
     <img class="bg-chip" src="/assets/images/chip1.png" alt="bg-img" />
     <img class="bg-chip-full" src="/assets/images/chip-bg-full.png" alt="" />
-    <img class="bg-cards" src="/assets/images/bg-cards.png" alt="cards-img" />
+    <NuxtImg class="bg-cards" src="/bg-cards.webp" alt="cards-img" priority />
     <div class="hero-wrapper">
       <Logo width="45rem" paddingTop="0" />
       <div class="hero-text">
