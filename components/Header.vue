@@ -104,6 +104,7 @@ defineExpose({ header });
             v-for="{ text, href } in links"
             :key="text"
             :to="href"
+            :target="text === 'Лидерборд' ? '_blank' : '_self'"
           >
             {{ text }}
           </NuxtLink>

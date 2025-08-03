@@ -39,6 +39,7 @@ function registerLink() {
         v-else
         class="register-btn u-shimmering-gradient-hover"
         :to="`/${route.params.city}/stats`"
+        target="_blank"
         >Лидерборд</NuxtLink
       >
     </div>

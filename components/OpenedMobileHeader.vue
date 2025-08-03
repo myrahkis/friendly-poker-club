@@ -25,11 +25,12 @@ const props = defineProps({
       <Logo width="40%" paddingTop="0" />
       <ul class="mobile-header__list">
         <NuxtLink
-          @click.prevent="props.goToAnchor(href)"
           class="mobile-header__list__link u-shimmering-gradient-hover"
           v-for="{ text, href } in links"
+          @click="props.goToAnchor(href)"
           :key="text"
           :to="href"
+          :target="text === 'Лидерборд' ? '_blank' : '_self'"
         >
           {{ text }}
         </NuxtLink>
