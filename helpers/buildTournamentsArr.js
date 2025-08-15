@@ -42,8 +42,10 @@ export function buildNext7DaysFromWeekdayJson(raw) {
 
     const dayObj = raw[fullName];
     const scheduleArr = {};
+    let dayoff = false;
 
     if (dayObj && typeof dayObj === "object") {
+      dayoff = !!dayObj.dayoff;
       for (const key in dayObj) {
         if (Object.prototype.hasOwnProperty.call(dayObj, key)) {
           const entry = dayObj[key];
@@ -52,11 +54,10 @@ export function buildNext7DaysFromWeekdayJson(raw) {
         }
       }
     }
-
     result.push({
+      dayoff,
       date: `${dayNumber} ${monthName}`,
       dayOfWeek: shortName,
-      heading: scheduleArr.length ? "" : "— Нет турнира —",
       schedule: scheduleArr,
     });
   }
@@ -94,7 +95,7 @@ export function buildNext7DaysFromWeekdayJson(raw) {
       result.push({
         date: obj.date,
         dayOfWeek: shortNameMonthly,
-        heading: "Турнир месяца",
+        heading: "monthly",
         schedule: monthlySchedule,
       });
     }

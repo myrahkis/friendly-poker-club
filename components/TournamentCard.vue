@@ -10,11 +10,17 @@ const { tournament, index, lastIndex } = defineProps({
   lastIndex: Number,
 });
 
-const { date, dayOfWeek } = tournament;
+const { date, dayOfWeek, dayoff } = tournament;
 
 function registerLink() {
   return contacts.value.socials ? contacts.value.socials.tg : "";
 }
+
+const openRegister = () => {
+  const url = registerLink();
+  if (!url) return;
+  window.open(url, "_blank");
+};
 </script>
 
 <template>
@@ -28,15 +34,17 @@ function registerLink() {
   >
     <div class="header">
       <p>{{ date }} - {{ dayOfWeek }}</p>
-      <a
+      <button
         v-if="index !== lastIndex"
-        :href="registerLink()"
+        @click="openRegister"
         target="_blank"
         class="register-btn u-shimmering-gradient-hover"
-        >Зарегистрироваться</a
+        :disabled="tournament?.dayoff"
       >
+        Зарегистрироваться
+      </button>
       <NuxtLink
-        v-else
+        v-else-if="!tournament?.dayoff"
         class="register-btn u-shimmering-gradient-hover"
         :to="`/${route.params.city}/stats`"
         target="_blank"
@@ -45,6 +53,9 @@ function registerLink() {
     </div>
     <hr class="separator" />
     <div class="schedules">
+      <div v-if="tournament?.dayoff">
+        <h4 class="dayoff">&mdash; Выходной &mdash;</h4>
+      </div>
       <div class="schedules-row" v-if="tournament.schedule.holdem">
         <div class="schedules-time">
           <div class="time-sub-row">
@@ -60,8 +71,11 @@ function registerLink() {
         </div>
         <div class="schedules-name">
           <p class="name-heading">{{ tournament.schedule.holdem.name }}</p>
-          <p class="name-rules">
+          <p class="name-rules" v-if="tournament?.heading !== 'monthly'">
             (турнир проводится по правилам UnlimitedTexas Hold'em)
+          </p>
+          <p v-else class="name-rules">
+            (турнир проводится среди топ-27 игроков лидерборда)
           </p>
           <p class="name-desc">Основной турнир дня</p>
         </div>
@@ -106,7 +120,13 @@ function registerLink() {
         </div>
         <div class="schedules-name">
           <p class="name-heading">{{ tournament.schedule.cache.name }}</p>
-          <p class="name-rules">(турнир проводится по правилам кеш игры)</p>
+          <p class="name-rules" v-if="tournament?.heading !== 'monthly'">
+            (турнир проводится по правилам кеш игры)
+          </p>
+          <p v-else class="name-rules">
+            (турнир проводится по правилам кеш-игры среди игроков не вошедших в
+            топ-27 или вылетевших из турнира месяца)
+          </p>
           <p class="name-desc">Для тех, кому хочется скоротать время.</p>
         </div>
       </div>
@@ -163,6 +183,16 @@ function registerLink() {
       border-box;
   font-size: 1.2rem;
 }
+.register-btn:disabled {
+  cursor: not-allowed;
+  background: linear-gradient(#162443, #162443) padding-box,
+    linear-gradient(
+        to right,
+        var(--dark-gradient-color-disabled),
+        var(--light-gradient-color-disabled)
+      )
+      border-box;
+}
 
 .schedules {
   display: flex;
@@ -187,7 +217,8 @@ function registerLink() {
   gap: 0.5rem;
 }
 
-.time-styled {
+.time-styled,
+.dayoff {
   font-size: 2rem;
   font-weight: 700;
 }
@@ -226,7 +257,8 @@ function registerLink() {
   .schedules-time {
     font-size: clamp(0.9rem, 1vw, 1.05rem);
   }
-  .time-styled {
+  .time-styled,
+  .dayoff {
     font-size: clamp(1.5rem, 1.3vw, 2.3rem);
   }
   .name-heading {
@@ -264,7 +296,8 @@ function registerLink() {
   .reg-text {
     font-size: clamp(0.9rem, 2vw, 1rem);
   }
-  .time-styled {
+  .time-styled,
+  .dayoff {
     font-size: clamp(1.6rem, 2vw, 1.9rem);
   }
   .name-heading {
@@ -296,7 +329,8 @@ function registerLink() {
   .reg-text {
     font-size: clamp(0.9rem, 2vw, 1rem);
   }
-  .time-styled {
+  .time-styled,
+  .dayoff {
     font-size: clamp(1.6rem, 2vw, 1.9rem);
   }
   .name-heading {

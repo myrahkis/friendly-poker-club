@@ -82,36 +82,39 @@
   ],
   "tournaments": {
     "Понедельник": {
-      "holdem": { "time": "19:00", "name": "9MAX" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "dayoff": true
     },
     "Вторник": {
-      "holdem": { "time": "19:00", "name": "Нокаут" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "dayoff": false,
+      "holdem": { "time": "19:00", "name": "Boost" },
+      "cache": { "time": "22:00", "name": "Кеш - турнир" }
     },
     "Среда": {
-      "holdem": { "time": "19:00", "name": "27MAX" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "dayoff": true
     },
     "Четверг": {
+      "dayoff": false,
       "holdem": { "time": "19:00", "name": "Нокаут" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "cache": { "time": "22:00", "name": "Кеш - турнир" }
     },
     "Пятница": {
-      "holdem": { "time": "19:00", "name": "9MAX Френдли" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "dayoff": false,
+      "holdem": { "time": "19:00", "name": "Нокаут Френдли" },
+      "cache": { "time": "22:00", "name": "Кеш - турнир" }
     },
     "Суббота": {
-      "holdem": { "time": "19:00", "name": "Нокаут маx. стек" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "dayoff": false,
+      "holdem": { "time": "17:00", "name": "Нокаут МАХ стек" },
+      "cache": { "time": "22:00", "name": "Кеш - турнир" }
     },
     "Воскресенье": {
-      "holdem": { "time": "19:00", "name": "Нокаут френдли" },
-      "cache": { "time": "18:00", "name": "Кеш - турнир" }
+      "dayoff": false,
+      "holdem": { "time": "17:00", "name": "Фриролл МАХ стек" },
+      "cache": { "time": "22:00", "name": "Кеш - турнир" }
     },
     "Июнь": {
-      "date": "30.06.25",
-      "holdem": { "time": "19:00", "name": "Нокаут френдли" },
+      "date": "30.08.25",
+      "holdem": { "time": "17:00", "name": "Финал Августа!" },
       "cache": { "time": "18:00", "name": "Кеш - турнир" }
     }
   },

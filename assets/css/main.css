@@ -3,6 +3,8 @@
 :root {
   --dark-blue-color: #022563;
   --dark-bg-color: rgba(37, 37, 37, 0.5);
+  --light-gradient-color-disabled: #7fbfc8;
+  --dark-gradient-color-disabled: #5f637e;
   --blue-color: #063293;
   --light-gradient-color: #4ec2ec;
   --dark-gradient-color: #3f4e9d;
@@ -131,6 +133,27 @@ p {
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* для disabled */
+.u-shimmering-gradient-hover.disabled,
+.u-shimmering-gradient-hover[aria-disabled="true"],
+.u-shimmering-gradient-hover:disabled {
+  color: #9d9d9d;
+  cursor: not-allowed;
+}
+.u-shimmering-gradient-hover.disabled::before,
+.u-shimmering-gradient-hover[aria-disabled="true"]::before,
+.u-shimmering-gradient-hover:disabled::before {
+  opacity: 0 !important;
+  animation-play-state: paused !important;
+  background: none !important;
+}
+.u-shimmering-gradient-hover.disabled:hover::before,
+.u-shimmering-gradient-hover[aria-disabled="true"]:hover::before,
+.u-shimmering-gradient-hover:disabled:hover::before {
+  opacity: 0 !important;
+  animation-play-state: paused !important;
 }
 
 .separator {
