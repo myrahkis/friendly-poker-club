@@ -5,6 +5,7 @@ const openedDocIdx = ref(null);
 
 function toggleDoc(idx) {
   openedDocIdx.value = openedDocIdx.value === idx ? null : idx;
+  // console.log(openedDocIdx.value);
 }
 
 const pdfModules = import.meta.glob("/assets/documents/**/*.pdf", {
@@ -52,6 +53,7 @@ const PdfRenderer = defineAsyncComponent({
         <Suspense>
           <template #default>
             <PdfRenderer
+              v-model:openedDocIdx="openedDocIdx"
               :documents="documents"
               :openedDocIdx="openedDocIdx"
               :index="index"

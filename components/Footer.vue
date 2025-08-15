@@ -6,6 +6,9 @@ const openDocState = useState("openDocIndex", () => null);
 const { rawData: recruits } = useCityData("recruits");
 const { rawData: contacts } = useCityData("contacts");
 
+const route = useRoute();
+const router = useRouter();
+
 function openDoc(idx) {
   openDocState.value = idx;
 }
@@ -29,7 +32,10 @@ function openDoc(idx) {
       </div>
       <div class="policy">
         <p class="credits">&copy; 2025 Friendly poker club</p>
-        <a href="#" @click.prevent="openDoc(0)" class="policy-1 underline-hover"
+        <a
+          href="#"
+          @click.prevent="openDoc(0)"
+          class="policy-1 underline-hover"
           ><p>Договор оферта</p></a
         >
         <a href="#" @click.prevent="openDoc(1)" class="policy-2 underline-hover"

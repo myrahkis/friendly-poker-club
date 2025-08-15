@@ -14,16 +14,37 @@ const openDocState = useState("openDocIndex");
 
 const pdfCache = new Map();
 
-// изменения состояния из footer
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function findEl(id, { timeout = 1000, interval = 50 } = {}) {
+  const deadline = Date.now() + timeout;
+
+  while (Date.now() < deadline) {
+    const el = document.getElementById(id);
+
+    if (el && el.offsetHeight > 0) return el;
+
+    await wait(interval);
+  }
+
+  return null;
+}
+
 watch(openDocState, async (newIdx) => {
   if (newIdx === null) return;
 
   emit("update:openedDocIdx", newIdx);
   await nextTick();
-  const el = document.getElementById(`pdf-doc-${newIdx}`);
 
-  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const el = await findEl(`pdf-doc-${newIdx}`);
+  if (!el) {
+    openDocState.value = null;
+    return;
+  }
 
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  await wait(400);
+  
   openDocState.value = null;
 });
 
