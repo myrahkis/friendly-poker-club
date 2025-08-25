@@ -61,23 +61,22 @@ const openRegister = () => {
           <div class="time-sub-row">
             <span class="reg-text">c</span>
             <span class="time-styled">{{
-              tournament.schedule.holdem.time
+              tournament.schedule.holdem.timeStart
             }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
-            <span class="reg-text">победителя</span>
+            <span class="reg-text">{{
+              tournament.schedule.holdem.timeEnd
+            }}</span>
           </div>
         </div>
         <div class="schedules-name">
           <p class="name-heading">{{ tournament.schedule.holdem.name }}</p>
-          <p class="name-rules" v-if="tournament?.heading !== 'monthly'">
-            (турнир проводится по правилам UnlimitedTexas Hold'em)
+          <p class="name-rules">
+            {{ tournament.schedule.holdem.rules }}
           </p>
-          <p v-else class="name-rules">
-            (турнир проводится среди топ-27 игроков лидерборда)
-          </p>
-          <p class="name-desc">Основной турнир дня</p>
+          <p class="name-desc">{{ tournament.schedule.holdem.desc }}</p>
         </div>
       </div>
       <div class="schedules-row" v-if="tournament.schedule.experimental">
@@ -85,12 +84,14 @@ const openRegister = () => {
           <div class="time-sub-row">
             <span class="reg-text">c</span>
             <span class="time-styled">{{
-              tournament.schedule.experimental.time
+              tournament.schedule.experimental.timeStart
             }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
-            <span class="reg-text">победителя</span>
+            <span class="reg-text">{{
+              tournament.schedule.experimental.timeEnd
+            }}</span>
           </div>
         </div>
         <div class="schedules-name">
@@ -98,10 +99,10 @@ const openRegister = () => {
             {{ tournament.schedule.experimental.name }}
           </p>
           <p class="name-rules">
-            (турнир проводится по правилам Omaha hold 'em)
+            {{ tournament.schedule.experimental.rules }}
           </p>
           <p class="name-desc">
-            Эксперементальный турнир дня, для тех, кому наскучил Холдем.
+            {{ tournament.schedule.experimental.desc }}
           </p>
         </div>
       </div>
@@ -110,24 +111,22 @@ const openRegister = () => {
           <div class="time-sub-row">
             <span class="reg-text">c</span>
             <span class="time-styled">{{
-              tournament.schedule.cache.time
+              tournament.schedule.cache.timeStart
             }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
-            <span class="time-styled">02:00</span>
+            <span class="time-styled">{{
+              tournament.schedule.cache.timeEnd
+            }}</span>
           </div>
         </div>
         <div class="schedules-name">
           <p class="name-heading">{{ tournament.schedule.cache.name }}</p>
-          <p class="name-rules" v-if="tournament?.heading !== 'monthly'">
-            (турнир проводится по правилам кеш игры)
+          <p class="name-rules">
+            {{ tournament.schedule.cache.rules }}
           </p>
-          <p v-else class="name-rules">
-            (турнир проводится по правилам кеш-игры среди игроков не вошедших в
-            топ-27 или вылетевших из турнира месяца)
-          </p>
-          <p class="name-desc">Для тех, кому хочется скоротать время.</p>
+          <p class="name-desc">{{ tournament.schedule.cache.desc }}</p>
         </div>
       </div>
     </div>

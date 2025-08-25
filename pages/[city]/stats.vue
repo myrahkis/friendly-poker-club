@@ -5,6 +5,8 @@ const route = useRoute();
 const citySlug = computed(() => route.params.city);
 const openFullscreenAllCities = ref(false);
 const openFullscreenRealtime = ref(false);
+const openPointsRules = ref(false);
+const pointsRulesContainer = ref(null);
 
 useHead({
   title: "Статистика покерного клуба Friendly Poker",
@@ -35,6 +37,24 @@ function openFullscreenRealtimeHandle() {
 function closeFullscreenRealtimeHandle() {
   openFullscreenRealtime.value = false;
 }
+
+function toggleRules() {
+  openPointsRules.value = !openPointsRules.value;
+
+  if (openPointsRules.value) {
+    nextTick(() => {
+      if (
+        pointsRulesContainer.value &&
+        pointsRulesContainer.value.scrollIntoView
+      ) {
+        pointsRulesContainer.value.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    });
+  }
+}
 </script>
 
 <template>
@@ -46,12 +66,17 @@ function closeFullscreenRealtimeHandle() {
           <h3 class="stats-heading">
             Статистика по всем городам (Москва, Рязань и др.)
           </h3>
-          <button
-            class="fullscreen-btn u-shimmering-gradient-hover"
-            @click="openFullscreenAllCitiesHandle"
-          >
-            Открыть лидерборд
-          </button>
+          <div class="stats-btns-container">
+            <button class="points-rules-btn" @click="toggleRules">
+              Система начисления баллов
+            </button>
+            <button
+              class="fullscreen-btn u-shimmering-gradient-hover"
+              @click="openFullscreenAllCitiesHandle"
+            >
+              Открыть лидерборд
+            </button>
+          </div>
         </div>
         <div v-if="openFullscreenAllCities" class="fullscreen-bg"></div>
         <div :class="['iframe-wrap', { fullscreen: openFullscreenAllCities }]">
@@ -89,6 +114,53 @@ function closeFullscreenRealtimeHandle() {
               </g>
             </svg>
           </button>
+        </div>
+        <div
+          v-if="openPointsRules"
+          class="points-rules-container"
+          ref="pointsRulesContainer"
+        >
+          <img
+            class="point-rules-img"
+            src="/assets/images/points-rules.webp"
+            alt="points-rules"
+            lazy
+          />
+          <div class="points-rules-texts">
+            <h3 class="stats-heading">Методика начисления баллов</h3>
+            <p>
+              Количество баллов, которые игрок получает по итогам турнира,
+              зависит от трёх основных факторов:
+            </p>
+            <ul class="points-rules-list">
+              <li>
+                Занятое место. Чем выше итоговое место в турнире, тем больше
+                баллов начисляется игроку.
+              </li>
+              <li>
+                Количество участников. Чем больше игроков (столов) участвует в
+                турнире, тем выше ценность каждого места и, соответственно,
+                больше баллов за его занятие.
+              </li>
+              <li>
+                Формат турнира. В некоторых форматах (например, турниры с
+                Нокаутами или Баунти) предусмотрены дополнительные бонусы. За
+                каждого выбитого Вами игрока начисляется +10 баллов.
+              </li>
+            </ul>
+            <p>
+              Таким образом, максимальное количество баллов можно получить,
+              заняв высокое место в крупном турнире с большим числом участников.
+              В турнирах соответствующих форматов на итоговую сумму также влияет
+              количество сделанных Вами нокаутов.
+            </p>
+            <p>
+              Первые два фактора Вы можете самостоятельно рассчитать по таблице,
+              приведённой ниже (см. таблицу). Третий фактор (бонусные баллы за
+              нокауты или Баунти) рассчитывается и добавляется к результату
+              после окончания Вашего участия в турнире.
+            </p>
+          </div>
         </div>
       </div>
       <div>
@@ -168,13 +240,12 @@ function closeFullscreenRealtimeHandle() {
 }
 .fullscreen-btn {
   font-size: 1.8rem;
-  /* font-weight: 600; */
+  width: fit-content;
   background: linear-gradient(
     to right,
     var(--light-gradient-color),
     var(--dark-gradient-color)
   );
-  /* color: var(--dark-blue-color); */
   border-radius: 3rem;
   padding: 1rem 1.5rem;
 }
@@ -243,7 +314,47 @@ function closeFullscreenRealtimeHandle() {
   display: none;
 }
 
-@media (max-width: 1200px) {
+.stats-btns-container {
+  display: flex;
+  gap: 1rem;
+}
+.points-rules-btn {
+  font-size: clamp(1.2rem, 0.8rem + 1vw, 1.8rem);
+  padding: 1rem 1.5rem;
+  border-radius: 3rem;
+  border: 1px solid var(--light-gradient-color);
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--light-gradient-color);
+    color: var(--dark-blue-color);
+  }
+}
+.points-rules-container {
+  display: flex;
+  margin-top: 4rem;
+  gap: 3rem;
+}
+.point-rules-img {
+  width: 40rem;
+}
+.points-rules-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.points-rules-heading {
+  font-size: 3rem;
+}
+.points-rules-list {
+  list-style: inside decimal;
+
+  li {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  }
+}
+
+@media (max-width: 1420px) {
   .heading-container {
     display: flex;
     flex-direction: column;
@@ -257,10 +368,17 @@ function closeFullscreenRealtimeHandle() {
   .fullscreen-btn {
     font-size: clamp(1.2rem, 0.8rem + 1vw, 1.8rem);
   }
+  .stats-btns-container {
+    width: 100%;
+    justify-content: end;
+  }
 }
-@media (max-width: 950px) {
+@media (max-width: 1030px) {
   .stats-heading {
     font-size: clamp(1.8rem, 3.3vw, 3rem);
+  }
+  .point-rules-img {
+    width: 30rem;
   }
 }
 @media (max-width: 800px) {
@@ -270,15 +388,30 @@ function closeFullscreenRealtimeHandle() {
   .stats-dashboard {
     aspect-ratio: 9 / 16;
   }
+  .points-rules-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }
 @media (max-width: 600px) {
   .stats-sections {
     padding-top: 25%;
   }
+  .stats-btns-container {
+    width: fit-content;
+    margin-left: auto;
+    flex-direction: column-reverse;
+    align-items: end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
 }
 @media (max-width: 420px) {
   .stats-br-mobile {
     display: block;
+  }
+  .point-rules-img {
+    width: 100%;
   }
 }
 @media (max-width: 370px) {
