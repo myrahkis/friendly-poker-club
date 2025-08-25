@@ -134,18 +134,27 @@ function toggleRules() {
             </p>
             <ul class="points-rules-list">
               <li>
-                Занятое место. Чем выше итоговое место в турнире, тем больше
-                баллов начисляется игроку.
+                <div class="rule-title">Занятое место:</div>
+                <div class="rule-text">
+                  Чем выше итоговое место в турнире, тем больше баллов
+                  начисляется игроку.
+                </div>
               </li>
               <li>
-                Количество участников. Чем больше игроков (столов) участвует в
-                турнире, тем выше ценность каждого места и, соответственно,
-                больше баллов за его занятие.
+                <div class="rule-title">Количество участников:</div>
+                <div class="rule-text">
+                  Чем больше игроков (столов) участвует в турнире, тем выше
+                  ценность каждого места и, соответственно, больше баллов за его
+                  занятие.
+                </div>
               </li>
               <li>
-                Формат турнира. В некоторых форматах (например, турниры с
-                Нокаутами или Баунти) предусмотрены дополнительные бонусы. За
-                каждого выбитого Вами игрока начисляется +10 баллов.
+                <div class="rule-title">Формат турнира:</div>
+                <div class="rule-text">
+                  В некоторых форматах (например, турниры с Нокаутами или
+                  Баунти) предусмотрены дополнительные бонусы. За каждого
+                  выбитого Вами игрока начисляется +10 баллов.
+                </div>
               </li>
             </ul>
             <p>
@@ -253,7 +262,7 @@ function toggleRules() {
 .stats-heading {
   font-size: 3rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .stats-dashboard {
   width: 100%;
@@ -342,7 +351,23 @@ function toggleRules() {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: fit-content;
+
+  border: 2px solid transparent;
+  border-radius: 2rem;
+  background: linear-gradient(var(--dark-blue-color), var(--dark-blue-color))
+      padding-box,
+    linear-gradient(
+        to right,
+        var(--light-gradient-color),
+        var(--dark-gradient-color)
+      )
+      border-box;
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  padding: 1rem 1.5rem;
 }
+
 .points-rules-heading {
   font-size: 3rem;
 }
@@ -351,7 +376,16 @@ function toggleRules() {
 
   li {
     font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 0.5rem;
   }
+}
+.rule-title {
+  display: inline-flex;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+}
+.rule-text {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin-left: 1.2em;
 }
 
 @media (max-width: 1420px) {
