@@ -160,8 +160,10 @@ onMounted(() => {
       <thead>
         <tr>
           <td class="diagonal">
-            <span class="lb">Cтолы</span>
-            <span class="rt">Место</span>
+            <span v-if="!isMobile" class="lb">Cтолы</span>
+            <span v-if="!isMobile" class="rt">Место</span>
+            <span v-if="isMobile" class="lb">Место</span>
+            <span v-if="isMobile" class="rt">Cтолы</span>
             <div class="line"></div>
           </td>
           <th v-for="table in colsCount" :key="table">{{ table }}</th>
