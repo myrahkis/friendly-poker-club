@@ -8,7 +8,7 @@ export default {
       });
     }
 
-    console.log("scrollBehavior triggered", to.fullPath);
+    // console.log("scrollBehavior triggered", to.fullPath);
 
     return { top: 10 };
   },

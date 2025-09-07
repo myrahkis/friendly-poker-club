@@ -1,6 +1,12 @@
 <script setup>
-const { loading, error, rawData: cityName } = useCityData("mainHeading");
+const route = useRoute();
+
+const { data: mainHeading } = useFetch(
+  `/api/cities/${route.params.city}/mainHeading`
+);
 const heroVid = ref(null);
+
+const heading = computed(() => mainHeading.value || "");
 
 onMounted(() => {
   heroVid.value.muted = true;
@@ -24,7 +30,7 @@ onMounted(() => {
           Легальная офлайн <br class="mobile-br" />
           игра <br class="desktop-br" />
           в покер
-          <span v-if="Object.keys(cityName).length !== 0">в {{ cityName }}</span
+          <span v-if="heading.length !== 0">в {{ heading[0].data }}</span
           >!
         </h1>
         <h3 class="hero-sub-heading">

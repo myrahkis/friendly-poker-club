@@ -10,7 +10,7 @@ function toggleInstructions() {
   if (isInstructionOpen.value) {
     nextTick(() => {
       const el = instructionComp.value.instructionContainer;
-      console.log(el);
+      // console.log(el);
       if (el && el.scrollIntoView) {
         el.scrollIntoView({
           behavior: "smooth",

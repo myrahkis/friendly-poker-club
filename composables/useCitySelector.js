@@ -5,21 +5,17 @@ const isCityDetecting = ref(false);
 const options = ref([]);
 
 export function useCitySelector(emit) {
-  const config = useRuntimeConfig();
   const open = ref(false);
   const router = useRouter();
   const route = useRoute();
 
   async function loadCities() {
     try {
-      const res = await fetch(`${config.public.apiBase}/data/cityOptions.json`);
+      const res = await $fetch("/api/city_options");
 
-      if (!res.ok) throw new Error("Не удалось загрузить список городов");
-
-      const cityOptions = await res.json();
-      options.value = Object.entries(cityOptions).map(([value, label]) => ({
-        value,
-        label,
+      options.value = res.map((row) => ({
+        value: row.slug,
+        label: JSON.parse(row.names),
       }));
     } catch (e) {
       console.error(e);

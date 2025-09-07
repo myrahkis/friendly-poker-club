@@ -1,3 +1,12 @@
+import dotenv from "dotenv";
+
+dotenv.config({
+  path:
+    process.env.NODE_ENV === "development"
+      ? ".env.development"
+      : ".env",
+});
+
 export default defineNuxtConfig({
   // modules: ["@nuxt/image"],
   app: {
@@ -5,7 +14,8 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "ru",
       },
-      titleTemplate: "Покерный клуб «Friendly poker»",
+      titleTemplate: "Покерный клуб «Friendly poker» %s",
+      title: "Покерный клуб «Friendly poker»",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -72,6 +82,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiBase: process.env.API_BASE,
     ymId: process.env.YM_COUNTER_ID,
+    dbHost: process.env.DB_HOST,
+    dbPort: process.env.DB_PORT,
+    dbUser: process.env.DB_USER,
+    dbPassword: process.env.DB_PASSWORD,
+    dbName: process.env.DB_NAME,
     public: {
       apiBase: process.env.API_BASE,
       ymId: process.env.YM_COUNTER_ID,

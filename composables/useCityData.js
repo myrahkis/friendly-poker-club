@@ -1,5 +1,4 @@
-export function useCityData(propertyName) {
-  const config = useRuntimeConfig();
+export function useCityData(table) {
   const route = useRoute();
 
   const loading = ref(false);
@@ -18,16 +17,16 @@ export function useCityData(propertyName) {
     data.value = [];
 
     try {
-      const res = await fetch(`${config.public.apiBase}/data/${cityName}.json`);
+      const res = await fetch(`/api/cities/${cityName}/${table}`);
 
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
       }
 
       const json = await res.json();
-      rawData.value = json[propertyName] ?? [];
+      rawData.value = JSON.parse(json[0].data) ?? [];
     } catch (err) {
-      console.error(err);
+      console.error(err, cityName, table);
       error.value = `Не удалось загрузить данные для города: ${cityName}`;
     } finally {
       loading.value = false;
