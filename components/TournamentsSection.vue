@@ -1,15 +1,17 @@
 <script setup>
-import { buildNext7DaysFromWeekdayJson } from "~/helpers/buildTournamentsArr";
+import { buildNext7DaysFromDb } from "~/helpers/buildTournamentsArr";
 
 const isDescriptionsOpen = ref(false);
 const descriptionsContainer = ref(null);
 
-const { loading, error, rawData } = useCityData("tournaments");
-
+const { rawData, loading, error } = useTournaments();
 const tournaments = computed(() => {
   if (!rawData.value) return [];
-  return buildNext7DaysFromWeekdayJson(rawData.value);
+  return buildNext7DaysFromDb(rawData.value);
 });
+// watch(tournaments, (newVal) => {
+//   console.log("test.value updated:", newVal);
+// });
 
 function toggleDescriptions() {
   isDescriptionsOpen.value = !isDescriptionsOpen.value;

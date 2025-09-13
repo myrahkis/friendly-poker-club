@@ -4,11 +4,9 @@ export default {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve({ el: to.hash, behavior: "smooth" });
-        }, 500);
+        }, 300);
       });
     }
-
-    // console.log("scrollBehavior triggered", to.fullPath);
 
     return { top: 10 };
   },

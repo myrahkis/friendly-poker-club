@@ -215,6 +215,7 @@ th {
   height: 1.5rem;
 }
 td {
+  position: relative;
   border-left: solid var(--light-gradient-color) 1px;
   border-bottom: solid var(--light-gradient-color) 1px;
   padding: clamp(0.3rem, 0.8vw, 0.8rem);
@@ -224,9 +225,13 @@ th {
   border-bottom: solid var(--light-gradient-color) 1px;
   border-left: solid var(--light-gradient-color) 1px;
 }
-td {
-  position: relative;
+
+tr {
+  &:hover {
+    background-color: var(--dark-bg-color) !important;
+  }
 }
+
 td:first-child,
 th:first-child {
   border-left: none;

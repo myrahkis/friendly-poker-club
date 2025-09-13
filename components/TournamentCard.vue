@@ -10,8 +10,35 @@ const { tournament, index, lastIndex } = defineProps({
   lastIndex: Number,
 });
 
-const { date, dayOfWeek, dayoff } = tournament;
+const sortedSchedules = computed(() =>
+  tournament?.schedule
+    ?.slice()
+    .sort((a, b) => parseInt(a.startTime) - parseInt(b.startTime))
+);
+const tournDescStyled = computed(() =>
+  sortedSchedules.value?.map((tourn) => {
+    if (!tourn.description) return "";
 
+    const lines = tourn.description.split(/\r?\n/);
+
+    const filtered = lines.filter((line) => {
+      const lower = line.toLowerCase();
+      const days = [
+        "понедельник",
+        "вторник",
+        "среда",
+        "четверг",
+        "пятница",
+        "суббота",
+        "воскресенье",
+      ];
+      const hasDay = days.some((day) => lower.includes(day));
+      return !lower.includes("начало") && !hasDay;
+    });
+
+    return filtered.join("<br />");
+  })
+);
 function registerLink() {
   return contacts.value.socials ? contacts.value.socials.tg : "";
 }
@@ -24,7 +51,57 @@ const openRegister = () => {
 </script>
 
 <template>
+  <div class="tournament-card" v-if="index !== lastIndex">
+    <div class="header">
+      <p>{{ tournament?.date }}</p>
+      <ClientOnly>
+        <button
+          v-if="index !== lastIndex"
+          @click="openRegister"
+          target="_blank"
+          class="register-btn u-shimmering-gradient-hover"
+          :disabled="tournament?.isDayoff"
+        >
+          Зарегистрироваться
+        </button>
+        <NuxtLink
+          v-else-if="!tournament?.isDayoff"
+          class="register-btn u-shimmering-gradient-hover"
+          :to="`/${route.params.city}/stats`"
+          target="_blank"
+          >Лидерборд</NuxtLink
+        >
+      </ClientOnly>
+    </div>
+    <hr class="separator" />
+    <div class="schedules">
+      <div v-if="tournament?.isDayoff">
+        <h4 class="dayoff">&mdash; Выходной &mdash;</h4>
+      </div>
+      <div
+        class="schedules-row"
+        v-for="(tour, index) in sortedSchedules"
+        :key="index"
+      >
+        <div class="schedules-time">
+          <div class="time-sub-row">
+            <span class="reg-text">c</span>
+            <span class="time-styled">{{ tour?.startTime }}</span>
+          </div>
+          <div class="time-sub-row">
+            <span class="reg-text">до</span>
+            <span class="reg-text">{{ tour?.endTime }}</span>
+          </div>
+        </div>
+        <div class="schedules-name">
+          <p class="name-heading">{{ tour?.name }}</p>
+          <p class="name-rules" v-html="tournDescStyled[index]"></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
+    v-else
     class="tournament-card"
     :style="
       index === lastIndex
@@ -33,100 +110,42 @@ const openRegister = () => {
     "
   >
     <div class="header">
-      <p>{{ date }} - {{ dayOfWeek }}</p>
+      <p v-if="tournament?.isFinalPlaceholder">Финал</p>
+      <p v-else>{{ tournament?.date }}</p>
       <button
-        v-if="index !== lastIndex"
         @click="openRegister"
         target="_blank"
         class="register-btn u-shimmering-gradient-hover"
-        :disabled="tournament?.dayoff"
       >
-        Зарегистрироваться
+        <span v-if="tournament?.isFinalPlaceholder">
+          Следите за новостями
+        </span>
+        <span v-else>Лидерборд</span>
       </button>
-      <NuxtLink
-        v-else-if="!tournament?.dayoff"
-        class="register-btn u-shimmering-gradient-hover"
-        :to="`/${route.params.city}/stats`"
-        target="_blank"
-        >Лидерборд</NuxtLink
-      >
     </div>
     <hr class="separator" />
     <div class="schedules">
-      <div v-if="tournament?.dayoff">
-        <h4 class="dayoff">&mdash; Выходной &mdash;</h4>
+      <div v-if="tournament.isFinalPlaceholder">
+        <h4 class="dayoff">Финалов в ближайшее время нет!</h4>
       </div>
-      <div class="schedules-row" v-if="tournament.schedule.holdem">
+      <div
+        class="schedules-row"
+        v-for="(tour, index) in sortedSchedules"
+        :key="index"
+      >
         <div class="schedules-time">
           <div class="time-sub-row">
             <span class="reg-text">c</span>
-            <span class="time-styled">{{
-              tournament.schedule.holdem.timeStart
-            }}</span>
+            <span class="time-styled">{{ tour?.startTime }}</span>
           </div>
           <div class="time-sub-row">
             <span class="reg-text">до</span>
-            <span class="reg-text">{{
-              tournament.schedule.holdem.timeEnd
-            }}</span>
+            <span class="reg-text">{{ tour?.endTime }}</span>
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule.holdem.name }}</p>
-          <p class="name-rules">
-            {{ tournament.schedule.holdem.rules }}
-          </p>
-          <p class="name-desc">{{ tournament.schedule.holdem.desc }}</p>
-        </div>
-      </div>
-      <div class="schedules-row" v-if="tournament.schedule.experimental">
-        <div class="schedules-time">
-          <div class="time-sub-row">
-            <span class="reg-text">c</span>
-            <span class="time-styled">{{
-              tournament.schedule.experimental.timeStart
-            }}</span>
-          </div>
-          <div class="time-sub-row">
-            <span class="reg-text">до</span>
-            <span class="reg-text">{{
-              tournament.schedule.experimental.timeEnd
-            }}</span>
-          </div>
-        </div>
-        <div class="schedules-name">
-          <p class="name-heading">
-            {{ tournament.schedule.experimental.name }}
-          </p>
-          <p class="name-rules">
-            {{ tournament.schedule.experimental.rules }}
-          </p>
-          <p class="name-desc">
-            {{ tournament.schedule.experimental.desc }}
-          </p>
-        </div>
-      </div>
-      <div class="schedules-row" v-if="tournament.schedule.cache">
-        <div class="schedules-time">
-          <div class="time-sub-row">
-            <span class="reg-text">c</span>
-            <span class="time-styled">{{
-              tournament.schedule.cache.timeStart
-            }}</span>
-          </div>
-          <div class="time-sub-row">
-            <span class="reg-text">до</span>
-            <span class="time-styled">{{
-              tournament.schedule.cache.timeEnd
-            }}</span>
-          </div>
-        </div>
-        <div class="schedules-name">
-          <p class="name-heading">{{ tournament.schedule.cache.name }}</p>
-          <p class="name-rules">
-            {{ tournament.schedule.cache.rules }}
-          </p>
-          <p class="name-desc">{{ tournament.schedule.cache.desc }}</p>
+          <p class="name-heading">{{ tour?.name }}</p>
+          <p class="name-rules" v-html="tournDescStyled[index]"></p>
         </div>
       </div>
     </div>

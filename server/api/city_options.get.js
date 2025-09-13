@@ -1,7 +1,7 @@
-import { db } from "../utils/dbCitiesData";
+import { dbCitiesData } from "../utils/dbCitiesData";
 
 export default defineEventHandler(async () => {
-  const pool = db();
+  const pool = dbCitiesData();
   const [rows] = await pool.query(
     "SELECT * FROM city_options WHERE is_hidden = 0"
   );

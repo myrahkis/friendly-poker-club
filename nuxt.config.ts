@@ -1,10 +1,7 @@
 import dotenv from "dotenv";
 
 dotenv.config({
-  path:
-    process.env.NODE_ENV === "development"
-      ? ".env.development"
-      : ".env",
+  path: process.env.NODE_ENV === "development" ? ".env.development" : ".env",
 });
 
 export default defineNuxtConfig({
@@ -83,10 +80,12 @@ export default defineNuxtConfig({
     apiBase: process.env.API_BASE,
     ymId: process.env.YM_COUNTER_ID,
     dbHost: process.env.DB_HOST,
-    dbPort: process.env.DB_PORT,
-    dbUser: process.env.DB_USER,
-    dbPassword: process.env.DB_PASSWORD,
-    dbName: process.env.DB_NAME,
+    dbUser: process.env.DB_CITIES_USER,
+    dbPassword: process.env.DB_CITIES_PASSWORD,
+    dbName: process.env.DB_CITIES_NAME,
+    dbTournamentsUser: process.env.DB_TOURNAMENTS_USER,
+    dbTournamentsPassword: process.env.DB_TOURNAMENTS_PASSWORD,
+    dbTournamentsName: process.env.DB_TOURNAMENTS_NAME,
     public: {
       apiBase: process.env.API_BASE,
       ymId: process.env.YM_COUNTER_ID,

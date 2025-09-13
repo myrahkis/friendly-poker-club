@@ -38,10 +38,13 @@ async function goToAnchor(hash) {
   await nextTick();
   await new Promise((r) => setTimeout(r, 50));
 
-  const el = document.querySelector(hash);
+  // оставляем только часть после #
+  const id = hash.includes("#") ? hash.split("#")[1] : hash;
+  const el = document.getElementById(id);
+
   if (el) {
     el.scrollIntoView({ behavior: "smooth" });
-    history.replaceState(null, "", hash);
+    history.replaceState(null, "", `#${id}`);
   }
 }
 
@@ -124,7 +127,7 @@ onBeforeUnmount(() => {
   position: fixed;
   bottom: 5%;
   right: var(--horiz-main-padding);
-  z-index: 100;
+  z-index: 70;
   opacity: 0;
   transition: opacity 0.4s ease-in-out;
 

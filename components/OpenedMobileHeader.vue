@@ -2,12 +2,12 @@
 const route = useRoute();
 
 const links = [
-  { text: "О нас", href: "/#about-us" },
-  { text: "Вопрос-ответ", href: "/#faq" },
-  { text: "Тарифы", href: "/#pricing" },
-  { text: "Отзывы", href: "/#feedbacks" },
-  { text: "Контакты", href: "/#contacts" },
-  { text: "Правовая инфомация", href: "/#documents" },
+  { text: "О нас", href: `/${route.params.city}#about-us` },
+  { text: "Вопрос-ответ", href: `/${route.params.city}#faq` },
+  { text: "Тарифы", href: `/${route.params.city}#pricing` },
+  { text: "Отзывы", href: `/${route.params.city}#feedbacks` },
+  { text: "Контакты", href: `/${route.params.city}#contacts` },
+  { text: "Правовая инфомация", href: `/${route.params.city}#documents` },
   { text: "Лидерборд", href: `/${route.params.city}/stats` },
 ];
 
@@ -42,6 +42,8 @@ const props = defineProps({
 
 <style>
 .mobile-header-container {
+  position: relative;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

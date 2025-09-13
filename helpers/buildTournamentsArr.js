@@ -1,105 +1,91 @@
-const WEEKDAY_FULL = [
-  "Воскресенье",
-  "Понедельник",
-  "Вторник",
-  "Среда",
-  "Четверг",
-  "Пятница",
-  "Суббота",
-];
-const WEEKDAY_SHORT = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
-const MONTH_NAMES = [
-  "Января",
-  "Февраля",
-  "Марта",
-  "Апреля",
-  "Мая",
-  "Июня",
-  "Июля",
-  "Августа",
-  "Сентября",
-  "Октября",
-  "Ноября",
-  "Декабря",
-];
-
 /**
- * данные из json в массив из 7 ближайших дней:
- * [{ date, dayOfWeek, schedule: {time, name} }, ...]
+ * данные из бд в массив из 7 ближайших дней + турнир месяца, если есть:
+ * [{ date, isDayoff, schedule: {startTime, endTime, name} }, ...]
  */
-export function buildNext7DaysFromWeekdayJson(raw) {
+export function buildNext7DaysFromDb(data) {
   const result = [];
-  const today = new Date();
+  const finals = [];
+  const months = [
+    "Января",
+    "Февраля",
+    "Марта",
+    "Апреля",
+    "Мая",
+    "Июня",
+    "Июля",
+    "Августа",
+    "Сентября",
+    "Октября",
+    "Ноября",
+    "Декабря",
+  ];
+  const days = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
 
-  for (let offset = 0; offset < 7; offset++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + offset);
+  for (let i = 0; i < 7; i++) {
+    const dateObj = new Date();
+    dateObj.setDate(dateObj.getDate() + i);
+    const dayKey = dateObj.toISOString().split("T")[0];
+    const tournamentsForDay = [];
 
-    const dayNumber = d.getDate();
-    const monthName = MONTH_NAMES[d.getMonth()];
-    const fullName = WEEKDAY_FULL[d.getDay()];
-    const shortName = WEEKDAY_SHORT[d.getDay()];
+    data.forEach((t) => {
+      if (t.start_time.startsWith(dayKey)) {
+        const tournament = {
+          name: t.name,
+          startTime: new Date(t.start_time).toLocaleTimeString("ru-RU", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          }),
+          endTime: "победителя",
+          description: t.description,
+        };
 
-    const dayObj = raw[fullName];
-    const scheduleArr = {};
-    let dayoff = false;
-
-    if (dayObj && typeof dayObj === "object") {
-      dayoff = !!dayObj.dayoff;
-      for (const key in dayObj) {
-        if (Object.prototype.hasOwnProperty.call(dayObj, key)) {
-          const entry = dayObj[key];
-
-          scheduleArr[key] = entry;
+        if (t.name.includes("Финал")) {
+          const final = {
+            date: `${dateObj.getDate()}
+                        ${months[dateObj.getMonth()]}-${
+              days[dateObj.getDay()]
+            }`,
+            name: t.name,
+            startTime: new Date(t.start_time).toLocaleTimeString("ru-RU", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+            }),
+            endTime: "до победителя",
+            description: t.description,
+          };
+          finals.push(final);
+        } else {
+          tournamentsForDay.push(tournament);
         }
       }
-    }
+    });
+
     result.push({
-      dayoff,
-      date: `${dayNumber} ${monthName}`,
-      dayOfWeek: shortName,
-      schedule: scheduleArr,
+      date: `${dateObj.getDate()}
+            ${months[dateObj.getMonth()]} - ${days[dateObj.getDay()]}`,
+      isDayoff: tournamentsForDay.length === 0,
+      schedule: tournamentsForDay,
     });
   }
 
-  const WEEKDAY_FULL_SET = new Set(WEEKDAY_FULL);
-  Object.entries(raw).forEach(([key, obj]) => {
-    if (
-      !WEEKDAY_FULL_SET.has(key) &&
-      obj &&
-      typeof obj === "object" &&
-      typeof obj.date === "string"
-    ) {
-      // день недели для турнира месяца
-      const [dayStr, monthStr, yearStr] = obj.date.split(".");
-      const day = parseInt(dayStr, 10);
-      const month = parseInt(monthStr, 10) - 1;
-      let year = parseInt(yearStr, 10);
-      if (yearStr.length === 2) {
-        year += year < 100 ? 2000 : 0;
-      }
-      const dtMonthly = new Date(year, month, day);
-      const weekdayIndex = dtMonthly.getDay();
-      const shortNameMonthly = WEEKDAY_SHORT[weekdayIndex];
-
-      const monthlySchedule = {};
-      for (const subKey in obj) {
-        if (
-          subKey !== "date" &&
-          Object.prototype.hasOwnProperty.call(obj, subKey)
-        ) {
-          const entry = obj[subKey];
-          monthlySchedule[subKey] = entry;
-        }
-      }
+  // турниры месяца в конкц списка
+  if (finals.length === 0) {
+    result.push({
+      date: null,
+      isDayoff: false,
+      schedule: [],
+      isFinalPlaceholder: true,
+    });
+  } else {
+    finals.forEach((f) => {
       result.push({
-        date: obj.date,
-        dayOfWeek: shortNameMonthly,
-        heading: "monthly",
-        schedule: monthlySchedule,
+        date: f.date,
+        isDayoff: false,
+        schedule: [f],
       });
-    }
-  });
-
+    });
+  }
   return result;
 }

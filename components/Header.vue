@@ -5,12 +5,12 @@ const header = ref(null);
 const { useOpenMenu } = defineProps({ useOpenMenu: { type: Function } });
 
 const links = [
-  { text: "О нас", href: "/#about-us" },
-  { text: "Вопрос-ответ", href: "/#faq" },
-  { text: "Тарифы", href: "/#pricing" },
-  { text: "Отзывы", href: "/#feedbacks" },
-  { text: "Контакты", href: "/#contacts" },
-  { text: "Правовая инфомация", href: "/#documents" },
+  { text: "О нас", href: `/${route.params.city}#about-us` },
+  { text: "Вопрос-ответ", href: `/${route.params.city}#faq` },
+  { text: "Тарифы", href: `/${route.params.city}#pricing` },
+  { text: "Отзывы", href: `/${route.params.city}#feedbacks` },
+  { text: "Контакты", href: `/${route.params.city}#contacts` },
+  { text: "Правовая инфомация", href: `/${route.params.city}#documents` },
   { text: "Лидерборд", href: `/${route.params.city}/stats` },
 ];
 
@@ -119,9 +119,9 @@ defineExpose({ header });
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 101;
   width: 100%;
   padding: 2.5rem var(--horiz-main-padding);
-  z-index: 100;
   transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 .city-svg {
