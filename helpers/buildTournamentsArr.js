@@ -40,7 +40,7 @@ export function buildNext7DaysFromDb(data) {
           description: t.description,
         };
 
-        if (t.name.includes("Финал")) {
+        if (t.name.toLowerCase().includes("финал")) {
           const final = {
             date: `${dateObj.getDate()}
                         ${months[dateObj.getMonth()]}-${
@@ -52,7 +52,7 @@ export function buildNext7DaysFromDb(data) {
               minute: "2-digit",
               hour12: false,
             }),
-            endTime: "до победителя",
+            endTime: "победителя",
             description: t.description,
           };
           finals.push(final);
