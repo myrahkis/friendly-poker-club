@@ -1,5 +1,5 @@
 /**
- * данные из бд в массив из 7 ближайших дней (dataDayly) + турнир месяца (finals), 
+ * данные из бд в массив из 7 ближайших дней (dataDayly) + турнир месяца (finals),
  * (если его нет добавляется объект для заглушки):
  * [{ date, isDayoff, schedule: {startTime, endTime, name} }, ...]
  */
@@ -33,7 +33,7 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
       .map((t) => ({
         name: t.name,
         startTime: new Intl.DateTimeFormat("ru-RU", {
-          timeZone: "Europe/Moscow",
+          timeZone: "UTC",
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
@@ -66,11 +66,11 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
     const finalSchedule = upcomingFinals.map((f) => ({
       name: f.name,
       startTime: new Intl.DateTimeFormat("ru-RU", {
-        timeZone: "Europe/Moscow",
+        timeZone: "UTC",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
-      }).format(new Date(f.start_time)),
+      }).format(new Date(t.start_time)),
       endTime: "победителя",
       description: f.description,
     }));
