@@ -1,17 +1,19 @@
 <script setup>
 import { buildNext7DaysFromDb } from "~/helpers/buildTournamentsArr";
 
+const route = useRoute();
 const isDescriptionsOpen = ref(false);
 const descriptionsContainer = ref(null);
 
-const { rawData, loading, error } = useTournaments();
+const { rawData } = useTournaments();
+const { data: finals } = await useAsyncData(
+  () => `finals-${route.params.city}`,
+  () => $fetch(`/api/cities/${route.params.city}/finalTournaments`)
+);
 const tournaments = computed(() => {
-  if (!rawData.value) return [];
-  return buildNext7DaysFromDb(rawData.value);
+  if (!rawData.value || !finals.value) return [];
+  return buildNext7DaysFromDb(rawData.value, finals.value);
 });
-// watch(tournaments, (newVal) => {
-//   console.log("test.value updated:", newVal);
-// });
 
 function toggleDescriptions() {
   isDescriptionsOpen.value = !isDescriptionsOpen.value;

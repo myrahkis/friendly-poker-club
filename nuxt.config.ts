@@ -5,7 +5,6 @@ dotenv.config({
 });
 
 export default defineNuxtConfig({
-  // modules: ["@nuxt/image"],
   app: {
     head: {
       htmlAttrs: {
