@@ -144,7 +144,7 @@ const openRegister = () => {
           </div>
         </div>
         <div class="schedules-name">
-          <p class="name-heading">{{ tour?.name }}</p>
+          <p class="name-heading-final">{{ tour?.name }}</p>
           <p class="name-rules" v-html="tournDescStyled[index]"></p>
         </div>
       </div>
@@ -248,6 +248,10 @@ const openRegister = () => {
   font-size: 2rem;
   font-weight: 700;
 }
+.name-heading-final {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
 .name-rules {
   font-size: 1rem;
 }
@@ -281,6 +285,9 @@ const openRegister = () => {
   }
   .name-heading {
     font-size: clamp(1.6rem, 2vw, 1.8rem);
+  }
+  .name-heading-final {
+    font-size: clamp(1.4rem, 2vw, 1.5rem);
   }
   .name-rules {
     font-size: 1rem;
@@ -320,6 +327,9 @@ const openRegister = () => {
   }
   .name-heading {
     font-size: clamp(1.6rem, 2vw, 1.7rem);
+  }
+  .name-heading-final {
+    font-size: clamp(1.4rem, 2vw, 1.5rem);
   }
   .name-rules,
   .name-desc {
