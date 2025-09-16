@@ -77,11 +77,9 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
 
     const firstFinalDate = new Date(upcomingFinals[0].start_time);
     result.push({
-      date: new Intl.DateTimeFormat("ru-RU", {
-        day: "numeric",
-        month: "long",
-        weekday: "short",
-      }).format(firstFinalDate),
+      date: `${firstFinalDate.getDate()} ${
+        months[firstFinalDate.getMonth()]
+      } - ${days[firstFinalDate.getDay()]}`,
       isDayoff: false,
       schedule: finalSchedule,
     });
