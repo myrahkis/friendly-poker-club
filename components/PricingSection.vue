@@ -64,6 +64,10 @@ function buyLink() {
           <p class="sub-text">
             В стоимость входит всё необходимое для игры оборудование и дилер.
           </p>
+          <p class="sub-text sub-text--colored">
+            Важно! В нашем клубе игра на деньги запрещена, в том числе и на
+            арендованном столе!
+          </p>
         </div>
         <a
           :href="buyLink()"
@@ -154,6 +158,9 @@ function buyLink() {
 }
 .sub-text {
   font-size: clamp(1rem, 1.5vw, 1.5rem);
+}
+.sub-text--colored {
+  color: var(--light-gradient-color);
 }
 .colored-price {
   font-size: clamp(1.5rem, 2vw, 2.6rem);
