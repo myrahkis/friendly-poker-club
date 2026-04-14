@@ -46,6 +46,11 @@ export function useCitySelector(emit) {
     await navigateTo(`/${opt.value}`, { replace: true });
   }
 
+  // ============================
+  // ГЕОЛОКАЦИЯ
+  // ============================
+
+  /*
   async function getCoords() {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
@@ -90,6 +95,7 @@ export function useCitySelector(emit) {
       isCityDetecting.value = false;
     }
   }
+  */
 
   let initialized = false;
 
@@ -102,7 +108,7 @@ export function useCitySelector(emit) {
     const slugFromUrl = route.params.city;
     let initialOption = options.value.find((o) => o.value === slugFromUrl);
 
-    // дефолтный город (перывй из json)
+    // дефолтный город (первый из json)
     if (!initialOption && options.value.length > 0) {
       initialOption = options.value[0];
     }
@@ -113,8 +119,12 @@ export function useCitySelector(emit) {
       selectedLabel.value = "Город не найден";
     }
 
+    // ============================
+    // ГЕОЛОКАЦИЯ
+    // ============================
+
+    /*
     // опредкление реального города
-    // состояние permissions api
     let permState = "prompt";
     try {
       const perm = await navigator.permissions.query({ name: "geolocation" });
@@ -129,7 +139,6 @@ export function useCitySelector(emit) {
       return;
     }
 
-    // согласие
     let coords = null;
     if (permState === "granted") {
       isCityDetecting.value = true;
@@ -141,7 +150,6 @@ export function useCitySelector(emit) {
         isCityDetecting.value = false;
       }
     } else {
-      // prompt
       try {
         coords = await getCoords();
       } catch (e) {
@@ -165,15 +173,16 @@ export function useCitySelector(emit) {
 
     if (!cityName) return;
 
-    // совпадение, если отличается от текущего, то меняется
     const found = options.value.find(
       (opt) =>
         opt.value.toLowerCase() === cityName.toLowerCase() ||
         opt.label[0].toLowerCase() === cityName.toLowerCase()
     );
+
     if (found && found.value !== selectedKey.value) {
       await onOptionClick(found);
     }
+    */
   });
 
   return {
