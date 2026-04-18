@@ -31,11 +31,8 @@ function openDoc(idx) {
         </div>
       </div>
       <div class="policy">
-        <p class="credits">&copy; 2025 Friendly poker club</p>
-        <a
-          href="#"
-          @click.prevent="openDoc(0)"
-          class="policy-1 underline-hover"
+        <p class="credits">&copy; 2026 Friendly poker club</p>
+        <a href="#" @click.prevent="openDoc(0)" class="policy-1 underline-hover"
           ><p>Договор оферта</p></a
         >
         <a href="#" @click.prevent="openDoc(1)" class="policy-2 underline-hover"
