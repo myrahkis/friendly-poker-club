@@ -1,4 +1,6 @@
 <script setup>
+import PointsRulesTable from "./PointsRulesTable.vue";
+
 const pointsRulesContainer = ref(null);
 
 defineExpose({ pointsRulesContainer });
@@ -71,8 +73,8 @@ defineExpose({ pointsRulesContainer });
 
   border: 2px solid transparent;
   border-radius: 2rem;
-  background: linear-gradient(var(--dark-blue-color), var(--dark-blue-color))
-      padding-box,
+  background:
+    linear-gradient(var(--dark-blue-color), var(--dark-blue-color)) padding-box,
     linear-gradient(
         to right,
         var(--light-gradient-color),

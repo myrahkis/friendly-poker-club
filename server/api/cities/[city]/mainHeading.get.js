@@ -8,6 +8,6 @@ export default defineEventHandler(async (event) => {
     "SELECT data FROM main_heading WHERE city_slug = ?",
     [city]
   );
-  // console.log(rows);
+  
   return rows;
 });

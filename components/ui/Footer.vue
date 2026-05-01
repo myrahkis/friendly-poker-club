@@ -1,5 +1,6 @@
 <script setup>
-import Socials from "./Socials.vue";
+import Socials from "../Socials.vue";
+import Logo from "./Logo.vue";
 
 const openDocState = useState("openDocIndex", () => null);
 

@@ -1,4 +1,6 @@
 <script setup>
+import Logo from './ui/Logo.vue';
+
 const route = useRoute();
 
 const { data: mainHeading } = useFetch(

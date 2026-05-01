@@ -1,4 +1,8 @@
 <script setup>
+import Footer from "./components/ui/Footer.vue";
+import Header from "./components/ui/Header.vue";
+import OpenedMobileHeader from "./components/ui/OpenedMobileHeader.vue";
+
 const header = ref(null);
 const openMenu = ref(false);
 const route = useRoute();

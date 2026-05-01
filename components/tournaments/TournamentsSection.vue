@@ -1,5 +1,7 @@
 <script setup>
 import { buildNext7DaysFromDb } from "~/helpers/buildTournamentsArr";
+import TournamentCard from "./TournamentCard.vue";
+import TournamentsDescriptions from "./TournamentsDescriptions.vue";
 
 const route = useRoute();
 const isDescriptionsOpen = ref(false);
@@ -8,7 +10,7 @@ const descriptionsContainer = ref(null);
 const { rawData } = useTournaments();
 const { data: finals } = await useAsyncData(
   () => `finals-${route.params.city}`,
-  () => $fetch(`/api/cities/${route.params.city}/finalTournaments`)
+  () => $fetch(`/api/cities/${route.params.city}/finalTournaments`),
 );
 const tournaments = computed(() => {
   if (!rawData.value || !finals.value) return [];
@@ -87,7 +89,7 @@ function toggleDescriptions() {
 
 .tournaments-grid {
   display: grid;
-  grid-template-columns: repeat(4, 0.25fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   gap: 1.5rem;
 }

@@ -1,4 +1,6 @@
 <script setup>
+import CitySelector from "./CitySelector.vue";
+
 const route = useRoute();
 const header = ref(null);
 
@@ -122,7 +124,10 @@ defineExpose({ header });
   z-index: 101;
   width: 100%;
   padding: 2.5rem var(--horiz-main-padding);
-  transition: transform 0.3s, box-shadow 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 .city-svg {
   width: 3rem;

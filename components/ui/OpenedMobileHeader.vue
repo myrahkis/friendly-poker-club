@@ -1,4 +1,6 @@
 <script setup>
+import Logo from "./Logo.vue";
+
 const route = useRoute();
 
 const links = [

@@ -5,7 +5,6 @@ const openedDocIdx = ref(null);
 
 function toggleDoc(idx) {
   openedDocIdx.value = openedDocIdx.value === idx ? null : idx;
-  // console.log(openedDocIdx.value);
 }
 
 const pdfModules = import.meta.glob("/assets/documents/**/*.pdf", {
@@ -22,11 +21,11 @@ const documents = computed(() =>
       console.warn(`Не найден PDF по ключу ${key}`);
     }
     return { title: doc.title, url };
-  })
+  }),
 );
 
 const PdfRenderer = defineAsyncComponent({
-  loader: () => import("@/components/PdfRenderer.vue"),
+  loader: () => import("@/components/legalInfo/PdfRenderer.vue"),
   suspensible: true,
 });
 </script>

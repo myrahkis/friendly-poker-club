@@ -1,4 +1,6 @@
 <script setup>
+import CitySelector from "../ui/CitySelector.vue";
+
 const { rawData: contacts } = useCityData("contacts");
 
 const isInstructionOpen = ref(false);
@@ -10,7 +12,7 @@ function toggleInstructions() {
   if (isInstructionOpen.value) {
     nextTick(() => {
       const el = instructionComp.value.instructionContainer;
-      // console.log(el);
+
       if (el && el.scrollIntoView) {
         el.scrollIntoView({
           behavior: "smooth",

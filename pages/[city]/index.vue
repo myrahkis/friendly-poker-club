@@ -1,6 +1,13 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { useRoute, useHead } from "#imports";
+import LegalnformationSection from "~/components/legalInfo/LegalnformationSection.vue";
+import TournamentsSection from "~/components/tournaments/TournamentsSection.vue";
+import FAQSection from "~/components/faq/FAQSection.vue";
+import GallerySection from "~/components/GallerySection.vue";
+import PricingSection from "~/components/pricing/PricingSection.vue";
+import FeedbackSection from "~/components/feedback/FeedbackSection.vue";
+import ContactsSection from "~/components/contacts/ContactsSection.vue";
 
 const route = useRoute();
 

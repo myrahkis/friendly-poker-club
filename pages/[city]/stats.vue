@@ -1,4 +1,6 @@
 <script setup>
+import StatsPointsRules from "~/components/pointsRules/StatsPointsRules.vue";
+
 const { rawData: stats } = useCityData("stats");
 
 const route = useRoute();
@@ -19,7 +21,7 @@ useHead({
     {
       property: "og:url",
       content: computed(
-        () => `https://friendlypoker.ru/${citySlug.value}/stats`
+        () => `https://friendlypoker.ru/${citySlug.value}/stats`,
       ),
     },
   ],
