@@ -3,8 +3,6 @@ import specialTournamentBg from "@/assets/images/special-tournament.png";
 import { computed, nextTick, ref } from "vue";
 import TournamentCardPopup from "./TournamentCardPopup.vue";
 
-const { rawData: contacts } = useCityData("contacts");
-
 const props = defineProps({
   tournament: Object,
   index: Number,
@@ -138,7 +136,11 @@ const openPopup = async (key, tour) => {
   };
 };
 
-const registerLink = computed(() => contacts.value?.socials?.tg);
+const registerLink = computed(() => {
+  const id = props.tournament?.scheduleIds?.[0];
+  if (!id) return null;
+  return `https://my.friendlypoker.ru/t/${id}`;
+});
 
 const openRegister = () => {
   if (!registerLink.value) return;
@@ -164,11 +166,19 @@ const buttonText = computed(() => {
 });
 
 const emptyText = computed(() => {
-  if (!isFinal.value) return null;
+  if (props.tournament?.isFinalPlaceholder) {
+    return "Финалов в ближайшее время нет!";
+  }
 
-  return props.tournament?.isFinalPlaceholder
-    ? "Финалов в ближайшее время нет!"
-    : null;
+  if (isFinal.value && props.tournament?.isDayoff) {
+    return "Финалов в ближайшее время нет!";
+  }
+
+  if (!isFinal.value && props.tournament?.isDayoff) {
+    return "Выходной день";
+  }
+
+  return null;
 });
 
 const bgStyle = computed(() => {

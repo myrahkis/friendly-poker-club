@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const pool = dbTournaments();
   const [rows] = await pool.query(
     `
-    SELECT ts.name,ts.start_time,ts.city_name_lat,ts.description
+    SELECT ts.id,ts.name,ts.start_time,ts.city_name_lat,ts.description
     FROM tournament_schedule ts
     WHERE ts.city_name_lat = ?
       AND ts.id NOT IN (
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
         WHERE tc.category_id = ?
       )
   `,
-    [city, finalsCatId]
+    [city, finalsCatId],
   );
 
   return rows;

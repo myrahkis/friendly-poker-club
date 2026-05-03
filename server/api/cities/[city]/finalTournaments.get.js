@@ -7,14 +7,14 @@ export default defineEventHandler(async (event) => {
   const pool = dbTournaments();
   const [rows] = await pool.query(
     `
-        SELECT ts.name,ts.start_time,ts.city_name_lat,ts.description
+        SELECT ts.id,ts.name,ts.start_time,ts.city_name_lat,ts.description
         FROM tournament_schedule ts
         JOIN v_tournament_categories tc 
         ON ts.id = tc.tournament_id
         WHERE LOWER(ts.city_name_lat) = LOWER(?)
         AND tc.category_id = ?
     `,
-    [city, finalsCatId]
+    [city, finalsCatId],
   );
 
   return rows;

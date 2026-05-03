@@ -5,6 +5,7 @@
  */
 export function buildNext7DaysFromDb(dataDayly, finals) {
   const result = [];
+
   const months = [
     "Января",
     "Февраля",
@@ -19,21 +20,24 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
     "Ноября",
     "Декабря",
   ];
+
   const days = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
   const now = new Date();
 
-  // обычные на 7 днй
+  // обычные на 7 дней
   for (let i = 0; i < 7; i++) {
     const dateObj = new Date();
     dateObj.setDate(dateObj.getDate() + i);
+
     const dayKey = dateObj.toISOString().split("T")[0];
 
     const tournamentsForDay = dataDayly
       .filter((t) => t.start_time.startsWith(dayKey))
       .map((t) => ({
+        id: t?.id,
         name: t?.name,
         startTime: new Intl.DateTimeFormat("ru-RU", {
-          timeZone: "UTC",
+          timeZone: "Europe/Moscow",
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
@@ -42,31 +46,38 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
         description: t?.description,
       }));
 
+    const scheduleIds = tournamentsForDay.map((t) => t.id);
+
     result.push({
       date: `${dateObj.getDate()} ${months[dateObj.getMonth()]} - ${
         days[dateObj.getDay()]
       }`,
       isDayoff: tournamentsForDay.length === 0,
       schedule: tournamentsForDay,
+      scheduleIds,
     });
   }
 
   // финалы
   const upcomingFinals = (finals || []).filter(
-    (f) => new Date(f.start_time) >= now
+    (f) => new Date(f.start_time) >= now,
   );
+
   if (upcomingFinals.length === 0) {
     result.push({
+      id: null,
       date: null,
       isDayoff: false,
       schedule: [],
+      scheduleIds: [],
       isFinalPlaceholder: true,
     });
   } else {
     const finalSchedule = upcomingFinals.map((f) => ({
+      id: f?.id,
       name: f.name,
       startTime: new Intl.DateTimeFormat("ru-RU", {
-        timeZone: "UTC",
+        timeZone: "Europe/Moscow",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
@@ -75,13 +86,17 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
       description: f.description,
     }));
 
+    const finalIds = finalSchedule.map((f) => f.id);
+
     const firstFinalDate = new Date(upcomingFinals[0].start_time);
+
     result.push({
       date: `${firstFinalDate.getDate()} ${
         months[firstFinalDate.getMonth()]
       } - ${days[firstFinalDate.getDay()]}`,
       isDayoff: false,
       schedule: finalSchedule,
+      scheduleIds: finalIds,
     });
   }
 
