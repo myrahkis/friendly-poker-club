@@ -34,14 +34,11 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
     const tournamentsForDay = dataDayly
       .filter((t) => t.start_time.startsWith(dayKey))
       .map((t) => {
+        console.log(t.start_time);
         return {
           id: t?.id,
           name: t?.name,
-          startTime: new Intl.DateTimeFormat("ru-RU", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          }).format(new Date(t.start_time)),
+          startTime: t.start_time.slice(11, 16),
           endTime: "победителя",
           description: t?.description,
         };
@@ -77,11 +74,7 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
     const finalSchedule = upcomingFinals.map((f) => ({
       id: f?.id,
       name: f.name,
-      startTime: new Intl.DateTimeFormat("ru-RU", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      }).format(new Date(f.start_time)),
+      startTime: f.start_time.slice(11, 16),
       endTime: "победителя",
       description: f.description,
     }));
