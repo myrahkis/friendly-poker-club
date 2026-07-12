@@ -1,5 +1,6 @@
 <script setup>
 import CitySelector from "./CitySelector.vue";
+import RegisterDropdown from "./RegisterDropdown.vue";
 
 const route = useRoute();
 const header = ref(null);
@@ -98,6 +99,7 @@ defineExpose({ header });
           </p>
           <p>{{ contacts.email }}</p>
           <p>{{ contacts.workingHours }}</p>
+          <RegisterDropdown />
           <Socials width="3.2rem" />
         </div>
         <ul class="header__list">
@@ -221,7 +223,8 @@ defineExpose({ header });
     .whatsup-btn,
     .yt-btn,
     .tg-btn,
-    .vk-btn {
+    .vk-btn,
+    .inst-btn {
       svg {
         width: clamp(2.5rem, 3.5vw, 4rem) !important;
       }
@@ -252,7 +255,8 @@ defineExpose({ header });
     .whatsup-btn,
     .yt-btn,
     .tg-btn,
-    .vk-btn {
+    .vk-btn,
+    .inst-btn {
       svg {
         width: clamp(3rem, 5vw, 5.5rem) !important;
       }

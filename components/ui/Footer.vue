@@ -214,7 +214,8 @@ function openDoc(idx) {
     .whatsup-btn,
     .yt-btn,
     .tg-btn,
-    .vk-btn {
+    .vk-btn,
+    .inst-btn {
       svg {
         width: clamp(2.5rem, 3.5vw, 4rem) !important;
       }

@@ -95,10 +95,10 @@ const cardWidth = computed(
   () =>
     `calc((100% - ${(visibleCount.value - 1) * 1.3}rem) / ${
       visibleCount.value
-    })`
+    })`,
 );
 const baseTranslate = computed(
-  () => -(currentIndex.value * 100) / visibleCount.value + "%"
+  () => -(currentIndex.value * 100) / visibleCount.value + "%",
 );
 const translateStyle = computed(() => {
   if (dragStartX !== null) {

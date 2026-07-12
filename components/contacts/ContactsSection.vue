@@ -152,7 +152,8 @@ function toggleInstructions() {
     .whatsup-btn,
     .yt-btn,
     .tg-btn,
-    .vk-btn {
+    .vk-btn,
+    .inst-btn {
       svg {
         width: clamp(3.5rem, 4vw, 5rem) !important;
       }

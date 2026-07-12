@@ -17,7 +17,7 @@
         <img src="/assets/images/galleryImg4.webp" alt="" />
       </div>
       <div class="grid-cell-5">
-        <img src="/assets/images/1.webp" alt="" />
+        <img src="/assets/images/galleryImg5.webp" alt="" />
       </div>
       <button class="gallery-btn">Подробнее</button>
     </div>
@@ -34,7 +34,7 @@
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(7, 0.25fr);
-  grid-template-rows: 0.3fr 0.15fr 0.35fr auto;
+  grid-template-rows: 0.45fr 0.15fr 0.5fr 0.1fr;
   gap: 1rem;
   height: fit-content;
 }
@@ -62,7 +62,7 @@
   grid-row: 1 / 2;
 
   img {
-    object-position: 0 63%;
+    object-position: 0 35%;
   }
 }
 .grid-cell-3 {
@@ -72,14 +72,14 @@
 .grid-cell-4 {
   grid-column: 4 / 6;
   grid-row: 2 / -1;
+
+  img {
+    object-position: 0 70%;
+  }
 }
 .grid-cell-5 {
   grid-column: 6 / -1;
   grid-row: 2 / -1;
-
-  img {
-    object-position: 30% 0;
-  }
 }
 
 .gallery-btn {

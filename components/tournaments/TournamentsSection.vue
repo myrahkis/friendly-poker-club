@@ -17,6 +17,8 @@ const tournaments = computed(() => {
   return buildNext7DaysFromDb(rawData.value, finals.value);
 });
 
+console.log(rawData);
+
 function toggleDescriptions() {
   isDescriptionsOpen.value = !isDescriptionsOpen.value;
 

@@ -8,7 +8,6 @@ import placeholderImg6 from "@/assets/images/6.webp";
 import placeholderImg7 from "@/assets/images/7.webp";
 import placeholderImg9 from "@/assets/images/9.webp";
 import placeholderImg10 from "@/assets/images/10.webp";
-import placeholderImg11 from "@/assets/images/11.webp";
 import placeholderImg12 from "@/assets/images/12.webp";
 import placeholderImg13 from "@/assets/images/13.webp";
 
@@ -22,7 +21,6 @@ const photos = [
   placeholderImg7,
   placeholderImg9,
   placeholderImg10,
-  placeholderImg11,
   placeholderImg12,
   placeholderImg13,
 ];
@@ -233,7 +231,9 @@ function prevSlide() {
 /* движение влево */
 .slide-left-enter-active,
 .slide-left-leave-active {
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
 }
 .slide-left-enter-from {
   transform: translateX(100%);
@@ -245,7 +245,9 @@ function prevSlide() {
 /* движение вправо */
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
 }
 .slide-right-enter-from {
   transform: translateX(-100%);

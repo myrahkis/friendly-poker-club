@@ -119,7 +119,7 @@ function toggleRules() {
         </div>
         <StatsPointsRules v-if="openPointsRules" ref="pointsRulesContainer" />
       </div>
-      <div>
+      <!-- <div>
         <div class="heading-container">
           <h3 class="stats-heading">
             Статистика турниров <br class="stats-br-mobile" />
@@ -169,7 +169,7 @@ function toggleRules() {
             </svg>
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

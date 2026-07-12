@@ -47,7 +47,8 @@ const { loading, error, rawData: contacts } = useCityData("contacts");
     .whatsup-btn,
     .yt-btn,
     .tg-btn,
-    .vk-btn {
+    .vk-btn,
+    .inst-btn {
       svg {
         width: clamp(2.5rem, 4.3vw, 5rem) !important;
       }

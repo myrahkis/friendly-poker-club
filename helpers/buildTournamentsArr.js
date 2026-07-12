@@ -33,16 +33,14 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
 
     const tournamentsForDay = dataDayly
       .filter((t) => t.start_time.startsWith(dayKey))
-      .map((t) => {
-        console.log(t.start_time);
-        return {
-          id: t?.id,
-          name: t?.name,
-          startTime: t.start_time.slice(11, 16),
-          endTime: "победителя",
-          description: t?.description,
-        };
-      });
+      .sort((a, b) => new Date(a.start_time) - new Date(b.start_time))
+      .map((t) => ({
+        id: t?.id,
+        name: t?.name,
+        startTime: t.start_time.slice(11, 16),
+        endTime: "победителя",
+        description: t?.description,
+      }));
 
     const scheduleIds = tournamentsForDay.map((t) => t.id);
 
@@ -57,9 +55,9 @@ export function buildNext7DaysFromDb(dataDayly, finals) {
   }
 
   // финалы
-  const upcomingFinals = (finals || []).filter(
-    (f) => new Date(f.start_time) >= now,
-  );
+  const upcomingFinals = (finals || [])
+    .filter((f) => new Date(f.start_time) >= now)
+    .sort((a, b) => new Date(a.start_time) - new Date(b.start_time)); 
 
   if (upcomingFinals.length === 0) {
     result.push({
