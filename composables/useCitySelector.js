@@ -50,7 +50,6 @@ export function useCitySelector(emit) {
   // ГЕОЛОКАЦИЯ
   // ============================
 
-  /*
   async function getCoords() {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
@@ -63,7 +62,7 @@ export function useCitySelector(emit) {
           enableHighAccuracy: true,
           timeout: 10000,
           maximumAge: 5000,
-        }
+        },
       );
     });
   }
@@ -95,7 +94,6 @@ export function useCitySelector(emit) {
       isCityDetecting.value = false;
     }
   }
-  */
 
   let initialized = false;
 
@@ -123,7 +121,6 @@ export function useCitySelector(emit) {
     // ГЕОЛОКАЦИЯ
     // ============================
 
-    /*
     // опредкление реального города
     let permState = "prompt";
     try {
@@ -131,7 +128,7 @@ export function useCitySelector(emit) {
       permState = perm.state;
     } catch (e) {
       console.warn(
-        "Permissions API не поддерживается, будем запрашивать сразу"
+        "Permissions API не поддерживается, будем запрашивать сразу",
       );
     }
 
@@ -176,13 +173,12 @@ export function useCitySelector(emit) {
     const found = options.value.find(
       (opt) =>
         opt.value.toLowerCase() === cityName.toLowerCase() ||
-        opt.label[0].toLowerCase() === cityName.toLowerCase()
+        opt.label[0].toLowerCase() === cityName.toLowerCase(),
     );
 
     if (found && found.value !== selectedKey.value) {
       await onOptionClick(found);
     }
-    */
   });
 
   return {
